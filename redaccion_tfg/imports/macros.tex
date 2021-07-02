@@ -1,0 +1,52 @@
+%------------------------
+% Bibliotecas para matemáticas de latex
+%------------------------
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{shapes,fit}
+\usepackage{bussproofs}
+\EnableBpAbbreviations{}
+\usepackage{mathtools}
+\usepackage{scalerel}
+\usepackage{stmaryrd}
+
+%------------------------
+% Estilos para los teoremas
+%------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{postulate}{Postulate}
+\newtheorem*{postulate 3'}{Postulate 3'}
+\newtheorem*{postulate 2'}{Projective Measurement}
+
+\renewenvironment{proof}{{\bfseries Proof.}}{\qed}
+
+% Change the proof style so it's in English and add \qed at the end.
+\renewenvironment{proof}{{\bfseries Proof.}}{\qed}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{exampleth}{Example}
+
+\begingroup\makeatletter\@for\theoremstyle:=definition,remark,plain\do{\expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{\addtolength\thm@preskip\parskip}}\endgroup
+
+%------------------------
+% Macros
+% ------------------------
+
+\newcommand*{\C}{\mathds{C}}
+\newcommand*{\ra}{\rangle}
+\newcommand*{\la}{\langle}
+
+% Para poner sonrisa sobre puntos suspensivos. Uso: \overplace{n}{\dotsc}
+\newcommand{\overplace}[2]{%
+	\overset{\substack{#1\\\smile}}{#2}%
+}
