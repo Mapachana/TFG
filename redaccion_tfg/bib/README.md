@@ -1,1 +1,0 @@
-El script `prepare_bib.py` ha de ejecutarse tras cada exportación de Mendeley, ya que este no escapea correctamente los caracteres `~`, `#`, `_` y `%`. Este script ajusta correctamente los caracteres en el archivo de bibliografía.
