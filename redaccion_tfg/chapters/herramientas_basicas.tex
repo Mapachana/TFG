@@ -4,6 +4,12 @@
 
 Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectious y Recovered. Los nombres suelen hacer referencias al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
 
+En estos modelos se hacen dos suposiciones:
+\begin{enumerate}
+\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
+\item El total de la población es constante.
+\end{enumerate}
+
 \subsection{Modelo SI}
 Es el modelo más simple de todos, los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados no hay tratamiento y permanecen infectados el resto de su vida.
 Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
@@ -20,14 +26,55 @@ I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
 
 Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
 
-En estas ecuaciones $\alpha$ es la 
+En estas ecuaciones $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
+
+Ahora, imponemos las suposiciones descritas anteriormente para estos modelos. Empezamos por la segunda: La población total se mantiene constante, que es trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas (las soluciones negativas no tienen sentido).
+Para imponer que las ecuaciones tienen soluciones positivas:
+En el caso de la $S_n$ una condición necesaria y suficiente es $\alpha\Delta t \leq 1$. 
+
+Buscamos ahora ver cuál es el comportamiento del sistema, si calculamos los puntos de equilibrio del sistema, para lo que resolvemos:
+
+$$
+\begin{cases}
+S^*=S^*\left( 1-\frac{\alpha\Delta t}{N}I^*\right) \\
+I^*=I^*\left( 1+\frac{\alpha\Delta t}{N}S^*\right) \\
+S^*+I^*=N
+\end{cases}
+$$
+
+Los únicos puntos de equilibrio posibles son: $S^*=0, I^*=N$ y $S^*=N, I^*=0$, y como sabemos que tenemos condiciones iniciales positivas y $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, entonces debe converger a $S^*=0, I^*=N$.
+
+\textcolor{red}{Aquí en el artículo (Allen, página 3) \cite{allenDiscretetimeSISIR1994} lo hace de otra manera, sin sustituir el S+I=N en el sistema y eso lo hace luego en forma alternativa, pero dice que eso añade restricciones por obtenerse la ecuación logística y no lo entiendo bien. ¿Qué hace al prinicpio si no sustituye del sistema? ¿De dónde salen las restricciones extra de la ecuación logística?}
+
+Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la sigueinte manera:
+
+$$\frac{S_{n+1} - S_n}{\Delta t} \approx \frac{dS}{dt}$$
+
+luegosu análoga continua es:
+
+\begin{equation}
+\frac{dS}{dt} = -\frac{\alpha}{N}SI
+\end{equation}
+
+
+\begin{equation}
+\frac{dI}{dt} = \frac{\alpha}{N}SI
+\end{equation}
+
+con condiciones iniciales $S(0)+I(0)=N$.
+
+De manera análoga al caso discreto, podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
+\textcolor{red}{Aquí llega al final de la página 3 del pdf del artículo de Allen\cite{allenDiscretetimeSISIR1994}, pero no entiendo bien como calcula el punto de equilibrio al que converge el sistema continuo}
+
+\textcolor{red}{La página 4 del artículo sigue haciendo cosas que no entiendo y me pierdo bastante}
+
 
 
 \subsection{Modelo SIS}
 Es similar al SI, pero tras infectarse los individuos vuelven a ser susceptibles.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
-\subsection{SIR}
+\subsection{Modelo SIR}
 Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
 Por ejemplo, la varicela. 
 
