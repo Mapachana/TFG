@@ -1,0 +1,33 @@
+\chapter{Herramientas básicas}
+
+\section{Tipos de modelos}
+
+Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectious y Recovered. Los nombres suelen hacer referencias al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
+
+\subsection{Modelo SI}
+Es el modelo más simple de todos, los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados no hay tratamiento y permanecen infectados el resto de su vida.
+Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
+
+\begin{equation}
+\label{eqn: SI_S}
+S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right)
+\end{equation}
+
+\begin{equation}
+\label{eqn: SI_I}
+I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
+\end{equation}
+
+Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
+
+En estas ecuaciones $\alpha$ es la 
+
+
+\subsection{Modelo SIS}
+Es similar al SI, pero tras infectarse los individuos vuelven a ser susceptibles.
+Por ejemplo, los resfriados pueden modelarse usando SIS.
+
+\subsection{SIR}
+Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
+Por ejemplo, la varicela. 
+
