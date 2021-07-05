@@ -8,7 +8,8 @@ main.pdf: main.tex imports/titlepage.tex pseudo_clean #prepare_bibliography
 
 pseudo_clean:
 	rm -f *.aux *.blg *.log *.bbl *.toc *.out *.bcf *.xml *.synctex.gz
-	rm -f imports/*.aux
+	rm -f chapters/*.log
+	rm -f imports/*.aux imports/*.log
 	rm -rf _minted-main
 
 clean: pseudo_clean

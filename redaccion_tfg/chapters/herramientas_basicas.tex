@@ -2,7 +2,7 @@
 
 \section{Tipos de modelos}
 
-Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectious y Recovered. Los nombres suelen hacer referencias al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
+Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencias al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
 
 En estos modelos se hacen dos suposiciones:
 \begin{enumerate}
@@ -103,7 +103,6 @@ El modelo SI es el siguiente:
 S'(t) = -\tau (t)S(t)I(t)
 \end{equation}
 
-
 \begin{equation}
 \label{eqn: SI_I_cont}
 I'(t) = \tau (t)S(t)I(t) -vI(t)
@@ -141,7 +140,7 @@ $$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}$$
 
 Sustituyendo en \ref{eqn: acumulada}:
 
-$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0-v)(t-t_0)} -1}{\tau_0 S_0-v}$$
+$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{•(t-t_0)} -1}{\tau_0 S_0-v}$$
 
 Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
@@ -152,8 +151,57 @@ Reescribimos la ecuación como:
 CR(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
 \end{equation}
 
+Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos es $\chi_3=0$
 
+Ahora, usando \ref{eqn: acumulada} y \ref{eqn: acumulada_modelo} tenemos:
 
+\begin{equation}
+I_0=\frac{\chi_1\chi_2\mathrm{e}^{\chi_2 t_0}}{vf}
+\end{equation}
+
+Y, como de reescribir sabemos que $\chi_2 = \tau_0 S_0-v$ entonces
+
+\begin{equation}
+\tau_0 = \frac{\chi_2+v}{S_0}
+\end{equation}
+
+Si suponemos que $\tau (t) = \tau_0$ tenemos que el modelo queda:
+
+\begin{equation}
+S'(t) = -\tau_0S(t)I(t)
+\end{equation}
+
+\begin{equation}
+I'(t) = \tau_0S(t)I(t) -vI(t)
+\end{equation}
+
+Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
+
+$$S(t) = S_0\exp{(-\tau_0 \int_{t_0}^t I(\sigma ) d\sigma)} = S_0\exp{(-\tau_0 CI(t))}$$
+
+Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $CI'(t)=I(t)$:
+
+$$I'(t) = S_0\exp{(-\tau_0 CI(t))}\tau_0 CI'(t)-vI(t)$$
+
+Finalmente, integrando entre $t_0$ y $t$ tenemos que:
+
+$$I(t)=CI'(t)=I_0+S_0(1-\exp{(-\tau_0 CI(t)}))-vCI(t)$$
+
+Observamos entonces que el número total de infectados es monótono creciente (¡pero no el número de infectados!). 
+
+\begin{theorem}
+Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente \textcolor{red}{¿Dónde hemos probado que sea estricto? Creciente si, pero estricto?} respecto a las siguiente cantidades:
+\begin{itemize}
+\item $I_0>0$ Número inicial de infectados
+\item $S_0>0$ Número inicial de individuos susceptibles.
+\item $\tau>0$ Tasa de transmisión
+\item $1/v$ Tiempo medio de la infección.
+\end{itemize}
+\end{theorem}
+
+\textcolor{red}{Ahora en el artículo de \cite{demongeotSIEpidemicModel} menciona una cosa de errores que me da miedo}
+
+\textcolor{red}{La figura 2 tampoco la entiendo mucho :(}
 
 
 
