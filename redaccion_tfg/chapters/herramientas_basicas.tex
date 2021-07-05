@@ -69,7 +69,6 @@ De manera análoga al caso discreto, podemos comprobar que este sistema converge
 \textcolor{red}{La página 4 del artículo sigue haciendo cosas que no entiendo y me pierdo bastante}
 
 
-
 \subsection{Modelo SIS}
 Es similar al SI, pero tras infectarse los individuos vuelven a ser susceptibles.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
@@ -77,4 +76,69 @@ Por ejemplo, los resfriados pueden modelarse usando SIS.
 \subsection{Modelo SIR}
 Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
 Por ejemplo, la varicela. 
+
+
+\section{Cosas del articulo de rsos que no sé que nombre ponerles}
+
+\subsection{Introducción}
+
+Estimar la tasa de transmisión media es uno de los aspectos más cruciales en epidemiología. Esta tasa condiciona la fase de la epidemia (incluso si va a extinguirse). Es combinación de tres factores:
+
+\begin{enumerate}
+\item Coeficiente de virulencia: Relacionado con el agente infeccioso.
+\item Coeficiente de susceptibilidad: Relacionado con el anfitrión.
+\item Número de contactos por unidad de tiempo entre individuos.
+\end{enumerate}
+
+Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de transmisión.
+
+Todos los factores pueden cambiar con el tiempo, el primero debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
+
+Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos en la pandemia hasta el momento y así tratar de prdecir su comportamiento en el futuro.
+
+El modelo SI es el siguiente:
+
+\begin{equation}
+\label{eqn: SI_S_cont}
+S'(t) = -\tau (t)S(t)I(t)
+\end{equation}
+
+
+\begin{equation}
+\label{eqn: SI_I_cont}
+I'(t) = \tau (t)S(t)I(t) -vI(t)
+\end{equation}
+
+donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o muertos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniiciales:
+
+$$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
+
+Ahora, consideramos que al final del período infeccioso nos han reportado una fracción del total de casos, en este caso $f\in (0,1]$. Sea $CR(t)$ el número total (acumulado) de casos reportados. Entonces:
+
+\begin{equation}
+\label{eqn: acumulada}
+CR(t) = CR_0 + vfCI(t) \; \forall t \geq t_0
+\end{equation}
+
+\textcolor{red}{En esta ecuación no especifica que $CR_0$ sea constante, pero asumo que es un valor inicial, porque tendría sentido. También tengo duda en ¿por qué $vfCI(t)$ va multiplicado por $v$?}
+
+donde
+
+$$CI(t) = \int_{t_0}^t I(\sigma ) d\sigma $$
+
+Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar $I_0$, $\tau (t)$
+
+\subsection{Aproximando $I_0$ y $\tau (t_0)$}
+Ahora, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
+
+Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación \ref{eqn: SI_I_cont} obtenemos:
+
+$$I'(t) = (\tau_0 S_0 -v) I(t)$$
+
+
+
+
+
+
+
 
