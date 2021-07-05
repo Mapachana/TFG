@@ -135,6 +135,25 @@ Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes
 
 $$I'(t) = (\tau_0 S_0 -v) I(t)$$
 
+Resolviendo la ecuación diferencial llegamos a:
+
+$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}$$
+
+Sustituyendo en \ref{eqn: acumulada}:
+
+$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0-v)(t-t_0)} -1}{\tau_0 S_0-v}$$
+
+Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
+
+Reescribimos la ecuación como:
+
+\begin{equation}
+\label{eqn: acumulada_modelo}
+CR(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
+\end{equation}
+
+
+
 
 
 
