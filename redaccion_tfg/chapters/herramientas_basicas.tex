@@ -2,7 +2,7 @@
 
 \section{Tipos de modelos}
 
-Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencias al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
+Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
 
 En estos modelos se hacen dos suposiciones:
 \begin{enumerate}
@@ -50,7 +50,7 @@ Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales a
 
 $$\frac{S_{n+1} - S_n}{\Delta t} \approx \frac{dS}{dt}$$
 
-luegosu análoga continua es:
+luego su análoga continua es:
 
 \begin{equation}
 \frac{dS}{dt} = -\frac{\alpha}{N}SI
@@ -130,7 +130,7 @@ Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averigu
 \subsection{Aproximando $I_0$ y $\tau (t_0)$}
 Ahora, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
-Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación \ref{eqn: SI_I_cont} obtenemos:
+Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación (\ref{eqn: SI_I_cont}) obtenemos:
 
 $$I'(t) = (\tau_0 S_0 -v) I(t)$$
 
@@ -138,9 +138,9 @@ Resolviendo la ecuación diferencial llegamos a:
 
 $$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}$$
 
-Sustituyendo en \ref{eqn: acumulada}:
+Sustituyendo en (\ref{eqn: acumulada}):
 
-$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{•(t-t_0)} -1}{\tau_0 S_0-v}$$
+$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}$$
 
 Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
@@ -153,7 +153,7 @@ CR(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
 
 Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos es $\chi_3=0$
 
-Ahora, usando \ref{eqn: acumulada} y \ref{eqn: acumulada_modelo} tenemos:
+Ahora, usando (\ref{eqn: acumulada}) y (\ref{eqn: acumulada_modelo}) tenemos:
 
 \begin{equation}
 I_0=\frac{\chi_1\chi_2\mathrm{e}^{\chi_2 t_0}}{vf}
@@ -177,11 +177,11 @@ I'(t) = \tau_0S(t)I(t) -vI(t)
 
 Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
 
-$$S(t) = S_0\exp{(-\tau_0 \int_{t_0}^t I(\sigma ) d\sigma)} = S_0\exp{(-\tau_0 CI(t))}$$
+$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(\sigma ) d\sigma \right)} = S_0\exp{(-\tau_0 CI(t))}$$
 
 Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $CI'(t)=I(t)$:
 
-$$I'(t) = S_0\exp{(-\tau_0 CI(t))}\tau_0 CI'(t)-vI(t)$$
+$$I'(t) = S_0\exp{\left( -\tau_0 CI(t)\right) }\tau_0 CI'(t)-vI(t)$$
 
 Finalmente, integrando entre $t_0$ y $t$ tenemos que:
 
