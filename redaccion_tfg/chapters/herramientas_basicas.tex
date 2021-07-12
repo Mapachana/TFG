@@ -77,6 +77,45 @@ Por ejemplo, los resfriados pueden modelarse usando SIS.
 Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
 Por ejemplo, la varicela. 
 
+\textcolor{blue}{ESTO ES NUEVO}
+
+El modelo es el siguiente:
+
+\begin{equation}
+\label{eqn: SIR_modelo_S}
+S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right)
+\end{equation}
+
+\begin{equation}
+\label{eqn: SIR_modelo_I}
+I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
+\end{equation}
+
+\begin{equation}
+\label{eqn: SIR_modelo_R}
+R_{n+1} = R_n + \gamma \Delta t I_n
+\end{equation}
+
+con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$. Y satisfaciendo $S_0+I_0+R_0=N$.
+
+En estas ecuaciones, tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo. Donde se cumple $\alpha >0$ y $\gamma >0$ siempre.
+
+Es fácil comprobar que la población permanece constante, $S_n+I_n+R_n=N$.
+
+Además, tenemos que las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
+
+$$\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$$
+
+Equivalentemente:
+
+$$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
+
+Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempoe necesario para infectar a un individuo} y menor que el período medio infeccioso.
+
+
+
+
+
 
 \section{Cosas del articulo de rsos que no sé que nombre ponerles}
 
@@ -202,6 +241,28 @@ Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente
 \textcolor{red}{Ahora en el artículo de \cite{demongeotSIEpidemicModel} menciona una cosa de errores que me da miedo}
 
 \textcolor{red}{La figura 2 tampoco la entiendo mucho :(}
+
+\subsection{Fórmula teórica para $\tau (t)$}
+
+Usando la ecuación de la $S$ del modelo inicial (\ref{eqn: SI_S_cont}) obtenemos:
+
+$$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } $$ 
+
+Ahora, usando (\ref{eqn: SI_I_cont}):
+
+$$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } \tau (t) I(t) -vI(t) $$
+
+Integramos en ambos lados entre $t_0$ y $t$, luego:
+
+$$ CI'(t) = I_0 + S_0 \left( 1-\exp{\left(- \int_{t_0}^t \tau (\sigma ) I(\sigma )d\sigma \right)}\right) -vCI(t)$$
+
+Equivalentemente, por (\ref{eqn: acumulada}):
+
+$$CR'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (\sigma ) I(\sigma )d\sigma \right)}\right)\right) +vCR_0 -vCR(t)$$
+
+\textcolor{red}{Esta cuenta no termina de salirme, pero tiene más o menos sentido}
+
+Así, obtenemos el teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
 
 
 
