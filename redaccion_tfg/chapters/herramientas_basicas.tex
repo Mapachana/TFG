@@ -44,8 +44,6 @@ $$
 
 Los únicos puntos de equilibrio posibles son: $S^*=0, I^*=N$ y $S^*=N, I^*=0$, y como sabemos que tenemos condiciones iniciales positivas y $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, entonces debe converger a $S^*=0, I^*=N$.
 
-\textcolor{red}{Aquí en el artículo (Allen, página 3) \cite{allenDiscretetimeSISIR1994} lo hace de otra manera, sin sustituir el S+I=N en el sistema y eso lo hace luego en forma alternativa, pero dice que eso añade restricciones por obtenerse la ecuación logística y no lo entiendo bien. ¿Qué hace al prinicpio si no sustituye del sistema? ¿De dónde salen las restricciones extra de la ecuación logística?}
-
 Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la sigueinte manera:
 
 $$\frac{S_{n+1} - S_n}{\Delta t} \approx \frac{dS}{dt}$$
@@ -63,21 +61,45 @@ luego su análoga continua es:
 
 con condiciones iniciales $S(0)+I(0)=N$.
 
-De manera análoga al caso discreto, podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
-\textcolor{red}{Aquí llega al final de la página 3 del pdf del artículo de Allen\cite{allenDiscretetimeSISIR1994}, pero no entiendo bien como calcula el punto de equilibrio al que converge el sistema continuo}
-
-\textcolor{red}{La página 4 del artículo sigue haciendo cosas que no entiendo y me pierdo bastante}
-
+De manera análoga al caso discreto (es decir, suponiendo las funciones constantes y resolviendo el sistema de ecuaciones), podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
 
 \subsection{Modelo SIS}
 Es similar al SI, pero tras infectarse los individuos vuelven a ser susceptibles.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
+\textcolor{blue}{ESTO ES NUEVO}
+
+El modelo es el siguiente:
+
+\begin{equation}
+\label{eqn: modelo_SIS_S}
+S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) + \gamma \Delta t I_n
+\end{equation}
+
+\begin{equation}
+\label{eqn: modelo_SIS_I}
+I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
+\end{equation}
+
+con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
+
+En estas ecuaciones, tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo. Donde se cumple $\alpha >0$ y $\gamma >0$ siempre.
+
+Además las soluciones son positivas siempre si, y solo si:
+
+$\gamma \Delta t \leq 1$ y $\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} \right)^2$
+
+Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSISIR1994}.
+
+\textcolor{red}{No he comprobado las cuentas de esas condiciones}
+
+La tasa reproductiva de este modelo es $\mathcal{R}=\alpha /\gamma$ \textcolor{red}{No entiendo como saca esa tasa reproductiva, a mi me sale la misma tasa reproductiva que en el caso del modelo SIR :(}
+
+ 
+
 \subsection{Modelo SIR}
 Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
 Por ejemplo, la varicela. 
-
-\textcolor{blue}{ESTO ES NUEVO}
 
 El modelo es el siguiente:
 
@@ -112,6 +134,26 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
 Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempoe necesario para infectar a un individuo} y menor que el período medio infeccioso.
 
+El comportamiento global del sistema es fácil de ver. Sea $\mathcal{R}=S_0 \alpha/(N\gamma )$ la tasa reproductiva. \textcolor{red}{¿Por qué $\mathcal{R}$ es justo eso?}. El valor de $\mathcal{R}$ determina el comportamiento global del modelo. \textcolor{red}{(a esto después lo llamo tasa de transmisión media en el artículo \cite{demongeotSIEpidemicModel})}. 
+
+Notemos que $S_n$ es estrictamente decreciente y $R_n$ es estrictamente creciente.
+
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, que depende de las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia. En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_x\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo cuál no es posible. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$. Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
+
+El modelo continuo se comporta de la misma forma que el modelo discreto, este sería:
+
+\begin{equation}
+\label{eqn: modelo_SIR_continuo}
+\begin{cases}
+\frac{dS}{dt} = -\frac{\alpha}{N}SI \\
+\frac{dI}{dt} = I\left(\frac{\alpha}{N}S-\gamma \right) \\
+\frac{dR}{dt} = R+\gamma I
+\end{cases}
+\end{equation}
+
+donde $S(0)+I(0)+R(0)=N$. La tasa reproductiva en este caso es $\mathcal{R}=S(0)\alpha /(N\gamma )$, y si $\mathcal{R}\leq 1$  no hay epidemia, pero en cambio, si es mayor, hay epidemia.
+
+
 
 
 
@@ -133,7 +175,7 @@ Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de tra
 
 Todos los factores pueden cambiar con el tiempo, el primero debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos en la pandemia hasta el momento y así tratar de prdecir su comportamiento en el futuro.
+Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos en la pandemia hasta el momento y así tratar de predecir su comportamiento en el futuro.
 
 El modelo SI es el siguiente:
 
@@ -147,7 +189,7 @@ S'(t) = -\tau (t)S(t)I(t)
 I'(t) = \tau (t)S(t)I(t) -vI(t)
 \end{equation}
 
-donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o muertos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniiciales:
+donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniciales:
 
 $$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
 
@@ -158,7 +200,7 @@ Ahora, consideramos que al final del período infeccioso nos han reportado una f
 CR(t) = CR_0 + vfCI(t) \; \forall t \geq t_0
 \end{equation}
 
-\textcolor{red}{En esta ecuación no especifica que $CR_0$ sea constante, pero asumo que es un valor inicial, porque tendría sentido. También tengo duda en ¿por qué $vfCI(t)$ va multiplicado por $v$?}
+\textcolor{red}{¿Por qué $vfCI(t)$ va multiplicado por $v$?}
 
 donde
 
@@ -229,7 +271,7 @@ $$I(t)=CI'(t)=I_0+S_0(1-\exp{(-\tau_0 CI(t)}))-vCI(t)$$
 Observamos entonces que el número total de infectados es monótono creciente (¡pero no el número de infectados!). 
 
 \begin{theorem}
-Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente \textcolor{red}{¿Dónde hemos probado que sea estricto? Creciente si, pero estricto?} respecto a las siguiente cantidades:
+Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente respecto a las siguiente cantidades:
 \begin{itemize}
 \item $I_0>0$ Número inicial de infectados
 \item $S_0>0$ Número inicial de individuos susceptibles.
@@ -238,9 +280,7 @@ Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente
 \end{itemize}
 \end{theorem}
 
-\textcolor{red}{Ahora en el artículo de \cite{demongeotSIEpidemicModel} menciona una cosa de errores que me da miedo}
-
-\textcolor{red}{La figura 2 tampoco la entiendo mucho :(}
+\textcolor{blue}{ESTO ES NUEVO}
 
 \subsection{Fórmula teórica para $\tau (t)$}
 
