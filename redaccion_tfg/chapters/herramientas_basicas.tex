@@ -2,7 +2,7 @@
 
 \section{Tipos de modelos}
 
-Los modelos discretos (por ejemplo SI, SIR y SIS) usan las etiquetas Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre las etiquetas. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible, infectado y recuperado y SIS alterna entre susceptible e infectado.
+Los modelos discretos (por ejemplo SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
 
 En estos modelos se hacen dos suposiciones:
 \begin{enumerate}
@@ -14,6 +14,8 @@ En estos modelos se hacen dos suposiciones:
 Es el modelo más simple de todos, los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados no hay tratamiento y permanecen infectados el resto de su vida.
 Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
 
+Las siguientes ecuaciones describen el modelo SI:
+
 \begin{equation}
 \label{eqn: SI_S}
 S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right)
@@ -24,15 +26,16 @@ S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right)
 I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
 \end{equation}
 
+donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, así como $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$ y N es el tamaño total de la población.
+
 Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
 
 En estas ecuaciones $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
-Ahora, imponemos las suposiciones descritas anteriormente para estos modelos. Empezamos por la segunda: La población total se mantiene constante, que es trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas (las soluciones negativas no tienen sentido).
-Para imponer que las ecuaciones tienen soluciones positivas:
-En el caso de la $S_n$ una condición necesaria y suficiente es $\alpha\Delta t \leq 1$. 
+Ahora, imponemos las suposiciones descritas anteriormente para estos modelos. Empezamos por la segunda: La población total se mantiene constante, que es trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas pues las soluciones negativas no tienen sentido.
+Para imponer que las ecuaciones tengan soluciones positivas una condición necesaria y suficiente para $S_n$ es que $\alpha\Delta t \leq 1$. 
 
-Buscamos ahora ver cuál es el comportamiento del sistema, si calculamos los puntos de equilibrio del sistema, para lo que resolvemos:
+Buscamos ahora ver cuál es el comportamiento del sistema, calculando los puntos de equilibrio, para lo que resolvemos:
 
 $$
 \begin{cases}
@@ -44,7 +47,7 @@ $$
 
 Los únicos puntos de equilibrio posibles son: $S^*=0, I^*=N$ y $S^*=N, I^*=0$, y como sabemos que tenemos condiciones iniciales positivas y $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, entonces debe converger a $S^*=0, I^*=N$.
 
-Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la sigueinte manera:
+Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera:
 
 $$\frac{S_{n+1} - S_n}{\Delta t} \approx \frac{dS}{dt}$$
 
@@ -61,7 +64,7 @@ luego su análoga continua es:
 
 con condiciones iniciales $S(0)+I(0)=N$.
 
-De manera análoga al caso discreto (es decir, suponiendo las funciones constantes y resolviendo el sistema de ecuaciones), podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
+De manera análoga al caso discreto, es decir, suponiendo las funciones constantes y resolviendo el sistema de ecuaciones, podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
 
 \textcolor{blue}{ESTO ES NUEVOO}
 
@@ -94,11 +97,11 @@ I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo. Donde se cumple $\alpha >0$ y $\gamma >0$ siempre.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
-Además las soluciones son positivas siempre si, y solo si:
+Además las soluciones siempre son positivas si, y solo si:
 
-$\gamma \Delta t \leq 1$ y $\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} \right)^2$
+$$\gamma \Delta t \leq 1 $$ y $$\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} \right)^2$$
 
 Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSISIR1994}.
 
@@ -109,7 +112,7 @@ La tasa reproductiva de este modelo es $\mathcal{R}=\alpha /\gamma$ \textcolor{r
  
 
 \subsection{Modelo SIR}
-Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cuál no pueden infectarse ni infectar a otros.
+Comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden infectarse ni infectar a otros.
 Por ejemplo, la varicela. 
 
 El modelo es el siguiente:
@@ -129,27 +132,27 @@ I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 R_{n+1} = R_n + \gamma \Delta t I_n
 \end{equation}
 
-con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$. Y satisfaciendo $S_0+I_0+R_0=N$.
+con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
 
-En estas ecuaciones, tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo. Donde se cumple $\alpha >0$ y $\gamma >0$ siempre.
+En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
 
-Es fácil comprobar que la población permanece constante, $S_n+I_n+R_n=N$.
+Se supone que la población permanece constante, $S_n+I_n+R_n=N$.
 
 Además, tenemos que las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
 
 $$\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$$
 
-Equivalentemente:
+o equivalentemente:
 
 $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
-Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempoe necesario para infectar a un individuo} y menor que el período medio infeccioso.
+Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempoe necesario para infectar a un individuo. Sí es esto confirmado} y menor que el período medio infeccioso.
 
 El comportamiento global del sistema es fácil de ver. Sea $\mathcal{R}=S_0 \alpha/(N\gamma )$ la tasa reproductiva. \textcolor{red}{¿Por qué $\mathcal{R}$ es justo eso?}. El valor de $\mathcal{R}$ determina el comportamiento global del modelo. \textcolor{red}{(a esto después lo llamo tasa de transmisión media en el artículo \cite{demongeotSIEpidemicModel})}. 
 
-Notemos que $S_n$ es estrictamente decreciente y $R_n$ es estrictamente creciente.
+Notemos que $S_n$ es estrictamente decreciente y $R_n$ es estrictamente creciente. Estudiémoslas:
 
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, que depende de las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia. En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_x\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo cuál no es posible. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$. Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe pues es una sucesión estr4ictamente decreciente y acotada inferiormente por $0$, que depende de las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia. En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo cuál no es posible. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$. Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
 
 El modelo continuo se comporta de la misma forma que el modelo discreto, este sería:
 
@@ -180,7 +183,7 @@ He programado el modelo discreto y el resultado de la gráfica ha sido:
 
 \subsection{Introducción}
 
-Estimar la tasa de transmisión media es uno de los aspectos más cruciales en epidemiología. Esta tasa condiciona la fase de la epidemia (incluso si va a extinguirse). Es combinación de tres factores:
+Estimar la tasa de transmisión media es uno de los aspectos más cruciales en epidemiología. Esta tasa condiciona la fase de la epidemia e incluso si va a extinguirse. Es combinación de tres factores:
 
 \begin{enumerate}
 \item Coeficiente de virulencia: Relacionado con el agente infeccioso.
@@ -192,9 +195,9 @@ Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de tra
 
 Todos los factores pueden cambiar con el tiempo, el primero debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos en la pandemia hasta el momento y así tratar de predecir su comportamiento en el futuro.
+Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento y así tratar de predecir su comportamiento en el futuro.
 
-El modelo SI es el siguiente:
+El modelo SI continuo es el siguiente:
 
 \begin{equation}
 \label{eqn: SI_S_cont}
@@ -206,11 +209,11 @@ S'(t) = -\tau (t)S(t)I(t)
 I'(t) = \tau (t)S(t)I(t) -vI(t)
 \end{equation}
 
-donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniciales:
+donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau (t)$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniciales:
 
 $$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
 
-Ahora, consideramos que al final del período infeccioso nos han reportado una fracción del total de casos, en este caso $f\in (0,1]$. Sea $CR(t)$ el número total (acumulado) de casos reportados. Entonces:
+Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso $f\in (0,1]$. Sea $CR(t)$ el número total (acumulado) de casos reportados. Entonces:
 
 \begin{equation}
 \label{eqn: acumulada}
@@ -305,7 +308,7 @@ Usando la ecuación de la $S$ del modelo inicial (\ref{eqn: SI_S_cont}) obtenemo
 
 $$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } $$ 
 
-Ahora, usando (\ref{eqn: SI_I_cont}):
+Ahora, sustituyendo en (\ref{eqn: SI_I_cont}):
 
 $$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } \tau (t) I(t) -vI(t) $$
 
@@ -319,7 +322,7 @@ $$CR'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \ta
 
 \textcolor{red}{Esta cuenta no termina de salirme, pero tiene más o menos sentido}
 
-Así, obtenemos el teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
+Así, obtenemos el Teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
 
 
 
