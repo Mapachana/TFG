@@ -17,13 +17,11 @@ Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
 Las siguientes ecuaciones describen el modelo SI:
 
 \begin{equation}
-\label{eqn: SI_S}
-S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right)
-\end{equation}
-
-\begin{equation}
-\label{eqn: SI_I}
+\label{eqn: SI}
+\begin{aligned}
+S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right) \\
 I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
+\end{aligned}
 \end{equation}
 
 donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, así como $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$ y N es el tamaño total de la población.
@@ -54,12 +52,10 @@ $$\frac{S_{n+1} - S_n}{\Delta t} \approx \frac{dS}{dt}$$
 luego su análoga continua es:
 
 \begin{equation}
-\frac{dS}{dt} = -\frac{\alpha}{N}SI
-\end{equation}
-
-
-\begin{equation}
+\begin{aligned}
+\frac{dS}{dt} = -\frac{\alpha}{N}SI \\
 \frac{dI}{dt} = \frac{\alpha}{N}SI
+\end{aligned}
 \end{equation}
 
 con condiciones iniciales $S(0)+I(0)=N$.
@@ -86,13 +82,11 @@ Por ejemplo, los resfriados pueden modelarse usando SIS.
 El modelo es el siguiente:
 
 \begin{equation}
-\label{eqn: modelo_SIS_S}
-S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) + \gamma \Delta t I_n
-\end{equation}
-
-\begin{equation}
-\label{eqn: modelo_SIS_I}
+\label{eqn: modelo_SIS}
+\begin{aligned}
+S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) + \gamma \Delta t I_n \\
 I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
+\end{aligned}
 \end{equation}
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
@@ -118,18 +112,12 @@ Por ejemplo, la varicela.
 El modelo es el siguiente:
 
 \begin{equation}
-\label{eqn: SIR_modelo_S}
-S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right)
-\end{equation}
-
-\begin{equation}
-\label{eqn: SIR_modelo_I}
-I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
-\end{equation}
-
-\begin{equation}
-\label{eqn: SIR_modelo_R}
+\label{eqn: SIR_modelo}
+\begin{aligned}
+S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) \\
+I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) \\
 R_{n+1} = R_n + \gamma \Delta t I_n
+\end{aligned}
 \end{equation}
 
 con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
@@ -200,13 +188,11 @@ Consideramos un modelo SI con el objetivo de compararlo con los datos obtenidos 
 El modelo SI continuo es el siguiente:
 
 \begin{equation}
-\label{eqn: SI_S_cont}
-S'(t) = -\tau (t)S(t)I(t)
-\end{equation}
-
-\begin{equation}
-\label{eqn: SI_I_cont}
+\label{eqn: SI_cont}
+\begin{aligned}
+S'(t) = -\tau (t)S(t)I(t) \\
 I'(t) = \tau (t)S(t)I(t) -vI(t)
+\end{aligned}
 \end{equation}
 
 donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau (t)$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos \textcolor{red}{¿Por que ese es el flujo de recuperados o muertos?}. Consideramos condiciones iniciales:
@@ -231,7 +217,7 @@ Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averigu
 \subsection{Aproximando $I_0$ y $\tau (t_0)$}
 Ahora, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
-Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación (\ref{eqn: SI_I_cont}) obtenemos:
+Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación (\ref{eqn: SI_cont}) obtenemos:
 
 $$I'(t) = (\tau_0 S_0 -v) I(t)$$
 
@@ -269,11 +255,10 @@ Y, como de reescribir sabemos que $\chi_2 = \tau_0 S_0-v$ entonces
 Si suponemos que $\tau (t) = \tau_0$ tenemos que el modelo queda:
 
 \begin{equation}
-S'(t) = -\tau_0S(t)I(t)
-\end{equation}
-
-\begin{equation}
+\begin{aligned}
+S'(t) = -\tau_0S(t)I(t) \\
 I'(t) = \tau_0S(t)I(t) -vI(t)
+\end{aligned}
 \end{equation}
 
 Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
@@ -304,11 +289,11 @@ Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente
 
 \subsection{Fórmula teórica para $\tau (t)$}
 
-Usando la ecuación de la $S$ del modelo inicial (\ref{eqn: SI_S_cont}) obtenemos:
+Usando la ecuación de la $S$ del modelo inicial (\ref{eqn: SI_cont}) obtenemos:
 
 $$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } $$ 
 
-Ahora, sustituyendo en (\ref{eqn: SI_I_cont}):
+Ahora, sustituyendo en la ecuación de la $I$ de (\ref{eqn: SI_cont}):
 
 $$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } \tau (t) I(t) -vI(t) $$
 
