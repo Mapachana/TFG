@@ -135,7 +135,7 @@ o equivalentemente:
 
 $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
-Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempoe necesario para infectar a un individuo. Sí es esto confirmado} y menor que el período medio infeccioso.
+Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado} y menor que el período medio infeccioso.
 
 El comportamiento global del sistema es fácil de ver. Sea $\mathcal{R}=S_0 \alpha/(N\gamma )$ la tasa reproductiva. \textcolor{red}{¿Por qué $\mathcal{R}$ es justo eso?}. El valor de $\mathcal{R}$ determina el comportamiento global del modelo. \textcolor{red}{(a esto después lo llamo tasa de transmisión media en el artículo \cite{demongeotSIEpidemicModel})}. 
 
@@ -291,11 +291,13 @@ Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente
 
 \subsection{Fórmula teórica para $\tau (t)$}
 
-Usando la ecuación de la $S$ del modelo inicial (\ref{eqn: SI_cont}) obtenemos:
+Usando la ecuación del modelo inicial (\ref{eqn: SI_cont}) obtenemos:
+% La ecuacion de la S$
 
 $$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } $$ 
 
-Ahora, sustituyendo en la ecuación de la $I$ de (\ref{eqn: SI_cont}):
+Ahora, sustituyendo en la ecuación (\ref{eqn: SI_cont}):
+% La ecuacion de la I
 
 $$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } \tau (t) I(t) -vI(t) $$
 
