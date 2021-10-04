@@ -62,8 +62,6 @@ con condiciones iniciales $S(0)+I(0)=N$.
 
 De manera análoga al caso discreto, es decir, suponiendo las funciones constantes y resolviendo el sistema de ecuaciones, podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
 
-\textcolor{blue}{ESTO ES NUEVOO}
-
 He programado el modelo discreto y el resultado de la gráfica ha sido:
 
 \begin{figure}
@@ -77,8 +75,6 @@ He programado el modelo discreto y el resultado de la gráfica ha sido:
 \subsection{Modelo SIS}
 Es similar al SI, pero tras infectarse los individuos vuelven a ser susceptibles.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
-
-\textcolor{blue}{ESTO ES NUEVO}
 
 El modelo es el siguiente:
 
@@ -102,7 +98,7 @@ Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSIS
 
 \textcolor{red}{No he comprobado las cuentas de esas condiciones}
 
-La tasa reproductiva de este modelo es $\mathcal{R}=\alpha /\gamma$ \textcolor{red}{No entiendo como saca esa tasa reproductiva, a mi me sale la misma tasa reproductiva que en el caso del modelo SIR :(}
+La tasa reproductiva de este modelo es $\mathcal{R}=\alpha /\gamma$ \textcolor{red}{No entiendo como saca esa tasa reproductiva, he repetido las cuentas y las de antes estaban mal. Si no es por definición como dijimos el otro día no se dónde sale}
 
  
 
@@ -135,7 +131,8 @@ o equivalentemente:
 
 $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
-Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso \textcolor{red}{Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado} y menor que el período medio infeccioso.
+Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso y menor que el período medio infeccioso.
+% Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado por la profe
 
 El comportamiento global del sistema es fácil de ver. Sea $\mathcal{R}=S_0 \alpha/(N\gamma )$ la tasa reproductiva. \textcolor{red}{¿Por qué $\mathcal{R}$ es justo eso?}. El valor de $\mathcal{R}$ determina el comportamiento global del modelo. \textcolor{red}{(a esto después lo llamo tasa de transmisión media en el artículo \cite{demongeotSIEpidemicModel})}. 
 
@@ -201,18 +198,18 @@ donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de ind
 
 $$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
 
-Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso $f\in (0,1]$. Sea $CR(t)$ el número total (acumulado) de casos reportados. Entonces:
+Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso $f\in (0,1]$. Sea $C_R(t)$ el número total (acumulado) de casos reportados. Entonces:
 
 \begin{equation}
 \label{eqn: acumulada}
-CR(t) = CR_0 + vfCI(t) \; \forall t \geq t_0
+C_R(t) = {C_R}_0 + vfC_I(t) \; \forall t \geq t_0
 \end{equation}
 
-\textcolor{red}{¿Por qué $vfCI(t)$ va multiplicado por $v$?}
+\textcolor{red}{¿Por qué $vfC_I(t)$ va multiplicado por $v$?}
 
 donde
 
-$$CI(t) = \int_{t_0}^t I(\sigma ) d\sigma $$
+$$C_I(t) = \int_{t_0}^t I(w) dw $$
 
 Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar $I_0$, $\tau (t)$
 
@@ -229,7 +226,7 @@ $$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}$$
 
 Sustituyendo en (\ref{eqn: acumulada}):
 
-$$CR(t) = CR_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}$$
+$$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}$$
 
 Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
@@ -237,7 +234,7 @@ Reescribimos la ecuación como:
 
 \begin{equation}
 \label{eqn: acumulada_modelo}
-CR(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
+C_R(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
 \end{equation}
 
 Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos es $\chi_3=0$
@@ -265,15 +262,15 @@ I'(t) = \tau_0S(t)I(t) -vI(t)
 
 Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
 
-$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(\sigma ) d\sigma \right)} = S_0\exp{(-\tau_0 CI(t))}$$
+$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(w) dw \right)} = S_0\exp{(-\tau_0 C_I(t))}$$
 
-Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $CI'(t)=I(t)$:
+Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $C_I'(t)=I(t)$:
 
-$$I'(t) = S_0\exp{\left( -\tau_0 CI(t)\right) }\tau_0 CI'(t)-vI(t)$$
+$$I'(t) = S_0\exp{\left( -\tau_0 C_I(t)\right) }\tau_0 C_I'(t)-vI(t)$$
 
 Finalmente, integrando entre $t_0$ y $t$ tenemos que:
 
-$$I(t)=CI'(t)=I_0+S_0(1-\exp{(-\tau_0 CI(t)}))-vCI(t)$$
+$$I(t)=C_I'(t)=I_0+S_0(1-\exp{(-\tau_0 C_I(t)}))-vC_I(t)$$
 
 Observamos entonces que el número total de infectados es monótono creciente (¡pero no el número de infectados!). 
 
@@ -287,27 +284,25 @@ Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente
 \end{itemize}
 \end{theorem}
 
-\textcolor{blue}{ESTO ES NUEVO}
-
 \subsection{Fórmula teórica para $\tau (t)$}
 
 Usando la ecuación del modelo inicial (\ref{eqn: SI_cont}) obtenemos:
 % La ecuacion de la S$
 
-$$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } $$ 
+$$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(w) I(w) dw \right) } $$ 
 
 Ahora, sustituyendo en la ecuación (\ref{eqn: SI_cont}):
 % La ecuacion de la I
 
-$$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(\sigma ) I(\sigma ) d\sigma \right) } \tau (t) I(t) -vI(t) $$
+$$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(w) I(w) dw \right) } \tau (t) I(t) -vI(t) $$
 
 Integramos en ambos lados entre $t_0$ y $t$, luego:
 
-$$ CI'(t) = I_0 + S_0 \left( 1-\exp{\left(- \int_{t_0}^t \tau (\sigma ) I(\sigma )d\sigma \right)}\right) -vCI(t)$$
+$$ C_I'(t) = I_0 + S_0 \left( 1-\exp{\left(- \int_{t_0}^t \tau (w) I(w)dw \right)}\right) -vC_I(t)$$
 
 Equivalentemente, por (\ref{eqn: acumulada}):
 
-$$CR'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (\sigma ) I(\sigma )d\sigma \right)}\right)\right) +vCR_0 -vCR(t)$$
+$$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (w ) I(w)dw \right)}\right)\right) +v{C_R}_0 -vC_R(t)$$
 
 \textcolor{red}{Esta cuenta no termina de salirme, pero tiene más o menos sentido}
 
