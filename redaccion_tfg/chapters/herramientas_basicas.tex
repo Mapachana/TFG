@@ -100,6 +100,26 @@ Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSIS
 
 La tasa reproductiva de este modelo es $\mathcal{R}=\alpha /\gamma$ \textcolor{red}{No entiendo como saca esa tasa reproductiva, he repetido las cuentas y las de antes estaban mal. Si no es por definición como dijimos el otro día no se dónde sale}
 
+\textcolor{blue}{Esto es nuevo :D}
+
+Si $\mathcal{R}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S*,I*)=(N,0)$. Supongamos que $S*<N$, entonces existen $n_1, \epsilon$ tales que para todo $n \geq n_1$:
+$$S_n<S*+\epsilon < N$$
+y usando las ecuaciones \ref{eqn: modelo_SIS}
+$$I_{n+1} \leq I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) = \rho I_n$$
+\textcolor{red}{¿Por qué es menor o igual y no menor estricto?}
+Como $\rho < 1$ tenemos que $I*=0$, lo que contradice que $S*<N$.
+
+Si $\mathcal{R}>1$ realizando la sustitución $S_n=N-I_n$ y el cambio
+
+$$x_n=\frac{\alpha \Delta t I_n}{N(1+\alpha \Delta t - \gamma \Delta t)}$$
+
+obtenemos la ecuación logística
+
+$$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n)$$
+
+Entonces la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia, en este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$ \textcolor{red}{Esta condición supongo que viene de alguna condición conocida de la ecuación logística que no recuerdo, ups. A partir de aquí me pierdo un poco, está en el último párrafo de la página 10 del artículo de Allen}
+
+
  
 
 \subsection{Modelo SIR}
@@ -307,6 +327,8 @@ $$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \t
 \textcolor{red}{Esta cuenta no termina de salirme, pero tiene más o menos sentido}
 
 Así, obtenemos el Teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
+
+\textcolor{blue}{He estado leyendo el resto del artículo, en el que habla de obtener una expresión explícita de $\tau (t)$ e $I_0$, pero para eso usan datos de China en específico y ajustes por ordenador, así que no tengo muy claro si merece la pena incluir esa parte ya que no tenemos los datos y por tanto sería fiarse un poco de lo que han hecho ellos}
 
 
 
