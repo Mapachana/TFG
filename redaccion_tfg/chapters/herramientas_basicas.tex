@@ -1,4 +1,4 @@
-\chapter{Herramientas básicas}
+\chapter{Introducción a los modelos básicos de epidemiología}
 
 \section{Tipos de modelos}
 
@@ -73,7 +73,38 @@ I'(t) = \frac{\alpha}{N}SI
 con condiciones iniciales $S(0)+I(0)=N$.
 
 De manera análoga al caso discreto, es decir, suponiendo las funciones constantes y resolviendo el sistema de ecuaciones, podemos comprobar que este sistema converge a $S^*=0, I^*=N$ y, por tanto, tiene el mismo comportamiento que el caso discreto.
+
 \textcolor{red}{RESOLVER, VIENE EN EL ARTICULO}
+Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística
+
+$$I'(t) = \frac{\alpha}{N}(N-I).$$
+
+Esta ecuación diferencial se puede resolver por separación de variables como sigue:
+
+\textcolor{red}{He hecho las cuentas y no me sale la misma solución que en el pdf del artículo, no sé si me he equivocado, aunque el límite sí coincide}
+
+\begin{equation}
+\begin{aligned}
+I'(t)=\frac{\alpha}{N}(N-I(t)) & \Leftrightarrow \int \frac{dI}{N-I} = \int dt \frac{\alpha}{N} \\
+& \Leftrightarrow -\log(N-I) = \frac{\alpha}{N}t+c \\
+& \Leftrightarrow  \frac{1}{N-x} = e^{\frac{\alpha}{N}t+c} \\
+& \Leftrightarrow  I(t) = N-\frac{1}{e^{\frac{\alpha}{N}t+c}}
+\end{aligned}
+\end{equation}
+
+Ahora usando el valor inicial $I(0)$ tenemos:
+
+\begin{equation}
+\begin{aligned}
+I(0) = N-\frac{1}{e^c} & \Leftrightarrow e^c = \frac{1}{N-I(0)} \\
+& \Leftrightarrow c=\log(\frac{1}{N-I(0)}
+\end {aligned}
+\end{equation}
+
+luego la solución general es:
+
+$$I(t) = N-\frac{N-I(0)}{e^{\frac{\alpha}{N}t}}$$
+
 
 \begin{figure}
 \begin{center}
