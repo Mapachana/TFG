@@ -154,7 +154,7 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 \end{proposition}
 
 \begin{proof}
-\textcolor{red}{Aqui falta la demostracion de esto}
+\textcolor{red}{TODO Aqui falta la demostracion de esto}
 \end{proof}
 
 Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso y menor que el período medio infeccioso.
@@ -221,10 +221,10 @@ $$\gamma \Delta t \leq 1 $$ y $$\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} 
 \begin{proof}
 Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSISIR1994}.
 
-\textcolor{red}{No he comprobado las cuentas de esas condiciones}
+\textcolor{red}{TODO No he comprobado las cuentas de esas condiciones}
 \end{proof}
 
-En este caso, la tasa reproductiva de este modelo se define como $\mathcal{R}_{SIS}=\alpha /\gamma$ \textcolor{red}{No entiendo como saca esa tasa reproductiva, he repetido las cuentas y las de antes estaban mal. Si no es por definición como dijimos el otro día no se dónde sale}
+En este caso, la tasa reproductiva de este modelo se define como $\mathcal{R}_{SIS}=\alpha /\gamma$.
 
 Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$. Supongamos que $S^*<N$, entonces existen $n_1, \epsilon$ tales que para todo $n \geq n_1$:
 $$S_n<S^*+\epsilon < N$$
@@ -421,7 +421,7 @@ Equivalentemente, por (\ref{eqn: acumulada}):
 
 $$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (w ) I(w)dw \right)}\right)\right) +v{C_R}_0 -vC_R(t)$$
 
-\textcolor{red}{Esta cuenta no termina de salirme, pero tiene más o menos sentido}
+\textcolor{red}{TODO Esta cuenta no termina de salirme, pero tiene más o menos sentido}
 
 Así, obtenemos el Teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
 
