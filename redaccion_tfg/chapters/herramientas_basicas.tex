@@ -295,9 +295,9 @@ Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de tra
 
 Todos los factores pueden cambiar con el tiempo, el primero debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-Consideramos un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento y así tratar de predecir su comportamiento en el futuro.
+En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento y así tratar de predecir su comportamiento en el futuro.
 
-El modelo SI continuo es el siguiente:
+El modelo SI continuo considerado es el siguiente:
 
 \begin{equation}
 \label{eqn: SI_cont}
@@ -307,35 +307,39 @@ I'(t) = \tau (t)S(t)I(t) -vI(t)
 \end{aligned}
 \end{equation}
 
-donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau (t)$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Además, notemos que $v$ es constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos. %vI(t) es el flujo de recuperados o muertos porque ha mezclado el modelo SI y SIR; vI(t) serian los recuperados, pero se ahorra la ecuacion de la R
+donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau (t)$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Observemos que $\tau (t)$ se considera variable respecto al tiempo, al contrario que en el caso SI clásico estudiado antes. Además, notemos que $v$ es una constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos. %vI(t) es el flujo de recuperados o muertos porque ha mezclado el modelo SI y SIR; vI(t) serian los recuperados, pero se ahorra la ecuacion de la R
+
+Se consideran las condiciones iniciales
 
 $$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
 
-Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso $f\in (0,1]$. Sea $C_R(t)$ el número total (acumulado) de casos reportados. Entonces:
+Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso la fracción la denotamos por $f\in (0,1]$. Sea $C_R(t)$ el número total acumulado de casos reportados. Entonces:
 
 \begin{equation}
 \label{eqn: acumulada}
 C_R(t) = {C_R}_0 + vfC_I(t) \; \forall t \geq t_0
 \end{equation}
 
-\textcolor{red}{¿Por qué $vfC_I(t)$ va multiplicado por $v$?}
+donde $C_{R0}$ representa el número de casos reportados al inicio del estudio y 
 
-donde
+\textcolor{red}{¿Por qué $vfC_I(t)$ va multiplicado por $v$?}
 
 $$C_I(t) = \int_{t_0}^t I(w) dw $$
 
-Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar $I_0$, $\tau (t)$.
+siendo $C_I$ el número total de infectados acumulado.
+
+Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar el número inicial de infectados $I_0$ y la tasa de transmisión $\tau (t)$.
 
 \subsection{Aproximando $I_0$ y $\tau (t_0)$}
 Ahora, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
 Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación (\ref{eqn: SI_cont}) obtenemos:
 
-$$I'(t) = (\tau_0 S_0 -v) I(t)$$.
+$$I'(t) = (\tau_0 S_0 -v) I(t).$$
 
 Resolviendo la ecuación diferencial llegamos a:
 
-$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}$$.
+$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}.$$
 
 Sustituyendo en (\ref{eqn: acumulada}):
 
@@ -343,7 +347,7 @@ $$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S
 
 Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
-Reescribimos la ecuación como:
+Reescribimos la ecuación anterior como:
 
 \begin{equation}
 \label{eqn: acumulada_modelo}
