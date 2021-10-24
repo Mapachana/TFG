@@ -154,7 +154,30 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 \end{proposition}
 
 \begin{proof}
-\textcolor{red}{TODO Aqui falta la demostracion de esto}
+Comenzamos probando una de las implicaciones, supongamos que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
+
+Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego basta ver que:
+$$(1-\frac{\alpha \Delta t}{N}I_0>0.$$
+Lo cual es evidente, pues $\frac{I_n}{N}<1$ por hipótesis del modelo y $\alpha \Delta t<1$.
+
+Por un razonamiento análogo, tenemos que $$1-\gamma \Delta t+\frac{\alpha\Delta t}{N}S_0 > 0.$$
+Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t <0$.
+
+Ahora, por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas por razonamiento análogo.
+
+Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$, comenzamos trabajando en la primera ecuación, suponemos la positividad para $n$ y queremos probarla para $n+1$:
+$$S_{n+1}=S_n\left(1-\frac{\alpha\Delta t}{N}I_n\right)$$
+como $S_n>0$ basta ver que $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ y entonces tenemos:
+$$1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t,$$
+por tanto:
+$$1-\alpha\Delta t > 0 \leftrightarrow \alpha\Delta t  \leq 1$$
+
+En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $X_{n+1}=\beta X_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
+$\frac{\alpha \Delta t}{N}S_n$ tiende a cero. \textcolor{red}{No estoy muy segura de este paso, pero si lo hago despejando me sale que debe ser menor que 2 y no que 1 :(}
+Luego despejando como antes tenemos $\gamma\Delta t \leq 1$.
+
+De la última ecuación no sacamos ninguna condición más, pues su solución es siempre positiva por definición de $\gamma$ y $\Delta t$.
+
 \end{proof}
 
 Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso y menor que el período medio infeccioso.
@@ -219,9 +242,38 @@ $$\gamma \Delta t \leq 1 $$ y $$\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} 
 
 \end{proposition}
 \begin{proof}
-Esto se puede consultar en el Lema 2 del Apéndice de \cite{allenDiscretetimeSISIR1994}.
+Sea $I_0=\epsilon$ y $S_0=N-\epsilon$, entonces por la definición del modelo tenemos:
+\begin{equation}
+\begin{aligned}
+I_1=\epsilon\left(1-\gamma\Delta t+\alpha\Delta t\frac{N-\epsilon}{N}\right) \\
+& = -\frac{\alpha\Delta t \epsilon^2}{N} + \epsilon(1-\gamma\Delta t+\alpha\Delta t \\
+& = p(\epsilon) \\
+\end{aligned}
+\end{equation}
 
-\textcolor{red}{TODO No he comprobado las cuentas de esas condiciones}
+Luego tenemos que ver cuando la prábola satisface $0<p\epsilon)<N$ para $0<\epsilon<N$.
+
+Notemos que $p(0)=0$ y $p(N)=N(1-\gamma\Delta t$.
+
+Sea $(\epsilon^*, p^*)$ el vértice de la parábola, entonces 
+$$(\epsilon^*, p^*) = \left(\frac{N(1-\gamma\Delta t+\alpha\Delta t}{2\alpha\Delta t}, \frac{N(1-\gamma\Delta t+\alpha\Delta t)^2}{4\alpha\Delta t}\right)$$
+
+Por tanto, $0<p(\epsilon )<N$ para $0<\epsilon <N$ si y solo si:
+
+$$\gamma\Delta t \leq 1,$$
+
+y se da:
+$$\epsilon^* \geq N$$
+o bien:
+
+$$\epsilon^*<N \text{  y  } p^*<N$$.
+
+La primera opción es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$.
+
+La segunda opción requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si
+
+$$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2$$
+
 \end{proof}
 
 En este caso, la tasa reproductiva de este modelo se define como $\mathcal{R}_{SIS}=\alpha /\gamma$.
