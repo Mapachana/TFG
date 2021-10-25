@@ -102,7 +102,7 @@ X_{n+k} = \Phi (n, X_n, \cdots , X_{n+k-1}
 \end{equation}
 
 
-donde $\Phi = (\Phi_1, \cdots \Phi_m)$.
+donde $\Phi : D \rightarrow D$, con $\Phi = (\Phi_1, \cdots \Phi_m)$.
 
 \end{definition}
 
@@ -112,3 +112,24 @@ Una \textbf{solución} de un sistema de ecuaciones en diferencias son las soluci
 
 \subsection{Puntos de equilibrio}
 
+\begin{definition}
+Sea $D\subset \mathbb{R}^m$ y $\Phi :D\rightarrow D$ una función continua. Entonces un vector $\alpha \in \mathbb{R}^m$ se dice que es un \textbf{punto de equilibrio} de un sistema de ecuaciones en diferencias de la forma (\ref{def_sist_ec}) si
+
+$$\alpha = \Phi (\alpha), \alpha \in D.$$
+\end{definition}
+
+\begin{proposition}
+Si tomamos como valor inicial un punto de equilibrio, llamemoslo $\alpha$, de un sistema de ecuaciones en diferencias, entonces la solución explícita del sistema es constante y es:
+$$X_n = \alpha \forall n\in\mathbb{N}.$$
+\end{proposition}
+
+\begin{definition}
+Un punto de equilibrio $\alpha$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor global} si para cualquier $X_0\in D$ se verifica
+$$\displaystyle\lim_{n\to \infty} X_n = \alpha.$$
+\end{definition}
+
+\begin{definition}
+Un punto de equilibrio $\alpha$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor local} si existe $\eta>0$ tal que para cualquier $X_0\in D\cap \text{]}\alpha -\eta , \alpha + \eta \text{[}$ se verifica
+$$\displaystyle\lim_{n\to \infty} X_n = \alpha.$$
+
+\end{definition}
