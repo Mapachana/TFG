@@ -64,7 +64,51 @@ obtenemos $X_{k+1}$. Repitiendo este proceso se crea una sucesión $X_n$ única,
 \end{proof}
 
 
+\subsection{Ecuación logística}
 
-\subsection{Subseccion}
+\begin{definition}
+La ecuacón logística discreta tiene la siguiente forma:
 
-aqui van cosas
+$$X_{n+1} = \mu X_n(1-X_n), \mu > 0$$
+\end{definition}
+
+\begin{proposition}
+En la ecuación logística, se tiene que su solución converge si $\mu < 3$, oscila si $3\leq \mu < 3.57$ y se produce caos si $3.57 < \mu$. 
+\end{proposition}
+
+\subsection{Sistemas de ecuaciones en diferencias}
+
+\begin{definition}
+Se define un \textbf{sistema de ecuaciones en diferencias} como un conjunto de ecuaciones en diferencias a resolver.
+
+\begin{equation}
+\begin{cases}
+X_{n+k} = \Phi_1(k, X_n, \cdots , X_{n+k-1}, Y_n, \cdots, Y_{n+k-1} \\
+Y_{n+k} = \Phi_2(k, X_n, \cdots , X_{n+k-1}, Y_n, \cdots, Y_{n+k-1} \\
+\end{cases}
+\end{equation}
+
+Renombrando, podemos expresar el conjunto de sucesiones como:
+
+\begin{equation}
+X_n = (X_{1_n}, X_{2_n}, \cdots , X_{m_n})
+\end{equation}
+
+luego el sistema de ecuaciones resultaría:
+
+\begin{equation}
+\label{def_sist_ec}
+X_{n+k} = \Phi (n, X_n, \cdots , X_{n+k-1}
+\end{equation}
+
+
+donde $\Phi = (\Phi_1, \cdots \Phi_m)$.
+
+\end{definition}
+
+\begin{definition}
+Una \textbf{solución} de un sistema de ecuaciones en diferencias son las soluciones explícitas de cada ecuación del sistema, de forma que se satisfagan todas ellas, es decir, encontrar una solución explícita para $X_n$ en (\ref{def_sist_ec}).
+\end{definition}
+
+\subsection{Puntos de equilibrio}
+
