@@ -5,7 +5,65 @@
 %\part{Parte de informática}
 \chapter{Herramientas básicas}
 
-\section{Teoría de ecuaciones en diferencias}
+En esta sección se presentarán algunos conceptos y herramientas básicas que nos resultarán útiles a lo largo del desarrollo en los siguientes capítulos.
+
+\section{Ecuaciones en diferencias}
+
+\begin{definition}
+Se define una \textbf{ecuación en diferencias de orden $k$} como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
+
+\begin{equation}
+\label{def_ec_diferencias}
+F(n,X_n, X_{n+1}, \cdots , X_{n+k}) = 0 \forall n\in\mathbb{N}
+\end{equation}
+
+
+donde $F$ es una función de $k+2$ variables definida en $F:\mathbb{N}\times I^{k+1}\rightarrow \mathbb{R}$, donde $I$ es un intervalo con al menos dos puntos.
+\end{definition}
+
+\begin{definition}
+Una ecuación en diferencias de orden $k$ se dice que está en \textbf{forma normal} si está expresada de la forma:
+
+\begin{equation}
+\label{def_ec_forma_normal}
+X_{n+k} = \Phi (n, X_n, X_{n+1}\cdots , X_{n+k-1})
+\end{equation}
+
+
+donde $\Phi$ es una función dada definida en $\Phi :\mathbb{N}\times I^{k}\rightarrow I$.
+\end{definition}
+
+\begin{definition}
+Una \textbf{solución de una ecuación en diferencias} de orden $k$ es una sucesión $X_n$ definida explícitamente de la forma:
+
+$$X_n = f(n)$$
+
+donde $f: \mathbb{N} \rightarrow I$ es una función que cumple (\ref{def_ec_diferencias}) al sustituir $X_n$ por $f(n)$ para cualquier $n\in\mathbb{N}$.
+
+El conjunto de todas las soluciones de (\ref{def_ec_diferencias}) se llama \textbf{solución general} de la ecuación.
+\end{definition}
+
+\begin{theorem}[Existencia y unicidad]
+Sea $\Phi$ una función como en (\ref{def_ec_forma_normal}), entonces la ecuación en diferencias en forma normal (\ref{def_ec_forma_normal}) tiene solución.
+Para cada k-tupla $(\alpha_0, \alpha_1, \cdots ,\alpha_{k-1})\in I^{k}$ el problema anterior en forma normal con condiciones iniciales las indicadas tiene una única solución.
+
+\begin{equation}
+\begin{cases}
+X_{n+k} = \Phi (n, X_n, X_{n+1}\cdots , X_{n+k-1}) \\
+X_0 = \alpha_0, X_1=\alpha_1, \cdots X_{k-1}=\alpha_{k-1}
+\end {cases}
+\end{equation}
+
+\end{theorem}
+\begin{proof}
+Sustituyendo las condiciones iniciales en (\ref{def_ec_forma_normal}) con $k=0$ obtenemos el valor exacto para $X_k$, al que llamamos $\alpha_k$. Por definición de $\Phi$ tenemos que $(\alpha_1, \alpha_2, \cdots ,\alpha_{k})\in I^{k}$, luego sustituyendo de nuevo en la misma ecuación por las condiciones iniciales
+
+$$X_1 = \alpha_1, X_2=\alpha_2, \cdots X_{k}=\alpha_{k}$$
+
+obtenemos $X_{k+1}$. Repitiendo este proceso se crea una sucesión $X_n$ única, que es solución de (\ref{def_ec_forma_normal}).
+\end{proof}
+
+
 
 \subsection{Subseccion}
 
