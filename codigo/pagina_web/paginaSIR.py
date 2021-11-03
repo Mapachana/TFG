@@ -13,12 +13,16 @@ fig = go.Figure() # or any Plotly Express function e.g. px.bar(...)
 # fig.add_trace( ... )
 # fig.update_layout( ... )
 
+
 @app.callback(
     Output("graph", "figure"), 
-    [Input("dropdownalfa", "value")],
-    [Input("dropdowngamma", "value")])
+    [Input("alfa", "value")],
+    [Input("gamma", "value")])
 def calcular_modelo(alfa, gamma):
     N = 100
+
+    alfa = float(alfa)
+    gamma = float(gamma)
 
     S0 = 95
     I0 = 5
@@ -62,25 +66,19 @@ def calcular_modelo(alfa, gamma):
 
 app.layout = html.Div([
     html.P("Alfa:"),
-    dcc.Dropdown(
-        id="dropdownalfa",
-        options=[
-            {'label': x, 'value': x}
-            for x in [0.01, 0.1, 0.5]
-        ],
-        value=0.1,
-        clearable=False,
-    ),
+    dcc.Input(
+            id="alfa".format('text'),
+            type='text',
+            placeholder="0.1".format('text'),
+            value="0.1"
+        ),
     html.P("Gamma:"),
-    dcc.Dropdown(
-        id="dropdowngamma",
-        options=[
-            {'label': x, 'value': x}
-            for x in [0.01, 0.1, 0.5]
-        ],
-        value=0.01,
-        clearable=False,
-    ),
+    dcc.Input(
+            id="gamma".format('text'),
+            type='text',
+            placeholder="0.01".format('text'),
+            value="0.01"
+        ),
     dcc.Graph(id="graph", figure=fig)
 ])
 
