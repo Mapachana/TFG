@@ -122,6 +122,13 @@ Es claro que $I$ se tiende monótonamente a $N$, luego tiene el mismo comportami
 \end{center}
 \end{figure}
 
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
+\includegraphics[scale=0.8]{SI_IsobreS}
+\end{center}
+\end{figure}
+
 \section{Modelo SIR}
 El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden infectarse ni infectar a otros.
 Un ejemplo de este tipo de enfermedad es la varicela. 
@@ -213,6 +220,27 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  no hay epidemia, pero en cambio
 \begin{center}
 \caption{Gráfica del modelo SIR, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, R_0 = 0, \alpha = 0.1, \gamma = 0.01 T_0 = 0, T = 300$.}
 \includegraphics[scale=1]{graficaSIR}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\includegraphics[scale=0.8]{SIR_IsobreS}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIR, representando el número de recuperados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\includegraphics[scale=0.8]{SIR_RsobreS}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SI, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\includegraphics[scale=0.8]{SIR_RsobreI}
 \end{center}
 \end{figure}
 
@@ -318,7 +346,19 @@ $$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n)$$
 De este la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia, en este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$.
 
 
- 
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIS, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 150$.}
+\includegraphics[scale=0.8]{SIS_modelo}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIS, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 200$.}
+\includegraphics[scale=0.8]{SIS_IsobreS}
+\end{center}
+\end{figure}
 
 
 
