@@ -13,7 +13,7 @@ En estos modelos se hacen dos suposiciones:
 En este capítulo estudiaremos los principales modelos epidemiológicos discretos y sus equivalentes continuos.
 
 \section{Modelo SI}
-El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, una vez infectados no hay tratamiento y permanecen infectados el resto de su vida.
+El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados permanecen infectados el resto de su vida.
 Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
 
 Las siguientes ecuaciones describen el modelo SI discreto:
@@ -26,12 +26,11 @@ I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
 \end{aligned}
 \end{equation}
 
-donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, así como $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$ y N es el tamaño total de la población, con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
+donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$, y N es el tamaño total de la población, con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
 
-En estas ecuaciones $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
+En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
-Ahora, imponemos las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante, y para la segunda, la población total se mantiene constante,  es trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas pues las soluciones negativas no tienen sentido.
-Además, no tiene sentido hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
+Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
 
 \begin{proposition}
 Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\alpha\Delta t \leq 1$.
@@ -51,17 +50,17 @@ $$\alpha\Delta t -1 \leq 0 \Leftrightarrow \alpha\Delta t \leq 1.$$
 \end{proof}
 
 
-Buscamos ahora ver cual es el comportamiento del sistema, calculando los puntos de equilibrio, esto es, las soluciones constantes en el tiempo, para lo que resolvemos:
+Buscamos ahora ver cual es el comportamiento del sistema, calculando los puntos de equilibrio; esto es, las soluciones constantes en el tiempo, resolviendo:
 
 $$
-\begin{cases}
+\begin{aligned}
 S^*=S^*\left( 1-\frac{\alpha\Delta t}{N}I^*\right) \\
 I^*=I^*\left( 1+\frac{\alpha\Delta t}{N}S^*\right) \\
 S^*+I^*=N
-\end{cases}
+\end{aligned}
 $$
 
-Los únicos puntos de equilibrio posibles son: $S^*=0, I^*=N$ y $S^*=N, I^*=0$, y como sabemos que tenemos condiciones iniciales positivas y es claro que $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, ya que $S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$, así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $S^*=0, I^*=N$, pues son sucesiones monótonas acotadas.
+Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$, y como sabemos que tenemos condiciones iniciales positivas y es claro que $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente (ya que $S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$), así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
 
 Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera. Considerando
 
@@ -78,7 +77,7 @@ I'(t) = \frac{\alpha}{N}SI
 
 con condiciones iniciales $S(0)+I(0)=N$.
 
-De manera análoga al caso discreto calculamos los puntos de equilibrio, es decir, suponemos que las funciones son constantes y resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $S^*=0, I^*=N$ y, por tanto, tienen el mismo comportamiento que el caso discreto.
+Calculamos los puntos de equilibrio de manera análoga al caso discreto, es decir, suponemos que las funciones son constantes y, resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $(S^*,I^*)=(0,N)$ y, por tanto, tienen el mismo comportamiento que el caso discreto.
 
 Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística
 
@@ -93,12 +92,12 @@ I'(t)=I\frac{\alpha}{N}(N-I(t)) & \Leftrightarrow \int \frac{dI}{I(N-I)} = \int 
 & \Leftrightarrow  \frac{1}{N}\log{\frac{I}{N-I}} = e^{\frac{\alpha}{N}t+c} \\
 & \Leftrightarrow  \frac{I}{N-I} = e^ce^{\alpha t} \\
 & \Leftrightarrow  I = e^ce^{\alpha t}(N-I) \\
-& \Leftrightarrow  I(1+e^ce^{\alpha t} = e^ce^{\alpha t}N \\
+& \Leftrightarrow  I(1+e^ce^{\alpha t}) = e^ce^{\alpha t}N \\
 & \Leftrightarrow  I(t) = \frac{e^ce^{\alpha t}N}{1+e^ce^{\alpha t} }
 \end{aligned}
 \end{equation}
 
-Ahora usando el valor inicial $I(0)$ tenemos:
+Usando el valor inicial $I(0)$ tenemos:
 
 \begin{equation}
 \begin{aligned}
@@ -112,7 +111,7 @@ luego la solución general es:
 
 $$I(t) = \frac{I(0)e^{\alpha t}N}{(N-I(0))+I(0)e^{\alpha t}} = \frac{I(0)N}{(N-I(0))e^{-\alpha t}+I(0)}$$
 
-Es claro que $I$ se tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
+Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
 
 
 \begin{figure}
@@ -130,7 +129,7 @@ Es claro que $I$ se tiende monótonamente a $N$, luego tiene el mismo comportami
 \end{figure}
 
 \section{Modelo SIR}
-El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden infectarse ni infectar a otros.
+El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden volver a infectarse ni infectar a otros.
 Un ejemplo de este tipo de enfermedad es la varicela. 
 
 El modelo es el siguiente:
@@ -146,9 +145,9 @@ R_{n+1} = & R_n + \gamma \Delta t I_n
 
 con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
 
-En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
 
-Se supone que la población permanece constante, $S_n+I_n+R_n=N$.
+Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$.
 
 \begin{proposition}
 Las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
@@ -161,9 +160,9 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 \end{proposition}
 
 \begin{proof}
-Comenzamos probando una de las implicaciones, supongamos que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
+Comenzamos probando una de las implicaciones, suponiendo que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
 
-Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego basta ver que:
+Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego su suficiente comprobar que:
 $$(1-\frac{\alpha \Delta t}{N}I_0)>0.$$
 Lo cual es evidente, pues $\frac{I_n}{N}<1$ por hipótesis del modelo y $\alpha \Delta t<1$.
 
@@ -172,22 +171,22 @@ Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t <0$.
 
 Ahora, por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas por razonamiento análogo.
 
-Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$, comenzamos trabajando en la primera ecuación, suponemos la positividad para $n$ y queremos probarla para $n+1$:
+Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$. Comenzamos trabajando en la primera ecuación \eqref{eqn: SIR_modelo}, suponemos la positividad para $n$ y probándola para $n+1$:
 $$S_{n+1}=S_n\left(1-\frac{\alpha\Delta t}{N}I_n\right)$$
 como $S_n>0$ basta ver que $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ y entonces tenemos:
-$$1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t,$$
-por tanto:
+$$1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t.$$
+Por tanto:
 $$1-\alpha\Delta t > 0 \Leftrightarrow \alpha\Delta t  \leq 1.$$
 
 En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $X_{n+1}=\beta X_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
 $\frac{\alpha \Delta t}{N}S_n$ tiende a cero. \textcolor{red}{No estoy muy segura de este paso, pero si lo hago despejando me sale que debe ser menor que 2 y no que 1 :(}
-Luego despejando como antes tenemos $\gamma\Delta t \leq 1$.
+Luego, despejando tenemos $\gamma\Delta t \leq 1$.
 
 De la última ecuación no sacamos ninguna condición más, pues su solución es siempre positiva por definición de $\gamma$ y $\Delta t$.
 
 \end{proof}
 
-Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para un contacto exitoso y menor que el período medio infeccioso.
+Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para contagiar a oro individuo susceptible y menor que el período medio infeccioso.
 % Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado por la profe
 
 El comportamiento global del sistema es fácil de ver. Definimos la tasa reproductiva como la constante 
@@ -199,22 +198,28 @@ En otros trabajos como \cite{demongeotSIEpidemicModel} esta tasa reproductiva se
 
 Notemos que $S_n$ es estrictamente decreciente y $R_n$ es estrictamente creciente. Estudiémoslas:
 
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia. En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo cual no es posible. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$. Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$.
 
-El modelo continuo correspondiente al modelo SIR se comporta de la misma forma que el modelo discreto, este sería:
+Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
+
+En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
+
+Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
+
+El modelo continuo correspondiente al modelo SIR se comporta de la misma forma que el modelo discreto, y viene expresado por:
 
 \begin{equation}
 \label{eqn: modelo_SIR_continuo}
-\begin{cases}
+\begin{aligned}
 S'(t) = -\dfrac{\alpha}{N}SI \\
 I'(t) = I\left(\dfrac{\alpha}{N}S-\gamma \right) \\
 R'(t) = R+\gamma I
-\end{cases}
+\end{aligned}
 \end{equation}
 
 donde $S(0)+I(0)+R(0)=N$. La tasa reproductiva en este caso se define como
 $$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma },$$
-y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  no hay epidemia, pero en cambio, si es mayor, hay epidemia.
+y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor, se dice que sí la hay.
 
 \begin{figure}
 \begin{center}
@@ -249,7 +254,7 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  no hay epidemia, pero en cambio
 El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples infecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
-El modelo es una perturbación del modelo SI visto antes, se define de la siguiente forma:
+El modelo es una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
 
 \begin{equation}
 \label{eqn: modelo_SIS}
@@ -261,7 +266,7 @@ I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
 \begin{proposition}
 Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
@@ -279,9 +284,9 @@ I_1 & =\epsilon\left(1-\gamma\Delta t+\alpha\Delta t\frac{N-\epsilon}{N}\right) 
 \end{aligned}
 \end{equation}
 
-Luego tenemos que ver cuando la parábola satisface $0<p(\epsilon)<N$ para $0<\epsilon<N$.
+Luego tenemos que ver cuándo la parábola satisface $0<p(\epsilon)<N$ para $0<\epsilon<N$.
 
-Notemos que $p(0)=0$ y $p(N)=N(1-\gamma\Delta t$.
+Notemos que $p(0)=0$ y $p(N)=N(1-\gamma\Delta t).$
 
 Sea $(\epsilon^*, p^*)$ el vértice de la parábola, entonces 
 $$(\epsilon^*, p^*) = \left(\frac{N(1-\gamma\Delta t+\alpha\Delta t)}{2\alpha\Delta t}, \frac{N(1-\gamma\Delta t+\alpha\Delta t)^2}{4\alpha\Delta t}\right)$$
@@ -290,9 +295,7 @@ Por tanto, $0<p(\epsilon )<N$ para $0<\epsilon <N$ si y solo si:
 
 $$\gamma\Delta t \leq 1,$$
 
-y por tanto, o bien $\epsilon^* \geq N$, que es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$.
-
-O bien $\epsilon^*<N \text{  y  } p^*<N$, lo que requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si:
+y por tanto, o bien $\epsilon^* \geq N$, que es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$. bien $\epsilon^*<N \text{  y  } p^*<N$, lo que requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si:
 
 $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2$$
 
@@ -304,7 +307,16 @@ $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$. Supongamos que $S^*<N$, entonces existen $n_1, \epsilon$ tales que para todo $n \geq n_1$:
 $$S_n<S^*+\epsilon < N$$
 y usando las ecuaciones \eqref{eqn: modelo_SIS}
-$$I_{n+1} \leq I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) = \rho I_n$$
+\begin{equation}
+\begin{aligned}
+I_{n+1}  & \leq I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) \\
+& \leq I_n \left( 1-\gamma \Delta t + \alpha\Delta t \right)
+& \leq I_n \rho 
+\end{aligned}
+\end{equation}
+
+
+donde hemos denotado $\rho = 1-\gamma \Delta t + \alpha\Delta t$.
 
 Como $\rho < 1$ tendríamos que $I^*=0$, lo que contradice que $S^*<N$.
 
@@ -317,7 +329,7 @@ tenemos:
 \begin{equation}
 \begin{aligned}
 \alpha\Delta t I_n = x_nN(1+\alpha\Delta t-\gamma\Delta t) \Leftrightarrow \\
-I_n = x_n\frac{N(1+\alpha\Delta t - \gamma\Delta t}{\alpha\Delta t}
+I_n = x_n\frac{N(1+\alpha\Delta t - \gamma\Delta t)}{\alpha\Delta t}
 \end{aligned}
 \end{equation}
 
@@ -343,7 +355,7 @@ luego obtenemos la ecuación logística
 
 $$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n)$$
 
-De este la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia, en este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$.
+En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$.
 
 
 \begin{figure}
@@ -380,9 +392,9 @@ Estimar la tasa de transmisión media es uno de los aspectos más cruciales en e
 
 Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de transmisión.
 
-Todos los factores pueden cambiar con el tiempo, el primero debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
+Todos los factores pueden cambiar con el tiempo. El primero, debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento y así tratar de predecir su comportamiento en el futuro.
+En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento, y así tratar de predecir su comportamiento en el futuro.
 
 El modelo SI continuo considerado es el siguiente:
 
@@ -417,10 +429,10 @@ siendo $C_I$ el número total de infectados acumulado.
 
 Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar el número inicial de infectados $I_0$ y la tasa de transmisión $\tau (t)$.
 
-\subsection{Aproximando $I_0$ y $\tau (t_0)$}
-Ahora, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
+\subsection{Aproximación de $I_0$ y $\tau (t_0)$}
+Procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
-Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Así, sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
+Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
 
 $$I'(t) = (\tau_0 S_0 -v) I(t).$$
 
@@ -432,7 +444,7 @@ Sustituyendo en \eqref{eqn: acumulada}:
 
 $$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}$$
 
-Así, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
+De este modo, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
 Reescribimos la ecuación anterior como:
 
@@ -441,7 +453,7 @@ Reescribimos la ecuación anterior como:
 C_R(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
 \end{equation}
 
-Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos es $\chi_3=0$.
+Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos se obtiene con $\chi_3=0$.
 
 Ahora, usando \eqref{eqn: acumulada} y \eqref{eqn: acumulada_modelo} tenemos:
 
@@ -449,13 +461,13 @@ Ahora, usando \eqref{eqn: acumulada} y \eqref{eqn: acumulada_modelo} tenemos:
 I_0=\frac{\chi_1\chi_2\mathrm{e}^{\chi_2 t_0}}{vf}
 \end{equation}
 
-Y, como de reescribir sabemos que $\chi_2 = \tau_0 S_0-v$, entonces
+Y, como sabemos que $\chi_2 = \tau_0 S_0-v$, entonces
 
 \begin{equation}
 \tau_0 = \frac{\chi_2+v}{S_0}
 \end{equation}
 
-Si suponemos que $\tau (t) = \tau_0$ constante, tenemos que el modelo queda:
+Si suponemos $\tau (t) = \tau_0$ constante, tenemos que el modelo queda:
 
 \begin{equation}
 \begin{aligned}
