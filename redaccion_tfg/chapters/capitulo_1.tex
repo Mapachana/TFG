@@ -121,10 +121,13 @@ Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamient
 \end{center}
 \end{figure}
 
+En la figura \ref{fig: SI_IsobreS}, que representa el número de individuos infectados en función del de susceptibles se aprecia una relación lineal per inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
+
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
-\includegraphics[scale=0.8]{SI_IsobreS}
+\label{fig: SI_IsobreS}
+\includegraphics[scale=0.7]{SI_IsobreS}
 \end{center}
 \end{figure}
 
@@ -228,24 +231,40 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pe
 \end{center}
 \end{figure}
 
+En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en función de los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando, 
+
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
-\includegraphics[scale=0.8]{SIR_IsobreS}
+\label{fig: SIR_IsobreS}
+\includegraphics[scale=0.7]{SIR_IsobreS}
 \end{center}
 \end{figure}
+
+Estudiamos ahora la figura \ref{fig: SIR_RsobreS}, en la que se muestra como varían los individuos recuperados en función de los susceptibles.
+
+A medida que los individuos susceptibles decrecen los recuperados aumentan, pero no lo hacen de forma lineal. Esto se debe a que los individuos susceptibles primero deben infectarse y luego recuperarse, y, como ya hemos visto en la figura \ref{fig: SIR_IsobreS} los infectados bajan muy rápidamente cuando las personas susceptibles son pocas, por ello los recuperados también crecen rápidamente a menor número de individuos susceptibles.
 
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SIR, representando el número de recuperados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
-\includegraphics[scale=0.8]{SIR_RsobreS}
+\label{fig: SIR_RsobreS}
+\includegraphics[scale=0.7]{SIR_RsobreS}
 \end{center}
 \end{figure}
 
+Finalmente, en la figura \ref{fig: SIR_RsobreI} se muestran los individuos recuperados en función de los infectados.
+
+Cabe destacar que para cada valor de los infectados hay dos valores de recuperados. Otra cosa a tener en cuenta es la distancia entre las marcas en la curva. Cada marca indica la medida del número de infectados y recuperados en un mismo tiempo $t$.
+
+Al comenzar el número de recuperados es bajo y crece despacio a medida que aumentan los infectados. Llega un punto máximo del número de infectados, en el que se produce la curva, y cuando los infectados comienzan a descrecer los recuperados aumentan rápidamente, lo que se puede ver por la distancia más corta que hay entre las marcas de la curva.
+
 \begin{figure}
 \begin{center}
+
 \caption{Gráfica del modelo SI, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
-\includegraphics[scale=0.8]{SIR_RsobreI}
+\label{fig: SIR_RsobreI}
+\includegraphics[scale=0.7]{SIR_RsobreI}
 \end{center}
 \end{figure}
 
@@ -361,14 +380,19 @@ En el modelo SIS la restricción necesaria para garantizar soluciones positivas 
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SIS, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 150$.}
-\includegraphics[scale=0.8]{SIS_modelo}
+\includegraphics[scale=0.7]{SIS_modelo}
 \end{center}
 \end{figure}
+
+En la figura \ref{fig: SIS_IsobreS} se representa el número de infectados en función del número de individuos susceptibles. Se puede ver que son inversamente proporcionales, es decir, a mayor número de infectados menos individuos susceptibles hay y al revés.
+
+Cabe destacar el parecido de esta gráfica con su análoga del modelo SI (\ref{fig: SI_IsobreS}.
 
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SIS, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 200$.}
-\includegraphics[scale=0.8]{SIS_IsobreS}
+\label{fig: SIS_IsobreS}
+\includegraphics[scale=0.7]{SIS_IsobreS}
 \end{center}
 \end{figure}
 
