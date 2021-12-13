@@ -9,19 +9,21 @@ En esta sección se presentarán algunos conceptos y herramientas básicas que n
 
 \section{Ecuaciones en diferencias}
 
-Comenzamos presentando alguna teoría básica que puede consultarse en \cite{salinelliDiscreteDynamicalModels2014}
+Comenzamos presentando la teoría básica necesaria. Para su elaboración se ha usado principalmente \cite{salinelliDiscreteDynamicalModels2014}.
 
 \begin{definition}
 Se define una \textbf{ecuación en diferencias de orden $k$} como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
 
 \begin{equation}
 \label{def_ec_diferencias}
-F(n,X_n, X_{n+1}, \cdots , X_{n+k}) = 0 \quad \forall n\in\mathbb{N}
+F(n,X_n, X_{n+1}, \cdots , X_{n+k}) = 0, \quad \forall n\in\mathbb{N},
 \end{equation}
 
 
-donde $F$ es una función de $k+2$ variables definida en $F:\mathbb{N}\times I^{k+1}\rightarrow \mathbb{R}$, con $I$ un intervalo con al menos dos puntos y donde la sucesión $\{X_n\}_{n\geq 0}$ es la incógnita.
+donde $F$ es una función de $k+2$ variables en la forma $F:\mathbb{N}\times I^{k+1}\rightarrow \mathbb{R}$, con $I$ un intervalo con al menos dos puntos, $k$ indica el número de términos necesarios para generar el siguiente y donde la sucesión $\{X_n\}_{n\geq 0}$ es la incógnita.
 \end{definition}
+
+En las aplicaciones reales de ecuaciones en diferencias, el subíndice $n$ suele considerarse el tiempo, por lo que en estas se considera positivo y discreto.
 
 \begin{definition}
 Una ecuación en diferencias de orden $k$ se dice que está en \textbf{forma normal} si está expresada de la forma:
@@ -38,7 +40,7 @@ donde $\Phi$ es una función dada definida en $\Phi :\mathbb{N}\times I^{k}\righ
 \begin{definition}
 Una \textbf{solución de una ecuación en diferencias} de orden $k$ es una sucesión $\{X_n\}_{n\geq 0}$ de números reales definida explícitamente de la forma:
 
-$$X_n = f(n),\quad n\geq 0$$
+$$X_n = f(n),\quad n\geq 0,$$
 
 donde $f: \mathbb{N} \rightarrow I$ es una función que cumple (\ref{def_ec_diferencias}) al sustituir $\{X_n\}_{n\geq 0}$ por $f(n)$ para cualquier $n\in\mathbb{N}$.
 
@@ -66,36 +68,25 @@ obtenemos $X_{k+1}$. Repitiendo este proceso se crea una sucesión $\{X_n\}_{n\g
 \end{proof}
 
 
-\subsection{Ecuación logística}
-
-\begin{definition}
-La ecuación logística discreta tiene la siguiente forma:
-
-$$X_{n+1} = \mu X_n(1-X_n),\quad \mu > 0$$
-\end{definition}
-
-\begin{proposition}
-En la ecuación logística, se tiene que su solución converge si $\mu < 3$, oscila si $3 < \mu \lesssim 3.57$ y se produce caos si $\mu \gtrsim 3.57$. 
-\end{proposition}
-
-\textcolor{red}{TODO explicar toda la teoría de la ecuación logística}
-
 \subsection{Sistemas de ecuaciones en diferencias}
 
 \begin{definition}
-Se define un \textbf{sistema de ecuaciones en diferencias} como un conjunto de ecuaciones en diferencias a resolver.
+Se define un \textbf{sistema de $m$ ecuaciones en diferencias} como un conjunto de $m$ ecuaciones en diferencias a resolver.
 
 \begin{equation}
 \begin{cases}
-X_{n+k} = \Phi_1(k, X_n, \cdots , X_{n+k-1}, Y_n, \cdots, Y_{n+k-1}) \\
-Y_{n+k} = \Phi_2(k, X_n, \cdots , X_{n+k-1}, Y_n, \cdots, Y_{n+k-1}) \\
+X_{n+k}^1 = \Phi_1(k, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m) \\
+\cdots \\
+X_{n+k}^m = \Phi_m(k, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m)
 \end{cases}
 \end{equation}
+
+Donde $\Phi_i : \mathbb{N}\times D \rightarrow D$, con $D\subset \mathbb{R}^{mk}$ para todo $i=1,\cdots , m$.
 
 Renombrando, podemos expresar el conjunto de sucesiones como:
 
 \begin{equation}
-X_n = (X_{1_n}, X_{2_n}, \cdots , X_{m_n})
+X_n = (X_{n}^1, X_{n}^2, \cdots , X_{n}^m)^{T}
 \end{equation}
 
 luego el sistema de ecuaciones resultaría:
@@ -106,7 +97,7 @@ X_{n+k} = \Phi (n, X_n, \cdots , X_{n+k-1})
 \end{equation}
 
 
-donde $\Phi : D \rightarrow D$,, con $D$ siendo el dominio de la función $\Phi$, y por tanto $D\subset \mathbb{N}\times\mathbb{R}^k$ y con $\Phi = (\Phi_1, \cdots \Phi_m)$.
+donde $\Phi : D \rightarrow D$, con $D$ siendo el dominio de la función $\Phi$, y por tanto $D\subset \mathbb{N}\times\mathbb{R}^k$ y con $\Phi = (\Phi_1, \cdots \Phi_m)$.
 
 \end{definition}
 
@@ -117,25 +108,155 @@ Una \textbf{solución} de un sistema de ecuaciones en diferencias son las soluci
 \subsection{Puntos de equilibrio}
 
 \begin{definition}
-Sea $D\subset \mathbb{R}^m$ y $\Phi :D\rightarrow D$ una función continua. Entonces un vector $\alpha \in \mathbb{R}^m$ se dice que es un \textbf{punto de equilibrio} de un sistema de ecuaciones en diferencias de la forma (\ref{def_sist_ec}) si
+Sea $D\subset \mathbb{R}^m$ y $\Phi :D\rightarrow D$ una función continua. Entonces un vector $X^* \in \mathbb{R}^m$ se dice que es un \textbf{punto de equilibrio} de un sistema de ecuaciones en diferencias de la forma (\ref{def_sist_ec}) si
 
-$$\alpha = \Phi (\alpha),\quad \alpha \in D.$$
+$$X^* = \Phi (X^*),\quad X^* \in D.$$
 
-Son soluciones independientes del tiempo.
+Se suele decir que los puntos de equilibrio son soluciones independientes del tiempo.
 \end{definition}
 
 \begin{proposition}
-Si tomamos como valor inicial un punto de equilibrio, llamemoslo $\alpha$, de un sistema de ecuaciones en diferencias, entonces la solución explícita del sistema es constante y es:
-$$X_n = \alpha \quad \forall n\in\mathbb{N}.$$
+Si tomamos como valor inicial un punto de equilibrio, llamemoslo $X^*$, de un sistema de ecuaciones en diferencias, entonces la solución explícita del sistema es constante y viene dada por:
+$$X_n = X^* \quad \forall n\in\mathbb{N}.$$
 \end{proposition}
 
 \begin{definition}
-Un punto de equilibrio $\alpha$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor global} si para cualquier $X_0\in D$ se verifica
-$$\displaystyle\lim_{n\to \infty} X_n = \alpha.$$
+Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como \eqref{def_sist_ec} se dice que es un \textbf{atractor global} si para cualquier $X_0\in D$ se verifica
+$$\displaystyle\lim_{n\to \infty} X_n = X^*.$$
 \end{definition}
 
 \begin{definition}
-Un punto de equilibrio $\alpha$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor local} si existe $\eta>0$ tal que para cualquier $X_0\in D\cap \text{]}\alpha -\eta , \alpha + \eta \text{[}$ se verifica
-$$\displaystyle\lim_{n\to \infty} X_n = \alpha.$$
+Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor local} si existe $\eta>0$ tal que para cualquier $X_0\in D\cap \text{B}(X^*, \eta )$ se verifica
+$$\displaystyle\lim_{n\to \infty} X_n = X^*.$$
 
 \end{definition}
+
+\begin{definition}
+Un punto de equilibrio $X^*$ de una ecuación en recurrencias $X_{n+1}=f(X_n)$ se dice que es:
+\begin{itemize}
+\item Estable si para cualquier $\epsilon > 0$ existe una constante $\delta > 0$ tal que si $|X_0-X^*|<\delta$ y $X_n=f(X_0)$ con $n\in\mathbb{N}$, entonces se verifica
+$$|X_n-X^*| < \epsilon \quad \forall n \in\mathbb{N}.$$
+\item Asintóticamente estable si es estable y además existe un $\delta > 0$ tal que se cumple que  si $|X_0-X^*|<\delta$ entonces
+$$\lim_{n\rightarrow\infty} X_n = X^*.$$
+\item Inestable si no es estable, esto esm $\exists \epsilon_0 >0$ tal que para todo $\delta >0$ podemos encontrar $X_0$ y $n_0\in\mathbb{N}$ tal que
+$$|X_0-X^*|<\delta \quad \text{y} \quad |X_{n_0}-X^*|>\epsilon_0.$$
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+Si $X^*$ es un punto de equilibrio de una ecuación en recurrencias $X_{n+1}=f(X_n)$ entonces:
+\begin{itemize}
+\item Si $|f'(X^*)|<1$ entonces $X^*$ es localmente asintóticamente estable.
+\item Si $|f'(X^*)|>1$ entonces $X^*$ es inestable.
+\end{itemize}
+\end{proposition}
+
+\begin{proposition}
+Si $X^*$ es un punto de equilibrio de una ecuación en recurrencias $X_{n+1}=f(X_n)$, con $f\in\text{C}^3$ y $f'(X^*)=1$ entonces:
+\begin{itemize}
+\item Si $|f''(X^*)|\neq 0$ entonces $X^*$ es inestable.
+\item Si $|f''(X^*)|=0$ y $f'''(X^*)<0$ entonces $X^*$ es localmente asintóticamente estable.
+\item Si $|f''(X^*)|=0$ y $f'''(X^*)>0$ entonces $X^*$ es inestable.
+\end{itemize}
+\end{proposition}
+
+
+
+\subsection{Ecuación logística}
+
+\begin{definition}
+La ecuación logística discreta tiene la siguiente forma:
+
+$$x_{n+1} = \mu x_n(1-x_n),\quad \mu > 0.$$
+
+Está definida en el intervalo $ [ 0,\lambda ] $. Definimos
+
+$$f(x)=\mu x(1-x)$$
+
+Para que $0\leq x_n\leq 1$ es necesario que $x_n=f(x_{n-1})$ esté en el intervalo $[0,1]$. Tenemos que $f(x)$ es una parábola cóncava con puntos de corte con el eje x en $0$ y $1$. Para que $f(x)<1$ su máximo debe ser menor que $1$.
+
+Este máximo se alcanza en $\frac{1}{2}$ y 
+$$f\left(\frac{1}{2}\right) = \mu \frac{1}{2}\left(1-\frac{1}{2}\right) = \frac{\mu}{4}.$$
+
+Luego debe ser $0\leq \mu \leq 4$.
+
+\end{definition}
+
+La teoría puede ampliarse en \cite{strogatzNonlinearDynamicsChaos1994}.
+
+\begin{proposition}
+Consideramos la ecuación logística con $0\leq X_n$ y $0\leq\mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$, y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
+\end{proposition}
+\begin{proof}
+Consideramos la ecuación logística:
+$$X_{n+1} = \mu X_n(1-X_n),$$
+y definamos $f(x)=\mu x(1-x)$. Es claro que $f$ es de clase infinito por ser polinómica.
+
+Los puntos de equilibrio cumplen
+$$X^*=f(X^*)=\mu X^*(1-X^*).$$
+Luego se tiene $X^*=0$ o $1=\mu (1-X^*)$, de donde se obtiene $X^*=1-\frac{1}{\mu}$.
+
+Estudiamos ahora la estabilidad de los puntos de equilibrio a través de su derivada, para ello consideramos:
+$$f'(X^*)=\mu (1-2X^*).$$
+Entonces se tiene que $f'(0)=\mu$, por lo tanto $X^*=0$ es localmente asintóticamente estable si $\mu < 1$ e inestable si $\mu > 1$. \textcolor{red}{Tengo que estudiar que pasa si mu es 1}
+
+Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
+
+\textcolor{red}{Aqui pega un grafiquito, pero aun tengo que hacerlo}
+
+\end{proof}
+
+\begin{proposition}
+La ecuación logística tiene un 2-ciclo para todo $\mu > 3$, es decir, existen dos puntos $p$ y $q$ tal que siendo $f(x)=\mu x(1-x)$ se tiene que $f(p)=q$ y $f(q)=p$.
+\end{proposition}
+
+\begin{proof}
+Tenemos que $f(p)=q$ y $f(q)=p$ es equivalente a $f(f(p))=p$, es decir, $p$ es un punto fijo al iterar dos veces la función dada.
+
+Como $f(x)$ es una función polinómica de segundo grado, entonces $f(f(x))$ será de cuarto grado.
+
+Por tanto necesitamos resolver la ecuación de cuarto grado $f(f(X^*))=X^*$. Sabemos que los puntos fijos de la ecuación logística cumplen $f(X^*)=X^*$, luego
+$$f(f(X^*))=f(X^*)=X^*,$$
+por lo que son solución de la ecuación. Y al factorizar conociendo estas soluciones el problema se reduce a resolver una ecuación cuadrática de la que obtenemos las siguientes raíces:
+$$p,q=\frac{\mu+1\pm \sqrt{(\mu -3)(\mu +1)}}{2\mu}.$$
+
+Estas soluciones son reales si $\mu > 3$ luego existe un 2-ciclo.
+
+Si $\mu = 3$ estas raíces coinciden y valen $p=q=\frac{2}{3}=1-\frac{1}{3}$, luego existe un 2-ciclo.
+
+Por último, si $\mu < 3$ las raíces no son reales y por tanto no existe un 2-ciclo.
+\end{proof}
+
+Si $\mu = 3.3$ tenemos  que la solución de la ecuación logística oscila repitiéndose cada dos iteraciones, es decir, sigue un 2-ciclo. Si $\mu = 3.5$ la solución se repite cada 4 iteraciones, luego sigue un 4-ciclo.
+Se encuentran períodos más grandes (de 8, 16, 32...) a medida que $\mu$ toma valores mayores.
+
+Sea $\mu_n$ el valor de $\mu$ para el cual aparece un $2^n$-ciclo. Entonces experimentalmente se obtiene que $\mu_n$ converge a un valor $\mu_\infty=3.569946...$.
+
+
+\begin{proposition}
+En la ecuación logística, se tiene que su solución converge si $\mu < 3$, oscila si $3 < \mu \lesssim 3.57$ y se produce caos si $\mu \gtrsim 3.57$. 
+\end{proposition}
+
+
+\subsection{Epidemiología}
+
+A continuación se explican algunos conceptos básicos de epidemiología. Para esta sección se ha usado \cite{brauerMathematicalModelsPopulation2012}
+
+\begin{definition}
+Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
+\end{definition}
+
+\begin{definition}
+Los individuos susceptibles, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
+\end{definition}
+
+\begin{definition}
+Los individuos infectados, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad que pueden contagiar la enfermedad a los individuos susceptibles.
+\end{definition}
+
+\begin{definition}
+Los individuos recuperados, que denotamos $R_n$, son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
+Los individuos recuperados hacen referencia a los individuos inmunizados, aislados, recuperados o fallecidos.
+\end{definition}
+
+\textcolor{red}{Falta hablar de algunas enfermedades, pero aún no lo he hecho :(}

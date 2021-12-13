@@ -32,6 +32,14 @@ En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio 
 
 Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
 
+\begin{lemma}
+$S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente.
+\end{lemma}
+
+\begin{proof}
+$S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$.
+\end{proof}
+
 \begin{proposition}
 Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\alpha\Delta t \leq 1$.
 \end{proposition}
@@ -39,13 +47,14 @@ Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\al
 \begin{proof}
 Supongamos que $I_n, S_n > 0$. Por la segunda ecuación del modelo \eqref{eqn: SI} es claro que $I_{n+1}>0$, pues $S_n>0$ y $1+\frac{\alpha\Delta t}{N}>0$.
 
-Para la primera ecuación tenemos que 
-$$S_{n+1}>0 \Leftrightarrow 1-\frac{\alpha\Delta t}{N}I_n >0,$$
+Para la primera ecuación tenemos que $S_{n+1} > 0$ si y solo si
+$$1-\frac{\alpha\Delta t}{N}I_n >0,$$
 
-ya que $I_n$ es positivo por hipótesis. Esto equivale a:
-$$N>\alpha\Delta t(N-S_n) \Leftrightarrow \alpha\Delta t S_n > (\alpha\Delta t -1) N.$$
-
-Como $\alpha\Delta t S_n > 0$, tenemos entonces que la desigualdad se da si y solo si:
+ya que $S_n$ es positivo por hipótesis. Esto equivale a $N>\alpha \Delta t I_n$, y puesto que $S_n+I_n=N$ se tiene:
+$$N>\alpha\Delta t(N-S_n),$$
+esto es
+$$\alpha\Delta t S_n > (\alpha\Delta t -1) N.$$
+Como $\alpha\Delta t S_n > 0$, tenemos entonces que la desigualdad se da para todo $n$ si y solo si:
 $$\alpha\Delta t -1 \leq 0 \Leftrightarrow \alpha\Delta t \leq 1.$$
 \end{proof}
 
@@ -60,7 +69,7 @@ S^*+I^*=N
 \end{aligned}
 $$
 
-Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$, y como sabemos que tenemos condiciones iniciales positivas y es claro que $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente (ya que $S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$), así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
+Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$. Puesto que las condiciones iniciales son positivas y como $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
 
 Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera. Considerando
 
@@ -87,8 +96,8 @@ Esta ecuación diferencial se puede resolver por separación de variables como s
 
 \begin{equation}
 \begin{aligned}
-I'(t)=I\frac{\alpha}{N}(N-I(t)) & \Leftrightarrow \int \frac{dI}{I(N-I)} = \int \frac{\alpha}{N} dt \\
-& \Leftrightarrow \frac{1}{N}\int (\frac{1}{I}+\frac{1}{N-I}dI = \frac{\alpha}{N}t+c \\
+I'(t)=\frac{\alpha}{N}I(N-I(t)) & \Leftrightarrow \int \frac{dI}{I(N-I)} = \int \frac{\alpha}{N} dt \\
+& \Leftrightarrow \frac{1}{N}\int \left(\frac{1}{I}+\frac{1}{N-I}\right) dI = \frac{\alpha}{N}t+c \\
 & \Leftrightarrow  \frac{1}{N}\log{\frac{I}{N-I}} = e^{\frac{\alpha}{N}t+c} \\
 & \Leftrightarrow  \frac{I}{N-I} = e^ce^{\alpha t} \\
 & \Leftrightarrow  I = e^ce^{\alpha t}(N-I) \\
@@ -116,12 +125,12 @@ Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamient
 
 \begin{figure}
 \begin{center}
-\caption{Gráfica del modelo SI, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
+\caption{Gráfica del modelo SI discreto, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
 \includegraphics[scale=1]{graficaSI}
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SI_IsobreS}, que representa el número de individuos infectados en función del de susceptibles se aprecia una relación lineal per inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
+En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del númeor de susceptibles se aprecia una relación lineal pero inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
 
 \begin{figure}
 \begin{center}
@@ -162,35 +171,54 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
 \end{proposition}
 
+\begin{lemma}
+$S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
+\end{lemma}
+
+\begin{proof}
+
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$.
+
+Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
+
+En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
+\end{proof}
+
+\textcolor{red}{ el Lema 1 de \cite{allenDiscretetimeSISIR1994} dice que $S_\infty>0$. He estado mirando lo del lío con el límite de $S_n$, pero no he conseguido aclararme. Al hacerlo yo me sale que va a 0, pero el artículo original tiene este lema donde dice que el límite es mayor que 0 y no veo exactamente qué me estoy saltando en el razonamiento}
+
 \begin{proof}
 Comenzamos probando una de las implicaciones, suponiendo que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
 
-Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego su suficiente comprobar que:
-$$(1-\frac{\alpha \Delta t}{N}I_0)>0.$$
+Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego es suficiente comprobar que:
+$$1-\frac{\alpha \Delta t}{N}I_0>0.$$
 Lo cual es evidente, pues $\frac{I_n}{N}<1$ por hipótesis del modelo y $\alpha \Delta t<1$.
 
 Por un razonamiento análogo, tenemos que $$1-\gamma \Delta t+\frac{\alpha\Delta t}{N}S_0 > 0.$$
 Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t <0$.
 
-Ahora, por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas por razonamiento análogo.
+Aplicando un razonamiento por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas.
 
-Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$. Comenzamos trabajando en la primera ecuación \eqref{eqn: SIR_modelo}, suponemos la positividad para $n$ y probándola para $n+1$:
+Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$. Comenzamos trabajando en la primera ecuación \eqref{eqn: SIR_modelo}.
+% suponemos la positividad para $n$ y probándola para $n+1$:
+
 $$S_{n+1}=S_n\left(1-\frac{\alpha\Delta t}{N}I_n\right)$$
-como $S_n>0$ basta ver que $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ y entonces tenemos:
-$$1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t.$$
-Por tanto:
-$$1-\alpha\Delta t > 0 \Leftrightarrow \alpha\Delta t  \leq 1.$$
+Por hipótesis $S_n>0$, entonces basta ver que $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ luego:
+$$0<1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t,$$
+y por tanto:
+$$\alpha\Delta t  \leq 1.$$
 
-En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $X_{n+1}=\beta X_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
-$\frac{\alpha \Delta t}{N}S_n$ tiende a cero. \textcolor{red}{No estoy muy segura de este paso, pero si lo hago despejando me sale que debe ser menor que 2 y no que 1 :(}
+En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $S_{n+1}=\beta S_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
+$\frac{\alpha \Delta t}{N}S_n$ tiende a cero. \textcolor{red}{Aqui es donde uso que Sn tiende a 0, pero segun el articulo esto no es verdad}
+
 Luego, despejando tenemos $\gamma\Delta t \leq 1$.
 
 De la última ecuación no sacamos ninguna condición más, pues su solución es siempre positiva por definición de $\gamma$ y $\Delta t$.
 
 \end{proof}
 
-Por tanto, el intervalo de tiempo debe ser menor que el tiempo medio requerido para contagiar a oro individuo susceptible y menor que el período medio infeccioso.
+Por tanto, a partir del resultado anterior podemos deducir que el intervalo de tiempo, $\Delta t$, debe ser menor que el tiempo medio requerido para contagiar a oro individuo susceptible, $\alpha$, y menor que el período medio infeccioso, $\gamma$.
 % Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado por la profe
+
 
 El comportamiento global del sistema es fácil de ver. Definimos la tasa reproductiva como la constante 
 $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
@@ -199,24 +227,15 @@ El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo.
 
 En otros trabajos como \cite{demongeotSIEpidemicModel} esta tasa reproductiva se llama tasa de transmisión media.
 
-Notemos que $S_n$ es estrictamente decreciente y $R_n$ es estrictamente creciente. Estudiémoslas:
-
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$.
-
-Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
-
-En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
-
 Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
-
 El modelo continuo correspondiente al modelo SIR se comporta de la misma forma que el modelo discreto, y viene expresado por:
 
 \begin{equation}
 \label{eqn: modelo_SIR_continuo}
 \begin{aligned}
-S'(t) = -\dfrac{\alpha}{N}SI \\
-I'(t) = I\left(\dfrac{\alpha}{N}S-\gamma \right) \\
-R'(t) = R+\gamma I
+S'(t) = & -\dfrac{\alpha}{N}SI \\
+I'(t) = & I\left(\dfrac{\alpha}{N}S-\gamma \right) \\
+R'(t) = & R+\gamma I
 \end{aligned}
 \end{equation}
 
@@ -231,7 +250,7 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pe
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en función de los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando, 
+En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en función de los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
 
 \begin{figure}
 \begin{center}
@@ -247,7 +266,7 @@ A medida que los individuos susceptibles decrecen los recuperados aumentan, pero
 
 \begin{figure}
 \begin{center}
-\caption{Gráfica del modelo SIR, representando el número de recuperados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\caption{Gráfica del modelo SIR discreto, representando el número de recuperados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_RsobreS}
 \includegraphics[scale=0.7]{SIR_RsobreS}
 \end{center}
@@ -255,14 +274,14 @@ A medida que los individuos susceptibles decrecen los recuperados aumentan, pero
 
 Finalmente, en la figura \ref{fig: SIR_RsobreI} se muestran los individuos recuperados en función de los infectados.
 
-Cabe destacar que para cada valor de los infectados hay dos valores de recuperados. Otra cosa a tener en cuenta es la distancia entre las marcas en la curva. Cada marca indica la medida del número de infectados y recuperados en un mismo tiempo $t$.
+Cabe destacar que para cada valor de los infectados hay dos valores de recuperados, esto se debe a que al comienzo, cuando los infectados están creciendo hay pocos recuperados, después los recuperados aumentan y los infectados decrecen. Es decir, para cada valor de infectados hay dos de recuperados, el primero cuando los infectados están creciendo y hay pocos recuperados y después cuando los infectados decrecen y hay muchos recuperados . Otra cosa a tener en cuenta es la distancia entre las marcas en la curva. Cada marca indica la medida del número de infectados y recuperados en un mismo tiempo $t$.
 
 Al comenzar el número de recuperados es bajo y crece despacio a medida que aumentan los infectados. Llega un punto máximo del número de infectados, en el que se produce la curva, y cuando los infectados comienzan a descrecer los recuperados aumentan rápidamente, lo que se puede ver por la distancia más corta que hay entre las marcas de la curva.
 
 \begin{figure}
 \begin{center}
 
-\caption{Gráfica del modelo SI, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\caption{Gráfica del modelo SI discreto, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_RsobreI}
 \includegraphics[scale=0.7]{SIR_RsobreI}
 \end{center}
@@ -270,7 +289,7 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 
 
 \section{Modelo SIS}
-El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples infecciones.
+El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples reinfecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
 El modelo es una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
@@ -285,7 +304,7 @@ I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
 \begin{proposition}
 Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
@@ -316,14 +335,22 @@ $$\gamma\Delta t \leq 1,$$
 
 y por tanto, o bien $\epsilon^* \geq N$, que es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$. bien $\epsilon^*<N \text{  y  } p^*<N$, lo que requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si:
 
-$$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2$$
+$$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2.$$
 
 \end{proof}
 
 En el modelo SIS, la tasa reproductiva se define como 
 $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 
-Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$. Supongamos que $S^*<N$, entonces existen $n_1, \epsilon$ tales que para todo $n \geq n_1$:
+
+\begin{lemma}
+Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$.
+
+Si $\mathcal{R}_{SIS}>1$ las soluciones convergen si se cumple la condición$\alpha \Delta t \leq 2+\gamma \Delta t$
+\end{lemma}
+
+\begin{proof}
+Supongamos que $S^*<N$, entonces existen $n_1, \epsilon$ tales que para todo $n \geq n_1$:
 $$S_n<S^*+\epsilon < N$$
 y usando las ecuaciones \eqref{eqn: modelo_SIS}
 \begin{equation}
@@ -370,11 +397,13 @@ x_{n+1} & = x_n\left( 1-\gamma\Delta t+\frac{\alpha\Delta t}{N}N-\frac{\alpha\De
 \end{aligned}
 \end{equation}
 
-luego obtenemos la ecuación logística
+luego obtenemos la ecuación logística con parámetro $\mu = 1+\alpha\Delta t -\gamma \Delta t$
 
-$$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n)$$
+$$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n).$$
 
-En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$.
+En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$, restricción del parámetro de la ecuación logística para la convergencia.
+
+\end{proof}
 
 
 \begin{figure}
@@ -384,13 +413,13 @@ En el modelo SIS la restricción necesaria para garantizar soluciones positivas 
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SIS_IsobreS} se representa el número de infectados en función del número de individuos susceptibles. Se puede ver que son inversamente proporcionales, es decir, a mayor número de infectados menos individuos susceptibles hay y al revés.
+En la figura \eqref{fig: SIS_IsobreS} se representa el número de infectados en función del número de individuos susceptibles. Se puede ver que son inversamente proporcionales, es decir, a mayor número de infectados menos individuos susceptibles hay y al revés.
 
-Cabe destacar el parecido de esta gráfica con su análoga del modelo SI (\ref{fig: SI_IsobreS}.
+Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{fig: SI_IsobreS}.
 
 \begin{figure}
 \begin{center}
-\caption{Gráfica del modelo SIS, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 200$.}
+\caption{Gráfica del modelo SIS discreto, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 200$.}
 \label{fig: SIS_IsobreS}
 \includegraphics[scale=0.7]{SIS_IsobreS}
 \end{center}
@@ -425,8 +454,8 @@ El modelo SI continuo considerado es el siguiente:
 \begin{equation}
 \label{eqn: SI_cont}
 \begin{aligned}
-S'(t) = -\tau (t)S(t)I(t) \\
-I'(t) = \tau (t)S(t)I(t) -vI(t)
+S'(t) = & -\tau (t)S(t)I(t) \\
+I'(t) = & \tau (t)S(t)I(t) -vI(t)
 \end{aligned}
 \end{equation}
 
@@ -434,7 +463,7 @@ donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de ind
 
 Se consideran las condiciones iniciales
 
-$$S(t_0)=S_0>0, \: I(t_0)=I_0>0$$
+$$S(t_0)=S_0>0, \: I(t_0)=I_0>0.$$
 
 Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso la fracción la denotamos por $f\in (0,1]$. Sea $C_R(t)$ el número total acumulado de casos reportados. Entonces:
 
@@ -445,8 +474,6 @@ C_R(t) = {C_R}_0 + vfC_I(t) \; \forall t \geq t_0
 
 donde $C_{R0}$ representa el número de casos reportados al inicio del estudio y 
 
-\textcolor{red}{¿Por qué $vfC_I(t)$ va multiplicado por $v$?}
-
 $$C_I(t) = \int_{t_0}^t I(w) dw $$
 
 siendo $C_I$ el número total de infectados acumulado.
@@ -456,7 +483,7 @@ Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averigu
 \subsection{Aproximación de $I_0$ y $\tau (t_0)$}
 Procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
-Al comienzo de la pandemia podemos asumir que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$ respectivamente. Sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
+Al comienzo de la pandemia podemos suponer que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$, respectivamente. Sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
 
 $$I'(t) = (\tau_0 S_0 -v) I(t).$$
 
@@ -466,7 +493,7 @@ $$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}.$$
 
 Sustituyendo en \eqref{eqn: acumulada}:
 
-$$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}$$
+$$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}.$$
 
 De este modo, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
 
@@ -474,7 +501,7 @@ Reescribimos la ecuación anterior como:
 
 \begin{equation}
 \label{eqn: acumulada_modelo}
-C_R(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3
+C_R(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3.
 \end{equation}
 
 Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos se obtiene con $\chi_3=0$.
@@ -488,7 +515,7 @@ I_0=\frac{\chi_1\chi_2\mathrm{e}^{\chi_2 t_0}}{vf}
 Y, como sabemos que $\chi_2 = \tau_0 S_0-v$, entonces
 
 \begin{equation}
-\tau_0 = \frac{\chi_2+v}{S_0}
+\tau_0 = \frac{\chi_2+v}{S_0}.
 \end{equation}
 
 Si suponemos $\tau (t) = \tau_0$ constante, tenemos que el modelo queda:
@@ -517,10 +544,10 @@ Observamos entonces que el número total de infectados es monótono creciente, y
 \begin{theorem}
 Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente respecto a las siguiente cantidades:
 \begin{itemize}
-\item $I_0>0$ Número inicial de infectados
-\item $S_0>0$ Número inicial de individuos susceptibles.
-\item $\tau>0$ Tasa de transmisión
-\item $1/v$ Tiempo medio de la infección.
+\item $I_0>0$: Número inicial de infectados
+\item $S_0>0$: Número inicial de individuos susceptibles.
+\item $\tau>0$: Tasa de transmisión
+\item $1/v$: Tiempo medio de la infección.
 \end{itemize}
 \end{theorem}
 
