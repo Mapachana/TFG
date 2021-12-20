@@ -9,26 +9,31 @@ from dash.dependencies import Input, Output
 
 app = dash.Dash()
 
-fig = go.Figure() # or any Plotly Express function e.g. px.bar(...)
-# fig.add_trace( ... )
-# fig.update_layout( ... )
+# Declaramos la figura
+fig = go.Figure() 
 
 
+# Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
     Output("graph", "figure"), 
+    [Input("N", "value")],
     [Input("alfa", "value")],
-    [Input("gamma", "value")])
-def calcular_modelo(alfa, gamma):
-    N = 100
+    [Input("gamma", "value")],
+    [Input("S0", "value")],
+    [Input("I0", "value")],
+    [Input("T", "value")])
+def calcular_modelo(N, alfa, gamma, S0, I0, T):
+    # Convierto a int o float los parametros
+    N = int(N)
 
     alfa = float(alfa)
     gamma = float(gamma)
 
-    S0 = 95
-    I0 = 5
+    S0 = int(S0)
+    I0 = int(I0)
 
     T0 = 0
-    T = 150
+    T = int(T)
 
     secciones = 200 #deltaT en realidad es (T-T0)/secciones
 
@@ -42,6 +47,7 @@ def calcular_modelo(alfa, gamma):
     S[0] = S0
     I[0] = I0
 
+    # Calculo los datos a representar
     for j in range (secciones-1):
         S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])+gamma*deltaT*I[j]
         I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*S[j])
@@ -64,21 +70,56 @@ def calcular_modelo(alfa, gamma):
     return fig
 
 
+# Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 app.layout = html.Div([
-    html.P("Alfa:"),
+    html.Label("N:"),
+    dcc.Input(
+            id="N".format('text'),
+            type='text',
+            placeholder="100".format('text'),
+            value="100"
+        ),
+    html.Br(),
+    html.Label("Alfa:"),
     dcc.Input(
             id="alfa".format('text'),
             type='text',
             placeholder="0.1".format('text'),
             value="0.1"
         ),
-    html.P("Gamma:"),
+    html.Br(),
+    html.Label("Gamma:"),
     dcc.Input(
             id="gamma".format('text'),
             type='text',
             placeholder="0.01".format('text'),
             value="0.01"
         ),
+    html.Br(),
+    html.Label("S0:"),
+    dcc.Input(
+            id="S0".format('text'),
+            type='text',
+            placeholder="95".format('text'),
+            value="95"
+        ),
+    html.Br(),
+    html.Label("I0:"),
+    dcc.Input(
+            id="I0".format('text'),
+            type='text',
+            placeholder="5".format('text'),
+            value="5"
+        ),
+    html.Br(),
+    html.Label("T:"),
+    dcc.Input(
+            id="T".format('text'),
+            type='text',
+            placeholder="150".format('text'),
+            value="150"
+        ),
+    html.Br(),
     dcc.Graph(id="graph", figure=fig)
 ])
 

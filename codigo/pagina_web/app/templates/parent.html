@@ -16,7 +16,7 @@
     <!-- BARRA DE NAVEGACIÓN -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-logo" href="localhost:5000/"><img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2"></a>
+          <a class="navbar-logo" href="/"><img src="static/logo.png" alt="" width="32" height="32" class="rounded-circle me-2"></a>
           <!--<a class="navbar-brand" href="#">Navbar</a>-->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -31,25 +31,21 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Ejercicios P1
+                  Modelos básicos
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/ordena">Ordena</a></li>
-                  <li><a class="dropdown-item" href="/erastotenes">Erastotenes</a></li>
-                  <li><a class="dropdown-item" href="/cadena">Cadena</a></li>
-                  <!--<li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+                  <li><a class="dropdown-item" href="/modelosi">Modelo SI</a></li>
+                  <li><a class="dropdown-item" href="/modelosir">Modelo SIR</a></li>
+                  <li><a class="dropdown-item" href="/modelosis">Modelo SIS</a></li>
                 </ul>
               </li>
-              <!--<li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>-->
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ayuda</a>
+              </li>
             </ul>
-            <!--<form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>-->
           </div>
+
+          <!--    ESTO SERIA PARA LOGIN PERO EN PRINCIPIO NO LO VAMOS A USAR
           <div class="dropdown">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
@@ -65,12 +61,11 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
               <li><a class="dropdown-item" href="/login">Login</a></li>
-              <!--<li><a class="dropdown-item" href="https://www.github.com">Settings</a></li>-->
               <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/logout">Logout</a></li>
             </ul>
-          </div>
+          </div>-->
         </div>
       </nav>
       <!-- FIN DE BARRA DE NAVEGACION-->
@@ -80,11 +75,6 @@
 
       <!-- BARRA LATERAL -->
       <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark", style= "width: 30%">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-          <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-          <span class="fs-4">Sidebar</span>
-        </a>
-        <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
             <a href="/" class="nav-link text-white">
@@ -93,58 +83,31 @@
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              Dashboard
+              ¿Cómo funciona?
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Modelos básicos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/modelosi">Modelo SI</a></li>
+              <li><a class="dropdown-item" href="/modelosir">Modelo SIR</a></li>
+              <li><a class="dropdown-item" href="/modelosis">Modelo SIS</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="nav-link text-white">
+              Ajuste de datos de la pandemia
             </a>
           </li>
           <li>
             <a href="#" class="nav-link text-white">
-              Orders
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link text-white">
-              Customers
+              Ajuste de datos de la pandemia en España
             </a>
           </li>
         </ul>
         <hr>
-
-        <h5>Lista de páginas visitadas últimamente</h5>
-        <ul class="nav nav-pills flex-column mb-auto">
-          {% block ultimaspaginas %}
-            {% if ultimaspaginas is defined %}
-              {% for pagina in ultimaspaginas %}
-              <li>
-                <a href="{{ pagina }}" class="nav-link text-white">
-                  {{ pagina }}
-                </a>
-              </li>
-              {% endfor %}
-            {% else %}
-              <p>No hay información disponible </p>
-            {% endif %}
-          
-          {% endblock %}
-        </ul>
-        <hr>
-        <!--<div class="dropdown">
-          <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>Mapachana</strong>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>-->
       </div>
 
       <!-- FIN DE LA BARRA LATERAL -->
@@ -169,17 +132,7 @@
     <div class="container p-4">
       <!-- Section: Social media -->
       <section class="mb-4">
-        <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        </a>
-  
         <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        </a>
-  
-        <!-- Google -->
         <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
           <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         </a>
@@ -189,14 +142,9 @@
           <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         </a>
   
-        <!-- Linkedin -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-        </a>
-  
         <!-- Github -->
-        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button">
-          <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Mapachana/TFG" role="button">
+          <img src="https://avatars.githubusercontent.com/u/9919?s=200&v=4" alt="" width="32" height="32" class="rounded-circle me-2">
         </a>
       </section>
       <!-- Section: Social media -->
