@@ -30,6 +30,9 @@ donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e
 
 En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
+\textcolor{red}{Añadir de donde sale de las ecuaciones de arriba la ecuacion logistica}
+
+
 Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
 
 \begin{lemma}
@@ -88,7 +91,7 @@ con condiciones iniciales $S(0)+I(0)=N$.
 
 Calculamos los puntos de equilibrio de manera análoga al caso discreto, es decir, suponemos que las funciones son constantes y, resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $(S^*,I^*)=(0,N)$ y, por tanto, tienen el mismo comportamiento que el caso discreto.
 
-Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística
+Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística continua
 
 $$I'(t) = I\frac{\alpha}{N}(N-I).$$
 

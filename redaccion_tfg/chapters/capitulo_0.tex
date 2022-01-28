@@ -75,9 +75,9 @@ Se define un \textbf{sistema de $m$ ecuaciones en diferencias} como un conjunto 
 
 \begin{equation}
 \begin{cases}
-X_{n+k}^1 = \Phi_1(k, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m) \\
+X_{n+k}^1 = \Phi_1(n, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m) \\
 \cdots \\
-X_{n+k}^m = \Phi_m(k, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m)
+X_{n+k}^m = \Phi_m(n, X_n^1, \cdots , X_{n+k-1}^1, X_{n}^2, \cdots , X_{n+k-1}^2, \cdots , X_{n}^m, \cdots X_{n+k-1}^m)
 \end{cases}
 \end{equation}
 
@@ -126,33 +126,33 @@ $$\displaystyle\lim_{n\to \infty} X_n = X^*.$$
 \end{definition}
 
 \begin{definition}
-Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor local} si existe $\eta>0$ tal que para cualquier $X_0\in D\cap \text{B}(X^*, \eta )$ se verifica
+Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como (\ref{def_sist_ec}) se dice que es un \textbf{atractor local} (o es localmente asintóticamente estable) si existe $\eta>0$ tal que para cualquier $X_0\in D\cap \text{B}(X^*, \eta )$ se verifica
 $$\displaystyle\lim_{n\to \infty} X_n = X^*.$$
 
 \end{definition}
 
 \begin{definition}
-Un punto de equilibrio $X^*$ de una ecuación en recurrencias $X_{n+1}=f(X_n)$ se dice que es:
+Un punto de equilibrio $X^*$ de una ecuación en diferencias $X_{n+1}=f(X_n)$, con f derivable se dice que es:
 \begin{itemize}
 \item Estable si para cualquier $\epsilon > 0$ existe una constante $\delta > 0$ tal que si $|X_0-X^*|<\delta$ y $X_n=f(X_0)$ con $n\in\mathbb{N}$, entonces se verifica
 $$|X_n-X^*| < \epsilon \quad \forall n \in\mathbb{N}.$$
 \item Asintóticamente estable si es estable y además existe un $\delta > 0$ tal que se cumple que  si $|X_0-X^*|<\delta$ entonces
 $$\lim_{n\rightarrow\infty} X_n = X^*.$$
-\item Inestable si no es estable, esto esm $\exists \epsilon_0 >0$ tal que para todo $\delta >0$ podemos encontrar $X_0$ y $n_0\in\mathbb{N}$ tal que
+\item Inestable si no es estable, esto es $\exists \epsilon_0 >0$ tal que para todo $\delta >0$ podemos encontrar $X_0$ y $n_0\in\mathbb{N}$ tal que
 $$|X_0-X^*|<\delta \quad \text{y} \quad |X_{n_0}-X^*|>\epsilon_0.$$
 \end{itemize}
 \end{definition}
 
 \begin{proposition}
-Si $X^*$ es un punto de equilibrio de una ecuación en recurrencias $X_{n+1}=f(X_n)$ entonces:
+Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$ entonces:
 \begin{itemize}
-\item Si $|f'(X^*)|<1$ entonces $X^*$ es localmente asintóticamente estable.
+\item Si $|f'(X^*)|<1$ entonces $X^*$ es un atractor local o localmente asintóticamente estable.
 \item Si $|f'(X^*)|>1$ entonces $X^*$ es inestable.
 \end{itemize}
 \end{proposition}
 
 \begin{proposition}
-Si $X^*$ es un punto de equilibrio de una ecuación en recurrencias $X_{n+1}=f(X_n)$, con $f\in\text{C}^3$ y $f'(X^*)=1$ entonces:
+Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, con $f\in\text{C}^3$ y $f'(X^*)=1$ entonces:
 \begin{itemize}
 \item Si $|f''(X^*)|\neq 0$ entonces $X^*$ es inestable.
 \item Si $|f''(X^*)|=0$ y $f'''(X^*)<0$ entonces $X^*$ es localmente asintóticamente estable.
@@ -163,6 +163,8 @@ Si $X^*$ es un punto de equilibrio de una ecuación en recurrencias $X_{n+1}=f(X
 
 
 \subsection{Ecuación logística}
+
+En este apartado describiremos la ecuación logística discreta y sus principales propiedades que serán utilizadas más adelante. La teoría puede ampliarse en \cite{strogatzNonlinearDynamicsChaos1994}.
 
 \begin{definition}
 La ecuación logística discreta tiene la siguiente forma:
@@ -182,10 +184,9 @@ Luego debe ser $0\leq \mu \leq 4$.
 
 \end{definition}
 
-La teoría puede ampliarse en \cite{strogatzNonlinearDynamicsChaos1994}.
 
 \begin{proposition}
-Consideramos la ecuación logística con $0\leq X_n$ y $0\leq\mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$, y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
+Consideramos la ecuación logística con $0\leq X_n\leq 1$ y $0\leq\mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$; y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
 \end{proposition}
 \begin{proof}
 Consideramos la ecuación logística:
@@ -198,9 +199,16 @@ Luego se tiene $X^*=0$ o $1=\mu (1-X^*)$, de donde se obtiene $X^*=1-\frac{1}{\m
 
 Estudiamos ahora la estabilidad de los puntos de equilibrio a través de su derivada, para ello consideramos:
 $$f'(X^*)=\mu (1-2X^*).$$
-Entonces se tiene que $f'(0)=\mu$, por lo tanto $X^*=0$ es localmente asintóticamente estable si $\mu < 1$ e inestable si $\mu > 1$. \textcolor{red}{Tengo que estudiar que pasa si mu es 1}
+Entonces se tiene que $f'(0)=\mu$, por lo tanto $X^*=0$ es localmente asintóticamente estable si $\mu < 1$ e inestable si $\mu > 1$. Estudiamos ahora el caso $\mu = 1$.
 
-Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
+Tenemos $f'(x)=\mu (1-2x)$, $f''(x)=-2\mu x$ y $f'''(x)=-2\mu$. Considerando $\mu =1$, tenemos que
+$$f'(0)=1$$,
+$$f''(0)=0$$,
+$$f'''(0)=-2$$.
+
+Por tanto, $0$ es localmente asintóticamente estable.
+
+Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es localmente asintóticamente estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
 
 \textcolor{red}{Aqui pega un grafiquito, pero aun tengo que hacerlo}
 
@@ -222,7 +230,7 @@ $$p,q=\frac{\mu+1\pm \sqrt{(\mu -3)(\mu +1)}}{2\mu}.$$
 
 Estas soluciones son reales si $\mu > 3$ luego existe un 2-ciclo.
 
-Si $\mu = 3$ estas raíces coinciden y valen $p=q=\frac{2}{3}=1-\frac{1}{3}$, luego existe un 2-ciclo.
+Si $\mu = 3$ estas raíces coinciden y valen $p=q=\frac{2}{3}=1-\frac{1}{3}=1-\frac{1}{\mu }$, luego no existe un 2-ciclo, hemos obtenido el mismo punto fijo.
 
 Por último, si $\mu < 3$ las raíces no son reales y por tanto no existe un 2-ciclo.
 \end{proof}
