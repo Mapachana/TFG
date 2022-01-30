@@ -13,8 +13,48 @@ app = dash.Dash()
 fig = go.Figure() 
 
 
+# Funcion para preprocesar el input en modo texto para formato y nulos
+def preprocesar_input(N, alfa, gamma, S0, I0, T):
+    if (N == ''):
+        N = '0'
+    if (alfa == ''):
+        alfa = '0'
+    if (gamma == ''):
+        gamma = '0'
+    if (S0 == ''):
+        S0 = '0'
+    if (I0 == ''):
+        I0 = '0'
+    if (T == ''):
+        T = '10'
+
+
+    N = N.replace(',', '.')
+    alfa = alfa.replace(',', '.')
+    gamma = gamma.replace(',', '.')
+    S0 = S0.replace(',', '.')
+    I0 = I0.replace(',', '.')
+    T = T.replace(',', '.')
+
+    aux = N.split('.')
+    N = aux[0]
+    aux = S0.split('.')
+    S0 = aux[0]
+    aux = I0.split('.')
+    I0 = aux[0]
+    aux = T.split('.')
+    T = aux[0]
+
+    if int(S0) + int(I0) != N:
+        N = int(S0) + int(I0)
+
+
+    return N, alfa, gamma, S0, I0, T
+
+
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
+    Output("N", "value"),
     Output("graph", "figure"), 
     [Input("N", "value")],
     [Input("alfa", "value")],
@@ -23,9 +63,17 @@ fig = go.Figure()
     [Input("I0", "value")],
     [Input("T", "value")])
 def calcular_modelo(N, alfa, gamma, S0, I0, T):
+    print(type(N))
+    print(type(alfa))
+    print(type(gamma))
+    print(type(S0))
+    print(type(I0))
+    print(type(T))
+    N, alfa, gamma, S0, I0, T = preprocesar_input(N, alfa, gamma, S0, I0, T)
     # Convierto a int o float los parametros
     N = int(N)
 
+    print("grafica")
     alfa = float(alfa)
     gamma = float(gamma)
 
@@ -34,6 +82,9 @@ def calcular_modelo(N, alfa, gamma, S0, I0, T):
 
     T0 = 0
     T = int(T)
+
+    if S0 + I0 != N:
+        N = S0 + I0
 
     secciones = 200 #deltaT en realidad es (T-T0)/secciones
 
@@ -67,7 +118,9 @@ def calcular_modelo(N, alfa, gamma, S0, I0, T):
     fig.update_layout(title='Modelo SIS',
                     xaxis_title='Tiempo',
                     yaxis_title='Susceptibles/Infectados')
-    return fig
+
+    
+    return str(N), fig
 
 
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
