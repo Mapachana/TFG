@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 
 import dash
+import dash_bootstrap_components as dbc
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -63,17 +64,12 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
     [Input("I0", "value")],
     [Input("T", "value")])
 def calcular_modelo(N, alfa, gamma, S0, I0, T):
-    print(type(N))
-    print(type(alfa))
-    print(type(gamma))
-    print(type(S0))
-    print(type(I0))
-    print(type(T))
+
     N, alfa, gamma, S0, I0, T = preprocesar_input(N, alfa, gamma, S0, I0, T)
     # Convierto a int o float los parametros
     N = int(N)
 
-    print("grafica")
+
     alfa = float(alfa)
     gamma = float(gamma)
 
@@ -123,8 +119,35 @@ def calcular_modelo(N, alfa, gamma, S0, I0, T):
     return str(N), fig
 
 
+
+intento = html.Div([
+    html.Div([
+        html.Label("A"),
+        html.Label("BAAAAAAAAAAAA")
+    ],
+    style={'display': 'flex', 'flex-direction': 'column'}),
+    html.Div([
+        dcc.Input(
+            id="Naaa".format('text'),
+            type='text',
+            placeholder="100".format('text'),
+            value="100"
+        ),
+        dcc.Input(
+            id="Naaaaaa".format('text'),
+            type='text',
+            placeholder="100".format('text'),
+            value="100"
+        )
+    ],
+    style={'display': 'flex', 'flex-direction': 'column'}),
+    ],
+    style={'display': 'flex', 'flex-direction': 'row'}
+)
+
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 app.layout = html.Div([
+    intento, 
     html.Label("N:"),
     dcc.Input(
             id="N".format('text'),
