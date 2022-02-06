@@ -12,7 +12,7 @@ En estos modelos se hacen dos suposiciones:
 
 En este capítulo estudiaremos los principales modelos epidemiológicos discretos y sus equivalentes continuos.
 
-\section{Modelo SI}
+\section{Modelo SI discreto}
 El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados permanecen infectados el resto de su vida.
 Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
 
@@ -30,7 +30,23 @@ donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e
 
 En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
-\textcolor{red}{Añadir de donde sale de las ecuaciones de arriba la ecuacion logistica}
+
+Además, cabe destacar que a partir de \eqref{eqn: SI} podemos obtener la ecuación logística. Usando $S_n+I-n=N$ tenemos
+$$I_{n+1} = I_n \left( 1+\frac{\alpha\Delta t}{N} (N-I_n)\right) ,$$
+equivalentemente
+\begin{equation}
+\begin{aligned}
+I_{n+1} & = I_n \left( 1+\alpha\Delta t - \frac{\alpha\Delta t}{N}I_n \right) \Leftrightarrow \\
+I_{n+1} & = I_n (1+\alpha\Delta t) \left( 1-\frac{\alpha\Delta t}{N(1+\alpha\Delta t)}I_n \right) \Leftrightarrow \\
+\frac{\alpha\Delta t}{N(1+\alpha\Delta t)} I_{n+1} & = \frac{\alpha\Delta t}{N(1+\alpha\Delta t)}I_n(1+\alpha\Delta t) \left( 1- \frac{\alpha\Delta t}{N(1+\alpha\Delta t)} I_n \right) \\
+\end{aligned}
+\end{equation}
+
+luego, tomando $X_n = \frac{\alpha\Delta t}{N(1+\alpha\Delta t)} I_n$ y renombrando en la expresión anterior, obtenemos:
+
+$$X_{n+1} = (1 + \alpha\Delta t ) X_n(1-X_n).$$
+
+Que se corresponde con la expresión de la ecuación logística tomando $\mu = 1+\alpha\Delta t$.
 
 
 Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
@@ -73,6 +89,8 @@ S^*+I^*=N
 $$
 
 Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$. Puesto que las condiciones iniciales son positivas y como $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
+
+\section{Modelo SI continuo}
 
 Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera. Considerando
 
@@ -143,7 +161,7 @@ En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infec
 \end{center}
 \end{figure}
 
-\section{Modelo SIR}
+\section{Modelo SIR discreto}
 El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden volver a infectarse ni infectar a otros.
 Un ejemplo de este tipo de enfermedad es la varicela. 
 
@@ -164,6 +182,19 @@ En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto 
 
 Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$.
 
+\begin{lemma}
+$S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
+\end{lemma}
+
+\begin{proof}
+
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n > 0$, por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
+
+Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
+
+En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
+\end{proof}
+
 \begin{proposition}
 Las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
 $$\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$$
@@ -173,21 +204,6 @@ o equivalentemente:
 $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 
 \end{proposition}
-
-\begin{lemma}
-$S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
-\end{lemma}
-
-\begin{proof}
-
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n\geq 0$, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$.
-
-Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
-
-En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
-\end{proof}
-
-\textcolor{red}{ el Lema 1 de \cite{allenDiscretetimeSISIR1994} dice que $S_\infty>0$. He estado mirando lo del lío con el límite de $S_n$, pero no he conseguido aclararme. Al hacerlo yo me sale que va a 0, pero el artículo original tiene este lema donde dice que el límite es mayor que 0 y no veo exactamente qué me estoy saltando en el razonamiento}
 
 \begin{proof}
 Comenzamos probando una de las implicaciones, suponiendo que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
@@ -211,7 +227,8 @@ y por tanto:
 $$\alpha\Delta t  \leq 1.$$
 
 En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $S_{n+1}=\beta S_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
-$\frac{\alpha \Delta t}{N}S_n$ tiende a cero. \textcolor{red}{Aqui es donde uso que Sn tiende a 0, pero segun el articulo esto no es verdad}
+$\frac{\alpha \Delta t}{N}S_n$ tiende a cero.
+\textcolor{red}{Esto me suena raro, pero no sé demostrarlo de otra forma}
 
 Luego, despejando tenemos $\gamma\Delta t \leq 1$.
 
@@ -230,7 +247,9 @@ El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo.
 
 En otros trabajos como \cite{demongeotSIEpidemicModel} esta tasa reproductiva se llama tasa de transmisión media.
 
-Además, sabemos por el Lema 1 de \cite{allenDiscretetimeSISIR1994} que $S_\infty>0$.
+\section{Modelo SIR continuo}
+
+
 El modelo continuo correspondiente al modelo SIR se comporta de la misma forma que el modelo discreto, y viene expresado por:
 
 \begin{equation}
@@ -257,7 +276,7 @@ En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en f
 
 \begin{figure}
 \begin{center}
-\caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\caption{Gráfica del modelo SIR, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_IsobreS}
 \includegraphics[scale=0.7]{SIR_IsobreS}
 \end{center}
@@ -284,14 +303,16 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 \begin{figure}
 \begin{center}
 
-\caption{Gráfica del modelo SI discreto, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
+\caption{Gráfica del modelo SIR discreto, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_RsobreI}
 \includegraphics[scale=0.7]{SIR_RsobreI}
 \end{center}
 \end{figure}
 
+\textcolor{red}{AÑADIR EL MODELO KMK difernecias y comparación}
 
-\section{Modelo SIS}
+
+\section{Modelo SIS discreto}
 El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples reinfecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
@@ -429,8 +450,8 @@ Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{
 \end{figure}
 
 
-
-
+\section{Modelo SIS continuo}
+\textcolor{red}{ESTO FALTA Y NO NOS HABIAMOS DADO CUENTA}
 
 
 
