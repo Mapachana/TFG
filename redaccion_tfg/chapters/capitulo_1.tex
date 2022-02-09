@@ -90,6 +90,32 @@ $$
 
 Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$. Puesto que las condiciones iniciales son positivas y como $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
 
+\subsection{Modelo multipoblacional}
+
+El modelo SI discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SI discreto. Se considera el modelo SI con K subpoblaciones:
+
+\begin{equation}
+\label{eqn: SI multipoblational}
+\begin{aligned}
+S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
+I_{n+1}^i &= I_n^i + S_n^i \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k
+\end {aligned}
+\end{equation}
+
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
+
+Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
+
+\begin{proposition}
+Las soluciones del sistema \eqref{eqn: SI multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i} \right\} \leq 1$$
+\end{proposition}
+
+\begin{proposition}
+Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$ y se aproxima a $0$, mientras $I_n^i$ es monótonamente creciente y se aproxima a $N^i$. 
+\end{proposition}
+
+
 \section{Modelo SI continuo}
 
 Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera. Considerando
@@ -246,6 +272,47 @@ $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
 El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo.
 
 En otros trabajos como \cite{demongeotSIEpidemicModel} esta tasa reproductiva se llama tasa de transmisión media.
+
+\subsection{Modelo multipoblacional}
+
+El modelo SIR discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SIR discreto. Se considera el modelo SIR con K subpoblaciones:
+
+\begin{equation}
+\label{eqn: SIR multipoblational}
+\begin{aligned}
+S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
+I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\Delta t}{N^i}I_n^k \\
+R_{n+1}^i &= R_n^i+\gamma_i\Delta t I_n^i
+\end {aligned}
+\end{equation}
+
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
+
+Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
+
+\begin{proposition}
+Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i}, \gamma_i\Delta t \right\} \leq 1$$
+\end{proposition}
+
+\begin{proposition}
+Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$, mientras $R_n^i$ es monótonamente estrictamente creciente. Además, al estar ambas acotadas, se obtiene que $I_n^i$ se aproxima a $0$ en el límite $n\rightarrow \infty$. 
+\end{proposition}
+
+En el modelo multipoblacional no es tan simple determinar si ocurre una epidemia en una subpoblación como en el modelo con una sola población.
+
+Consideramos
+$$\mathcal{R}_{i_{SIR}} = \frac{S_0^i\alpha_{ii}}{\gamma_i N^i}.$$
+
+Si $\mathcal{R}_{i_{SIR}}>1$ entonces el número de infectados en la i-ésima población comenzará a crecer. Sin embargo, si $\mathcal{R}_{i_{SIR}} \leq 1$ no es suficiente para garantizar que no se producirá una epidemia en la población i-esima, ya que las otras poblaciones influyen también en esta.
+
+En lugar de considerar las subpoblaciones independientemente unas de otras, se debe tener en cuenta el total de infectados:
+$$I_n = \sum_{i=1}^{K}I_n^i.$$
+Si $\max_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}\leq 1$ entonces $I_n$ decrece y no hay una epidemia.
+
+Si $\min_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}> 1$ entonces $I_n$ crece y hay una epidemia.
+
+Como hemos visto, no se puede definir de manera sencilla una tasa reproductiva.
 
 \section{Modelo SIR continuo}
 
@@ -449,10 +516,44 @@ Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{
 \end{center}
 \end{figure}
 
+\subsection{Modelo multipoblacional}
+
+El modelo SIS discreto multipoblacional muestra el mismo comportamiento que el modelo SIS discreto. Se considera el modelo SIS con K subpoblaciones:
+
+\begin{equation}
+\label{eqn: SIS multipoblational}
+\begin{aligned}
+S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) +\gamma_i \Delta t I_n^i\\
+I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\Delta t}{N^i}I_n^k 
+\end {aligned}
+\end{equation}
+
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a susceptible de nuevo en un intervalo de tiempo.
+
+Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
+
+\begin{proposition}
+Las soluciones del sistema \eqref{eqn: SIS multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+$$\max_i \left\{ \sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}, \gamma_i\Delta t \right\} \leq 1, \quad  \alpha_{ii}\Delta t\leq \left( \sqrt{1-\sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}} + \sqrt{\gamma_i\Delta t} \right)^2$$
+\end{proposition}
+
+
 
 \section{Modelo SIS continuo}
-\textcolor{red}{ESTO FALTA Y NO NOS HABIAMOS DADO CUENTA}
 
+El modelo continuo correspondiente al modelo SIS se comporta de la misma forma que el modelo discreto, y viene expresado por:
+
+\begin{equation}
+\label{eqn: modelo_SIS_continuo}
+\begin{aligned}
+S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
+I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
+\end{aligned}
+\end{equation}
+
+donde $S(0)+I(0)=N$.
+
+Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
 
 
 \section{Análisis de los parámetros de los modelos}
