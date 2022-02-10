@@ -3,3 +3,5 @@ numpy
 pandas
 plotly==5.6.0
 flask
+dash
+

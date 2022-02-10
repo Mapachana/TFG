@@ -9,6 +9,6 @@ ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
 ENV FLASK_ENV development
 
-RUN ls
-        
-CMD ["flask", "run"]
+CMD ["sh", "-c", "ls; pwd; python3 ./paginaSIS.py & (cd app && flask run)"]
+#CMD ["ls", "&&", "python3", "paginaSIS.py", "&"]
+#, "(", "cd", "app", "&&", "flask", "run", ")"]
