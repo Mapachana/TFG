@@ -24,3 +24,5 @@ prueba = "10.1a"
 print(bool(pattern.match(prueba)))
 prueba = "10a2"
 print(bool(pattern.match(prueba)))
+prueba = ""
+print(bool(pattern.match(prueba)))
