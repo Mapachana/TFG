@@ -9,7 +9,7 @@ from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
 
-app = dash.Dash()
+from app_dash import app
 
 # Declaramos la figura
 fig = go.Figure() 
@@ -180,12 +180,12 @@ style={'display': 'flex', 'flex-direction': 'row'}
 )
 
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
-app.layout = html.Div([
+layout = html.Div([
     parametros,
     dcc.Graph(id="graph", figure=fig)
 ])
 
 
-app.run_server(debug=True, use_reloader=True)  # Turn off reloader if inside Jupyter
+#app.run_server(debug=True, use_reloader=True)  # Turn off reloader if inside Jupyter
 
 # Regex sacada de https://codereview.stackexchange.com/questions/223970/a-regex-pattern-that-matches-all-forms-of-integers-and-decimal-numbers-in-python
