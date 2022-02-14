@@ -61,17 +61,17 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
 
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
-    Output("N_SIS", "value"),
-    Output("graph-SIS", "figure"), 
-    [Input("N_SIS", "value")],
+    Output("N_SIR", "value"),
+    Output("graph-SIR", "figure"), 
+    [Input("N_SIR", "value")],
     [Input("alfa", "value")],
     [Input("gamma", "value")],
     [Input("S0", "value")],
     [Input("I0", "value")],
     [Input("T", "value")])
-def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
+def calcular_modelo(N_SIR, alfa, gamma, S0, I0, T):
 
-    N, alfa, gamma, S0, I0, T = preprocesar_input(N_SIS, alfa, gamma, S0, I0, T)
+    N, alfa, gamma, S0, I0, T = preprocesar_input(N_SIR, alfa, gamma, S0, I0, T)
     
     # Convierto a int o float los parametros
     N = int(N)
@@ -138,7 +138,7 @@ parametros = html.Div([
     style={'display': 'flex', 'flex-direction': 'column', 'font-size': '18px'}),
     html.Div([
         dcc.Input(
-            id="N_SIS".format('text'),
+            id="N_SIR".format('text'),
             type='text',
             placeholder="100".format('text'),
             value="100"
@@ -182,7 +182,7 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIS", figure=fig)
+    dcc.Graph(id="graph-SIR", figure=fig)
 ])
 
 
