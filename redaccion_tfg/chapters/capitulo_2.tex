@@ -1,0 +1,257 @@
+\chapter{Modelos básicos continuos en epidemiología}
+
+\section{Tipos de modelos}
+
+Los modelos continuos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
+
+En estos modelos se hacen dos suposiciones:
+\begin{enumerate}
+\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
+\item El total de la población es constante y lo denotaremos por $N$.
+\end{enumerate}
+
+En este capítulo estudiaremos los principales modelos epidemiológicos continuos análogos a los estudiados en el capítulo anterior.
+
+
+\section{Modelo SI continuo}
+
+Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales análogas de la siguiente manera. Considerando
+
+$$\frac{S_{n+1} - S_n}{\Delta t} \approx S'(t),$$
+
+El análogo continuo al sistema \eqref{eqn: SI} viene dado por:
+
+\begin{equation}
+\begin{aligned}
+S'(t) = -\frac{\alpha}{N}SI \\
+I'(t) = \frac{\alpha}{N}SI
+\end{aligned}
+\end{equation}
+
+con condiciones iniciales $S(0)+I(0)=N$.
+
+Calculamos los puntos de equilibrio de manera análoga al caso discreto, es decir, suponemos que las funciones son constantes y, resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $(S^*,I^*)=(0,N)$ y, por tanto, tienen el mismo comportamiento que el caso discreto.
+
+Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística continua
+
+$$I'(t) = I\frac{\alpha}{N}(N-I).$$
+
+Esta ecuación diferencial se puede resolver por separación de variables como sigue:
+
+\begin{equation}
+\begin{aligned}
+I'(t)=\frac{\alpha}{N}I(N-I(t)) & \Leftrightarrow \int \frac{dI}{I(N-I)} = \int \frac{\alpha}{N} dt \\
+& \Leftrightarrow \frac{1}{N}\int \left(\frac{1}{I}+\frac{1}{N-I}\right) dI = \frac{\alpha}{N}t+c \\
+& \Leftrightarrow  \frac{1}{N}\log{\frac{I}{N-I}} = e^{\frac{\alpha}{N}t+c} \\
+& \Leftrightarrow  \frac{I}{N-I} = e^ce^{\alpha t} \\
+& \Leftrightarrow  I = e^ce^{\alpha t}(N-I) \\
+& \Leftrightarrow  I(1+e^ce^{\alpha t}) = e^ce^{\alpha t}N \\
+& \Leftrightarrow  I(t) = \frac{e^ce^{\alpha t}N}{1+e^ce^{\alpha t} }
+\end{aligned}
+\end{equation}
+
+Usando el valor inicial $I(0)$ tenemos:
+
+\begin{equation}
+\begin{aligned}
+I(0) = \frac{e^cN}{1+e^c} & \Leftrightarrow (1+e^c)I(0) = e^cN \\
+& \Leftrightarrow e^c(N-I(0)) = I(0) \\
+& \Leftrightarrow e^c = \frac{I(0)}{N-I(0)}
+\end {aligned}
+\end{equation}
+
+luego la solución general es:
+
+$$I(t) = \frac{I(0)e^{\alpha t}N}{(N-I(0))+I(0)e^{\alpha t}} = \frac{I(0)N}{(N-I(0))e^{-\alpha t}+I(0)}$$
+
+Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
+
+
+\section{Modelo SIR continuo}
+
+
+El modelo continuo correspondiente al modelo SIR se comporta de la misma forma que el modelo discreto, y viene expresado por:
+
+\begin{equation}
+\label{eqn: modelo_SIR_continuo}
+\begin{aligned}
+S'(t) = & -\dfrac{\alpha}{N}SI \\
+I'(t) = & I\left(\dfrac{\alpha}{N}S-\gamma \right) \\
+R'(t) = & R+\gamma I
+\end{aligned}
+\end{equation}
+
+donde $S(0)+I(0)+R(0)=N$. La tasa reproductiva en este caso se define como
+$$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma },$$
+y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor, se dice que sí la hay.
+
+
+\section{Modelo SIS continuo}
+
+El modelo continuo correspondiente al modelo SIS se comporta de la misma forma que el modelo discreto, y viene expresado por:
+
+\begin{equation}
+\label{eqn: modelo_SIS_continuo}
+\begin{aligned}
+S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
+I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
+\end{aligned}
+\end{equation}
+
+donde $S(0)+I(0)=N$.
+
+Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
+
+
+\section{Análisis de los parámetros de los modelos}
+
+\subsection{Introducción}
+
+Estimar la tasa de transmisión media es uno de los aspectos más cruciales en epidemiología. Esta tasa condiciona la fase de la epidemia e incluso si va a extinguirse. Es combinación de tres factores:
+
+\begin{enumerate}
+\item Coeficiente de virulencia: Relacionado con el agente infeccioso.
+\item Coeficiente de susceptibilidad: Relacionado con el anfitrión.
+\item Número de contactos por unidad de tiempo entre individuos.
+\end{enumerate}
+
+Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de transmisión.
+
+Todos los factores pueden cambiar con el tiempo. El primero, debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
+
+En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento, y así tratar de predecir su comportamiento en el futuro.
+
+El modelo SI continuo considerado es el siguiente:
+
+\begin{equation}
+\label{eqn: SI_cont}
+\begin{aligned}
+S'(t) = & -\tau (t)S(t)I(t) \\
+I'(t) = & \tau (t)S(t)I(t) -vI(t)
+\end{aligned}
+\end{equation}
+
+donde $S(t)$ es el número de individuos susceptibles , $I(t)$ el número de individuos infectados en el tiempo $t$ y $\tau (t)$ la tasa de transmisión, que combina el número de contactos por unidad de tiempo y la probabilidad de transmisión. Observemos que $\tau (t)$ se considera variable respecto al tiempo, al contrario que en el caso SI clásico estudiado antes. Además, notemos que $v$ es una constante, donde $1/v$ es la duración media del período de infección, y $vI(t)$ el flujo de individuos recuperados o fallecidos. %vI(t) es el flujo de recuperados o muertos porque ha mezclado el modelo SI y SIR; vI(t) serian los recuperados, pero se ahorra la ecuacion de la R
+
+Se consideran las condiciones iniciales
+
+$$S(t_0)=S_0>0, \: I(t_0)=I_0>0.$$
+
+Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso la fracción la denotamos por $f\in (0,1]$. Sea $C_R(t)$ el número total acumulado de casos reportados. Entonces:
+
+\begin{equation}
+\label{eqn: acumulada}
+C_R(t) = {C_R}_0 + vfC_I(t) \; \forall t \geq t_0
+\end{equation}
+
+donde $C_{R0}$ representa el número de casos reportados al inicio del estudio y 
+
+$$C_I(t) = \int_{t_0}^t I(w) dw $$
+
+siendo $C_I$ el número total de infectados acumulado.
+
+Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar el número inicial de infectados $I_0$ y la tasa de transmisión $\tau (t)$.
+
+\subsection{Aproximación de $I_0$ y $\tau (t_0)$}
+Procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
+
+Al comienzo de la pandemia podemos suponer que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$, respectivamente. Sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
+
+$$I'(t) = (\tau_0 S_0 -v) I(t).$$
+
+Resolviendo la ecuación diferencial llegamos a:
+
+$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}.$$
+
+Sustituyendo en \eqref{eqn: acumulada}:
+
+$$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}.$$
+
+De este modo, hemos obtenido un primer modelo para los casos acumulados al principio de la pandemia.
+
+Reescribimos la ecuación anterior como:
+
+\begin{equation}
+\label{eqn: acumulada_modelo}
+C_R(t) = \chi_1 \mathrm{e}^{\chi_2 t} -\chi_3.
+\end{equation}
+
+Estimamos $\chi_3$ usando los datos de la epidemia obtenidos, y el mejor ajuste para los datos se obtiene con $\chi_3=0$.
+
+Ahora, usando \eqref{eqn: acumulada} y \eqref{eqn: acumulada_modelo} tenemos:
+
+\begin{equation}
+I_0=\frac{\chi_1\chi_2\mathrm{e}^{\chi_2 t_0}}{vf}
+\end{equation}
+
+Y, como sabemos que $\chi_2 = \tau_0 S_0-v$, entonces
+
+\begin{equation}
+\tau_0 = \frac{\chi_2+v}{S_0}.
+\end{equation}
+
+Si suponemos $\tau (t) = \tau_0$ constante, tenemos que el modelo queda:
+
+\begin{equation}
+\begin{aligned}
+S'(t) = -\tau_0S(t)I(t) \\
+I'(t) = \tau_0S(t)I(t) -vI(t)
+\end{aligned}
+\end{equation}
+
+Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
+
+$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(w) dw \right)} = S_0\exp{(-\tau_0 C_I(t))}$$
+
+Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $C_I'(t)=I(t)$:
+
+$$I'(t) = S_0\exp{\left( -\tau_0 C_I(t)\right) }\tau_0 C_I'(t)-vI(t)$$
+
+Finalmente, integrando entre $t_0$ y $t$ tenemos que:
+
+$$I(t)=C_I'(t)=I_0+S_0(1-\exp{(-\tau_0 C_I(t)}))-vC_I(t)$$
+ 
+Observamos entonces que el número total de infectados es monótono creciente, ya que $I(t)>0$ siempre por positividad de las soluciones y $C_I'(t)=I(t)>0$. Cabe destacar que esto no implica que el número de infectados sea monótono creciente.
+
+\begin{theorem}
+Sea $t>t_0$ fijo. El número de infectados acumulados es estrictamente creciente respecto a las siguiente cantidades:
+\begin{itemize}
+\item $I_0>0$: Número inicial de infectados
+\item $S_0>0$: Número inicial de individuos susceptibles.
+\item $\tau>0$: Tasa de transmisión
+\item $1/v$: Tiempo medio de la infección.
+\end{itemize}
+\end{theorem}
+
+\subsection{Fórmula teórica para $\tau (t)$}
+
+Usando la ecuación del modelo inicial \eqref{eqn: SI_cont} obtenemos:
+% La ecuacion de la S$
+
+$$S(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(w) I(w) dw \right) } $$ 
+
+Ahora, sustituyendo en la ecuación \eqref{eqn: SI_cont}:
+% La ecuacion de la I
+
+$$I'(t) = S_0 \exp{\left( - \int_{t_0}^t \tau(w) I(w) dw \right) } \tau (t) I(t) -vI(t) $$
+
+Integramos en ambos lados entre $t_0$ y $t$, luego:
+
+$$ C_I'(t) = I_0 + S_0 \left( 1-\exp{\left(- \int_{t_0}^t \tau (w) I(w)dw \right)}\right) -vC_I(t)$$
+
+Equivalentemente, por \eqref{eqn: acumulada}:
+
+$$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (w ) I(w)dw \right)}\right)\right) +v{C_R}_0 -vC_R(t)$$
+
+\textcolor{red}{TODO Esta cuenta no termina de salirme, pero tiene más o menos sentido}
+
+Así, obtenemos el Teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
+
+\textcolor{blue}{He estado leyendo el resto del artículo, en el que habla de obtener una expresión explícita de $\tau (t)$ e $I_0$, pero para eso usan datos de China en específico y ajustes por ordenador, así que no tengo muy claro si merece la pena incluir esa parte ya que no tenemos los datos y por tanto sería fiarse un poco de lo que han hecho ellos}
+
+
+
+
+
+
+
