@@ -9,16 +9,16 @@ def hello_world():
     return render_template('index.html')
 
 # Ruta para cada uno de los modelos basicos, de momento todas devuelven home
-@app.route('/modelosi')
-def modelosi():
-    return render_template('index.html')
+@app.route('/modeloSI')
+def modeloSI():
+    return render_template('modeloSI.html')
 
-@app.route('/modelosir')
-def modelosir():
-    return render_template('index.html')
+@app.route('/modeloSIR')
+def modeloSIR():
+    return render_template('modeloSIR.html')
 
-@app.route('/modelosis')
-def modelosis():
-    return render_template('index.html')
+@app.route('/modeloSIS')
+def modeloSIS():
+    return render_template('modeloSIS.html')
 
 

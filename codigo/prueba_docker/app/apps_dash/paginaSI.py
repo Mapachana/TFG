@@ -14,16 +14,17 @@ from app_dash import app
 # Declaramos la figura
 fig = go.Figure() 
 
+mathjax = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML'
+app.scripts.append_script({ 'external_url' : mathjax })
 
 # Funcion para preprocesar el input en modo texto para formato y nulos
-def preprocesar_input(N, alfa, gamma, S0, I0, T):
+def preprocesar_input(N, alfa, S0, I0, T):
     # Regex ed int o float
     pattern = re.compile("^[+-]?((\d+(\.\d+)?)|(\.\d+))$")
     
     # Reemplazo cualquier coma , por punto .
     N = N.replace(',', '.')
     alfa = alfa.replace(',', '.')
-    gamma = gamma.replace(',', '.')
     S0 = S0.replace(',', '.')
     I0 = I0.replace(',', '.')
     T = T.replace(',', '.')
@@ -33,8 +34,6 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
         N = '0'
     if not bool(pattern.match(alfa)):
         alfa = '0'
-    if not bool(pattern.match(gamma)):
-        gamma = '0'
     if not bool(pattern.match(S0)):
         S0 = '0'
     if not bool(pattern.match(I0)):
@@ -56,28 +55,26 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
         N = int(S0) + int(I0)
 
 
-    return N, alfa, gamma, S0, I0, T
+    return N, alfa, S0, I0, T
 
 
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
-    Output("N_SIS", "value"),
-    Output("graph-SIS", "figure"), 
-    [Input("N_SIS", "value")],
+    Output("N_SI", "value"),
+    Output("graph-SI", "figure"), 
+    [Input("N_SI", "value")],
     [Input("alfa", "value")],
-    [Input("gamma", "value")],
     [Input("S0", "value")],
     [Input("I0", "value")],
     [Input("T", "value")])
-def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
+def calcular_modelo(N_SI, alfa, S0, I0, T):
 
-    N, alfa, gamma, S0, I0, T = preprocesar_input(N_SIS, alfa, gamma, S0, I0, T)
+    N, alfa, S0, I0, T = preprocesar_input(N_SI, alfa, S0, I0, T)
     
     # Convierto a int o float los parametros
     N = int(N)
 
     alfa = float(alfa)
-    gamma = float(gamma)
 
     S0 = int(S0)
     I0 = int(I0)
@@ -102,8 +99,8 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
 
     # Calculo los datos a representar
     for j in range (secciones-1):
-        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])+gamma*deltaT*I[j]
-        I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*S[j])
+        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])
+        I[j+1] = I[j]*(1+(alfa*deltaT/N)*S[j])
 
     # Figura
     dfS = pd.DataFrame({'tiempo':tiempo, 'Susceptibles':S})
@@ -117,7 +114,7 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
                         mode='lines',  #lines+markers
                         name='Infectados'))
 
-    fig.update_layout(title='Modelo SIS',
+    fig.update_layout(title='Modelo SI',
                     xaxis_title='Tiempo',
                     yaxis_title='Susceptibles/Infectados')
 
@@ -130,7 +127,6 @@ parametros = html.Div([
     html.Div([
         html.Label("N: "),
         html.Label("Alfa: "),
-        html.Label("Gamma: "),
         html.Label("S0: "),
         html.Label("I0: "),
         html.Label("T: "),
@@ -138,7 +134,7 @@ parametros = html.Div([
     style={'display': 'flex', 'flex-direction': 'column', 'font-size': '18px'}),
     html.Div([
         dcc.Input(
-            id="N_SIS".format('text'),
+            id="N_SI".format('text'),
             type='text',
             placeholder="100".format('text'),
             value="100"
@@ -148,12 +144,6 @@ parametros = html.Div([
             type='text',
             placeholder="0.1".format('text'),
             value="0.1"
-        ),
-         dcc.Input(
-            id="gamma".format('text'),
-            type='text',
-            placeholder="0.01".format('text'),
-            value="0.01"
         ),
         dcc.Input(
             id="S0".format('text'),
@@ -182,7 +172,7 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIS", figure=fig)
+    dcc.Graph(id="graph-SI", figure=fig)
 ])
 
 

@@ -16,7 +16,7 @@ fig = go.Figure()
 
 
 # Funcion para preprocesar el input en modo texto para formato y nulos
-def preprocesar_input(N, alfa, gamma, S0, I0, T):
+def preprocesar_input(N, alfa, gamma, S0, I0, R0, T):
     # Regex ed int o float
     pattern = re.compile("^[+-]?((\d+(\.\d+)?)|(\.\d+))$")
     
@@ -26,6 +26,7 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
     gamma = gamma.replace(',', '.')
     S0 = S0.replace(',', '.')
     I0 = I0.replace(',', '.')
+    R0 = R0.replace(',', '.')
     T = T.replace(',', '.')
 
     # Si algun valor introducido no es int o float lo pongo a 0
@@ -39,6 +40,8 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
         S0 = '0'
     if not bool(pattern.match(I0)):
         I0 = '0'
+    if not bool(pattern.match(R0)):
+        R0 = '0'
     if not bool(pattern.match(T)):
         T = '10'
 
@@ -49,29 +52,32 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
     S0 = aux[0]
     aux = I0.split('.')
     I0 = aux[0]
+    aux = R0.split('.')
+    R0 = aux[0]
     aux = T.split('.')
     T = aux[0]
 
-    if int(S0) + int(I0) != N:
-        N = int(S0) + int(I0)
+    if int(S0) + int(I0) + int(R0) != N:
+        N = int(S0) + int(I0) + int(R0)
 
 
-    return N, alfa, gamma, S0, I0, T
+    return N, alfa, gamma, S0, I0, R0, T
 
 
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
-    Output("N_SIS", "value"),
-    Output("graph-SIS", "figure"), 
-    [Input("N_SIS", "value")],
+    Output("N_SIR", "value"),
+    Output("graph-SIR", "figure"), 
+    [Input("N_SIR", "value")],
     [Input("alfa", "value")],
     [Input("gamma", "value")],
     [Input("S0", "value")],
     [Input("I0", "value")],
+    [Input("R0", "value")],
     [Input("T", "value")])
-def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
+def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
 
-    N, alfa, gamma, S0, I0, T = preprocesar_input(N_SIS, alfa, gamma, S0, I0, T)
+    N, alfa, gamma, S0, I0, R0, T = preprocesar_input(N_SIR, alfa, gamma, S0, I0, R0, T)
     
     # Convierto a int o float los parametros
     N = int(N)
@@ -81,12 +87,13 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
 
     S0 = int(S0)
     I0 = int(I0)
+    R0 = int(R0)
 
     T0 = 0
     T = int(T)
 
-    if S0 + I0 != N:
-        N = S0 + I0
+    if S0 + I0 + R0 != N:
+        N = S0 + I0 + R0
 
     secciones = 200 #deltaT en realidad es (T-T0)/secciones
 
@@ -96,18 +103,23 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
 
     S = np.linspace(T0, T, secciones)
     I = np.linspace(T0, T, secciones)
+    R = np.linspace(T0, T, secciones)
 
     S[0] = S0
     I[0] = I0
+    R[0] = R0
 
     # Calculo los datos a representar
     for j in range (secciones-1):
-        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])+gamma*deltaT*I[j]
+        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])
         I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*S[j])
+        R[j+1] = R[j]+gamma*deltaT*I[j]
 
     # Figura
     dfS = pd.DataFrame({'tiempo':tiempo, 'Susceptibles':S})
     dfI = pd.DataFrame({'tiempo':tiempo, 'Infectados':I})
+    dfR = pd.DataFrame({'tiempo':tiempo, 'Recuperados':R})
+
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=tiempo, y=S,
@@ -116,10 +128,13 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
     fig.add_trace(go.Scatter(x=tiempo, y=I,
                         mode='lines',  #lines+markers
                         name='Infectados'))
+    fig.add_trace(go.Scatter(x=tiempo, y=R,
+                        mode='lines',  #lines+markers
+                        name='Recuperados'))
 
-    fig.update_layout(title='Modelo SIS',
+    fig.update_layout(title='Modelo SIR',
                     xaxis_title='Tiempo',
-                    yaxis_title='Susceptibles/Infectados')
+                    yaxis_title='Susceptibles/Infectados/Recuperados')
 
     
     return str(N), fig
@@ -133,12 +148,13 @@ parametros = html.Div([
         html.Label("Gamma: "),
         html.Label("S0: "),
         html.Label("I0: "),
+        html.Label("R0: "),
         html.Label("T: "),
     ],
     style={'display': 'flex', 'flex-direction': 'column', 'font-size': '18px'}),
     html.Div([
         dcc.Input(
-            id="N_SIS".format('text'),
+            id="N_SIR".format('text'),
             type='text',
             placeholder="100".format('text'),
             value="100"
@@ -168,6 +184,12 @@ parametros = html.Div([
             value="5"
         ),
         dcc.Input(
+            id="R0".format('text'),
+            type='text',
+            placeholder="0".format('text'),
+            value="0"
+        ),
+        dcc.Input(
             id="T".format('text'),
             type='text',
             placeholder="150".format('text'),
@@ -182,7 +204,7 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIS", figure=fig)
+    dcc.Graph(id="graph-SIR", figure=fig)
 ])
 
 
