@@ -3,7 +3,7 @@ from dash import html
 from dash.dependencies import Input, Output
 
 from app_dash import app
-from apps_dash import app1, app2, paginaSIS, paginaSI, paginaSIR
+#from apps_dash import app1, app2, paginaSIS, paginaSI, paginaSIR
 
 
 app.layout = html.Div([
@@ -16,14 +16,19 @@ app.layout = html.Div([
               Input('url', 'pathname'))
 def display_page(pathname):
     if pathname == '/apps/app1':
+        from apps_dash import app1
         return app1.layout
     elif pathname == '/apps/app2':
+        from apps_dash import app2
         return app2.layout
     elif pathname == '/apps/modeloSIS':
+        from apps_dash import paginaSIS
         return paginaSIS.layout
     elif pathname == '/apps/modeloSI':
+        from apps_dash import paginaSI
         return paginaSI.layout
     elif pathname == '/apps/modeloSIR':
+        from apps_dash import paginaSIR
         return paginaSIR.layout
     else:
         return '404'

@@ -1,22 +1,18 @@
 \chapter{Modelos básicos discretos en epidemiología}
 
-\section{Tipos de modelos}
-
-Los modelos discretos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
-
-En estos modelos se hacen dos suposiciones:
-\begin{enumerate}
-\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
-\item El total de la población es constante y lo denotaremos por $N$.
-\end{enumerate}
+\section{Modelos discretos}
 
 En este capítulo estudiaremos los principales modelos epidemiológicos discretos.
 
-\section{Modelo SI discreto}
+En un modelo discreto el tiempo se considera que toma valores discreteos, siendo estos $1,2,3...$, expresado en horas, días, semanas...
+
+Para realizar este capítulo se han usado las referencias \cite{allenDiscretetimeSISIR1994}.
+
+\section{Modelo SI}
 El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados permanecen infectados el resto de su vida.
 Un ejemplo de una enfermedad que pueda modelarse usando SI es el herpes.
 
-Las siguientes ecuaciones describen el modelo SI discreto:
+Para $n\geq 0$ las siguientes ecuaciones describen el modelo SI discreto:
 
 \begin{equation}
 \label{eqn: SI}
@@ -31,7 +27,7 @@ donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e
 En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
 
-Además, cabe destacar que a partir de \eqref{eqn: SI} podemos obtener la ecuación logística. Usando $S_n+I-n=N$ tenemos
+Además, cabe destacar que a partir de \eqref{eqn: SI} podemos obtener la ecuación logística. Usando $S_n+I_n=N$ tenemos
 $$I_{n+1} = I_n \left( 1+\frac{\alpha\Delta t}{N} (N-I_n)\right) ,$$
 equivalentemente
 \begin{equation}
@@ -51,14 +47,6 @@ Que se corresponde con la expresión de la ecuación logística tomando $\mu = 1
 
 Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
 
-\begin{lemma}
-$S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente.
-\end{lemma}
-
-\begin{proof}
-$S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$.
-\end{proof}
-
 \begin{proposition}
 Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\alpha\Delta t \leq 1$.
 \end{proposition}
@@ -77,6 +65,13 @@ Como $\alpha\Delta t S_n > 0$, tenemos entonces que la desigualdad se da para to
 $$\alpha\Delta t -1 \leq 0 \Leftrightarrow \alpha\Delta t \leq 1.$$
 \end{proof}
 
+\begin{lemma}
+$S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente.
+\end{lemma}
+
+\begin{proof}
+$S_{n+1}$ es $S_n$ multiplicado por un valor menor que $1$, mientras que $I_{n+1}$ corresponde a $I_n$ multiplicado por un valor mayor que $1$.
+\end{proof}
 
 Buscamos ahora ver cual es el comportamiento del sistema, calculando los puntos de equilibrio; esto es, las soluciones constantes en el tiempo, resolviendo:
 
@@ -92,7 +87,7 @@ Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N
 
 \subsection{Modelo multipoblacional}
 
-El modelo SI discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SI discreto. Se considera el modelo SI con K subpoblaciones:
+El modelo SI discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SI discreto. Este modelo permite agrupar la población en varias subpoblaciones que se relacionan entre ellas, a la vez que los individuos de cada una de ellas interactúan, permitiendo así obtener datos más realistas. Se considera el modelo SI con k subpoblaciones:
 
 \begin{equation}
 \label{eqn: SI multipoblational}
@@ -102,7 +97,7 @@ I_{n+1}^i &= I_n^i + S_n^i \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
@@ -132,7 +127,7 @@ En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infec
 \end{center}
 \end{figure}
 
-\section{Modelo SIR discreto}
+\section{Modelo SIR}
 El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden volver a infectarse ni infectar a otros.
 Un ejemplo de este tipo de enfermedad es la varicela. 
 
@@ -153,19 +148,6 @@ En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto 
 
 Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$.
 
-\begin{lemma}
-$S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
-\end{lemma}
-
-\begin{proof}
-
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n > 0$, por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
-
-Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
-
-En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer y se aproxima a $0$.
-\end{proof}
-
 \begin{proposition}
 Las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
 $$\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$$
@@ -179,12 +161,12 @@ $$\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t$$
 \begin{proof}
 Comenzamos probando una de las implicaciones, suponiendo que $\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1$.
 
-Por hipótesis inicial, tenemos que $S_0, I_0, R_0>0$ y $S_0+I_0+R_0=N$, luego es suficiente comprobar que:
+Por hipótesis inicial, tenemos que $S_0, I_0>0$, $R_0\geq0$ y $S_0+I_0+R_0=N$, luego es suficiente comprobar que:
 $$1-\frac{\alpha \Delta t}{N}I_0>0.$$
 Lo cual es evidente, pues $\frac{I_n}{N}<1$ por hipótesis del modelo y $\alpha \Delta t<1$.
 
-Por un razonamiento análogo, tenemos que $$1-\gamma \Delta t+\frac{\alpha\Delta t}{N}S_0 > 0.$$
-Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t <0$.
+Por un razonamiento análogo, como $\gamma\Delta t < 1$, tenemos que $$1-\gamma \Delta t+\frac{\alpha\Delta t}{N}S_0 > 0.$$
+Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t >0$.
 
 Aplicando un razonamiento por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas.
 
@@ -192,14 +174,15 @@ Para probar el recíproco basta probar que ambas cantidades son menores o iguale
 % suponemos la positividad para $n$ y probándola para $n+1$:
 
 $$S_{n+1}=S_n\left(1-\frac{\alpha\Delta t}{N}I_n\right)$$
-Por hipótesis $S_n>0$, entonces basta ver que $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ luego:
+Por hipótesis $S_n, S_{n+1}>0$, entonces $1-\frac{\alpha\Delta t}{N}I_n>0$. Usamos de nuevo que $I_n \leq N$ luego:
 $$0<1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t,$$
 y por tanto:
 $$\alpha\Delta t  \leq 1.$$
 
-En la segunda ecuación, como sabemos que $S_n$ es estrictamente decreciente, pues es una sucesión de la forma $S_{n+1}=\beta S_n$ con $\beta < 1$, entonces es cada vez más pequeño y el factor
-$\frac{\alpha \Delta t}{N}S_n$ tiende a cero.
-\textcolor{red}{Esto me suena raro, pero no sé demostrarlo de otra forma}
+Puesto que $\alpha\Delta t \leq 1$ y $I_n\leq N$, $n\geq 0$, entonces $S_{n+1}<S_n$ para cualquier $n\geq 0$, luego es una sucesión estrictamente decreciente. Por otro lado, $I_n$ es siempre positiva, por tanto
+$$1-\gamma\Delta t+\frac{\alpha\Delta t}{N} S_n > 0 \quad n\geq 0,$$
+
+y $S_n$ estrictamente decreciente, por tanto $1-\gamma\Delta t\geq 0$.
 
 Luego, despejando tenemos $\gamma\Delta t \leq 1$.
 
@@ -207,16 +190,30 @@ De la última ecuación no sacamos ninguna condición más, pues su solución es
 
 \end{proof}
 
-Por tanto, a partir del resultado anterior podemos deducir que el intervalo de tiempo, $\Delta t$, debe ser menor que el tiempo medio requerido para contagiar a oro individuo susceptible, $\alpha$, y menor que el período medio infeccioso, $\gamma$.
+
+\begin{lemma}
+$S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
+\end{lemma}
+
+\begin{proof}
+
+Sea $S_\infty=\lim_{n\rightarrow\infty} S_n > 0$, por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
+
+Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
+
+En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer.
+\end{proof}
+
+Por tanto, a partir del resultado anterior podemos deducir que el intervalo de tiempo, $\Delta t$, debe ser menor que el tiempo medio requerido para contagiar a otro individuo susceptible, $\alpha$, y menor que el período medio infeccioso, $\gamma$.
 % Con contacto exitoso asumo que se refiere al tiempo necesario para infectar a un individuo. Sí es esto confirmado por la profe
 
 
-El comportamiento global del sistema es fácil de ver. Definimos la tasa reproductiva como la constante 
+El comportamiento global del sistema es fácil de ver. Definimos el número básico reproductivo como la constante 
 $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
 
 El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo.
 
-En otros trabajos como \cite{demongeotSIEpidemicModel} esta tasa reproductiva se llama tasa de transmisión media.
+En otros trabajos como \cite{demongeotSIEpidemicModel} este número básic reproductivo se llama tasa de transmisión media.
 
 \subsection{Modelo multipoblacional}
 
@@ -231,7 +228,7 @@ R_{n+1}^i &= R_n^i+\gamma_i\Delta t I_n^i
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
 
@@ -257,7 +254,7 @@ Si $\max_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}
 
 Si $\min_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}> 1$ entonces $I_n$ crece y hay una epidemia.
 
-Como hemos visto, no se puede definir de manera sencilla una tasa reproductiva.
+Como hemos visto, no se puede definir de manera sencilla un número básico reproductivo.
 
 \begin{figure}
 \begin{center}
@@ -357,9 +354,10 @@ $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2
 
 \end{proof}
 
-En el modelo SIS, la tasa reproductiva se define como 
+En el modelo SIS, el número básico reproductivo se define como 
 $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 
+\textcolor{red}{Buscar puntos de equilibrio dichos abajo en el lema 3 en otro lema}
 
 \begin{lemma}
 Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$.
@@ -373,9 +371,9 @@ $$S_n<S^*+\epsilon < N$$
 y usando las ecuaciones \eqref{eqn: modelo_SIS}
 \begin{equation}
 \begin{aligned}
-I_{n+1}  & \leq I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) \\
-& \leq I_n \left( 1-\gamma \Delta t + \alpha\Delta t \right)
-& \leq I_n \rho 
+I_{n+1}  & = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) \\
+& = I_n \left( 1-\gamma \Delta t + \alpha\Delta t \right) \\
+& = I_n \rho 
 \end{aligned}
 \end{equation}
 
@@ -386,7 +384,9 @@ Como $\rho < 1$ tendríamos que $I^*=0$, lo que contradice que $S^*<N$.
 
 Si $\mathcal{R}_{SIS}>1$ realizando la sustitución $S_n=N-I_n$ y el cambio
 
-$$x_n=\frac{\alpha \Delta t I_n}{N(1+\alpha \Delta t - \gamma \Delta t)}$$
+$$x_n=\frac{\alpha \Delta t I_n}{N(1+\alpha \Delta t - \gamma \Delta t)},$$
+
+\textcolor{red}{Por que quitar las cuentas? Estan mal?}
 
 tenemos:
 

@@ -12,7 +12,7 @@ En esta sección se presentarán algunos conceptos y herramientas básicas que n
 Comenzamos presentando la teoría básica necesaria. Para su elaboración se ha usado principalmente \cite{salinelliDiscreteDynamicalModels2014}.
 
 \begin{definition}
-Se define una \textbf{ecuación en diferencias de orden $k$} como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
+Se define una \textbf{ecuación en diferencias de orden $k$}, con $k\geq 1$, como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
 
 \begin{equation}
 \label{def_ec_diferencias}
@@ -26,7 +26,7 @@ donde $F$ es una función de $k+2$ variables en la forma $F:\mathbb{N}\times I^{
 En las aplicaciones reales de ecuaciones en diferencias, el subíndice $n$ suele considerarse el tiempo, por lo que en estas se considera positivo y discreto.
 
 \begin{definition}
-Una ecuación en diferencias de orden $k$ se dice que está en \textbf{forma normal} si está expresada de la forma:
+Una ecuación en diferencias de orden $k$, con $k\geq 1$ se dice que está en \textbf{forma normal} si está expresada de la forma:
 
 \begin{equation}
 \label{def_ec_forma_normal}
@@ -62,7 +62,7 @@ X_0 = \alpha_0, X_1=\alpha_1, \cdots X_{k-1}=\alpha_{k-1}.
 \begin{proof}
 Sustituyendo las condiciones iniciales en (\ref{def_ec_forma_normal}) con $k=0$ obtenemos el valor exacto para $X_k$, al que llamamos $\alpha_k$. Por definición de $\Phi$, $(\alpha_1, \alpha_2, \cdots ,\alpha_{k})\in I^{k}$, luego sustituyendo de nuevo en la misma ecuación por las condiciones iniciales
 
-$$X_1 = \alpha_1, X_2=\alpha_2, \cdots X_{k}=\alpha_{k}$$
+$$X_1 = \alpha_1, X_2=\alpha_2, \cdots , X_{k}=\alpha_{k},$$
 
 obtenemos $X_{k+1}$. Repitiendo este proceso se crea una sucesión $\{X_n\}_{n\geq 0}$ única, que es solución de (\ref{def_ec_forma_normal}).
 \end{proof}
@@ -144,7 +144,7 @@ $$|X_0-X^*|<\delta \quad \text{y} \quad |X_{n_0}-X^*|>\epsilon_0.$$
 \end{definition}
 
 \begin{proposition}
-Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$ entonces:
+Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, $f\in C^1$ entonces:
 \begin{itemize}
 \item Si $|f'(X^*)|<1$ entonces $X^*$ es un atractor local o localmente asintóticamente estable.
 \item Si $|f'(X^*)|>1$ entonces $X^*$ es inestable.
@@ -162,35 +162,35 @@ Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_
 
 
 
-\subsection{Ecuación logística}
+\section{Ecuación logística}
 
 En este apartado describiremos la ecuación logística discreta y sus principales propiedades que serán utilizadas más adelante. La teoría puede ampliarse en \cite{strogatzNonlinearDynamicsChaos1994}.
 
 \begin{definition}
 La ecuación logística discreta tiene la siguiente forma:
 
-$$x_{n+1} = \mu x_n(1-x_n),\quad \mu > 0.$$
+$$x_{n+1} = \mu x_n(1-x_n),\quad \mu > 0,$$
 
-Está definida en el intervalo $ [ 0,\lambda ] $. Definimos
+que está definida en el intervalo $ [ 0, 1 ] $. Definimos
 
 $$f(x)=\mu x(1-x)$$
 
 Para que $0\leq x_n\leq 1$ es necesario que $x_n=f(x_{n-1})$ esté en el intervalo $[0,1]$. Tenemos que $f(x)$ es una parábola cóncava con puntos de corte con el eje x en $0$ y $1$. Para que $f(x)<1$ su máximo debe ser menor que $1$.
 
-Este máximo se alcanza en $\frac{1}{2}$ y 
+Este máximo se alcanza en $\frac{1}{2}$ y su valor es
 $$f\left(\frac{1}{2}\right) = \mu \frac{1}{2}\left(1-\frac{1}{2}\right) = \frac{\mu}{4}.$$
 
-Luego debe ser $0\leq \mu \leq 4$.
+Luego debe ser $0< \mu \leq 4$.
 
 \end{definition}
 
 
 \begin{proposition}
-Consideramos la ecuación logística con $0\leq X_n\leq 1$ y $0\leq\mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$; y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
+Consideramos la ecuación logística con $0\leq x_n\leq 1$ y $0< \mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$; y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
 \end{proposition}
 \begin{proof}
 Consideramos la ecuación logística:
-$$X_{n+1} = \mu X_n(1-X_n),$$
+$$x_{n+1} = \mu x_n(1-x_n),$$
 y definamos $f(x)=\mu x(1-x)$. Es claro que $f$ es de clase infinito por ser polinómica.
 
 Los puntos de equilibrio cumplen
@@ -198,13 +198,13 @@ $$X^*=f(X^*)=\mu X^*(1-X^*).$$
 Luego se tiene $X^*=0$ o $1=\mu (1-X^*)$, de donde se obtiene $X^*=1-\frac{1}{\mu}$.
 
 Estudiamos ahora la estabilidad de los puntos de equilibrio a través de su derivada, para ello consideramos:
-$$f'(X^*)=\mu (1-2X^*).$$
+$$f'(x)=\mu (1-2x).$$
 Entonces se tiene que $f'(0)=\mu$, por lo tanto $X^*=0$ es localmente asintóticamente estable si $\mu < 1$ e inestable si $\mu > 1$. Estudiamos ahora el caso $\mu = 1$.
 
-Tenemos $f'(x)=\mu (1-2x)$, $f''(x)=-2\mu x$ y $f'''(x)=-2\mu$. Considerando $\mu =1$, tenemos que
-$$f'(0)=1$$,
-$$f''(0)=0$$,
-$$f'''(0)=-2$$.
+Tenemos $f''(x)=-2\mu x$ y $f'''(x)=-2\mu$. Considerando $\mu =1$, tenemos que
+$$f'(0)=1,$$
+$$f''(0)=0,$$
+$$f'''(0)=-2.$$
 
 Por tanto, $0$ es localmente asintóticamente estable.
 
@@ -214,7 +214,7 @@ Se ha comprobado gŕaficamente mediante las representaciones gráficas \eqref{fi
 
 \begin{figure}
 \begin{center}
-\caption{Diagrama Cobweb de la ecuación logística, con $X_0=0.2$, $\mu=2.8$.}
+\caption{Diagrama Cobweb de la ecuación logística, con $x_0=0.2$, $\mu=2.8$.}
 \label{fig: cobweb_2.8}
 \includegraphics[scale=0.6]{cobweb_0.2_2.8}
 \end{center}
@@ -222,24 +222,28 @@ Se ha comprobado gŕaficamente mediante las representaciones gráficas \eqref{fi
 
 \begin{figure}
 \begin{center}
-\caption{Diagrama Cobweb de la ecuación logística, con $X_0=0.2$, $\mu=3.8$.}
+\caption{Diagrama Cobweb de la ecuación logística, con $x_0=0.2$, $\mu=3.8$.}
 \label{fig: cobweb_3.8}
 \includegraphics[scale=0.6]{cobweb_0.2_3.8}
 \end{center}
 \end{figure}
 
+En \eqref{fig: cobweb_2.8} podemos ver como el punto de equilibrio $X^*=0$ es inestable y como el otro punto de equilibrio $X^*$ es localmente asintóticamente estable.
+
+Asimismo, en \eqref{fig: cobweb_3.8} observamos como ambos puntos de equilibrio son inestables.
+
 \end{proof}
 
 \begin{proposition}
-La ecuación logística tiene un 2-ciclo para todo $\mu > 3$, es decir, existen dos puntos $p$ y $q$ tal que siendo $f(x)=\mu x(1-x)$ se tiene que $f(p)=q$ y $f(q)=p$.
+La ecuación logística tiene un 2-ciclo para todo $\mu > 3$, es decir, existen dos puntos $p$ y $q$ tal que $f(p)=q$ y $f(q)=p$.
 \end{proposition}
 
 \begin{proof}
-Tenemos que $f(p)=q$ y $f(q)=p$ es equivalente a $f(f(p))=p$, es decir, $p$ es un punto fijo al iterar dos veces la función dada.
+Tenemos que $f(p)=q$ y $f(q)=p$ es equivalente a $f(f(p))=p$ y $f(f(q))=q$, es decir, $p$ es un punto fijo al iterar dos veces la función dada.
 
-Como $f(x)$ es una función polinómica de segundo grado, entonces $f(f(x))$ será de cuarto grado.
+Como $f(x)$ es una función polinómica de segundo grado, entonces $f(f(x))$ será de cuarto grado, luego tendrá 4 raíces entre reales y complejas.
 
-Por tanto necesitamos resolver la ecuación de cuarto grado $f(f(X^*))=X^*$. Sabemos que los puntos fijos de la ecuación logística cumplen $f(X^*)=X^*$, luego
+Por tanto necesitamos resolver la ecuación de cuarto grado $f(f(x))=x$. Sabemos que los puntos fijos de la ecuación logística cumplen $f(X^*)=X^*$, luego
 $$f(f(X^*))=f(X^*)=X^*,$$
 por lo que son solución de la ecuación. Y al factorizar conociendo estas soluciones el problema se reduce a resolver una ecuación cuadrática de la que obtenemos las siguientes raíces:
 $$p,q=\frac{\mu+1\pm \sqrt{(\mu -3)(\mu +1)}}{2\mu}.$$
@@ -262,26 +266,38 @@ En la ecuación logística, se tiene que su solución converge si $\mu < 3$, osc
 \end{proposition}
 
 
-\subsection{Epidemiología}
+\section{Epidemiología}
 
-Las enfermedades infecciosas como la influenza o la tuberculosis pueden ser severas. La epidemia del SIDA, pandemias recurrentes de influenza, brotes de ébola y la pandemia del Covid-19 son acontecimientos que preocupan e interesan a muchas personas. La prevalencia y lso efectos de estas enfermedades sobre todo en países menos desarrollados son menos estudiadas, pero de mayor interés, pues la mortalidad de estas y otras enfermedades en estas zonas es mucho mayor que en países desarrollados. Muchas enfermedades como la malaria o el cólera son endémicas en muchas partes del mundo. Los efectos de enfermedades con alta mortalidad en la esperanza de vida y en la economía de los países afectados es considerable. Por ello, el estudio y modelado de epidemias es muy relevante.
+Las enfermedades infecciosas como la influenza (o gripe) o la tuberculosis pueden ser severas. La epidemia del SIDA, pandemias recurrentes de influenza, brotes de ébola y la pandemia del Covid-19 son acontecimientos que preocupan e interesan a muchas personas. La prevalencia y los efectos de estas enfermedades sobre todo en países menos desarrollados son menos estudiadas, pero de mayor interés, pues la mortalidad de estas y otras enfermedades en estas zonas es mucho mayor que en países desarrollados. Muchas enfermedades como la malaria o el cólera son endémicas en muchas partes del mundo. Los efectos de enfermedades con alta mortalidad en la esperanza de vida y en la economía de los países afectados es considerable. Por ello, el estudio y modelado de epidemias es muy relevante.
 
-A continuación se explican algunos conceptos básicos de epidemiología. Para esta sección se ha usado \cite{brauerMathematicalModelsPopulation2012}
+A continuación se explican algunos conceptos básicos de epidemiología. Para esta sección se ha usado principalmente \cite{brauerMathematicalModelsPopulation2012}
 
 \begin{definition}
 Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
 \end{definition}
+
+Los individuos de una población se pueden dividir en tres grupos, haciendo referencia a su situación con respecto a la enfermedad.
 
 \begin{definition}
 Los individuos susceptibles, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
 \end{definition}
 
 \begin{definition}
-Los individuos infectados, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad que pueden contagiar la enfermedad a los individuos susceptibles.
+Los individuos infectados, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
 \end{definition}
 
 \begin{definition}
 Los individuos recuperados, que denotamos $R_n$, son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
 Los individuos recuperados hacen referencia a los individuos inmunizados, aislados, recuperados o fallecidos.
 \end{definition}
+
+\section{Tipos de modelos}
+
+Los modelos discretos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
+
+En estos modelos se hacen dos suposiciones:
+\begin{enumerate}
+\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
+\item El total de la población es constante y lo denotaremos por $N$.
+\end{enumerate}
 
