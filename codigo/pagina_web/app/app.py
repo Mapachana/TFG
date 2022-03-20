@@ -21,4 +21,7 @@ def modeloSIR():
 def modeloSIS():
     return render_template('modeloSIS.html')
 
+@app.route('/ayuda')
+def ayuda():
+    return render_template('ayuda.html')
 
