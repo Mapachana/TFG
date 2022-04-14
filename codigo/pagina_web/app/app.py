@@ -33,12 +33,21 @@ def modeloSIS():
 def ayuda():
     return render_template('ayuda.html')
 
+@app.route('/notacion')
+def notacion():
+    return render_template('notacion.html')
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/uploads/<name>')
 def download_file(name):
+    # Leo el fichero subido y lo muestro en terminal
+    fichero_subido = app.config['UPLOAD_FOLDER']+"/"+name
+    f = open(fichero_subido, "r")
+    print(f.read())
+
     return send_from_directory(app.config["UPLOAD_FOLDER"], name)
 
 @app.route('/ajuste_archivo', methods=['GET', 'POST'])
@@ -55,20 +64,9 @@ def ajuste_archivo():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            print("Hasta aqui")
             filename = secure_filename(file.filename)
-            print("paso esto")
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            print("AAAAAAAAAAAA")
             return redirect(url_for('download_file', name=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
-
+    
+    return render_template('ajuste_datos.html')
 
