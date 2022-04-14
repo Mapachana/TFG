@@ -12,7 +12,8 @@ from dash.dependencies import Input, Output
 from app_dash import app
 
 # Declaramos la figura
-fig = go.Figure() 
+fig = go.Figure()
+fig2 = go.Figure()
 
 mathjax = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML'
 app.scripts.append_script({ 'external_url' : mathjax })
@@ -62,6 +63,7 @@ def preprocesar_input(N, alfa, S0, I0, T):
 @app.callback(
     Output("N_SI", "value"),
     Output("graph-SI", "figure"), 
+    Output("pruebaaaaa", "figure"), 
     [Input("N_SI", "value")],
     [Input("alfa", "value")],
     [Input("S0", "value")],
@@ -118,8 +120,21 @@ def calcular_modelo(N_SI, alfa, S0, I0, T):
                     xaxis_title='Tiempo',
                     yaxis_title='Susceptibles/Infectados')
 
+    # Infectados sobre los susceptibles
+
+    df = pd.DataFrame({'Susceptibles':S, 'Infectados':I})
+
+    fig2 = go.Figure()
+    fig2.add_trace(go.Scatter(x=S, y=I,
+                        mode='lines'))
+
+    fig2.update_layout(title='Modelo SI, variación de infectados en función de susceptibles',
+                    xaxis_title='Susceptibles',
+                    yaxis_title='Infectados')
+
+
     
-    return str(N), fig
+    return str(N), fig, fig2
 
 
 # Elementos html para modificar los parámetros
@@ -172,7 +187,10 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SI", figure=fig)
+    dcc.Graph(id="graph-SI", figure=fig),
+
+    dcc.Graph(id="pruebaaaaa", figure=fig2)
+    
 ])
 
 
