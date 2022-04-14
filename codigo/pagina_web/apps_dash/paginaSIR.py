@@ -13,6 +13,9 @@ from app_dash import app
 
 # Declaramos la figura
 fig = go.Figure() 
+figSI = go.Figure()
+figSR = go.Figure()
+figIR = go.Figure()
 
 
 # Funcion para preprocesar el input en modo texto para formato y nulos
@@ -67,7 +70,10 @@ def preprocesar_input(N, alfa, gamma, S0, I0, R0, T):
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
     Output("N_SIR", "value"),
-    Output("graph-SIR", "figure"), 
+    Output("graph-SIR", "figure"),
+    Output("graph-av-SI", "figure"),
+    Output("graph-av-SR", "figure"),
+    Output("graph-av-IR", "figure"),
     [Input("N_SIR", "value")],
     [Input("alfa", "value")],
     [Input("gamma", "value")],
@@ -136,8 +142,47 @@ def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
                     xaxis_title='Tiempo',
                     yaxis_title='Susceptibles/Infectados/Recuperados')
 
-    
-    return str(N), fig
+    # Figuras avanzadas
+
+    # Infectados sobre susceptibles
+
+    figSI = go.Figure()
+
+    dfSI = pd.DataFrame({'Susceptibles':S, 'Infectados':I})
+
+    figSI.add_trace(go.Scatter(x=S, y=I,
+                        mode='lines'))
+
+    figSI.update_layout(title='Modelo SIR, variación de infectados en función de susceptibles',
+                    xaxis_title='Susceptibles',
+                    yaxis_title='Infectados')
+
+    # Recuperados en funcion de susceptibles
+    figSR = go.Figure()
+
+    dfSR = pd.DataFrame({'Susceptibles':S, 'Recuperados':R})
+
+    figSR.add_trace(go.Scatter(x=S, y=R,
+                        mode='lines'))
+
+    figSR.update_layout(title='Modelo SIR, variación de recuperados en función de susceptibles',
+                    xaxis_title='Susceptibles',
+                    yaxis_title='Recuperados')
+
+    # Recuperados en funcion de infectados
+    figIR = go.Figure()
+
+    dfIR = pd.DataFrame({'Infectados':I, 'Recuperados':R})
+
+    figIR.add_trace(go.Scatter(x=I, y=R,
+                        mode='lines'))
+
+    figIR.update_layout(title='Modelo SIR, variación de recuperados en función de infectados',
+                    xaxis_title='Infectados',
+                    yaxis_title='Recuperados')
+
+
+    return str(N), fig, figSI, figSR, figIR
 
 
 # Elementos html para modificar los parámetros
@@ -204,7 +249,10 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIR", figure=fig)
+    dcc.Graph(id="graph-SIR", figure=fig),
+    dcc.Graph(id="graph-av-SI", figure=figSI),
+    dcc.Graph(id="graph-av-SR", figure=figSR),
+    dcc.Graph(id="graph-av-IR", figure=figIR)
 ])
 
 

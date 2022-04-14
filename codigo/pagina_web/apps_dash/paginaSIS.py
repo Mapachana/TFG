@@ -12,7 +12,8 @@ from dash.dependencies import Input, Output
 from app_dash import app
 
 # Declaramos la figura
-fig = go.Figure() 
+fig = go.Figure()
+figSI = go.Figure() 
 
 
 # Funcion para preprocesar el input en modo texto para formato y nulos
@@ -62,7 +63,8 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
     Output("N_SIS", "value"),
-    Output("graph-SIS", "figure"), 
+    Output("graph-SIS", "figure"),
+    Output("graphSIS-av-SI", "figure"),
     [Input("N_SIS", "value")],
     [Input("alfa", "value")],
     [Input("gamma", "value")],
@@ -121,8 +123,20 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
                     xaxis_title='Tiempo',
                     yaxis_title='Susceptibles/Infectados')
 
+    # Figura avanzada, I sobre S
+
+    df = pd.DataFrame({'Susceptibles':S, 'Infectados':I})
+
+    figSI = go.Figure()
+    figSI.add_trace(go.Scatter(x=S, y=I,
+                        mode='lines'))
+
+    figSI.update_layout(title='Modelo SIS, variación de infectados en función de susceptibles',
+                    xaxis_title='Susceptibles',
+                    yaxis_title='Infectados')
+
     
-    return str(N), fig
+    return str(N), fig, figSI
 
 
 # Elementos html para modificar los parámetros
@@ -182,7 +196,8 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIS", figure=fig)
+    dcc.Graph(id="graph-SIS", figure=fig),
+    dcc.Graph(id="graphSIS-av-SI", figure=figSI)
 ])
 
 
