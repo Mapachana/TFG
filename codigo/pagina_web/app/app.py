@@ -1,6 +1,8 @@
 #./app/app.py
 import os
+import shutil
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
+from pandas import DataFrame, read_csv
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './files'
@@ -43,12 +45,18 @@ def allowed_file(filename):
 
 @app.route('/uploads/<name>')
 def download_file(name):
-    # Leo el fichero subido y lo muestro en terminal
-    fichero_subido = app.config['UPLOAD_FOLDER']+"/"+name
-    f = open(fichero_subido, "r")
-    print(f.read())
-
     return send_from_directory(app.config["UPLOAD_FOLDER"], name)
+
+@app.route('/ajustar_fichero/<fichero>', methods=['GET', 'POST'])
+def ajustar_fichero(fichero):
+    # Leo el fichero subido y lo muestro en terminal
+    fichero_subido = app.config['UPLOAD_FOLDER']+"/"+fichero
+    df = read_csv(fichero_subido)
+    print(df)
+
+    shutil.copy(fichero_subido, "./fichero_ajuste/actual.csv")
+
+    return render_template('ajustar_fichero.html')
 
 @app.route('/ajuste_archivo', methods=['GET', 'POST'])
 def ajuste_archivo():
@@ -66,7 +74,8 @@ def ajuste_archivo():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('download_file', name=filename))
-    
+            #return redirect(url_for('download_file', name=filename))
+            return redirect(url_for('ajustar_fichero', fichero=filename))
+
     return render_template('ajuste_datos.html')
 
