@@ -2,45 +2,62 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import curve_fit
 
+import plotly.express as px
+import plotly.graph_objects as go # or plotly.express as px
+
+
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
 
 from app_dash import app
 
-N = 100
+# Inicializo figuras
+fig = go.Figure()
+fig2 = go.Figure()
 
-S0 = 99
-I0 = 1
+# Leo dataframe
+df = pd.read_csv("./app/fichero_ajuste/actual.csv")
 
-alfa = 0.1
-
-T0 = 0
-T = 100
-
-#deltaT en realidad es (T-T0)/secciones
+# Añado columna de tiempo para representacion
+secciones = len(df.index)
 deltaT = 1
+N = df.loc[0].at["S"]+df.loc[0].at["I"]
 
-tiempo = np.arange(T0, T, deltaT)
+tiempo = np.linspace(0, len(df.index), len(df.index))
+df['tiempo'] = tiempo
 
-secciones = tiempo.size
+fig = px.scatter()
+fig.update_layout(title='Representación de los datos del fichero',
+                    xaxis_title='Tiempo',
+                    yaxis_title='Número de individuos')
+
+
+fig.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles")
+fig.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados")
+
+if 'R' in df.columns:
+    N += df.loc[0].at["R"]
+    fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
+
+
+modelos_ajuste_disponibles = ["Modelo SI", "Modelo SIR", "Modelo SIS", "Mejor modelo"]
+
 
 layout = html.Div([
-    html.H3('Prueba ajustes de datos'),
+    dcc.Graph(figure=fig),
+    html.P("Selecciona el modelo con el que se van a ajustar los datos:"),
     dcc.Dropdown(
-        id='app-1-dropdown',
+        id='selector_modelo_ajuste',
         options=[
-            {'label': 'App 1 - {}'.format(i), 'value': i} for i in [
-                'NYC', 'MTL', 'LA'
-            ]
-        ]
+            {'label': '{}'.format(i), 'value': i} for i in modelos_ajuste_disponibles
+        ],
+        value=modelos_ajuste_disponibles[0]
     ),
-    html.Button('Submit', id='submit-val', n_clicks=0),
-    html.Div(id='perr'),
-    dcc.Link('Go to App 2', href='/apps/app2')
+    html.Div(id="parametros"),
+    html.Div(id="errores"),
+    dcc.Graph(id="ajuste", figure=fig2)
 ])
-
-
 
 
 def solucion_SI(t, alfa, I0):   
@@ -54,39 +71,36 @@ def solucion_SI(t, alfa, I0):
     return I
 
 @app.callback(
-    Output('perr', 'children'),
-    Input('app-1-dropdown', 'value'),
-    Input('submit-val', 'n_clicks'))
-def funcion(valor_menu, n_clicks):
-
-
-    S = np.empty(secciones)
-    I = np.empty(secciones)
-
-    S[0] = S0
-    I[0] = I0
-
-    for j in range (secciones-1):
-        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])
-        I[j+1] = I[j]*(1+(alfa*deltaT/N)*S[j])
-
-
-
-    I_ruido = I+np.random.randn(secciones)*5
-    popt, pcov = curve_fit(solucion_SI, tiempo, I_ruido, bounds=((0, 0), (np.inf, N)))
-
-    print(popt)
-    print("\n")
-    print(pcov)
+    Output('parametros', 'children'),
+    Output('errores', 'children'),
+    Output('ajuste', 'figure'),
+    Input('selector_modelo_ajuste', 'value'))
+def funcion(valor_menu):
+    popt, pcov = curve_fit(solucion_SI, df['tiempo'], df['I'], bounds=((0, 0), (np.inf, N)))
 
     perr = np.sqrt(pcov.diagonal())
-    print(perr)
+    print("a")
 
-    # lectura de un fichero con los datos
-    fichero_subido = "./app/files/prueba2.txt"
-    f = open(fichero_subido, "r")
+    # Hago la representacion grafica con los parametros obtenidos 
+    I_ajuste = solucion_SI(tiempo, popt[0], popt[1])
+    S_ajuste = N - I_ajuste
 
-    print(f.read())
+    fig2 = px.scatter()
+    fig2.update_layout(title='Ajuste de los datos del fichero',
+                        xaxis_title='Tiempo',
+                        yaxis_title='Número de individuos')
 
 
-    return 'You have selected "{}"'.format(perr[0])
+    fig2.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles datos")
+    fig2.add_scatter(x=df['tiempo'], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
+    fig2.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados datos")
+    fig2.add_scatter(x=df['tiempo'], y=I_ajuste, mode="lines", name="Infectados ajuste")
+
+
+    if 'R' in df.columns:
+        fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
+        fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
+
+
+    return 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1]), 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1]), fig2
+

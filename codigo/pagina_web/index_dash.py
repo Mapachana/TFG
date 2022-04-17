@@ -27,7 +27,7 @@ def display_page(pathname):
         return paginaSIR.layout
     elif pathname == '/apps/modeloSI_continuo':
         return paginaSI_continuo.layout
-    elif pathname == '/apps/ajuste_datos_prueba':
+    elif pathname == '/apps/ajuste_datos':
         return ajuste_parametros.layout
     else:
         return '404'
