@@ -88,6 +88,7 @@ def funcion(valor_menu):
     popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
 
     perr = np.sqrt(pcov.diagonal())
+    print("a")
 
     # Hago la representacion grafica con los parametros obtenidos 
     I_ajuste = solucion_SI(indep, popt[0], popt[1])
