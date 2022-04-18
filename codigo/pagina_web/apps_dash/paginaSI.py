@@ -63,7 +63,7 @@ def preprocesar_input(N, alfa, S0, I0, T):
 @app.callback(
     Output("N_SI", "value"),
     Output("graph-SI", "figure"), 
-    Output("pruebaaaaa", "figure"), 
+    Output("graph2", "figure"), 
     [Input("N_SI", "value")],
     [Input("alfa", "value")],
     [Input("S0", "value")],
@@ -189,7 +189,7 @@ layout = html.Div([
     parametros,
     dcc.Graph(id="graph-SI", figure=fig),
 
-    dcc.Graph(id="pruebaaaaa", figure=fig2)
+    dcc.Graph(id="graph2", figure=fig2)
     
 ])
 

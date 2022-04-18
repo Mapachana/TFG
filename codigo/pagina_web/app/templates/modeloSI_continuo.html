@@ -1,0 +1,23 @@
+{% extends "parent.html" %}
+
+
+{% block contenido %}
+<div class="d-flex align-items-center flex-column">
+    <h2> Modelo SI</h2>
+    <p>El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados permanecen infectados el resto de su vida.</p>
+    <p>El modelo tiene la siguiente forma:</p>
+    $$S_{n+1}=S_n\left( 1-\frac{\alpha\Delta t}{N}I_n\right)$$
+    $$I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)$$
+
+    <p>donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$, y N es el tamaño total de la población, con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.</p>
+    <p>En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.</p>
+
+    <p>Las siguientes gráficas representan como varían el número de individuos susceptibles o infectados según el tiempo (primera gráfica), mientras en la segunda gráfica se observa como varían los individuos infectados en función del número de individuos susceptibles que haya.</p>
+
+    <p>Se puede observar en ambas gráficas como, para cualquier valor del parámetro $\alpha$, a mayor número de susceptibles menor número de infectados y viceversa.</p>
+
+    <p>A continuación una representación gráfica del comportamiento del modelo según los parámetros introducidos</p>
+
+    <iframe src="http://localhost:8050/apps/modeloSI" width=100% height=700px></iframe>
+</div>
+{% endblock %}
