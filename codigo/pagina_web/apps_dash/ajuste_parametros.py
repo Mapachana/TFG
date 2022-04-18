@@ -16,36 +16,12 @@ from app_dash import app
 fig = go.Figure()
 fig2 = go.Figure()
 
-# Leo dataframe
-df = pd.read_csv("./app/fichero_ajuste/actual.csv")
-
-# Añado columna de tiempo para representacion
-secciones = len(df.index)
-deltaT = 1
-N = df.loc[0].at["S"]+df.loc[0].at["I"]
-
-tiempo = np.linspace(0, len(df.index), len(df.index))
-df['tiempo'] = tiempo
-
-fig = px.scatter()
-fig.update_layout(title='Representación de los datos del fichero',
-                    xaxis_title='Tiempo',
-                    yaxis_title='Número de individuos')
-
-
-fig.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles")
-fig.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados")
-
-if 'R' in df.columns:
-    N += df.loc[0].at["R"]
-    fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
-
 
 modelos_ajuste_disponibles = ["Modelo SI", "Modelo SIR", "Modelo SIS", "Mejor modelo"]
 
 
 layout = html.Div([
-    dcc.Graph(figure=fig),
+    dcc.Graph(id="scat", figure=fig),
     html.P("Selecciona el modelo con el que se van a ajustar los datos:"),
     dcc.Dropdown(
         id='selector_modelo_ajuste',
@@ -60,7 +36,10 @@ layout = html.Div([
 ])
 
 
-def solucion_SI(t, alfa, I0):   
+def solucion_SI(t, alfa, I0):
+    N = t[0]
+    secciones = len(t)-1
+    deltaT = 1
     I = np.empty(secciones)
     
     I[0] = I0
@@ -71,18 +50,47 @@ def solucion_SI(t, alfa, I0):
     return I
 
 @app.callback(
+    Output('scat', 'figure'),
     Output('parametros', 'children'),
     Output('errores', 'children'),
     Output('ajuste', 'figure'),
     Input('selector_modelo_ajuste', 'value'))
 def funcion(valor_menu):
-    popt, pcov = curve_fit(solucion_SI, df['tiempo'], df['I'], bounds=((0, 0), (np.inf, N)))
+    # Leo dataframe
+    df = pd.read_csv("./app/fichero_ajuste/actual.csv")
+
+    # Añado columna de tiempo para representacion
+    secciones = len(df.index)
+    deltaT = 1
+    N = df.loc[0].at["S"]+df.loc[0].at["I"]
+
+    tiempo = np.linspace(0, len(df.index), len(df.index))
+    df['tiempo'] = tiempo
+
+    # Actualizo primera grafica
+    fig = px.scatter()
+    fig.update_layout(title='Representación de los datos del fichero',
+                        xaxis_title='Tiempo',
+                        yaxis_title='Número de individuos')
+
+
+    fig.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles")
+    fig.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados")
+
+    #print(df.columns)
+    if 'R' in df.columns:
+        N += df.loc[0].at["R"]
+        fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
+
+    # Calculo ajuste
+    indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
+    
+    popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
 
     perr = np.sqrt(pcov.diagonal())
-    print("a")
 
     # Hago la representacion grafica con los parametros obtenidos 
-    I_ajuste = solucion_SI(tiempo, popt[0], popt[1])
+    I_ajuste = solucion_SI(indep, popt[0], popt[1])
     S_ajuste = N - I_ajuste
 
     fig2 = px.scatter()
@@ -98,9 +106,9 @@ def funcion(valor_menu):
 
 
     if 'R' in df.columns:
-        fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
-        fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
+        fig2.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
+        #fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
 
-    return 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1]), 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1]), fig2
+    return fig, 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1]), 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1]), fig2
 
