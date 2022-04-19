@@ -31,6 +31,18 @@ def modeloSIR():
 def modeloSIS():
     return render_template('modeloSIS.html')
 
+@app.route('/modeloSI_continuo')
+def modeloSI_continuo():
+    return render_template('modeloSI_continuo.html')
+
+@app.route('/modeloSIR_continuo')
+def modeloSIR_continuo():
+    return render_template('modeloSIR_continuo.html')
+
+@app.route('/modeloSIS_continuo')
+def modeloSIS_continuo():
+    return render_template('modeloSIS_continuo.html')
+
 @app.route('/ayuda')
 def ayuda():
     return render_template('ayuda.html')
