@@ -1,12 +1,12 @@
-\chapter{Modelos básicos discretos en epidemiología}
+\chapter{Modelos discretos en epidemiología}
 
 \section{Modelos discretos}
 
 En este capítulo estudiaremos los principales modelos epidemiológicos discretos.
 
-En un modelo discreto el tiempo se considera que toma valores discreteos, siendo estos $1,2,3...$, expresado en horas, días, semanas...
+En un modelo discreto el tiempo se considera que toma valores discretos, siendo estos $1,2,3...$, expresado en horas, días, semanas...
 
-Para realizar este capítulo se han usado las referencias \cite{allenDiscretetimeSISIR1994}.
+Para realizar este capítulo se ha usado principalmente la referencia \cite{allenDiscretetimeSISIR1994}.
 
 \section{Modelo SI}
 El modelo SI es el modelo más simple de todos. Los individuos nacen siendo susceptibles a una enfermedad, y una vez infectados permanecen infectados el resto de su vida.
@@ -85,30 +85,7 @@ $$
 
 Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$. Puesto que las condiciones iniciales son positivas y como $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente, así $S_{n+1}<S_n$ y $I_{n+1}>I_n$ para cualquier $n\in\mathbb{N}$, entonces debe converger a $(S^*,I^*)=(0,N)$, pues son sucesiones monótonas acotadas.
 
-\subsection{Modelo multipoblacional}
 
-El modelo SI discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SI discreto. Este modelo permite agrupar la población en varias subpoblaciones que se relacionan entre ellas, a la vez que los individuos de cada una de ellas interactúan, permitiendo así obtener datos más realistas. Se considera el modelo SI con k subpoblaciones:
-
-\begin{equation}
-\label{eqn: SI multipoblational}
-\begin{aligned}
-S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
-I_{n+1}^i &= I_n^i + S_n^i \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k
-\end {aligned}
-\end{equation}
-
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
-
-Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
-
-\begin{proposition}
-Las soluciones del sistema \eqref{eqn: SI multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
-$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i} \right\} \leq 1$$
-\end{proposition}
-
-\begin{proposition}
-Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$ y se aproxima a $0$, mientras $I_n^i$ es monótonamente creciente y se aproxima a $N^i$. 
-\end{proposition}
 
 \begin{figure}
 \begin{center}
@@ -117,7 +94,7 @@ Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$ y se apro
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del númeor de susceptibles se aprecia una relación lineal pero inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
+En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del número de susceptibles se aprecia una relación lineal pero inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
 
 \begin{figure}
 \begin{center}
@@ -197,9 +174,9 @@ $S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
 
 \begin{proof}
 
-Sea $S_\infty=\lim_{n\rightarrow\infty} S_n > 0$, por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
+Por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, se tiene que $\lim_{n\rightarrow\infty} S_n = S_\infty > 0$,  cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
 
-Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, o, equivalentemente, $\mathcal{R}_{SIR}˘\leq 1$ entonces $I_1\leq I_0$ y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
+Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
 
 En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer.
 \end{proof}
@@ -211,59 +188,20 @@ Por tanto, a partir del resultado anterior podemos deducir que el intervalo de t
 El comportamiento global del sistema es fácil de ver. Definimos el número básico reproductivo como la constante 
 $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
 
-El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo.
+El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo. En particular, si $\mathcal{R}_{SIR}<1$ se considera que no hay epidemia.
 
-En otros trabajos como \cite{demongeotSIEpidemicModel} este número básic reproductivo se llama tasa de transmisión media.
+En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico reproductivo se llama tasa de transmisión media.
 
-\subsection{Modelo multipoblacional}
 
-El modelo SIR discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SIR discreto. Se considera el modelo SIR con K subpoblaciones:
-
-\begin{equation}
-\label{eqn: SIR multipoblational}
-\begin{aligned}
-S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
-I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\Delta t}{N^i}I_n^k \\
-R_{n+1}^i &= R_n^i+\gamma_i\Delta t I_n^i
-\end {aligned}
-\end{equation}
-
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
-
-Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
-
-\begin{proposition}
-Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
-$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i}, \gamma_i\Delta t \right\} \leq 1$$
-\end{proposition}
-
-\begin{proposition}
-Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$, mientras $R_n^i$ es monótonamente estrictamente creciente. Además, al estar ambas acotadas, se obtiene que $I_n^i$ se aproxima a $0$ en el límite $n\rightarrow \infty$. 
-\end{proposition}
-
-En el modelo multipoblacional no es tan simple determinar si ocurre una epidemia en una subpoblación como en el modelo con una sola población.
-
-Consideramos
-$$\mathcal{R}_{i_{SIR}} = \frac{S_0^i\alpha_{ii}}{\gamma_i N^i}.$$
-
-Si $\mathcal{R}_{i_{SIR}}>1$ entonces el número de infectados en la i-ésima población comenzará a crecer. Sin embargo, si $\mathcal{R}_{i_{SIR}} \leq 1$ no es suficiente para garantizar que no se producirá una epidemia en la población i-esima, ya que las otras poblaciones influyen también en esta.
-
-En lugar de considerar las subpoblaciones independientemente unas de otras, se debe tener en cuenta el total de infectados:
-$$I_n = \sum_{i=1}^{K}I_n^i.$$
-Si $\max_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}\leq 1$ entonces $I_n$ decrece y no hay una epidemia.
-
-Si $\min_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}> 1$ entonces $I_n$ crece y hay una epidemia.
-
-Como hemos visto, no se puede definir de manera sencilla un número básico reproductivo.
 
 \begin{figure}
 \begin{center}
-\caption{Gráfica del modelo SIR, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, R_0 = 0, \alpha = 0.1, \gamma = 0.01 T_0 = 0, T = 300$.}
+\caption{Gráfica del modelo SIR, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, R_0 = 0, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 300$.}
 \includegraphics[scale=1]{graficaSIR}
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en función de los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
+En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son cantidades inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
 
 \begin{figure}
 \begin{center}
@@ -275,7 +213,7 @@ En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados en f
 
 Estudiamos ahora la figura \ref{fig: SIR_RsobreS}, en la que se muestra como varían los individuos recuperados en función de los susceptibles.
 
-A medida que los individuos susceptibles decrecen los recuperados aumentan, pero no lo hacen de forma lineal. Esto se debe a que los individuos susceptibles primero deben infectarse y luego recuperarse, y, como ya hemos visto en la figura \ref{fig: SIR_IsobreS} los infectados bajan muy rápidamente cuando las personas susceptibles son pocas, por ello los recuperados también crecen rápidamente a menor número de individuos susceptibles.
+A medida que los individuos susceptibles decrecen los recuperados aumentan, en particular se ve un decrecimiento exponencial˘. Esto se debe a que los individuos susceptibles primero deben infectarse y luego recuperarse, y, como ya hemos visto en la figura \ref{fig: SIR_IsobreS} los infectados bajan muy rápidamente cuando las personas susceptibles son pocas, por ello los recuperados también crecen rápidamente a menor número de individuos susceptibles.
 
 \begin{figure}
 \begin{center}
@@ -285,9 +223,9 @@ A medida que los individuos susceptibles decrecen los recuperados aumentan, pero
 \end{center}
 \end{figure}
 
-Finalmente, en la figura \ref{fig: SIR_RsobreI} se muestran los individuos recuperados en función de los infectados.
+Finalmente, en la figura \ref{fig: SIR_RsobreI} se muestran los individuos recuperados en función de los infectados, en una gráfica implícita del tiempo.
 
-Cabe destacar que para cada valor de los infectados hay dos valores de recuperados, esto se debe a que al comienzo, cuando los infectados están creciendo hay pocos recuperados, después los recuperados aumentan y los infectados decrecen. Es decir, para cada valor de infectados hay dos de recuperados, el primero cuando los infectados están creciendo y hay pocos recuperados y después cuando los infectados decrecen y hay muchos recuperados . Otra cosa a tener en cuenta es la distancia entre las marcas en la curva. Cada marca indica la medida del número de infectados y recuperados en un mismo tiempo $t$.
+Un aspecto a tener en cuenta es la distancia entre las marcas en la curva. Cada marca indica la medida del número de infectados y recuperados en un mismo tiempo $t$.
 
 Al comenzar el número de recuperados es bajo y crece despacio a medida que aumentan los infectados. Llega un punto máximo del número de infectados, en el que se produce la curva, y cuando los infectados comienzan a descrecer los recuperados aumentan rápidamente, lo que se puede ver por la distancia más corta que hay entre las marcas de la curva.
 
@@ -300,10 +238,10 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 \end{center}
 \end{figure}
 
-\textcolor{red}{AÑADIR EL MODELO KMK difernecias y comparación}
+\textcolor{red}{AÑADIR EL MODELO KMK difernecias y comparación y alguna grafiquilla}
 
 
-\section{Modelo SIS discreto}
+\section{Modelo SIS}
 El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples reinfecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
@@ -312,14 +250,14 @@ El modelo es una perturbación del modelo SI descrito anteriormente. Se define d
 \begin{equation}
 \label{eqn: modelo_SIS}
 \begin{aligned}
-S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) + \gamma \Delta t I_n \\
-I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
+S_{n+1} & = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right) + \gamma \Delta t I_n \\
+I_{n+1} & = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 \end{aligned}
 \end{equation}
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
 \begin{proposition}
 Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
@@ -362,7 +300,7 @@ $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 \begin{lemma}
 Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$.
 
-Si $\mathcal{R}_{SIS}>1$ las soluciones convergen si se cumple la condición$\alpha \Delta t \leq 2+\gamma \Delta t$
+Si $\mathcal{R}_{SIS}>1$ las soluciones convergen si se cumple la condición $\alpha \Delta t \leq 2+\gamma \Delta t$.
 \end{lemma}
 
 \begin{proof}
@@ -372,7 +310,7 @@ y usando las ecuaciones \eqref{eqn: modelo_SIS}
 \begin{equation}
 \begin{aligned}
 I_{n+1}  & = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right) \\
-& = I_n \left( 1-\gamma \Delta t + \alpha\Delta t \right) \\
+& \leq I_n \left( 1-\gamma \Delta t + \alpha\Delta t \right) \\
 & = I_n \rho 
 \end{aligned}
 \end{equation}
@@ -385,8 +323,6 @@ Como $\rho < 1$ tendríamos que $I^*=0$, lo que contradice que $S^*<N$.
 Si $\mathcal{R}_{SIS}>1$ realizando la sustitución $S_n=N-I_n$ y el cambio
 
 $$x_n=\frac{\alpha \Delta t I_n}{N(1+\alpha \Delta t - \gamma \Delta t)},$$
-
-\textcolor{red}{Por que quitar las cuentas? Estan mal?}
 
 tenemos:
 
@@ -401,7 +337,7 @@ entonces sustituyendo en la ecuación \eqref{eqn: modelo_SIS}:
 
 \begin{equation}
 \begin{aligned}
-x_{n+1}\frac{N(1-\alpha\Delta t-\gamma\Delta t)}{\alpha \Delta t} = x_n\frac{N(1+\alpha\Delta t-\gamma \Delta t)}{\alpha\Delta t}\left( 1-\gamma\Delta t+\frac{\alpha\Delta t}{N}\left(N-x_n\frac{N(1+\alpha\Delta t-\gamma\Delta t)}{\alpha\Delta t}\right) \right)
+x_{n+1}\frac{N(1-\alpha\Delta t-\gamma\Delta t)}{\alpha \Delta t} = \\ x_n\frac{N(1+\alpha\Delta t-\gamma \Delta t)}{\alpha\Delta t}\left( 1-\gamma\Delta t+\frac{\alpha\Delta t}{N}\left(N-x_n\frac{N(1+\alpha\Delta t-\gamma\Delta t)}{\alpha\Delta t}\right) \right)
 \end{aligned}
 \end{equation}
 
@@ -415,11 +351,11 @@ x_{n+1} & = x_n\left( 1-\gamma\Delta t+\frac{\alpha\Delta t}{N}N-\frac{\alpha\De
 \end{aligned}
 \end{equation}
 
-luego obtenemos la ecuación logística con parámetro $\mu = 1+\alpha\Delta t -\gamma \Delta t$
+luego obtenemos la ecuación logística con parámetro $\mu = 1-\gamma \Delta t+\alpha\Delta t $
 
-$$x_{n+1} = (1+\alpha \Delta t - \gamma \Delta t)x_n(1-x_n).$$
+$$x_{n+1} = (1 - \gamma \Delta t +\alpha \Delta t)x_n(1-x_n).$$
 
-En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$, restricción del parámetro de la ecuación logística para la convergencia.
+En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$, restricción del parámetro de la ecuación logística para la convergencia, como vimos en el capítulo 1.
 
 \end{proof}
 
@@ -443,7 +379,85 @@ Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{
 \end{center}
 \end{figure}
 
-\subsection{Modelo multipoblacional}
+
+
+\section{Modelos multipoblacionales}
+
+Los modelos multipoblacionales agrupan la población en varias subpoblaciones. En estas subpoblaciones, los individuos pertenecientes a una misma subpoblación interactúan entre ellos, y, al mismo tiempo, interactúan las distintas subpoblaciones entre ellas.
+
+De esta forma, se obtiene un modelo más realista, pues no se asume que todos los individuos interactúan igual con todos los demás individuos de la población, si no que se relacionan formando grupos más pequeños que a su vez interactúan entre ellos.
+
+\subsection{Modelo SI}
+
+El modelo SI discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SI discreto. Este modelo permite agrupar la población en varias subpoblaciones que se relacionan entre ellas, a la vez que los individuos de cada una de ellas interactúan, permitiendo así obtener datos más realistas. Se considera el modelo SI con k subpoblaciones:
+
+\begin{equation}
+\label{eqn: SI multipoblational}
+\begin{aligned}
+S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
+I_{n+1}^i &= I_n^i + S_n^i \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k
+\end {aligned}
+\end{equation}
+
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
+
+Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
+
+\begin{proposition}
+Las soluciones del sistema \eqref{eqn: SI multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i} \right\} \leq 1$$
+\end{proposition}
+
+\begin{proposition}
+Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$ y se aproxima a $0$, mientras $I_n^i$ es monótonamente creciente y se aproxima a $N^i$. 
+\end{proposition}
+
+
+
+\subsection{Modelo SIR}
+
+El modelo SIR discreto multipoblacional muestra el mismo comportamiento monótono que el modelo SIR discreto. Se considera el modelo SIR con K subpoblaciones:
+
+\begin{equation}
+\label{eqn: SIR multipoblational}
+\begin{aligned}
+S_{n+1}^i &= S_n^i \left( 1- \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k \right) \\
+I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\Delta t}{N^i}I_n^k \\
+R_{n+1}^i &= R_n^i+\gamma_i\Delta t I_n^i
+\end {aligned}
+\end{equation}
+
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
+
+Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
+
+\begin{proposition}
+Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+$$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i}, \gamma_i\Delta t \right\} \leq 1$$
+\end{proposition}
+
+\begin{proposition}
+Cada $S_n^i$ es estrictamente monótonamente decreciente para cada $i$, mientras $R_n^i$ es monótonamente estrictamente creciente. Además, al estar ambas acotadas, se obtiene que $I_n^i$ se aproxima a $0$ en el límite $n\rightarrow \infty$. 
+\end{proposition}
+
+En el modelo multipoblacional no es tan simple determinar si ocurre una epidemia en una subpoblación como en el modelo con una sola población.
+
+Consideramos
+$$\mathcal{R}_{i_{SIR}} = \frac{S_0^i\alpha_{ii}}{\gamma_i N^i}.$$
+
+Si $\mathcal{R}_{i_{SIR}}>1$ entonces el número de infectados en la i-ésima población comenzará a crecer. Sin embargo, si $\mathcal{R}_{i_{SIR}} \leq 1$ no es suficiente para garantizar que no se producirá una epidemia en la población i-esima, ya que las otras poblaciones influyen también en esta.
+
+En lugar de considerar las subpoblaciones independientemente unas de otras, se debe tener en cuenta el total de infectados:
+$$I_n = \sum_{i=1}^{K}I_n^i.$$
+Si $\max_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}\leq 1$ entonces $I_n$ decrece y no hay una epidemia.
+
+Si $\min_{k} \left\{ \sum_{i=1}^{K}\frac{S_0^i\alpha_{ik}}{\gamma_kN^i} \right\}> 1$ entonces $I_n$ crece y hay una epidemia.
+
+Como hemos visto, no se puede definir de manera sencilla un número básico reproductivo.
+
+
+
+\subsection{Modelo SIS}
 
 El modelo SIS discreto multipoblacional muestra el mismo comportamiento que el modelo SIS discreto. Se considera el modelo SIS con K subpoblaciones:
 
@@ -455,7 +469,7 @@ I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\D
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha^ik$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a susceptible de nuevo en un intervalo de tiempo.
+donde $i=1, \cdots , K$, y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$, y $\gamma_i$ es la probabilidad de que un infectado pase a susceptible de nuevo en un intervalo de tiempo.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
@@ -463,9 +477,6 @@ Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se manti
 Las soluciones del sistema \eqref{eqn: SIS multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
 $$\max_i \left\{ \sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}, \gamma_i\Delta t \right\} \leq 1, \quad  \alpha_{ii}\Delta t\leq \left( \sqrt{1-\sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}} + \sqrt{\gamma_i\Delta t} \right)^2$$
 \end{proposition}
-
-
-
 
 
 

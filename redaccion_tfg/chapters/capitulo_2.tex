@@ -1,4 +1,8 @@
-\chapter{Modelos básicos continuos en epidemiología}
+\chapter{Modelos continuos en epidemiología}
+
+Los modelos continuos, al igual que los discretos, tratan de describir la evolución y desarrollo de una enfermedad a lo largo del tiempo. La diferencia con los modelos discretos es que, al contrario que en estos, el tiempo se supone continuo.
+
+Mientras en los modelos discretos consideramos un $\Delta t$ que hace referencia a los incrementos del tiempo entre dos valores consecutivos de la cantidad de individuos de cada estado, en los modelos continuos el tiempo se supone continuo, y por tanto no se trabaja con una cantidad numerable de valores.
 
 \section{Tipos de modelos}
 
@@ -24,8 +28,8 @@ El análogo continuo al sistema \eqref{eqn: SI} viene dado por:
 \begin{equation}
 \label{eqn:SI_continuo}
 \begin{aligned}
-S'(t) = -\frac{\alpha}{N}SI \\
-I'(t) = \frac{\alpha}{N}SI
+S'(t) & = -\frac{\alpha}{N}SI \\
+I'(t) & = \frac{\alpha}{N}SI
 \end{aligned}
 \end{equation}
 
@@ -33,11 +37,11 @@ con condiciones iniciales $S(0)+I(0)=N$.
 
 De \eqref{eqn:SI_continuo} se puede ver que $I'>0$ y $S'<0$, luego ambas funciones son estrictamente monótonas, al igual que el modelo discreto.
 
-Calculamos los puntos de equilibrio de manera análoga al caso discreto, es decir, suponemos que las funciones son constantes y, resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $(S^*,I^*)=(0,N)$ y, por tanto, tienen el mismo comportamiento que el caso discreto.
+Calculamos los puntos de equilibrio de manera análoga al caso discreto, es decir, suponemos que las funciones son constantes y, resolviendo el sistema de ecuaciones, podemos comprobar que las soluciones convergen a $(S^*,I^*)=(0,N)$ y, por tanto, tienen el mismo comportamiento que en el caso discreto.
 
 Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística continua
 
-$$I' = I\frac{\alpha}{N}(N-I).$$
+$$I' = \frac{\alpha}I{N}(N-I).$$
 
 Esta ecuación diferencial se puede resolver por separación de variables como sigue:
 
@@ -65,7 +69,7 @@ I_0 = I(0) = \frac{AN}{1+A} & \Leftrightarrow (1+A)I_0 = AN \\
 
 luego la solución general es:
 
-$$I(t) = \frac{I_0e^{\alpha t}N}{(N-I_0)+I_0e^{\alpha t}} = \frac{I_0N}{(N-I_0)e^{-\alpha t}+I_0}$$
+$$I(t) = \frac{I_0e^{\alpha t}N}{(N-I_0)+I_0e^{\alpha t}} = \frac{I_0N}{(N-I_0)e^{-\alpha t}+I_0}.$$
 
 Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
 
@@ -80,7 +84,7 @@ El modelo continuo correspondiente al modelo SIR se comporta de la misma forma q
 \begin{aligned}
 S'(t) = & -\dfrac{\alpha}{N}SI \\
 I'(t) = & I\left(\dfrac{\alpha}{N}S-\gamma \right) \\
-R'(t) = & R+\gamma I
+R'(t) = & \gamma I
 \end{aligned}
 \end{equation}
 
@@ -89,6 +93,8 @@ $$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma },$$
 y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor, se dice que sí la hay.
 
 \section{Modelo Kermack-McKendrick}
+
+\textcolor{red}{Incluir referencia}
 
 El modelo de Kermack-McKendrick es un modelo simple basado en asunciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
 
@@ -99,13 +105,15 @@ El modelo se describe como:
 \begin{equation}
 \label{eqn: KMK}
 \begin{aligned}
-S' = -\beta SI \\
-I' = \beta SI - \alpha I \\
-R' = \alpha I
+S' & = -\beta SI \\
+I' & = \beta SI - \alpha I \\
+R' & = \alpha I
 \end{aligned}
 \end{equation}
 
-Las asunciones en las que se basa el modelo descrito son:
+Para este modelo, se ha usado un cambio de notación respecto a los modelos que hemos estudiado antes. En este caso, a la tasa de contacto, antes llamada $\alpha$, se ha denotado como $\beta$, y a la probabilidad de que un infectado pase a recuperado, anteriormente denominada $\gamma$, se la ha denotado $\alpha$.
+
+Las suposiciones en las que se basa el modelo descrito son:
 
 \begin{itemize}
 \item Un individuo hace contacto suficiente para contagiar la enfermedad con $\beta N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
@@ -114,7 +122,9 @@ Las asunciones en las que se basa el modelo descrito son:
 \item No se consideran fallecimientos como grupo aparte, así la población es constante.
 \end{itemize}
 
-De acuerdo con la primera asunción, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\beta NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\beta  N S I}{N}=\beta SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
+\textcolor{red}{Añadir esquema del libro}
+
+De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\beta NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\beta  N S I}{N}=\beta SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
 
 Observemos también que, al igual que en el modelo SIR, se cumple $N=S+I+R$.
 
@@ -126,36 +136,38 @@ y la solución de esta ecuación diferencial es
 
 $$u(s)=u(0)e^{-\alpha s}.$$
 
-Por tanto, la fracción de infectados que siguen estando en la clase infectados $s$ unidades de tiempo después de haberse convertido en infectados es $e^{-\alpha s}$, luego la duración del período infeccioso se distribuye según una exponencial, con significado $\int_0^\infty e^{-\alpha s}ds=1/\alpha$, y esto es lo que la segunda asunción realmente asume. Si en lugar de asumir esto, suponemos que la fracción de infectados que permanecen infectados en un tiempo $\tau$ después de haberse vuelto infectados es $P(\tau )$, la segunda ecuación de \eqref{eqn: KMK} sería reemplazada por:
+Por tanto, la fracción de infectados que siguen estando en la clase infectados $s$ unidades de tiempo después de haberse convertido en infectados es $e^{-\alpha s}$, luego la duración del período infeccioso se distribuye según una exponencial, con significado
+$$\int_0^\infty e^{-\alpha s}ds=1/\alpha,$$
+y esto es lo que la segunda suposición realmente significa. Si en lugar de suponer esto, suponemos que la fracción de infectados que permanecen infectados en un tiempo $\tau$ después de haberse infectado es $P(\tau )$, la segunda ecuación de \eqref{eqn: KMK} se reemplaza por:
 
 $$I(t)=I_0(t)+\int_0^\infty \beta S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
 
-donde $I_0(t)$ hace referencia a los miembros de la población que eran infectados en $t=0$ y siguen siendo infecciosos en el momento $t$.
+donde $I_0(t)$ hace referencia a los miembros de la población que eran infectados en el instante inicial y siguen siendo infecciosos en el momento $t$.
 
-Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\beta$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más reañostas muestran comportamientos similares a estos modelos más simples.
+Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\beta$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
 
-En nuestro modelo \eqref{eqn: KMK}, $R$ es determinada una vez que se conocen $S$ e $I$, pero podemos eliminar la ecuación de la $R$ del modelo, dejando este formado solamente por dos ecuaciones:
+En nuestro modelo \eqref{eqn: KMK}, $R$ se determina una vez que se conocen $S$ e $I$, pero podemos eliminar la tercera ecuación del modelo, dejando este formado solamente por dos ecuaciones:
 
 \begin{equation}
 \label{eqn: KMK_sinR}
 \begin{aligned}
-S' = -\beta SI, \\
-I' = (\beta S - \alpha ) I,
+S' & = -\beta SI, \\
+I' & = (\beta S - \alpha ) I,
 \end{aligned}
 \end{equation}
 
 junto con las condiciones iniciales:
 $$S(0)=S_0, \quad I(0)=I_0, \quad S_0+I_0=N.$$
 
-El modelo solo tiene sentido si $S(t)$ e $I(t)$ se mantienen no negativos, luego si alguno de los dos llega a $0$, consideramos que el sistema ha terminado.
+El modelo solo tiene sentido si $S(t)$ e $I(t)$ se mantienen no negativos, luego si alguno de los dos llega a $0$, consideramos que el estudio ha terminado.
 
 \begin{lemma}
 Dado el modelo \eqref{eqn: KMK_sinR}, se tiene que $S'<0$ para todo $t$, y además $I'>0$ si, y solo si, $S>\frac{\alpha}{\beta}$.
 \end{lemma}
 
-Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\alpha}{\beta}$, pero como $S$ decrece para todo $t$, se tiene que $I$ finalmente disminuye y se aproxima a $0$.
+Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\alpha}{\beta}$, pero como $S$ decrece para todo $t$, finalmente se tiene que $S<\frac{\alpha}{\beta}$, y por tanto $I$ deja de aumentar.
 
-Si $S_0<\frac{\alpha}{\beta}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\alpha}{\beta}$, $I$ comienza creciendo hasta el máximo obtenido cuanod $S=\frac{\alpha}{\beta}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
+Si $S_0<\frac{\alpha}{\beta}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\alpha}{\beta}$, $I$ comienza creciendo hasta el máximo obtenido cuando $S=\frac{\alpha}{\beta}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
 
 Definimos el número básico reproductivo como:
 

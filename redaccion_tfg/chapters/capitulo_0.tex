@@ -5,7 +5,7 @@
 %\part{Parte de informática}
 \chapter{Herramientas básicas}
 
-En esta sección se presentarán algunos conceptos y herramientas básicas que nos resultarán útiles a lo largo de los siguientes capítulos.
+En este capítulo se presentarán algunos conceptos y herramientas básicas que nos resultarán útiles a lo largo de los siguientes capítulos. Como referencias se ha usado principalmente \cite{brauerMathematicalModelsPopulation2012}.
 
 \section{Ecuaciones en diferencias}
 
@@ -42,7 +42,7 @@ Una \textbf{solución de una ecuación en diferencias} de orden $k$ es una suces
 
 $$X_n = f(n),\quad n\geq 0,$$
 
-donde $f: \mathbb{N} \rightarrow I$ es una función que cumple (\ref{def_ec_diferencias}) al sustituir $\{X_n\}_{n\geq 0}$ por $f(n)$ para cualquier $n\in\mathbb{N}$.
+donde $f: \mathbb{N} \rightarrow I$ es una función que cumple \eqref{def_ec_diferencias} al sustituir $X_n$ por $f(n)$ para cualquier $n\in\mathbb{N}$.
 
 El conjunto de todas las soluciones de (\ref{def_ec_diferencias}) se llama \textbf{solución general} de la ecuación.
 \end{definition}
@@ -121,7 +121,7 @@ $$X_n = X^* \quad \forall n\in\mathbb{N}.$$
 \end{proposition}
 
 \begin{definition}
-Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como \eqref{def_sist_ec} se dice que es un \textbf{atractor global} si para cualquier $X_0\in D$ se verifica
+Un punto de equilibrio $X^*$ de un sistema de ecuaciones en diferencias como \eqref{def_sist_ec} se dice que es un \textbf{atractor global o globalmente asintóticamente estable} si para cualquier $X_0\in D$ se verifica
 $$\displaystyle\lim_{n\to \infty} X_n = X^*.$$
 \end{definition}
 
@@ -144,7 +144,7 @@ $$|X_0-X^*|<\delta \quad \text{y} \quad |X_{n_0}-X^*|>\epsilon_0.$$
 \end{definition}
 
 \begin{proposition}
-Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, $f\in C^1$ entonces:
+Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, $f\in C^1$, entonces:
 \begin{itemize}
 \item Si $|f'(X^*)|<1$ entonces $X^*$ es un atractor local o localmente asintóticamente estable.
 \item Si $|f'(X^*)|>1$ entonces $X^*$ es inestable.
@@ -152,7 +152,7 @@ Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_
 \end{proposition}
 
 \begin{proposition}
-Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, con $f\in\text{C}^3$ y $f'(X^*)=1$ entonces:
+Si $X^*$ es un punto de equilibrio de una ecuación en diferencias $X_{n+1}=f(X_n)$, con $f\in\text{C}^3$ y $f'(X^*)=1$, entonces:
 \begin{itemize}
 \item Si $|f''(X^*)|\neq 0$ entonces $X^*$ es inestable.
 \item Si $|f''(X^*)|=0$ y $f'''(X^*)<0$ entonces $X^*$ es localmente asintóticamente estable.
@@ -210,7 +210,7 @@ Por tanto, $0$ es localmente asintóticamente estable.
 
 Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es localmente asintóticamente estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
 
-Se ha comprobado gŕaficamente mediante las representaciones gráficas \eqref{fig: cobweb_2.8} y \eqref{fig: cobweb_3.8}.
+Se ha comprobado gráficamente mediante las representaciones gráficas \eqref{fig: cobweb_2.8} y \eqref{fig: cobweb_3.8}.
 
 \begin{figure}
 \begin{center}
@@ -270,7 +270,7 @@ En la ecuación logística, se tiene que su solución converge si $\mu < 3$, osc
 
 Las enfermedades infecciosas como la influenza (o gripe) o la tuberculosis pueden ser severas. La epidemia del SIDA, pandemias recurrentes de influenza, brotes de ébola y la pandemia del Covid-19 son acontecimientos que preocupan e interesan a muchas personas. La prevalencia y los efectos de estas enfermedades sobre todo en países menos desarrollados son menos estudiadas, pero de mayor interés, pues la mortalidad de estas y otras enfermedades en estas zonas es mucho mayor que en países desarrollados. Muchas enfermedades como la malaria o el cólera son endémicas en muchas partes del mundo. Los efectos de enfermedades con alta mortalidad en la esperanza de vida y en la economía de los países afectados es considerable. Por ello, el estudio y modelado de epidemias es muy relevante.
 
-A continuación se explican algunos conceptos básicos de epidemiología. Para esta sección se ha usado principalmente \cite{brauerMathematicalModelsPopulation2012}
+A continuación se explican algunos conceptos básicos de epidemiología. Para esta sección se ha usado principalmente \cite{brauerMathematicalModelsPopulation2012}.
 
 \begin{definition}
 Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
@@ -279,21 +279,21 @@ Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas
 Los individuos de una población se pueden dividir en tres grupos, haciendo referencia a su situación con respecto a la enfermedad.
 
 \begin{definition}
-Los individuos susceptibles, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
+Los individuos \textbf{susceptibles}, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
 \end{definition}
 
 \begin{definition}
-Los individuos infectados, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
+Los individuos \textbf{infectados}, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
 \end{definition}
 
 \begin{definition}
-Los individuos recuperados, que denotamos $R_n$, son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
+Los individuos \textbf{recuperados}, que denotamos $R_n$, son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
 Los individuos recuperados hacen referencia a los individuos inmunizados, aislados, recuperados o fallecidos.
 \end{definition}
 
 \section{Tipos de modelos}
 
-Los modelos discretos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
+Los modelos epidemiológicos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
 
 En estos modelos se hacen dos suposiciones:
 \begin{enumerate}

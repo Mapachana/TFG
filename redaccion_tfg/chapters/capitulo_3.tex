@@ -27,16 +27,13 @@ Los objetivos que se persiguen al realizar este proyecto son realizar un estudio
 	\end{itemize}
 \item \textbf{Requisitos de información}
 	\begin{itemize}
-	\item Los ficheros de datos con los que se va a trabajar deben ser formato csv con una estructura específica.
-	\item Los valores decimales de los parámetros deben poder introducirse usando ',' o '.' como separadores.
+	\item Los ficheros de datos con los que se va a trabajar deben ser formato csv con una estructura específica, dependiente de cada modelo.
 	\end{itemize}
 \end{itemize}
 
 \section{Desarrollo del proyecto}
 
-Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo.
-
-Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior. \eqref{modelo_espiral}
+Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior. \eqref{modelo_espiral}
 
 \begin{figure}
 \begin{center}
@@ -76,16 +73,16 @@ El proyecto consta de un equipo de 3 personas para llevarlo a cabo:
 Todo el proyecto se va a desarrollar en un ordenador portátil con todo el software y dependencias necesarias. Las especificaciones del portátil son:
 
 \begin{itemize}
-\item[Modelo] Acer Aspire E-5 574G.
-\item[CPU] Intel Core i5-6200U.
-\item[RAM] 8GB RAM DDR3.
-\item[Disco duro] 1TB.
-\item[Precio] 600€.
+\item \textbf{Modelo}: Acer Aspire E-5 574G.
+\item \textbf{CPU}: Intel Core i5-6200U.
+\item \textbf{RAM} 8GB RAM DDR3.
+\item \textbf{Disco duro}: 1TB.
+\item \textbf{Precio}: 600€.
 \end{itemize}
 
 \subsection{Recursos software}
 
-El proyecto se ha llevado a cabo usando como sistema operativo Ubuntu 20.04 LTS, y se ha usado como entorno Python.
+El proyecto se ha llevado a cabo usando como sistema operativo Ubuntu 20.04 LTS, y se ha usado como lenguaje principal Python.
 
 El software necesario para el proyecto es el siguiente:
 
@@ -98,7 +95,9 @@ El software necesario para el proyecto es el siguiente:
 \item Texmaker.
 \end{itemize}
 
-Todo el software utilizado ha sido software gratuito, por lo que no ha tenido coste alguno.
+\textcolor{red}{Poner para qué sirve cada software usado, que no me ha dado tiempo}
+
+Todo el software utilizado ha sido gratuito, por lo que no ha tenido coste alguno.
 
 \subsection{Estimación del coste}
 
@@ -110,9 +109,56 @@ A los tutores, dada su formación profesional se les supone un coste estimado de
 
 Dado que el portátil empleado tiene una vida útil estimada de 5 años, le corresponde un coste de 120€ durante la realización del proyecto.
 
-Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto es:
+Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto se puede ver en \eqref{tabla_pres}.
 
-$$6750+5400\cdot 2+120=17670\text{€}.$$
+\begin{table}[!h]
+\caption{Desglose de presupuesto del proyecto.}
+\begin{center}
+\begin{tabular}{|c c|} 
+ \hline
+ \textbf{Recursos humanos} & \textbf{Coste (€)} \\ 
+ \hline\hline
+ Alumna & 6750 \\
+ \hline
+ Tutor 1 & 5400 \\
+ \hline 
+ Tutor 2 & 5400 \\
+ \textbf{Suma} & \textbf{17550} \\
+ \hline
+ \textbf{Recursos hardware} & \textbf{Coste (€)} \\ 
+ \hline\hline
+ Ordenador portátil & 120 \\
+ \hline
+ \textbf{Suma} & \textbf{120} \\
+ \hline 
+ \textbf{Recursos software} & \textbf{Coste (€)} \\
+ \hline
+  Flask & 0 \\
+  \hline
+  Dash & 0 \\
+  \hline 
+  VSCode & 0 \\
+  \hline
+  TexMaker & 0 \\
+  \hline 
+  \textbf{Suma} & \textbf{0} \\ 
+ \hline\hline
+ \textbf{Suma total} & \textbf{17670} \\
+ \hline\hline
+ \textbf{Gastos indirectos (18\%)} & \textbf{3180.6} \\ 
+ \hline\hline
+ \textbf{Total} & \textbf{20850.6)} \\ 
+ \hline\hline
+ \textbf{IVA (21\%)} & \textbf{4378.626} \\ 
+ \hline\hline
+ \textbf{Coste final} & \textbf{25229.226} \\ 
+ \hline\hline
+
+ \hline
+\end{tabular}
+\label{tabla_pres}
+\end{center}
+\end{table}
 
 \section{Planificación temporal}
 
