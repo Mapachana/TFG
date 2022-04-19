@@ -28,7 +28,8 @@ layout = html.Div([
         options=[
             {'label': '{}'.format(i), 'value': i} for i in modelos_ajuste_disponibles
         ],
-        value=modelos_ajuste_disponibles[0]
+        value=modelos_ajuste_disponibles[0],
+        clearable=False
     ),
     html.Div(id="parametros"),
     html.Div(id="errores"),
@@ -46,6 +47,41 @@ def solucion_SI(t, alfa, I0):
 
     for j in range (secciones-1):
         I[j+1] = I[j]*(1+(alfa*deltaT/N)*(N-I[j]))
+        
+    return I
+
+# Asumo que el I0 no lo sabes y R0 tampoco
+def solucion_SIR(t, alfa, gamma, I0, R0):
+    N = t[0]
+    secciones = len(t)-1
+    deltaT = 1
+    
+    I = np.empty(secciones)
+    R = np.empty(secciones)
+    
+    I[0] = I0
+    R[0] = R0
+
+    for j in range (secciones-1):
+        I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*(N-I[j]-R[j]))
+        R[j+1] = R[j]+gamma*deltaT*I[j]
+
+    
+    res = np.concatenate((I, R))
+    return res
+
+# Asumo que el I0 no lo sabes 
+def solucion_SIS(t, alfa, gamma, I0):
+    N = t[0]
+    secciones = len(t)-1
+    deltaT = 1
+
+    I = np.empty(secciones)
+    
+    I[0] = I0
+
+    for j in range (secciones-1):
+        I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*(N-I[j]))
         
     return I
 
@@ -83,16 +119,57 @@ def funcion(valor_menu):
         fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
 
     # Calculo ajuste
-    indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
     
-    popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
+    print(valor_menu)
+    respuesta_params = ""
+    respuesta_errores = ""
+    
+    indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
 
-    perr = np.sqrt(pcov.diagonal())
-    print("a")
+    if(valor_menu == modelos_ajuste_disponibles[0]): # Modelo SI
+        print("a")
+    
+        popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
 
-    # Hago la representacion grafica con los parametros obtenidos 
-    I_ajuste = solucion_SI(indep, popt[0], popt[1])
-    S_ajuste = N - I_ajuste
+        perr = np.sqrt(pcov.diagonal())
+        print("a")
+
+        # Hago la representacion grafica con los parametros obtenidos 
+        I_ajuste = solucion_SI(indep, popt[0], popt[1])
+        S_ajuste = N - I_ajuste
+        respuesta_params = 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1])
+        respuesta_errores = 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1])
+    elif(valor_menu == modelos_ajuste_disponibles[1]): # Modelo SIR
+        print("b")
+
+        if 'R' in df.columns:
+            datos_comp = np.concatenate([np.array(df['I'].tolist()), np.array(df['R'].tolist())], axis=None)
+        else:
+            datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
+
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
+
+        perr = np.sqrt(pcov.diagonal())
+
+        soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
+        I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
+        S_ajuste = N-I_ajuste-R_ajuste
+        respuesta_params = 'El parametro alfa vale: {}, el parametro gamma vale: {}, e I0 vale: {} y R0 vale: {}'.format(popt[0], popt[1], popt[2], popt[3])
+        respuesta_errores = 'El error para alfa es {}, para gamma es {}, para I0 es {} y para R0 es {}'.format(perr[0], perr[1], perr[2], perr[3])
+    elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
+        print("c")
+
+        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
+
+        perr = np.sqrt(pcov.diagonal())
+
+        I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
+        S_ajuste = N - I_ajuste
+        respuesta_params = 'El parametro alfa vale: {}, gamma vale: {} e I0 vale: {}'.format(popt[0], popt[1], popt[2])
+        respuesta_errores = 'El error para alfa es {}, para gamma es {} y para I0 es {}'.format(perr[0], perr[1], perr[2]) 
+    else: # Mejor modelo
+        print("d")
+
 
     fig2 = px.scatter()
     fig2.update_layout(title='Ajuste de los datos del fichero',
@@ -110,6 +187,7 @@ def funcion(valor_menu):
         fig2.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
         #fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
-
-    return fig, 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1]), 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1]), fig2
+    print(respuesta_params)
+    print(respuesta_errores)
+    return fig, respuesta_params, respuesta_errores, fig2
 
