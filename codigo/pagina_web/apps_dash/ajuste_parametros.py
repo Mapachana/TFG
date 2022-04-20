@@ -130,7 +130,6 @@ def funcion(valor_menu):
     indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
 
     if(valor_menu == modelos_ajuste_disponibles[0]): # Modelo SI
-        print("a")
     
         popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
 
@@ -165,14 +164,13 @@ def funcion(valor_menu):
             respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {:.6f}".format(error_r[0]), html.Br(), "Infectados: {:.6f}".format(error_r[1])])
 
     elif(valor_menu == modelos_ajuste_disponibles[1]): # Modelo SIR
-        print("b")
 
         if 'R' in df.columns:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.array(df['R'].tolist())], axis=None)
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, 1, N, N)))
 
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
@@ -199,11 +197,8 @@ def funcion(valor_menu):
         respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {:.6f}".format(error_r[0]), html.Br(), "Infectados: {:.6f}".format(error_r[1]), html.Br(), "Recuperados: {:.6f}".format(error_r[2])])
 
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
-        print("c")
 
-        # comprobar bound de gamma
-        print("COMPROBAR BOUND DE GAMMA")
-        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
+        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, 1, N)))
 
         I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
         S_ajuste = N - I_ajuste
