@@ -33,7 +33,8 @@ layout = html.Div([
     ),
     dcc.Graph(id="ajuste", figure=fig2),
     html.Div(id="parametros"),
-    html.Div(id="errores")
+    html.Div(id="errores"),
+    html.Div(id="calidad")
 ])
 
 
@@ -89,6 +90,7 @@ def solucion_SIS(t, alfa, gamma, I0):
     Output('scat', 'figure'),
     Output('parametros', 'children'),
     Output('errores', 'children'),
+    Output('calidad', 'children'),
     Output('ajuste', 'figure'),
     Input('selector_modelo_ajuste', 'value'))
 def funcion(valor_menu):
@@ -113,17 +115,17 @@ def funcion(valor_menu):
     fig.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles")
     fig.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados")
 
-    #print(df.columns)
     if 'R' in df.columns:
         N += df.loc[0].at["R"]
         fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
 
     # Calculo ajuste
     
-    print(valor_menu)
     respuesta_params = ""
     respuesta_errores = ""
+    respuesta_calidad = ""
     mse = np.zeros(3)
+    error_r = np.zeros(3)
     
     indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
 
@@ -150,15 +152,18 @@ def funcion(valor_menu):
         mse[0] = mse[0] / secciones
         mse[1] = mse[1] / secciones
         mse[2] = mse[2] / secciones
-        
-        #mse[0] = (np.square(S_ajuste - df['S'])).mean(axis=None)
-        print(mse)    
+
+        for i in range(0, len(error_r)):
+            error_r[i] = 1/(1+mse[i])
 
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "I0: {}".format(popt[1])])
         if 'R' in df.columns:
             respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
+            respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {}".format(error_r[0]), html.Br(), "Infectados: {}".format(error_r[1]), html.Br(), "Recuperados: {}".format(error_r[2])])
         else:
             respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1])])
+            respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {}".format(error_r[0]), html.Br(), "Infectados: {}".format(error_r[1])])
+
     elif(valor_menu == modelos_ajuste_disponibles[1]): # Modelo SIR
         print("b")
 
@@ -186,8 +191,13 @@ def funcion(valor_menu):
         mse[1] = mse[1] / secciones
         mse[2] = mse[2] / secciones
 
+        for i in range(0, len(error_r)):
+            error_r[i] = 1/(1+mse[i])
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2]), html.Br(), "R0: {}".format(popt[3])])
         respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
+        respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {}".format(error_r[0]), html.Br(), "Infectados: {}".format(error_r[1]), html.Br(), "Recuperados: {}".format(error_r[2])])
+
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
         print("c")
 
@@ -213,11 +223,19 @@ def funcion(valor_menu):
         mse[1] = mse[1] / secciones
         mse[2] = mse[2] / secciones
 
+        for i in range(0, len(error_r)):
+            error_r[i] = 1/(1+mse[i])
+        print(error_r)
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2])])
         if 'R' in df.columns:
             respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
+            respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {}".format(error_r[0]), html.Br(), "Infectados: {}".format(error_r[1]), html.Br(), "Recuperados: {}".format(error_r[2])])
+
         else:
             respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1])])
+            respuesta_calidad = html.P(["La bondad del ajuste es:", html.Br(), "Susceptibles: {}".format(error_r[0]), html.Br(), "Infectados: {}".format(error_r[1])])
+
     else: # Mejor modelo
         print("d")
 
@@ -239,7 +257,5 @@ def funcion(valor_menu):
     if (valor_menu == modelos_ajuste_disponibles[1]):
             fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
-    print(respuesta_params)
-    print(respuesta_errores)
-    return fig, respuesta_params, respuesta_errores, fig2
+    return fig, respuesta_params, respuesta_errores, respuesta_calidad, fig2
 
