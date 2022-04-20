@@ -123,6 +123,7 @@ def funcion(valor_menu):
     print(valor_menu)
     respuesta_params = ""
     respuesta_errores = ""
+    mse = np.zeros(3)
     
     indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
 
@@ -131,14 +132,33 @@ def funcion(valor_menu):
     
         popt, pcov = curve_fit(solucion_SI, indep, df['I'], bounds=((0, 0), (np.inf, N)))
 
-        perr = np.sqrt(pcov.diagonal())
-        print("a")
-
         # Hago la representacion grafica con los parametros obtenidos 
         I_ajuste = solucion_SI(indep, popt[0], popt[1])
         S_ajuste = N - I_ajuste
+        R_ajuste = np.zeros(secciones)
+
+        if 'R' in df.columns:
+            R_datos = np.array(df['R'])
+        else:
+            R_datos = np.zeros(secciones)
+
+        for i in range(0, secciones):
+            mse[0] += np.square(S_ajuste[i]-df.loc[i].at['S'])
+            mse[1] += np.square(I_ajuste[i]-df.loc[i].at['I'])
+            mse[2] += np.square(R_ajuste[i]-R_datos[i])
+
+        mse[0] = mse[0] / secciones
+        mse[1] = mse[1] / secciones
+        mse[2] = mse[2] / secciones
+        
+        #mse[0] = (np.square(S_ajuste - df['S'])).mean(axis=None)
+        print(mse)    
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "I0: {}".format(popt[1])])
-        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
+        if 'R' in df.columns:
+            respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
+        else:
+            respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1])])
     elif(valor_menu == modelos_ajuste_disponibles[1]): # Modelo SIR
         print("b")
 
@@ -149,14 +169,25 @@ def funcion(valor_menu):
 
         popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
 
-        perr = np.sqrt(pcov.diagonal())
-
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
         S_ajuste = N-I_ajuste-R_ajuste
 
+        if 'R' in df.columns:
+            R_datos = np.array(df['R'])
+        else:
+            R_datos = np.zeros(secciones)
+
+        for i in range(0, secciones):
+            mse[0] += np.square(S_ajuste[i]-df.loc[i].at['S'])
+            mse[1] += np.square(I_ajuste[i]-df.loc[i].at['I'])
+            mse[2] += np.square(R_ajuste[i]-R_datos[i])
+        mse[0] = mse[0] / secciones
+        mse[1] = mse[1] / secciones
+        mse[2] = mse[2] / secciones
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2]), html.Br(), "R0: {}".format(popt[3])])
-        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
+        respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
         print("c")
 
@@ -164,12 +195,29 @@ def funcion(valor_menu):
         print("COMPROBAR BOUND DE GAMMA")
         popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
 
-        perr = np.sqrt(pcov.diagonal())
-
         I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
         S_ajuste = N - I_ajuste
+        R_ajuste = np.zeros(secciones)
+
+        if 'R' in df.columns:
+            R_datos = np.array(df['R'])
+        else:
+            R_datos = np.zeros(secciones)
+
+        for i in range(0, secciones):
+            mse[0] += np.square(S_ajuste[i]-df.loc[i].at['S'])
+            mse[1] += np.square(I_ajuste[i]-df.loc[i].at['I'])
+            mse[2] += np.square(R_ajuste[i]-R_datos[i])
+
+        mse[0] = mse[0] / secciones
+        mse[1] = mse[1] / secciones
+        mse[2] = mse[2] / secciones
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2])])
-        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
+        if 'R' in df.columns:
+            respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1]), html.Br(), "Recuperados: {}".format(mse[2])])
+        else:
+            respuesta_errores = html.P(["El error para los datos es:", html.Br(), "Susceptibles: {}".format(mse[0]), html.Br(), "Infectados: {}".format(mse[1])])
     else: # Mejor modelo
         print("d")
 
@@ -188,7 +236,7 @@ def funcion(valor_menu):
 
     if 'R' in df.columns:
         fig2.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
-        if (valor_menu == modelos_ajuste_disponibles[1]):
+    if (valor_menu == modelos_ajuste_disponibles[1]):
             fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
     print(respuesta_params)
