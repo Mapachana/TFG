@@ -47,28 +47,6 @@
               </li>
             </ul>
           </div>
-
-          <!--    ESTO SERIA PARA LOGIN PERO EN PRINCIPIO NO LO VAMOS A USAR
-          <div class="dropdown">
-            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="https://avatars.githubusercontent.com/u/32956016?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-              <strong>
-                {% block nombreuser %}
-                  {% if username is defined and username|length %}
-                    {{ username }}
-                  {% else %}
-                    Inicia sesión
-                  {% endif %}
-                {% endblock %}
-              </strong>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-              <li><a class="dropdown-item" href="/login">Login</a></li>
-              <li><a class="dropdown-item" href="/perfil">Perfil</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/logout">Logout</a></li>
-            </ul>
-          </div>-->
         </div>
       </nav>
       <!-- FIN DE BARRA DE NAVEGACION-->
@@ -79,15 +57,14 @@
       <!-- BARRA LATERAL -->
       <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark", style= "width: 30%">
         <ul class="nav nav-pills flex-column mb-auto">
-          <!--<li class="nav-item">
-            <a href="/" class="nav-link text-white">
-              Home
-            </a>
-          </li>-->
-          <li>
-            <a href="/ayuda" class="nav-link text-white">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               ¿Cómo funciona?
             </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/ayuda">Ayuda</a></li>
+              <li><a class="dropdown-item" href="/notacion">Notación</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white bg-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -108,11 +85,6 @@
               <li><a class="dropdown-item" href="/modeloSIR_continuo">Modelo SIR</a></li>
               <li><a class="dropdown-item" href="/modeloSIS_continuo">Modelo SIS</a></li>
             </ul>
-          </li>
-          <li>
-            <a href="/notacion" class="nav-link text-white">
-              Notación
-            </a>
           </li>
           <li>
             <a href="/ajuste_archivo" class="nav-link text-white">
