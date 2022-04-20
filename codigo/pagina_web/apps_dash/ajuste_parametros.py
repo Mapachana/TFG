@@ -147,7 +147,7 @@ def funcion(valor_menu):
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, 1, N, N)))
 
         perr = np.sqrt(pcov.diagonal())
 
@@ -159,6 +159,8 @@ def funcion(valor_menu):
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
         print("c")
 
+        # comprobar bound de gamma
+        print("COMPROBAR BOUND DE GAMMA")
         popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
 
         perr = np.sqrt(pcov.diagonal())
