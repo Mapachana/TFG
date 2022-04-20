@@ -31,9 +31,9 @@ layout = html.Div([
         value=modelos_ajuste_disponibles[0],
         clearable=False
     ),
+    dcc.Graph(id="ajuste", figure=fig2),
     html.Div(id="parametros"),
-    html.Div(id="errores"),
-    dcc.Graph(id="ajuste", figure=fig2)
+    html.Div(id="errores")
 ])
 
 
@@ -137,8 +137,8 @@ def funcion(valor_menu):
         # Hago la representacion grafica con los parametros obtenidos 
         I_ajuste = solucion_SI(indep, popt[0], popt[1])
         S_ajuste = N - I_ajuste
-        respuesta_params = 'El parametro alfa vale: {} e I0 vale: {}'.format(popt[0], popt[1])
-        respuesta_errores = 'El error para alfa es {} y para I0 es {}'.format(perr[0], perr[1])
+        respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "I0: {}".format(popt[1])])
+        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
     elif(valor_menu == modelos_ajuste_disponibles[1]): # Modelo SIR
         print("b")
 
@@ -147,15 +147,16 @@ def funcion(valor_menu):
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, 1, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
 
         perr = np.sqrt(pcov.diagonal())
 
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
         S_ajuste = N-I_ajuste-R_ajuste
-        respuesta_params = 'El parametro alfa vale: {}, el parametro gamma vale: {}, e I0 vale: {} y R0 vale: {}'.format(popt[0], popt[1], popt[2], popt[3])
-        respuesta_errores = 'El error para alfa es {}, para gamma es {}, para I0 es {} y para R0 es {}'.format(perr[0], perr[1], perr[2], perr[3])
+
+        respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2]), html.Br(), "R0: {}".format(popt[3])])
+        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
         print("c")
 
@@ -167,8 +168,8 @@ def funcion(valor_menu):
 
         I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
         S_ajuste = N - I_ajuste
-        respuesta_params = 'El parametro alfa vale: {}, gamma vale: {} e I0 vale: {}'.format(popt[0], popt[1], popt[2])
-        respuesta_errores = 'El error para alfa es {}, para gamma es {} y para I0 es {}'.format(perr[0], perr[1], perr[2]) 
+        respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {}".format(popt[0]), html.Br(), "gamma: {}".format(popt[1]), html.Br(), "I0: {}".format(popt[2])])
+        respuesta_errores = html.P(["ERRORES AUN SIN HACER BIEN"])
     else: # Mejor modelo
         print("d")
 
@@ -187,7 +188,8 @@ def funcion(valor_menu):
 
     if 'R' in df.columns:
         fig2.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
-        #fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
+        if (valor_menu == modelos_ajuste_disponibles[1]):
+            fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
     print(respuesta_params)
     print(respuesta_errores)
