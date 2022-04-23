@@ -41,7 +41,7 @@ layout = html.Div([
 def solucion_SI(t, alfa, I0):
     N = t[0]
     secciones = len(t)-1
-    deltaT = 1
+    deltaT = t[2]-t[1]
     I = np.empty(secciones)
     
     I[0] = I0
@@ -55,7 +55,7 @@ def solucion_SI(t, alfa, I0):
 def solucion_SIR(t, alfa, gamma, I0, R0):
     N = t[0]
     secciones = len(t)-1
-    deltaT = 1
+    deltaT = t[2]-t[1]
     
     I = np.empty(secciones)
     R = np.empty(secciones)
@@ -75,7 +75,7 @@ def solucion_SIR(t, alfa, gamma, I0, R0):
 def solucion_SIS(t, alfa, gamma, I0):
     N = t[0]
     secciones = len(t)-1
-    deltaT = 1
+    deltaT = t[2]-t[1]
 
     I = np.empty(secciones)
     
@@ -98,12 +98,9 @@ def funcion(valor_menu):
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
 
     # Añado columna de tiempo para representacion
-    secciones = len(df.index)
-    deltaT = 1
+    secciones = len(df["t"])
+    deltaT = df.loc[1].at["t"]-df.loc[0].at["t"]
     N = df.loc[0].at["S"]+df.loc[0].at["I"]
-
-    tiempo = np.linspace(0, len(df.index), len(df.index))
-    df['tiempo'] = tiempo
 
     # Actualizo primera grafica
     fig = px.scatter()
@@ -112,12 +109,12 @@ def funcion(valor_menu):
                         yaxis_title='Número de individuos')
 
 
-    fig.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles")
-    fig.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados")
+    fig.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles")
+    fig.add_scatter(x=df["t"], y=df["I"], mode="markers", name="Infectados")
 
     if 'R' in df.columns:
         N += df.loc[0].at["R"]
-        fig.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados")
+        fig.add_scatter(x=df["t"], y=df["R"], mode="markers", name="Recuperados")
 
     # Calculo ajuste
     
@@ -127,7 +124,7 @@ def funcion(valor_menu):
     mse = np.zeros(3)
     error_r = np.zeros(3)
     
-    indep = np.concatenate([np.array([N]), np.array(df['tiempo'].tolist())], axis=None)
+    indep = np.concatenate([np.array([N]), np.array(df["t"].tolist())], axis=None)
 
     if(valor_menu == modelos_ajuste_disponibles[0]): # Modelo SI
     
@@ -151,6 +148,9 @@ def funcion(valor_menu):
         for i in range(0, len(error_r)):
             mse[i] = mse[i]/secciones
             error_r[i] = 1/(1+mse[i])
+
+        if 'R' in df.columns:
+            error_r[2] = 0
 
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {:.6f}".format(popt[0]), html.Br(), "I0: {:.6f}".format(popt[1])])
         if 'R' in df.columns:
@@ -185,6 +185,9 @@ def funcion(valor_menu):
             mse[i] = mse[i]/secciones
             error_r[i] = 1/(1+mse[i])
 
+        if 'R' not in df.columns:
+            error_r[2] = 0
+
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {:.6f}".format(popt[0]), html.Br(), "gamma: {:.6f}".format(popt[1]), html.Br(), "I0: {:.6f}".format(popt[2]), html.Br(), "R0: {:.6f}".format(popt[3])])
         respuesta_errores = html.P(["El error del ajuste medido como 1/(1+MSE) es:", html.Br(), "Susceptibles: {:.6f}".format(error_r[0]), html.Br(), "Infectados: {:.6f}".format(error_r[1]), html.Br(), "Recuperados: {:.6f}".format(error_r[2])])
 
@@ -209,7 +212,10 @@ def funcion(valor_menu):
         for i in range(0, len(error_r)):
             mse[i] = mse[i]/secciones
             error_r[i] = 1/(1+mse[i])
-        print(error_r)
+
+        if 'R' in df.columns:
+            error_r[2] = 0
+
 
         respuesta_params = html.P(["Los parámetros estimados con el ajuste elegido son:", html.Br(), "alfa: {:.6f}".format(popt[0]), html.Br(), "gamma: {:.6f}".format(popt[1]), html.Br(), "I0: {:.6f}".format(popt[2])])
         if 'R' in df.columns:
@@ -219,7 +225,7 @@ def funcion(valor_menu):
             respuesta_errores = html.P(["El error del ajuste medido como 1/(1+MSE) es:", html.Br(), "Susceptibles: {:.6f}".format(error_r[0]), html.Br(), "Infectados: {:.6f}".format(error_r[1])])
 
     else: # Mejor modelo
-        print("d")
+
         mejor_modelo = modelos_ajuste_disponibles[0]
         mejor_error_S = 0
         mejor_error_I = 0
@@ -325,7 +331,7 @@ def funcion(valor_menu):
         for i in range(0, len(error_r)):
             mse[i] = mse[i]/secciones
             error_r[i] = 1/(1+mse[i])
-        print(error_r)
+
 
         if ((error_r[1] > mejor_error_I) or (error_r[1] == mejor_error_I and error_r[0] > mejor_error_S)):
             mejor_modelo = modelos_ajuste_disponibles[2]
@@ -371,16 +377,16 @@ def funcion(valor_menu):
                         yaxis_title='Número de individuos')
 
 
-    fig2.add_scatter(x=df["tiempo"], y=df["S"], mode="markers", name="Susceptibles datos")
-    fig2.add_scatter(x=df['tiempo'], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
-    fig2.add_scatter(x=df["tiempo"], y=df["I"], mode="markers", name="Infectados datos")
-    fig2.add_scatter(x=df['tiempo'], y=I_ajuste, mode="lines", name="Infectados ajuste")
+    fig2.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles datos")
+    fig2.add_scatter(x=df["t"], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
+    fig2.add_scatter(x=df["t"], y=df["I"], mode="markers", name="Infectados datos")
+    fig2.add_scatter(x=df["t"], y=I_ajuste, mode="lines", name="Infectados ajuste")
 
 
     if 'R' in df.columns:
-        fig2.add_scatter(x=df["tiempo"], y=df["R"], mode="markers", name="Recuperados datos")
+        fig2.add_scatter(x=df["t"], y=df["R"], mode="markers", name="Recuperados datos")
     if (valor_menu == modelos_ajuste_disponibles[1]):
-            fig2.add_scatter(x=df['tiempo'], y=R_ajuste, mode="lines", name="Recuperados ajuste")
+            fig2.add_scatter(x=df["t"], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
     return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2
 
