@@ -165,6 +165,60 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
 
 
 
+\section{Diagrama conceptual}
+
+Para el modelado conceptual de la aplicación web, se ha optado por utilizar OOWS (Object-Oriented approach for Web Solutions modelling), que usa modelado de objetos UML y modelos de navegación y presentación usando UML. Así, se expresan las características navegacionales de la aplicación web a la vez que se integra con las restantes vistas del esquema conceptual mediante una notación UML adaptada.
+
+En \eqref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down:
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Modelo conceptual de la aplicación web.}
+\label{diag: modelo_concep}
+\includegraphics[scale=0.5]{modelo_conceptual-vista-paquetes.drawio}
+\end{center}
+\end{figure}
+
+En \eqref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|Home|, en \eqref{diag: modelo_concep_modelos} se ve el detalle de \verb|Modelos Interactivos|, así como en \eqref{diag: modelo_concep_ayuda} el de \verb|Ayuda| y en \eqref{diag: modelo_concep_ajuste} el de \verb|Ajuste de datos|.
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Modelo conceptual del contexto de Inicio.}
+\label{diag: modelo_concep_home}
+\includegraphics[scale=0.5]{modelo_conceptual-home.drawio}
+\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Modelo conceptual del contexto de Modelos Interactivos.}
+\label{diag: modelo_concep_modelos}
+\includegraphics[scale=0.5]{modelo_conceptual-Modelos.drawio}
+\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Modelo conceptual del contexto de Ayuda.}
+\label{diag: modelo_concep_ayuda}
+\includegraphics[scale=0.5]{modelo_conceptual-Ayuda.drawio}
+\end{center}
+\end{figure}
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Modelo conceptual del contexto de Ajuste de Datos.}
+\label{diag: modelo_concep_ajuste}
+\includegraphics[scale=0.5]{modelo_conceptual-Ajuste.drawio}
+\end{center}
+\end{figure}
+
+
+
+
+
+
+
 \section{Pruebas unitarias}
 
 
@@ -172,8 +226,6 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
 \section{Casos de uso}
 
 
-
-\section{Diagrama conceptual}
 
 
 
