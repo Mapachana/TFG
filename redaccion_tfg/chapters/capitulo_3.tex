@@ -225,35 +225,62 @@ En \eqref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|
 
 \section{Casos de uso}
 
-A partir de los requisitos listados anteriormente,  
+A partir de los requisitos listados anteriormente, se obtienen los siguientes casos de uso:
+
+\begin{itemize}
+\item \textbf{CU-1} Modificar parámetro de un modelo.
+\item \textbf{CU-2} Preprocesar input.
+\item \textbf{CU-3} Subir fichero de datos.
+\item \textbf{CU-4} Leer fichero de datos.
+\item \textbf{CU-5} Actualizar gráfica.
+\item \textbf{CU-6} Seleccionar modelo de ajuste.
+\item \textbf{CU-7} Realizar ajuste de datos.
+\end{itemize}
+
+\subsection{Actores del sistema}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Actor} & \multicolumn{5}{|c|}{Usuario} & \multicolumn{2}{|c|}{A-1} \\
+\hline
+\textbf{Descripción}              & \multicolumn{7}{|c|}{Representa el usuario estándar que va a usar la página web.}           \\
+\hline
+\textbf{Características}                 & \multicolumn{7}{|c|}{Interactúa con la aplicación web de forma directa.}             \\
+\hline
+\textbf{Relaciones}         & \multicolumn{7}{|c|}{}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}        & \multicolumn{7}{|c|}{Interviene en los casos de uso CU-1, CU-3 y CU-6.}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía  & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+\clearpage
+
+\subsection{Plantillas de casos de uso}
+
 
 
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Caso de Uso} & \multicolumn{5}{|c|}{Nombre} & \multicolumn{2}{|c|}{RF-} \\
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Modificar parámetro de un modelo} & \multicolumn{2}{|c|}{CU-1} \\
 \hline
-\textbf{Actores}              & \multicolumn{7}{|c|}{Actores}           \\
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{Usuario}           \\
 \hline
-\textbf{Tipo}                 & \multicolumn{7}{|c|}{Tipos}             \\
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
 \hline
-\textbf{Referencias}          & \multicolumn{2}{|c|}{RF}           & \multicolumn{5}{|c|}{RF}\\
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF1}           & \multicolumn{5}{|c|}{CU-2, CU-5}\\
 \hline
-\textbf{Precondición}         & \multicolumn{7}{|c|}{Antes e necesita}             \\
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se debe estar trabajando con un modelo.}             \\
 \hline
-\textbf{Postcondición}        & \multicolumn{7}{|c|}{Despues de necesita}              \\
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{Se debe actualizar la gráfica.}              \\
 \hline
-\textbf{Autor}                &   Ana   & \multicolumn{2}{|c|}{\textbf{Fecha}} &  25/04   & \multicolumn{2}{|c|}{\textbf{Versión}} & 1.0  \\
-\hline
-\end{tabular}
-\end{table}
-
-\begin{table}[!h]
-\begin{tabular}{|c|}
-\hline
-\textbf{Propósito} \\
-\hline
-                   \\
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía  & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
 \hline
 \end{tabular}
 \end{table}
@@ -261,9 +288,19 @@ A partir de los requisitos listados anteriormente,
 \begin{table}[!h]
 \begin{tabular}{|c|}
 \hline
-\textbf{Resumen}  \\
+\cellcolor{cyan} \textbf{Propósito} \\
 \hline
-                   \\
+Modificar uno de los parámetros disponibles del modelo para ver cómo afecta al \\ comportamiento del mismo.   \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+Se modifica uno de los parámetros posibles del modelo, modificando así su \\ comportamiento y visualizando la nueva gráfica resultante.   \\
 \hline
 \end{tabular}
 \end{table}
@@ -273,9 +310,12 @@ A partir de los requisitos listados anteriormente,
 \hline
 \multicolumn{4}{|c|}{Curso Normal} \\
 \hline
-              &               &              &              \\
+      1.        &  El usuario modifica un parámetro     &              &              \\
 \hline
-              &               &              &              \\
+              &               &       2.       &      Incluir CU-2         \\
+\hline
+              &               &       3.       &      Incluir CU-5        \\
+
 \hline
 \end{tabular}
 \end{table}
@@ -283,7 +323,441 @@ A partir de los requisitos listados anteriormente,
 \begin{table}[!h]
 \begin{tabular}{|c|c|}
 \hline
-\multicolumn{2}{|c|}{Cursos Alternos} \\
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+       2a.       &      El formato no es correcto, se asigna un valor por defecto        \\
+\hline
+       3a.       &      Incluir CU-5        \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &     Alta          &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &      Finalizado         &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Preprocesar input} & \multicolumn{2}{|c|}{CU-2} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{(Sistema)}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF-1}           & \multicolumn{5}{|c|}{CU-1}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se debe haber modificado un parámetro del modelo.}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+Asegurar el correcto formato y validez del valor introducido. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+ Se comprueba la validez y formato del valor introducido para asegurar \\ el correcto funcionamiento del modelo.  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+              &               &      1.        &    Se comprueba el tipo de valor (float o entero).         \\
+\hline
+              &               &      2.        &    Se  comprueba el rango de validez de los valors de cada parámetro.         \\
+\hline
+              &               &      3.        &    Se comprueba que la población sea constante.          \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+        1a       &     Si el valor no es de un tipo válido se sustituye por 0. \\
+\hline
+        2b.      &     Si el valor no está en el rango se sustituye por 0.         \\
+\hline
+
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &      Alta         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &    Alta          \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Subir fichero de datos} & \multicolumn{2}{|c|}{CU-3} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{Usuario}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF4}           & \multicolumn{5}{|c|}{CU-4, CU-5, CU-6, CU-7}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía  & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+El usuario debe poder subir un fichero de datos para trabajar sobre él.  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+El usuario sube un fichero de datos.    \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|c|X|c|X|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+      1.        &      El usuario selecciona un fichero de datos.         &              &              \\
+\hline
+              &               &      2.        &    El sistema sube el fichero de datos seleccionado.          \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+      2a.        &    El fichero no tiene formato correcto, por lo que no se deja seleccionarlo.          \\
+\hline
+              &              \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &     Alta          &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &      Finalizado         &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Leer fichero de datos} & \multicolumn{2}{|c|}{CU-4} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{(Sistema)}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF4}           & \multicolumn{5}{|c|}{CU-3, CU-7}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se debe haber subido el fichero a leer.}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{Se debe actualizar la gráfica.}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+ Leer el fichero para poder trabajar con los datos que contiene.                  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+ Se lee el fichero de datos cargando estos en memoria.                  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+              &               &      1.        &     Se abre el fichero         \\
+\hline
+              &               &      2.        &     Se lee el fichero         \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+    2a.          &      Si el formato del fichero no es el esperado, se muestra un error.        \\
+\hline
+              &              \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &      Alta         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &       Vital        &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Actualizar gráficas} & \multicolumn{2}{|c|}{CU-5} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{(Sistema)}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF1, RF2, RF5}           & \multicolumn{5}{|c|}{CU-1, CU-6}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se ha modificado un parámetro o ajuste seleccionado.}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{La gráfica se ha actualizado.}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|X|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+Actualizar la gráfica para tener la visualización de los datos de acuerdo a las opciones indicadas.   \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|X|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+Actualizar la gráfica cuando el usuario realiza una modificación de parámetros o del modelo con el que realizar el ajuste.  \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+              &               &      1.        &     Incluir CU-4         \\
+\hline
+              &               &      2.        &     Representar los datos con el nuevo parámetro.         \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+      2a.        &     Si se ha cambiado el modelo con el que realizar el ajuste, incluir CU-7.         \\
+\hline
+      3a.        &     Representar los datos con el nuevo ajuste.         \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &     Alta         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Medio        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &     Alta         \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Seleccionar modelo de ajuste} & \multicolumn{2}{|c|}{CU-6} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{Usuario}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF2}           & \multicolumn{5}{|c|}{CU-5, CU-7}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se debe tener leído un fichero de datos.}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{Se debe realizar el ajuste con el nuevo modelo elegido.}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+Poder elegir el modelo con el que realizar el ajuste de los datos.  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+Seleccionar el modelo a partir del cuál se va a realizar el ajuste.  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+      1.        &     El usuario selecciona un modelo         &              &              \\
+\hline
+              &               &      2.        &      Incluir CU-7        \\
+\hline
+              &               &      3.        &      Incluir CU-5        \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
 \hline
               &              \\
 \hline
@@ -295,27 +769,111 @@ A partir de los requisitos listados anteriormente,
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|c|}
 \hline
-\multicolumn{4}{|c|}{Otros datos} \\
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
 \hline
- \textbf{Frecuencia esperada}             &               &    \textbf{Rendimiento}          &              \\
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &       Alta        &    \cellcolor{cyan} \textbf{Rendimiento}          &       Alto       \\
 \hline
- \textbf{Importancia}             &               &     \textbf{Urgencia}         &              \\
+ \cellcolor{cyan} \textbf{Importancia}             &      Alta         &     \cellcolor{cyan} \textbf{Urgencia}         &       Alta       \\
 \hline
- \textbf{Estado}             &               &    \textbf{Estabilidad}          &              \\
+ \cellcolor{cyan} \textbf{Estado}             &      Finalizado         &    \cellcolor{cyan} \textbf{Estabilidad}          &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
 \hline
 \end{tabular}
 \end{table}
 
+
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Realizar ajuste de datos} & \multicolumn{2}{|c|}{CU-7} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{(Sistema)}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Esencial}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF6, RF7}           & \multicolumn{5}{|c|}{CU-3, CU-4, CU-5, CU-6}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{Se debe haber leído un fichero y haber seleccionado un modelo.}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{Actualizar las gráficas}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|X|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+Obtener una estimación de los parámetros y los errores correspondientes de acuerdo al modelo seleccionado. \\
+\hline
+\end{tabularx}
+\end{table}
 
 \begin{table}[!h]
 \begin{tabular}{|c|}
 \hline
-\textbf{Comentarios} \\
+\cellcolor{cyan} \textbf{Resumen}  \\
 \hline
-                  \\
+Se realiza el ajuste de un modelo elegido a los datos leídos. \\
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+     1.         &     Incluir CU-6           &              &              \\
+\hline
+              &               &    2.          &     Estimar parámetros         \\
+\hline
+              &               &    3.          &     Calcular errores         \\
+\hline
+              &               &    4.          &     Incluir CU-5            \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+     2a.         &    Si se debe elegir el mejor modelo, se calculan los parámetros para todos los modelos          \\
+\hline
+     3a.         &    Se calculan los errores para todos los modelos          \\
+\hline
+     4a.         &    Se elige el mejor modelo de acuerdo a un criterio sobre los errores          \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &      Alta         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
+\hline
+\cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
 
 
 
