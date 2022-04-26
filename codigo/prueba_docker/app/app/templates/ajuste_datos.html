@@ -1,0 +1,20 @@
+{% extends "parent.html" %}
+
+
+{% block contenido %}
+<div class="d-flex align-items-center flex-column">
+    <h2> Ajuste de datos </h2>
+
+    <p>Suba un fichero</p>
+
+    <form method=post enctype=multipart/form-data>
+        <input type=file name=file>
+        <input type=submit value=Upload>
+    </form>
+
+    
+
+</div>
+
+
+{% endblock %}

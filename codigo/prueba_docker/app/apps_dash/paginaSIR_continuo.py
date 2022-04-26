@@ -69,12 +69,12 @@ def preprocesar_input(N, alfa, gamma, S0, I0, R0, T):
 
 # Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
 @app.callback(
-    Output("N_SIR", "value"),
-    Output("graph-SIR", "figure"),
-    Output("graph-av-SI", "figure"),
-    Output("graph-av-SR", "figure"),
-    Output("graph-av-IR", "figure"),
-    [Input("N_SIR", "value")],
+    Output("N_SIR_cont", "value"),
+    Output("graph-SIR_cont", "figure"),
+    Output("graph-av-SI_cont", "figure"),
+    Output("graph-av-SR_cont", "figure"),
+    Output("graph-av-IR_cont", "figure"),
+    [Input("N_SIR_cont", "value")],
     [Input("alfa", "value")],
     [Input("gamma", "value")],
     [Input("S0", "value")],
@@ -117,9 +117,9 @@ def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
 
     # Calculo los datos a representar
     for j in range (secciones-1):
-        S[j+1] = S[j]*(1-(alfa*deltaT/N)*I[j])
-        I[j+1] = I[j]*(1-gamma*deltaT+(alfa*deltaT/N)*S[j])
-        R[j+1] = R[j]+gamma*deltaT*I[j]
+        S[j+1] = S[j]+deltaT*(-(alfa/N) *S[j]*I[j])
+        I[j+1] = I[j]+deltaT*(I[j]*(alfa/N*S[j]-gamma))
+        R[j+1] = R[j]+deltaT*(gamma*I[j])
 
     # Figura
     dfS = pd.DataFrame({'tiempo':tiempo, 'Susceptibles':S})
@@ -199,7 +199,7 @@ parametros = html.Div([
     style={'display': 'flex', 'flex-direction': 'column', 'font-size': '18px'}),
     html.Div([
         dcc.Input(
-            id="N_SIR".format('text'),
+            id="N_SIR_cont".format('text'),
             type='text',
             placeholder="100".format('text'),
             value="100"
@@ -249,10 +249,10 @@ style={'display': 'flex', 'flex-direction': 'row'}
 # Html a mostrar, primero estan los parametros para hacer el input y despues la grafica
 layout = html.Div([
     parametros,
-    dcc.Graph(id="graph-SIR", figure=fig),
-    dcc.Graph(id="graph-av-SI", figure=figSI),
-    dcc.Graph(id="graph-av-SR", figure=figSR),
-    dcc.Graph(id="graph-av-IR", figure=figIR)
+    dcc.Graph(id="graph-SIR_cont", figure=fig),
+    dcc.Graph(id="graph-av-SI_cont", figure=figSI),
+    dcc.Graph(id="graph-av-SR_cont", figure=figSR),
+    dcc.Graph(id="graph-av-IR_cont", figure=figIR)
 ])
 
 

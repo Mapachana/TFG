@@ -1,0 +1,46 @@
+{% extends "parent.html" %}
+
+
+{% block contenido %}
+<div class="d-flex align-items-center flex-column">
+    <h2> Ayuda </h2>
+
+    <h3>Preguntas frecuentes</h3>
+    <ul>
+        <li style="list-style-type: circle; font-weight: bold;">¿Qué es este sitio?</li>
+        <li style="list-style-type: none;">Una página web con conceptos introductorios a diversos modelos de epidemiología y ajuste de parámetros.</li>
+        
+        <li style="list-style-type: circle; font-weight: bold;">¿Dónde puedo ampliar información?</li>
+        <li style="list-style-type: none;">Entre diversas fuentes, un libro muy útil es "mathematical_models_in_population_biology_and_epidemiology"</li>
+
+        <li style="list-style-type: circle; font-weight: bold;">¿Dónde puedo consultar los conceptos necesarios presentados?</li>
+        <li style="list-style-type: none;">Un libro con las matemáticas necesarias es "Discrete Dynamical Models"</li>
+
+        <li style="list-style-type: circle; font-weight: bold;">¿Qué es la notación?</li>
+        <li style="list-style-type: none;">La notación es el sistema de signos o símbolos que se utiliza para representar ciertos conceptos.</li>
+
+        <li style="list-style-type: circle; font-weight: bold;">No se me renderizan las gráficas interactivas, ¿qué hago?</li>
+        <li style="list-style-type: none;">Refresca la página o espera un minuto, a veces tardan en cargar.</li>
+
+        <li style="list-style-type: circle; font-weight: bold;">¿Qué formato de archivo tengo que subir para realizar ajustes de datos?</li>
+        <li style="list-style-type: none;">Se debe subir un .csv con los datos del tiempo, susceptibles, infectados y recuperados (si lo hubiera).</li>
+
+        <li style="list-style-type: circle; font-weight: bold;">¿Qué significa el error del ajuste?</li>
+        <li style="list-style-type: none;">El error viene expresado como 1/(1+MSE), donde MSE es el Error Cuadrático Medio. Cuanto más cercano a 1, mejor es el ajuste. y cuanto más cercano a 0, peor.</li>
+        
+        <li style="list-style-type: circle; font-weight: bold;">¿Cuál es la diferencia entre un modelo discreto y su análogo continuo?</li>
+        <li style="list-style-type: none;">En los modelos discretos el tiempo se considera discretizado y solo se conoce el número de susceptibles e infectados en ciertos puntos, mientras en los modelos continuos se considera el tiempo continuo.</li>
+
+        <!--
+        <li style="list-style-type: circle; font-weight: bold;"></li>
+        <li style="list-style-type: none;"></li>
+        -->
+    </ul>
+
+    <h3>Contacto</h3>
+    <p>Puedes contactar a través del <a href="https://github.com/Mapachana/TFG/">repositorio de github de Mapachana</a></p>
+
+</div>
+
+
+{% endblock %}
