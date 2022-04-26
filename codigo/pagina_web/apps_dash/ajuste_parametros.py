@@ -98,9 +98,9 @@ def funcion(valor_menu):
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
 
     # Añado columna de tiempo para representacion
-    secciones = len(df["t"])
-    deltaT = df.loc[1].at["t"]-df.loc[0].at["t"]
-    N = df.loc[0].at["S"]+df.loc[0].at["I"]
+    secciones = len(df["t"]) 
+    deltaT = df.loc[1].at["t"]-df.loc[0].at["t"] 
+    N = df.loc[0].at["S"]+df.loc[0].at["I"] 
 
     # Actualizo primera grafica
     fig = px.scatter()
