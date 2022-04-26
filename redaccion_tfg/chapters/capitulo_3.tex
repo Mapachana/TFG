@@ -163,6 +163,28 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
 
 \section{Planificación temporal}
 
+Para la realización del proyecto se han distinguido distintas etapas, y en cada una de ellas se ha implementado y trabajado sobre una funcionalidad concreta, de acuerdo al modelo en espiral. Las distintas partes del proyecto han sido:
+
+\begin{itemize}
+\item \textbf{Búsqueda de bibliografía y estado actual de la epidemiología}. Se han consultado diversos libros, artículos y páginas de interés con el fin de comprender mejor y obtener los recursos necesarios para la realización del proyecto.
+\item \textbf{Especificación de requisitos}. En base a la información obtenida del proyecto, en esta etapa se han especificado los requisitos que el software debe cumplir.
+\item \textbf{Diseño del sistema}. A partir de los requisitos especificados, se ha diseñado la arquitectura del sistema y cómo será la interfaz con la que lo usuarios van a interactuar.
+\item \textbf{Marco teórico}. Se han indicado conceptos y modelos, así como estudiado las características de estos con el fin de desarrollar la teoría necesaria para trabajar con modelos epidemiológicos. Asimismo, se ha indicado el contexto en el que la epidemiología es de gran utilidad.
+\item \textbf{Implementación de los modelos discretos fundamentales}. Se ha realizado la implementación de los modelos discretos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos.
+\item \textbf{Implementación de los modelos continuos fundamentales}. Se ha realizado la implementación de los modelos continuos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos, al igual que información teórica.
+\item \textbf{Ajuste de datos a diversos modelos}. Se ha implementado funcionalidad para realizar un ajuste de parámetros de acuerdo a un modelo a elegir, o con el propio sistema determinando cuál es el mejor modelo, de unos datos en un fichero.
+\item \textbf{Documentación del proyecto}. Se ha llevado a cabo la documentación del proyecto durante todo su desarrollo.
+\end{itemize}
+
+Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribuido el tiempo del proyecto, se ha realizado el diagrama \eqref{fig: planificacion} en el que se puede ver cuánto tiempo se ha dedicado a cada etapa del desarrollo del proyecto durante los 10 meses de duración del mismo.
+
+\begin{figure}[!h]
+\begin{center}
+\caption{Planificación temporal de las etapas del proyecto.}
+\label{fig: planificacion}
+\includegraphics[scale=0.15]{planificacion}
+\end{center}
+\end{figure}
 
 
 \section{Diagrama conceptual}
@@ -235,6 +257,7 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 \item \textbf{CU-5} Actualizar gráfica.
 \item \textbf{CU-6} Seleccionar modelo de ajuste.
 \item \textbf{CU-7} Realizar ajuste de datos.
+\item \textbf{CU-8} Descargar gráfica.
 \end{itemize}
 
 \subsection{Actores del sistema}
@@ -242,13 +265,13 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-\textbf{Actor} & \multicolumn{5}{|c|}{Usuario} & \multicolumn{2}{|c|}{A-1} \\
+ \rowcolor{cyan} \textbf{Actor} & \multicolumn{6}{|c|}{Usuario} & {A-1} \\
 \hline
-\textbf{Descripción}              & \multicolumn{7}{|c|}{Representa el usuario estándar que va a usar la página web.}           \\
+ \cellcolor{cyan} \textbf{Descripción}              & \multicolumn{7}{|c|}{Representa el usuario estándar que va a usar la página web.}           \\
 \hline
-\textbf{Características}                 & \multicolumn{7}{|c|}{Interactúa con la aplicación web de forma directa.}             \\
+ \cellcolor{cyan} \textbf{Características}                 & \multicolumn{7}{|c|}{Interactúa con la aplicación web de forma directa.}             \\
 \hline
-\textbf{Relaciones}         & \multicolumn{7}{|c|}{}             \\
+ \cellcolor{cyan} \textbf{Relaciones}         & \multicolumn{7}{|c|}{}             \\
 \hline
 \cellcolor{cyan} \textbf{Referencias}        & \multicolumn{7}{|c|}{Interviene en los casos de uso CU-1, CU-3 y CU-6.}              \\
 \hline
@@ -308,7 +331,7 @@ Se modifica uno de los parámetros posibles del modelo, modificando así su \\ c
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|c|}
 \hline
-\multicolumn{4}{|c|}{Curso Normal} \\
+\multicolumn{4}{|c|}{ \cellcolor{cyan}Curso normal} \\
 \hline
       1.        &  El usuario modifica un parámetro     &              &              \\
 \hline
@@ -485,7 +508,7 @@ El usuario sube un fichero de datos.    \\
 \end{table}
 
 \begin{table}[!h]
-\begin{tabularx}{\textwidth}{|c|X|c|X|}
+\begin{tabularx}{\textwidth}{|c|Y|c|Y|}
 \hline
 \multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
 \hline
@@ -636,7 +659,7 @@ El usuario sube un fichero de datos.    \\
 \end{table}
 
 \begin{table}[!h]
-\begin{tabularx}{\textwidth}{|X|}
+\begin{tabularx}{\textwidth}{|Y|}
 \hline
 \cellcolor{cyan} \textbf{Propósito} \\
 \hline
@@ -646,7 +669,7 @@ Actualizar la gráfica para tener la visualización de los datos de acuerdo a la
 \end{table}
 
 \begin{table}[!h]
-\begin{tabularx}{\textwidth}{|X|}
+\begin{tabularx}{\textwidth}{|Y|}
 \hline
 \cellcolor{cyan} \textbf{Resumen}  \\
 \hline
@@ -809,7 +832,7 @@ Seleccionar el modelo a partir del cuál se va a realizar el ajuste.  \\
 \end{table}
 
 \begin{table}[!h]
-\begin{tabularx}{\textwidth}{|X|}
+\begin{tabularx}{\textwidth}{|Y|}
 \hline
 \cellcolor{cyan} \textbf{Propósito} \\
 \hline
@@ -845,7 +868,7 @@ Se realiza el ajuste de un modelo elegido a los datos leídos. \\
 \end{table}
 
 \begin{table}[!h]
-\begin{tabularx}{\textwidth}{|c|X|}
+\begin{tabularx}{\textwidth}{|c|Y|}
 \hline
 \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
 \hline
@@ -866,6 +889,92 @@ Se realiza el ajuste de un modelo elegido a los datos leídos. \\
  \cellcolor{cyan} \textbf{Frecuencia esperada}             &      Alta         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
 \hline
  \cellcolor{cyan} \textbf{Importancia}             &      Vital         &     \cellcolor{cyan} \textbf{Urgencia}         &      Alta        \\
+\hline
+ \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
+\hline
+\cellcolor{cyan} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+\clearpage
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Descargar gráfica} & \multicolumn{2}{|c|}{CU-8} \\
+\hline
+\cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{Usuario}           \\
+\hline
+\cellcolor{cyan} \textbf{Tipo}                 & \multicolumn{7}{|c|}{Secundario}             \\
+\hline
+\cellcolor{cyan} \textbf{Referencias}          & \multicolumn{2}{|c|}{RF3}           & \multicolumn{5}{|c|}{}\\
+\hline
+\cellcolor{cyan} \textbf{Precondición}         & \multicolumn{7}{|c|}{}             \\
+\hline
+\cellcolor{cyan} \textbf{Postcondición}        & \multicolumn{7}{|c|}{}              \\
+\hline
+\cellcolor{cyan} \textbf{Autor}                &   Ana Buendía   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Versión}} & 1.0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|Y|}
+\hline
+\cellcolor{cyan} \textbf{Propósito} \\
+\hline
+Descargar una gráfica generada por la aplicación web. \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|}
+\hline
+\cellcolor{cyan} \textbf{Resumen}  \\
+\hline
+Se descarga la imagen de una gráfica generada. \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Curso normal}} \\
+\hline
+     1.         &     Pulsa en descargar imagen           &              &              \\
+\hline
+              &               &    2.          &     Muestra el selector de archivos         \\
+\hline
+     3.         &     Selecciona dónde guardar el archivo          &              &             \\
+\hline
+               &                                            &    4.   & Se genera y descarga la imagen \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabularx}{\textwidth}{|c|Y|}
+\hline
+\multicolumn{2}{|c|}{\cellcolor{cyan} \textbf{Cursos alternos}} \\
+\hline
+     3a.         &    El usuario cancela la descarga.    \\
+\hline
+\end{tabularx}
+\end{table}
+
+\begin{table}[!h]
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multicolumn{4}{|c|}{\cellcolor{cyan} \textbf{Otros datos}} \\
+\hline
+ \cellcolor{cyan} \textbf{Frecuencia esperada}             &      Baja         &    \cellcolor{cyan} \textbf{Rendimiento}          &      Alto        \\
+\hline
+ \cellcolor{cyan} \textbf{Importancia}             &      Baja         &     \cellcolor{cyan} \textbf{Urgencia}         &      Baja        \\
 \hline
  \cellcolor{cyan} \textbf{Estado}             &       Finalizado        &    \cellcolor{cyan} \textbf{Estabilidad}          &     Alta         \\
 \hline
