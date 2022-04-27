@@ -3,7 +3,7 @@
 %\end{center}}
 
 %\part{Parte de informática}
-\chapter{Análisis y diseño}
+\chapter{Desarrollo del software: Análisis y diseño}
 
 \section{Objetivos y análisis de requisitos}
 
@@ -12,30 +12,30 @@ Los objetivos que se persiguen al realizar este proyecto son realizar un estudio
 \begin{itemize}
 \item \textbf{Requisitos funcionales}
 	\begin{itemize}
-	\item \textbf{RF1} Se debe poder modificar los parámetros de las gráficas de los distintos modelos.
-	\item \textbf{RF2} El usuario debe poder elegir con qué modelo quiere trabajar.
-	\item \textbf{RF3} El sistema debe permitir descargar las imágenes de las gráficas obtenidas.
-	\item \textbf{RF4} El sistema debe poder cargar y leer ficheros de datos.
-	\item \textbf{RF5} Se debe visualizar el ajuste obtenido mediante gráficas.
-	\item \textbf{RF6} Para cada ajuste realizado se obtendrá los valores estimados de los parámetros y los errores.
-	\item \textbf{RF7} El sistema debe ser capaz de seleccionar qué modelo se ajusta mejor a los datos. 
+	\item \textbf{RF1}: Se debe poder modificar los parámetros de las gráficas de los distintos modelos.
+	\item \textbf{RF2}: El usuario debe poder elegir con qué modelo quiere trabajar.
+	\item \textbf{RF3}: El sistema debe permitir descargar las imágenes de las gráficas obtenidas.
+	\item \textbf{RF4}: El sistema debe poder cargar y leer ficheros de datos.
+	\item \textbf{RF5}: Se debe visualizar el ajuste obtenido mediante gráficas.
+	\item \textbf{RF6}: Para cada ajuste realizado se obtendrá los valores estimados de los parámetros y los errores.
+	\item \textbf{RF7}: El sistema debe ser capaz de seleccionar qué modelo se ajusta mejor a los datos. 
 	\end{itemize}
 \item \textbf{Requisitos no funcionales}
 	\begin{itemize}
-	\item \textbf{RNF1} No se podrán ajustar datos de más de un fichero a la vez.
-	\item \textbf{RNF2} Las gráficas deben ser en tiempo real
-	\item \textbf{RNF3} Se mostrará información de ayuda, en caso de ser necesaria.
-	\item \textbf{RNF4} Se debe poder usar desde el navegador.
+	\item \textbf{RNF1}: No se podrán ajustar datos de más de un fichero a la vez.
+	\item \textbf{RNF2}: Las gráficas deben ser en tiempo real.
+	\item \textbf{RNF3}: Se mostrará información de ayuda, en caso de ser necesaria.
+	\item \textbf{RNF4}: Se debe poder usar desde el navegador.
 	\end{itemize}
 \item \textbf{Requisitos de información}
 	\begin{itemize}
-	\item \textbf{RI1} Los ficheros de datos con los que se va a trabajar deben ser formato csv con una estructura específica, dependiente de cada modelo.
+	\item \textbf{RI1}: Los ficheros de datos con los que se va a trabajar deben ser formato csv con una estructura específica, dependiente de cada modelo.
 	\end{itemize}
 \end{itemize}
 
 \section{Desarrollo del proyecto}
 
-Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior. \eqref{modelo_espiral}
+Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior (figura \eqref{modelo_espiral}).
 
 \begin{figure}
 \begin{center}
@@ -250,14 +250,14 @@ En \eqref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|
 A partir de los requisitos listados anteriormente, se obtienen los siguientes casos de uso:
 
 \begin{itemize}
-\item \textbf{CU-1} Modificar parámetro de un modelo.
-\item \textbf{CU-2} Preprocesar input.
-\item \textbf{CU-3} Subir fichero de datos.
-\item \textbf{CU-4} Leer fichero de datos.
-\item \textbf{CU-5} Actualizar gráfica.
-\item \textbf{CU-6} Seleccionar modelo de ajuste.
-\item \textbf{CU-7} Realizar ajuste de datos.
-\item \textbf{CU-8} Descargar gráfica.
+\item \textbf{CU-1}: Modificar parámetro de un modelo.
+\item \textbf{CU-2}: Preprocesar entrada.
+\item \textbf{CU-3}: Subir fichero de datos.
+\item \textbf{CU-4}: Leer fichero de datos.
+\item \textbf{CU-5}: Actualizar gráfica.
+\item \textbf{CU-6}: Seleccionar modelo de ajuste.
+\item \textbf{CU-7}: Realizar ajuste de datos.
+\item \textbf{CU-8}: Descargar gráfica.
 \end{itemize}
 
 \subsection{Actores del sistema}
@@ -380,7 +380,7 @@ Se modifica uno de los parámetros posibles del modelo, modificando así su \\ c
 \begin{table}[!h]
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
-\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Preprocesar input} & \multicolumn{2}{|c|}{CU-2} \\
+\rowcolor{cyan} \textbf{Caso de uso} & \multicolumn{5}{|c|}{Preprocesar entrada} & \multicolumn{2}{|c|}{CU-2} \\
 \hline
 \cellcolor{cyan} \textbf{Actores}              & \multicolumn{7}{|c|}{(Sistema)}           \\
 \hline
