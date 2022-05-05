@@ -84,7 +84,7 @@ def ajuste_archivo():
 
         file.seek(0, os.SEEK_END)
         if file.tell() == 0 or file.filename == '':
-            error = "No se ha seleccionado ningún fichero."
+            error = "No se ha seleccionado ningún fichero válido, por favor seleccione uno."
 
             return render_template('ajuste_datos.html', error=error)
         file.seek(0) # Vuelvo a poner el puntero al inicio para poder trabajar con el
