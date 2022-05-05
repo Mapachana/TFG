@@ -8,7 +8,7 @@ import plotly.graph_objects as go # or plotly.express as px
 
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 from app_dash import app
 
@@ -21,7 +21,14 @@ modelos_ajuste_disponibles = ["Modelo SI", "Modelo SIR", "Modelo SIS", "Mejor mo
 
 
 layout = html.Div([
+   
+    dcc.ConfirmDialog(
+        id='alerta',
+        message='Formato de fichero incorrecto o longitud insuficiente.',
+        displayed=False,
+    ),
     dcc.Graph(id="scat", figure=fig),
+
     html.P("Selecciona el modelo con el que se van a ajustar los datos:"),
     dcc.Dropdown(
         id='selector_modelo_ajuste',
@@ -92,19 +99,21 @@ def solucion_SIS(t, alfa, gamma, I0):
     Output('errores', 'children'),
     Output('modelo', 'children'),
     Output('ajuste', 'figure'),
-    Input('selector_modelo_ajuste', 'value'))
-def funcion(valor_menu):
+    Output("alerta", "displayed"),
+    Input('selector_modelo_ajuste', 'value'),
+    State("alerta", "displayed"))
+def funcion(valor_menu, is_open):
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
 
-    if 't' not in df.columns or 'S' not in df.columns or 'I' not in df.columns or len(df['t']) < 2:
-        error = "Formato de fichero incorrecto o longitud insuficiente"
+    if  't' not in df.columns or 'S' not in df.columns or 'I' not in df.columns or len(df['t']) < 2:
         fig = px.scatter()
         fig2 = px.scatter()
-        respuesta_params = error
+        respuesta_params = ""
         respuesta_errores = ""
         modelo_elegido = ""
-        return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2
+
+        return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2, not is_open
 
     # Tomo datos de secciones, deltaT y N para representacion
     secciones = len(df["t"]) 
@@ -397,5 +406,5 @@ def funcion(valor_menu):
     if (valor_menu == modelos_ajuste_disponibles[1]):
             fig2.add_scatter(x=df["t"], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
-    return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2
+    return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2, is_open
 
