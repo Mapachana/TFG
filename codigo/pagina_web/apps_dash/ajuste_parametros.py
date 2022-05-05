@@ -97,7 +97,16 @@ def funcion(valor_menu):
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
 
-    # Añado columna de tiempo para representacion
+    if 't' not in df.columns or 'S' not in df.columns or 'I' not in df.columns or len(df['t']) < 2:
+        error = "Formato de fichero incorrecto o longitud insuficiente"
+        fig = px.scatter()
+        fig2 = px.scatter()
+        respuesta_params = error
+        respuesta_errores = ""
+        modelo_elegido = ""
+        return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2
+
+    # Tomo datos de secciones, deltaT y N para representacion
     secciones = len(df["t"]) 
     deltaT = df.loc[1].at["t"]-df.loc[0].at["t"] 
     N = df.loc[0].at["S"]+df.loc[0].at["I"] 
