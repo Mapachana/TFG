@@ -105,6 +105,8 @@ def solucion_SIS(t, alfa, gamma, I0):
 def funcion(valor_menu, is_open):
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
+    mejor_modelo = modelos_ajuste_disponibles[0]
+
 
     if  't' not in df.columns or 'S' not in df.columns or 'I' not in df.columns or len(df['t']) < 2:
         fig = px.scatter()
@@ -244,7 +246,6 @@ def funcion(valor_menu, is_open):
 
     else: # Mejor modelo
 
-        mejor_modelo = modelos_ajuste_disponibles[0]
         mejor_error_S = 0
         mejor_error_I = 0
         mejor_S = np.empty(secciones)
@@ -403,7 +404,7 @@ def funcion(valor_menu, is_open):
 
     if 'R' in df.columns:
         fig2.add_scatter(x=df["t"], y=df["R"], mode="markers", name="Recuperados datos")
-    if (valor_menu == modelos_ajuste_disponibles[1]):
+    if (valor_menu == modelos_ajuste_disponibles[1] or mejor_modelo == modelos_ajuste_disponibles[1]):
             fig2.add_scatter(x=df["t"], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
     return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2, is_open
