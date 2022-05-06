@@ -18,7 +18,9 @@ for fecha in df_spain["date"]:
     aux = (aux-t0).days
     tiempo.append(aux)
 
-df_spain = df_spain.fillna(0)
+columnas = ['new_cases', 'new_deaths']
+for columna in columnas:
+    df_spain[columna] = df_spain[columna].fillna(df[columna].mean())
 
 poblacion_spain = 46787961
 
@@ -26,14 +28,15 @@ I = np.array(df_spain['new_cases'])
 R = np.empty(len(df_spain['new_deaths']))
 S = np.empty(len(df_spain['new_deaths']))
 
+for j in range(10, len(df_spain["new_deaths"])):
+    I[j] = df_spain.loc[j].at['new_deaths']+df_spain.loc[j-1].at['new_deaths']+df_spain.loc[j-2].at['new_deaths']+df_spain.loc[j-3].at['new_deaths']+df_spain.loc[j-4].at['new_deaths']+df_spain.loc[j-5].at['new_deaths']+df_spain.loc[j-6].at['new_deaths']+df_spain.loc[j-7].at['new_deaths']+df_spain.loc[j-8].at['new_deaths']+df_spain.loc[j-9].at['new_deaths']+df_spain.loc[j-10].at['new_deaths']
+
 S[0] = poblacion_spain-I[0]-R[0]
 R[0] = df_spain.loc[0].at["new_deaths"]
 for j in range(1, len(df_spain['new_deaths'])):
     R[j] = df_spain.loc[j].at['new_deaths']+ R[j-1]
     S[j] = poblacion_spain-I[j]-R[j]
 
-for j in range(10, len(df_spain["new_deaths"])):
-    I[j] = df_spain.loc[j].at['new_deaths']+df_spain.loc[j-1].at['new_deaths']+df_spain.loc[j-2].at['new_deaths']+df_spain.loc[j-3].at['new_deaths']+df_spain.loc[j-4].at['new_deaths']+df_spain.loc[j-5].at['new_deaths']+df_spain.loc[j-6].at['new_deaths']+df_spain.loc[j-7].at['new_deaths']+df_spain.loc[j-8].at['new_deaths']+df_spain.loc[j-9].at['new_deaths']+df_spain.loc[j-10].at['new_deaths']
 #S = poblacion_spain-I-R
 
 columns = ["t", "S", "I", "R"]
