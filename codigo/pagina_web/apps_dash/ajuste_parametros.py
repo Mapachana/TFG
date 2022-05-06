@@ -105,6 +105,9 @@ def solucion_SIS(t, alfa, gamma, I0):
 def funcion(valor_menu, is_open):
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
+    df = df.dropna()
+    df = df.reset_index()
+
     mejor_modelo = modelos_ajuste_disponibles[0]
 
 
@@ -396,8 +399,8 @@ def funcion(valor_menu, is_open):
                         yaxis_title='Número de individuos')
 
 
-    fig2.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles datos")
-    fig2.add_scatter(x=df["t"], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
+    #fig2.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles datos")
+    #fig2.add_scatter(x=df["t"], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
     fig2.add_scatter(x=df["t"], y=df["I"], mode="markers", name="Infectados datos")
     fig2.add_scatter(x=df["t"], y=I_ajuste, mode="lines", name="Infectados ajuste")
 
