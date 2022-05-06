@@ -46,6 +46,7 @@ for j in range(1, 10):
         R[j] = R[j-1]
     else:
         R[j] = float('NaN')
+    #R[j] = 0
 
 for j in range(10, len(df_spain["new_cases"])):
     if not math.isnan(df_spain.loc[j-10].at["new_cases"]) and not math.isnan(R[j-1]):
