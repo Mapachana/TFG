@@ -78,6 +78,7 @@ def solucion_SIR(t, alfa, gamma, I0, R0):
     res = np.concatenate((I, R))
     return res
 
+
 # Asumo que el I0 no lo sabes 
 def solucion_SIS(t, alfa, gamma, I0):
     N = t[0]
@@ -107,6 +108,8 @@ def funcion(valor_menu, is_open):
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
     df = df.dropna()
     df = df.reset_index()
+
+    print(df)
 
     mejor_modelo = modelos_ajuste_disponibles[0]
 
@@ -188,7 +191,7 @@ def funcion(valor_menu, is_open):
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, 1, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, p0=(0.01, 0.05, 5, 5), bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
 
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
@@ -216,7 +219,7 @@ def funcion(valor_menu, is_open):
 
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
 
-        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, 1, N)))
+        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
 
         I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
         S_ajuste = N - I_ajuste

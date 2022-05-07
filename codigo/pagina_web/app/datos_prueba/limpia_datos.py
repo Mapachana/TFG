@@ -37,7 +37,7 @@ for j in range(10, len(df_spain["new_cases"])):
     I[j] = df_spain["new_cases"][j-10:j].sum()
 
 R[0] = df_spain.loc[0].at['new_deaths']
-for j in range(1, 10):
+'''for j in range(1, 10):
     if not math.isnan(df_spain.loc[j].at["new_deaths"]) and not math.isnan(R[j-1]):
         R[j] = R[j-1]+df_spain.loc[j].at["new_deaths"]
     elif not math.isnan(df_spain.loc[j].at["new_deaths"]) and math.isnan(R[j-1]):
@@ -46,13 +46,14 @@ for j in range(1, 10):
         R[j] = R[j-1]
     else:
         R[j] = float('NaN')
-    #R[j] = 0
+    #R[j] = 0'''
 
-for j in range(10, len(df_spain["new_cases"])):
+R[10] = df_spain.loc[0].at["new_cases"]
+for j in range(11, len(df_spain["new_cases"])):
     if not math.isnan(df_spain.loc[j-10].at["new_cases"]) and not math.isnan(R[j-1]):
-        R[j] = R[j-1]+I[j-10]
+        R[j] = R[j-1]+df_spain.loc[j-10].at["new_cases"]
     elif not math.isnan(df_spain.loc[j-10].at["new_cases"]) and math.isnan(R[j-1]):
-        R[j] = I[j-10]
+        R[j] = df_spain.loc[j-10].at["new_cases"]
     elif not math.isnan(R[j-1]) and math.isnan(df_spain.loc[j-10].at["new_cases"]):
         R[j] = R[j-1]
     else:
@@ -62,6 +63,10 @@ for j in range(10, len(df_spain["new_cases"])):
 #R = df_spain["new_deaths"].cumsum()
 S = poblacion_spain-I-R
 
+tiempo = np.arange(0, len(I)-10)
+S = S[10:]
+I = I[10:]
+R = R[10:]
 #S = poblacion_spain-I-R
 
 columns = ["t", "S", "I", "R"]
