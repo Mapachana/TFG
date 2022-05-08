@@ -299,4 +299,50 @@ En estos modelos se hacen dos suposiciones:
 \item El total de la población es constante y lo denotaremos por $N$.
 \end{enumerate}
 
-\textcolor{red}{Añadir capitulo sobre los metodos de optimizacion}
+\section{Optimización de parámetros}
+
+Para la realización de este proyecto se va a desarrollar una funcionalidad quee estime los parámetros de los modelos de forma automática. Para ello, se va a utilizar una función de pérdida que sea flexible a varios modelos, buscando un equilibrio entre su rapidez y precisión.
+
+Se ha decidido utilizar scipy, pues proporciona diversas funciones para minimizar o maximizar funciones objetivo, posiblemente sujetas a restricciones. Es importante destacar también que sirve para problemas no lineales, como lo son los modelos epidemiológicos a estudiar.
+
+\begin{definition}
+Llamamos función objetivo a la función que queremos maximizar o minimizar.
+\end{definition}
+
+Dado un conjunto de datos con $N$ datos $(x,y)$ y un modelo que aproxima $y$ en función de $x$, al que notamos $\hat{y}=f(x,w)+\varepsilon$. Tenemos que $\hat{y}$ es una aproximación de $y$ y $\varepsilon$ el error de la aproximación según el modelo $f$. A los parámetros del modelo, los hemos denotado $w$, son desconocidos y son los que buscamos estimar de forma que $\hat{y}$ sea lo más parecido o cercano a $y$ posible.
+
+Para medir la bondad del ajuste, escogemos una medida del error, en este caso se ha tomado como medida $\frac{1}{1+MSE}$, donde MSE es el Minimum Squared Error o Error Cuadrático Medio.
+
+\begin{definition}
+El Error Cuadrático Medio (MSE) de una aproximación $\hat{y}$ de $y$ se calcula como:
+$$MSE(\hat{y}, y)= {1\over N}\sum_{i=1}^N (\hat{y}-y)^2$$
+\end{definition}
+
+Por tanto, queremos encontrar los parámetros que hagan mínima esta medida del error, siendo esta nuestra función objetivo.
+
+Para estimar estos parámetros, scipy nos ofrece varias funciones que podemos usar. Se han probado dos alternativas, \verb|minimize| y \verb|curve_fit|, ambas de \verb|scipy.optimize|.
+
+Debido a la simplicidad, rapidez y resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
+
+\verb|curve_fit| usa el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, y con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Pero dado que este algoritmo solo admite problemas sin restricciones, no se usará, pues todos los parámetros en los modelos epidemiológicos están sujetos a restricciones.
+
+Para su utilización, se define una función con el modelo para el ajuste, que será el primer argumento de \verb|curve_fit|. En nuestro caso esta función será un modelo epidemiológico. Su segundo argumento serán los datos $x$ o independientes, en el caso de modelos epidemiológicos será el tiempo, también los datos $y$, que en nuestro caso serán el número de infectados, y finalmente como último parámetro se pueden proporcionar restricciones de los intervalos a los que pertenecen los parámetros buscados.
+
+La función devuelve los parámetros optimizados, a partir de los cuales obtenemos $\hat{y}$ y podemos calcular el error de forma explícita y la covarianza estimada de los parámetros optimizados.
+
+\begin{verbatim}
+popt, pcov = curve_fit(modeloSI, tiempo, I, bounds=((0, 0), (np.inf, N)))
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
