@@ -49,7 +49,7 @@ Esta ecuación diferencial se puede resolver por separación de variables como s
 \begin{aligned}
 I'=\frac{\alpha}{N}I(N-I) & \Leftrightarrow \int \frac{dI}{I(N-I)} = \int \frac{\alpha}{N} dt \\
 & \Leftrightarrow \frac{1}{N}\int \left(\frac{1}{I}+\frac{1}{N-I}\right) dI = \frac{\alpha}{N}t+c \\
-& \Leftrightarrow  \frac{1}{N}\log{\frac{I}{N-I}} = e^{\frac{\alpha}{N}t+c} \\
+& \Leftrightarrow  \frac{1}{N}\log{\frac{I}{N-I}} = \frac{\alpha}{N}t+c \\
 & \Leftrightarrow  \frac{I}{N-I} = Ae^{\alpha t} \\
 & \Leftrightarrow  I = Ae^{\alpha t}(N-I) \\
 & \Leftrightarrow  I(1+Ae^{\alpha t}) = Ae^{\alpha t}N \\
@@ -94,65 +94,68 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pe
 
 \section{Modelo Kermack-McKendrick}
 
-\textcolor{red}{Incluir referencia}
+La información para el desarrollo de esta sección se ha obtenido principalmente de \cite{brauerMathematicalModelsPopulation2012}.
 
-El modelo de Kermack-McKendrick es un modelo simple basado en asunciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
+El modelo de Kermack-McKendrick es un modelo sencillo basado en suposiciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
 
-Este modelo es, por tanto, una modificación del modelo SIR ya estudiado.
+Este modelo es, por tanto, una modificación del modelo SIR ya estudiado. La diferencia con el modelo SIR ya estudiado es que en este modelo se supone que un individuo infectado hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, mientras en el modelo SIR se supone que $\alpha$ es el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en una unidad de tiempo.
 
 El modelo se describe como:
 
 \begin{equation}
 \label{eqn: KMK}
 \begin{aligned}
-S' & = -\beta SI \\
-I' & = \beta SI - \alpha I \\
-R' & = \alpha I
+S' & = -\alpha SI \\
+I' & = \alpha SI - \gamma I \\
+R' & = \gamma I
 \end{aligned}
 \end{equation}
-
-Para este modelo, se ha usado un cambio de notación respecto a los modelos que hemos estudiado antes. En este caso, a la tasa de contacto, antes llamada $\alpha$, se ha denotado como $\beta$, y a la probabilidad de que un infectado pase a recuperado, anteriormente denominada $\gamma$, se la ha denotado $\alpha$.
 
 Las suposiciones en las que se basa el modelo descrito son:
 
 \begin{itemize}
-\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\beta N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
-\item Los infectados pasan a recuperados, inmunizados o fallecidos con la tasa $\alpha I$ por unidad de tiempo.
+\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
+\item Los infectados pasan a recuperados, inmunizados o fallecidos con la tasa $\gamma I$ por unidad de tiempo.
 \item La población total es constante, no hay incorporaciones ni salidas.
 \item No se consideran fallecimientos como grupo aparte, así la población es constante.
 \end{itemize}
 
-\textcolor{red}{Añadir esquema del libro}
+\begin{figure}
+\begin{center}
+\caption{Esquema del modelo de Kermack-McKendrick y modelo SIR}
+\includegraphics[scale=0.5]{esquema_sir}
+\end{center}
+\end{figure}
 
-De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\beta NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\beta  N S I}{N}=\beta SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
+De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\alpha NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\alpha  N S I}{N}=\alpha SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
 
 Observemos también que, al igual que en el modelo SIR, se cumple $N=S+I+R$.
 
-Para la tercera asunción consideramos el grupo de individuos que eran infectados en un mismo momento, y sea $u(s)$ el conjunto de estos que aún son infecciosos $s$ unidades de tiempo después de haber sido infectados. Si una porción $\alpha$ de estos deja de pertenecer a la clase de individuos infectados por unidad de tiempo, entonces
+Para la tercera suposición consideramos el grupo de individuos que fueron infectados en un mismo momento, y sea $u(s)$ el conjunto de estos que aún son infecciosos $s$ unidades de tiempo después de haber sido infectados. Si una porción $\gamma$ de estos deja de pertenecer a la clase de individuos infectados por unidad de tiempo, entonces
 
-$$u'=-\alpha u,$$
+$$u'=-\gamma u,$$
 
 y la solución de esta ecuación diferencial es
 
-$$u(s)=u(0)e^{-\alpha s}.$$
+$$u(s)=u(0)e^{-\gamma s}.$$
 
-Por tanto, la fracción de infectados que siguen estando en la clase infectados $s$ unidades de tiempo después de haberse convertido en infectados es $e^{-\alpha s}$, luego la duración del período infeccioso se distribuye según una exponencial, con significado
-$$\int_0^\infty e^{-\alpha s}ds=1/\alpha,$$
+Por tanto, la fracción de infectados que siguen estando en la clase infectados $s$ unidades de tiempo después de haberse convertido en infectados es $e^{-\gamma s}$, luego la duración del período infeccioso se distribuye según una exponencial, con significado
+$$\int_0^\infty e^{-\gamma s}ds=1/\gamma,$$
 y esto es lo que la segunda suposición realmente significa. Si en lugar de suponer esto, suponemos que la fracción de infectados que permanecen infectados en un tiempo $\tau$ después de haberse infectado es $P(\tau )$, la segunda ecuación de \eqref{eqn: KMK} se reemplaza por:
 
-$$I(t)=I_0(t)+\int_0^\infty \beta S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
+$$I(t)=I_0(t)+\int_0^\infty \alpha S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
 
 donde $I_0(t)$ hace referencia a los miembros de la población que eran infectados en el instante inicial y siguen siendo infecciosos en el momento $t$.
 
-Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\beta$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
+Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\alpha$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
 
 En nuestro modelo \eqref{eqn: KMK}, $R$ se determina una vez que se conocen $S$ e $I$, pero podemos eliminar la tercera ecuación del modelo, dejando este formado solamente por dos ecuaciones:
 
 \begin{equation}
 \label{eqn: KMK_sinR}
 \begin{aligned}
-S' & = -\beta SI, \\
-I' & = (\beta S - \alpha ) I,
+S' & = -\alpha SI, \\
+I' & = (\alpha S - \gamma ) I,
 \end{aligned}
 \end{equation}
 
@@ -162,20 +165,19 @@ $$S(0)=S_0, \quad I(0)=I_0, \quad S_0+I_0=N.$$
 El modelo solo tiene sentido si $S(t)$ e $I(t)$ se mantienen no negativos, luego si alguno de los dos llega a $0$, consideramos que el estudio ha terminado.
 
 \begin{lemma}
-Dado el modelo \eqref{eqn: KMK_sinR}, se tiene que $S'<0$ para todo $t$, y además $I'>0$ si, y solo si, $S>\frac{\alpha}{\beta}$.
+Dado el modelo \eqref{eqn: KMK_sinR}, se tiene que $S'<0$ para todo $t$, y además $I'>0$ si, y solo si, $S>\frac{\gamma}{\alpha}$.
 \end{lemma}
 
-Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\alpha}{\beta}$, pero como $S$ decrece para todo $t$, finalmente se tiene que $S<\frac{\alpha}{\beta}$, y por tanto $I$ deja de aumentar.
+Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\gamma}{\alpha}$, pero como $S$ decrece para todo $t$, finalmente se tiene que $S<\frac{\gamma}{\alpha}$, y por tanto $I$ deja de aumentar.
 
-Si $S_0<\frac{\alpha}{\beta}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\alpha}{\beta}$, $I$ comienza creciendo hasta el máximo obtenido cuando $S=\frac{\alpha}{\beta}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
+Si $S_0<\frac{\gamma}{\alpha}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\gamma}{\alpha}$, $I$ comienza creciendo hasta el máximo obtenido cuando $S=\frac{\gamma}{\alpha}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
 
 Definimos el número básico reproductivo como:
 
-$$\mathcal{R}_{KMK}=\frac{\beta S_0}{\alpha}.$$
+$$\mathcal{R}_{KMK}=\frac{\alpha S_0}{\gamma}.$$
 
 De esta manera, si $\mathcal{R}_{KMK}<1$ no hay una epidemia, mientras si $\mathcal{R}_{KMK}>1$ hay una epidemia. 
 
-\textcolor{red}{Completar}
 
 
 \section{Modelo SIS continuo}
@@ -194,6 +196,7 @@ donde $S(0)+I(0)=N$.
 
 Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
 
+\textcolor{red}{Completar. Pongo alguna grafiquita o algo?}
 
 \section{Análisis de los parámetros de los modelos}
 
@@ -211,7 +214,7 @@ Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de tra
 
 Todos los factores pueden cambiar con el tiempo. El primero, debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 hasta el momento, y así tratar de predecir su comportamiento en el futuro.
+En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 en China hasta el momento, y así tratar de predecir su comportamiento en el futuro.
 
 El modelo SI continuo considerado es el siguiente:
 
@@ -233,7 +236,7 @@ Ahora, consideramos que al final del período infeccioso nos han informado de un
 
 \begin{equation}
 \label{eqn: acumulada}
-C_R(t) = {C_R}_0 + vfC_I(t) \; \forall t \geq t_0
+C_R(t) = {C_R}_0 + vfC_I(t), \forall t \geq t_0
 \end{equation}
 
 donde $C_{R0}$ representa el número de casos reportados al inicio del estudio y 
@@ -245,7 +248,7 @@ siendo $C_I$ el número total de infectados acumulado.
 Asumimos conocidos $S_0 > 0$, $1/v>0$, $f\in (0,1]$. Por tanto, queremos averiguar el número inicial de infectados $I_0$ y la tasa de transmisión $\tau (t)$.
 
 \subsection{Aproximación de $I_0$ y $\tau (t_0)$}
-Procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
+Siguiendo \cite{demongeotSIEpidemicModel}, procedemos a intentar aproximar $I_0$ y $\tau (t_0)$:
 
 Al comienzo de la pandemia podemos suponer que $S(t)$ y $\tau (t)$ son constantes e iguales a $S_0$ y $\tau_0 = \tau (t_0)$, respectivamente. Sustituyendo estos valores en la ecuación \eqref{eqn: SI_cont} obtenemos:
 
@@ -333,13 +336,9 @@ $$ C_I'(t) = I_0 + S_0 \left( 1-\exp{\left(- \int_{t_0}^t \tau (w) I(w)dw \right
 
 Equivalentemente, por \eqref{eqn: acumulada}:
 
-$$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (w ) I(w)dw \right)}\right)\right) +v{C_R}_0 -vC_R(t)$$
-
-\textcolor{red}{TODO Esta cuenta no termina de salirme, pero tiene más o menos sentido}
+$$C_R'(t) = vf\left( I_0 + S_0 \left( 1-\exp{\left(- \frac{1}{vf}\int_{t_0}^t \tau (w ) C_R'(w)dw \right)}\right)\right) +v{C_R}_0 -vC_R(t)$$
 
 Así, obtenemos el Teorema 3.1 de \cite{demongeotSIEpidemicModel}, que nos da la relación directa buscada.
-
-\textcolor{blue}{He estado leyendo el resto del artículo, en el que habla de obtener una expresión explícita de $\tau (t)$ e $I_0$, pero para eso usan datos de China en específico y ajustes por ordenador, así que no tengo muy claro si merece la pena incluir esa parte ya que no tenemos los datos y por tanto sería fiarse un poco de lo que han hecho ellos}
 
 
 

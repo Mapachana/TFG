@@ -201,7 +201,7 @@ En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico repr
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son cantidades inversamente proporcionales. Vemos que primero los infectados crecen al descender el número de individuos susceptibles, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
+En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son cantidades inversamente proporcionales. Vemos que primero los infectados crecen muy rápidamente y después decaen más lentamente, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
 
 \begin{figure}
 \begin{center}
@@ -213,7 +213,7 @@ En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y lo
 
 Estudiamos ahora la figura \ref{fig: SIR_RsobreS}, en la que se muestra como varían los individuos recuperados en función de los susceptibles.
 
-A medida que los individuos susceptibles decrecen los recuperados aumentan, en particular se ve un decrecimiento exponencial˘. Esto se debe a que los individuos susceptibles primero deben infectarse y luego recuperarse, y, como ya hemos visto en la figura \ref{fig: SIR_IsobreS} los infectados bajan muy rápidamente cuando las personas susceptibles son pocas, por ello los recuperados también crecen rápidamente a menor número de individuos susceptibles.
+A medida que los individuos susceptibles crecen los recuperados disminuyen, en particular se ve un decrecimiento exponencial. Esto se debe a que los individuos susceptibles primero deben infectarse y luego recuperarse, y, como ya hemos visto en la figura \ref{fig: SIR_IsobreS} los infectados bajan muy rápidamente cuando las personas susceptibles son pocas, por ello los recuperados también crecen rápidamente a menor número de individuos susceptibles.
 
 \begin{figure}
 \begin{center}
@@ -238,11 +238,8 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 \end{center}
 \end{figure}
 
-\textcolor{red}{AÑADIR EL MODELO KMK difernecias y comparación y alguna grafiquilla}
-
-
 \section{Modelo SIS}
-El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles de múltiples reinfecciones.
+El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles a múltiples reinfecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
 El modelo es una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
@@ -280,13 +277,13 @@ Luego tenemos que ver cuándo la parábola satisface $0<p(\epsilon)<N$ para $0<\
 Notemos que $p(0)=0$ y $p(N)=N(1-\gamma\Delta t).$
 
 Sea $(\epsilon^*, p^*)$ el vértice de la parábola, entonces 
-$$(\epsilon^*, p^*) = \left(\frac{N(1-\gamma\Delta t+\alpha\Delta t)}{2\alpha\Delta t}, \frac{N(1-\gamma\Delta t+\alpha\Delta t)^2}{4\alpha\Delta t}\right)$$
+$$(\epsilon^*, p^*) = \left(\frac{N(1-\gamma\Delta t+\alpha\Delta t)}{2\alpha\Delta t}, \frac{N(1-\gamma\Delta t+\alpha\Delta t)^2}{4\alpha\Delta t}\right).$$
 
 Por tanto, $0<p(\epsilon )<N$ para $0<\epsilon <N$ si y solo si:
 
 $$\gamma\Delta t \leq 1,$$
 
-y por tanto, o bien $\epsilon^* \geq N$, que es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$. bien $\epsilon^*<N \text{  y  } p^*<N$, lo que requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si:
+y por tanto, o bien $\epsilon^* \geq N$, que es equivalente a $\alpha\Delta t \leq 1-\gamma\Delta t$, o bien $\epsilon^*<N \text{  y  } p^*<N$, lo que requiere que $\alpha\Delta t > 1-\gamma\Delta t$ y $(1-\gamma\Delta t+\alpha\Delta t)^2<4\alpha\Delta t$. Estas desigualdades se dan si y solo si:
 
 $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2.$$
 
@@ -295,7 +292,37 @@ $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2
 En el modelo SIS, el número básico reproductivo se define como 
 $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 
-\textcolor{red}{Buscar puntos de equilibrio dichos abajo en el lema 3 en otro lema}
+\textcolor{blue}{He buscado los puntos de equilibrio. He intentado hacer la estabilidad pero no da ninguna información útil, así que me he quedado quietecita.}
+
+\begin{lemma}
+Los puntos de equilibrio de \eqref{eqn: modelo_SIS} son o bien $(S^*,I^*)=(N,0)$, o bien $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
+\end{lemma}
+
+\begin{proof}
+Consideramos los puntos de equilibrio $(S^*, I^*)$ cumpliendo \eqref{eqn: modelo_SIS} y satisfaciendo $S^*+I^*=N$.
+
+Por tanto, resolvemos el sistema:
+
+\begin{equation}
+\begin{aligned}
+S^* & = S^* \left(1-\frac{\alpha\Delta t}{N} I^* \right) + \gamma \Delta t I^* \\
+I^* & = I^* \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S^* \right)
+\end{aligned}
+\end{equation}
+
+de donde se tiene:
+
+$$I^* = I^* \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S^* \right) \Leftrightarrow \frac{\alpha\Delta t}{N} S^*I^* = \gamma\Delta t I^*$$
+
+Distinguimos por tanto dos posibles casos:
+
+O bien, si $I^*=0$ se da la igualdad, y, dado que $S^*+I^*=N$ tenemos que $S^*=N$. Un primer punto de equilibrio sería por tanto $(S^*,I^*)=(N,0)$.
+
+O bien $I^*\neq 0$, luego se tiene que $S=\frac{N\gamma}{\alpha}$, y por tanto $I^*=N-\frac{N\gamma}{\alpha}$. El punto de equilibrio por tanto sería $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
+
+
+\end{proof}
+
 
 \begin{lemma}
 Si $\mathcal{R}_{SIS}\leq 1$ entonces se tiene que $I_{n+1} < I_n$, ya que $0<S_n<N$ y las soluciones son positivas. En este caso es fácil ver que el límite, al ser una sucesión monótona decreciente y acotada inferiormente, es $(S^*,I^*)=(N,0)$.
@@ -399,7 +426,7 @@ I_{n+1}^i &= I_n^i + S_n^i \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t}{N^i}I_n^k
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0^k>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
@@ -427,12 +454,12 @@ R_{n+1}^i &= R_n^i+\gamma_i\Delta t I_n^i
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
+donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0^k>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i+R_0^i=Nî$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$ y $\gamma_i$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
 
 \begin{proposition}
-Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquiera condiciones iniciales si, y solo si,
 $$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i}, \gamma_i\Delta t \right\} \leq 1$$
 \end{proposition}
 
@@ -469,7 +496,7 @@ I_{n+1}^i &= I_n^i (1-\gamma_i\Delta t) + S_n^i\sum_{k=1}^{K}\frac{\alpha_{ik}\D
 \end {aligned}
 \end{equation}
 
-donde $i=1, \cdots , K$, y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$, y $\gamma_i$ es la probabilidad de que un infectado pase a susceptible de nuevo en un intervalo de tiempo.
+donde $i=1, \cdots , K$, y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq 0$ para todo valor de $i$, existiendo algún $k$ cumpliendo $I_0^k>0$. Y además, para todo $i$ debe satisfacerse $S_0^i+I_0^i=N^i$, siendo $N^i$ el tamaño de la i-ésima subpoblación. Asimismo, $\alpha_{ik}$ es la tasa de contacto en la subpoblación i-ésima, es decir, el número medio de contactos por unidad de tiempo de un grupo infeccioso $k$ con individuos del grupo $i$, y $\gamma_i$ es la probabilidad de que un infectado pase a susceptible de nuevo en un intervalo de tiempo.
 
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
