@@ -35,7 +35,7 @@ Los objetivos que se persiguen al realizar este proyecto son realizar un estudio
 
 \section{Desarrollo del proyecto}
 
-Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior (figura \eqref{modelo_espiral}).
+Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior, como se describe en la figura \eqref{modelo_espiral}.
 
 \begin{figure}
 \begin{center}
@@ -44,6 +44,8 @@ Actualmente hay diversas metodologías de desarrollo del software. Cada uno de e
 \includegraphics[scale=1]{modelo_espiral}
 \end{center}
 \end{figure}
+
+Se ha elegido este método de desarrollo ya que se consigue un desarrollo muy estable, pues toda funcionalidad añadida al software es probada y evaluada. De esta forma, aunque el proyecto no esté completo, siempre se tiene una parte funcional, y se va incrementando de forma que siempre disponemos de un producto mínimamente viable. 
 
 \section{Gestión de recursos}
 
@@ -167,14 +169,14 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
 Para la realización del proyecto se han distinguido distintas etapas, y en cada una de ellas se ha implementado y trabajado sobre una funcionalidad concreta, de acuerdo al modelo en espiral. Las distintas partes del proyecto han sido:
 
 \begin{itemize}
-\item \textbf{Búsqueda de bibliografía y estado actual de la epidemiología}. Se han consultado diversos libros, artículos y páginas de interés con el fin de comprender mejor y obtener los recursos necesarios para la realización del proyecto.
-\item \textbf{Especificación de requisitos}. En base a la información obtenida del proyecto, en esta etapa se han especificado los requisitos que el software debe cumplir.
-\item \textbf{Diseño del sistema}. A partir de los requisitos especificados, se ha diseñado la arquitectura del sistema y cómo será la interfaz con la que van a interactuar los usuarios.
-\item \textbf{Marco teórico}. Se han indicado conceptos y modelos, así como estudiado las características de estos con el fin de desarrollar la teoría necesaria para trabajar con modelos epidemiológicos. Asimismo, se ha indicado el contexto en el que la epidemiología es de gran utilidad.
-\item \textbf{Implementación de los modelos discretos}. Se ha realizado la implementación de los modelos discretos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos.
-\item \textbf{Implementación de los modelos continuos}. Se ha realizado la implementación de los modelos continuos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos, al igual que información teórica.
-\item \textbf{Ajuste de datos a diversos modelos}. Se ha implementado una funcionalidad para realizar un ajuste de parámetros de acuerdo a un modelo a elegir, o el sistema puede determinar cuál es el modelo que minimiza el error para unos datos dados.
-\item \textbf{Documentación del proyecto}. Se ha llevado a cabo la documentación del proyecto durante todo su desarrollo.
+\item \textbf{T1. Estudio de bibliografía y estado actual de la epidemiología}. Se han consultado diversos libros, artículos y páginas de interés con el fin de comprender mejor y obtener los recursos necesarios para la realización del proyecto. Además, se ha realizado una selección de los modelos a estudiar y tratar durante el desarrollo del mismo.
+\item \textbf{T2. Especificación de requisitos}. En base a la información obtenida del proyecto, en esta etapa se han especificado los requisitos que el software debe cumplir.
+\item \textbf{T3. Diseño del sistema}. A partir de los requisitos especificados, se ha diseñado la arquitectura del sistema y cómo será la interfaz con la que van a interactuar los usuarios.
+\item \textbf{T4. Marco teórico}. Se han indicado conceptos y modelos, así como estudiado las características de estos con el fin de desarrollar la teoría necesaria para trabajar con modelos epidemiológicos. Asimismo, se ha indicado el contexto en el que la epidemiología es de gran utilidad.
+\item \textbf{T5. Implementación de los modelos discretos}. Se ha realizado la implementación de los modelos discretos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos.
+\item \textbf{T6. Implementación de los modelos continuos}. Se ha realizado la implementación de los modelos continuos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos, al igual que información teórica.
+\item \textbf{T7. Ajuste de datos a diversos modelos}. Se ha implementado una funcionalidad para realizar un ajuste de parámetros de acuerdo a un modelo a elegir, o el sistema puede determinar cuál es el modelo que minimiza el error para unos datos dados.
+\item \textbf{T8. Documentación del proyecto}. Se ha llevado a cabo la documentación del proyecto durante todo su desarrollo.
 \end{itemize}
 
 Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribuido el tiempo del proyecto, se ha realizado el diagrama \eqref{fig: planificacion} en el que se puede ver cuánto tiempo se ha dedicado a cada etapa del desarrollo del proyecto durante los 10 meses de duración del mismo.
@@ -308,7 +310,7 @@ Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todo
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición}}         & \multicolumn{7}{|c|}{Se debe estar trabajando con un modelo.}             \\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{Se debe actualizar la gráfica.}              \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{Se debe preprocesar la entrada.}              \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Autor}}               &   Ana  & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Versión}} & 1.0  \\
 \hline
@@ -373,7 +375,7 @@ Se modifica uno de los parámetros posibles del modelo, modificando así su comp
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &      Finalizado         &    \cellcolor{azulillo} \textbf{Estabilidad}          &     Alta         \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -397,7 +399,7 @@ Se modifica uno de los parámetros posibles del modelo, modificando así su comp
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición} }        & \multicolumn{7}{|c|}{Se debe haber modificado un parámetro del modelo.}             \\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición} }       & \multicolumn{7}{|c|}{}              \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición} }       & \multicolumn{7}{|c|}{Se debe actualizar la gráfica. }              \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Autor}   }             &   Ana   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Versión}} & 1.0  \\
 \hline
@@ -462,7 +464,7 @@ Asegurar el correcto formato y validez del valor introducido. \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &       Finalizado        &    \cellcolor{azulillo} \textbf{Estabilidad}          &    Alta          \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -485,9 +487,9 @@ Asegurar el correcto formato y validez del valor introducido. \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Referencias}}          & \multicolumn{2}{|c|}{RF4}           & \multicolumn{5}{|c|}{CU-4, CU-5, CU-6, CU-7}\\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición}}         & \multicolumn{7}{|c|}{}             \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición}}         & \multicolumn{7}{|c|}{-}             \\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{}              \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{-}              \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Autor}  }              &   Ana  & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Versión}} & 1.0  \\
 \hline
@@ -547,7 +549,7 @@ El usuario sube un fichero de datos.    \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &      Finalizado         &    \cellcolor{azulillo} \textbf{Estabilidad}          &     Alta         \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -630,7 +632,7 @@ El usuario sube un fichero de datos.    \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &       Finalizado        &    \cellcolor{azulillo} \textbf{Estabilidad}          &      Alta        \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -716,7 +718,7 @@ Actualizar la gráfica cuando el usuario realiza una modificación de parámetro
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &       Finalizado        &    \cellcolor{azulillo} \textbf{Estabilidad}          &     Alta         \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -785,7 +787,7 @@ Seleccionar el modelo a partir del cuál se va a realizar el ajuste.  \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Cursos alternos}} \\
 \hline
-              &              \\
+              &       -       \\
 \hline
 \end{tabularx}
 \end{table}
@@ -801,7 +803,7 @@ Seleccionar el modelo a partir del cuál se va a realizar el ajuste.  \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &      Finalizado         &    \cellcolor{azulillo} \textbf{Estabilidad}          &      Alta        \\
 \hline
- \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+ \cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -893,7 +895,7 @@ Se realiza el ajuste de un modelo elegido a los datos leídos. \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &       Finalizado        &    \cellcolor{azulillo} \textbf{Estabilidad}          &     Alta         \\
 \hline
-\cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -913,9 +915,9 @@ Se realiza el ajuste de un modelo elegido a los datos leídos. \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Referencias}}          & \multicolumn{2}{|c|}{RF3}           & \multicolumn{5}{|c|}{}\\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición} }        & \multicolumn{7}{|c|}{}             \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Precondición} }        & \multicolumn{7}{|c|}{-}             \\
 \hline
-\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{}              \\
+\multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Postcondición}}        & \multicolumn{7}{|c|}{-}              \\
 \hline
 \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Autor} }               &   Ana   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Versión}} & 1.0  \\
 \hline
@@ -979,7 +981,7 @@ Se descarga la imagen de una gráfica generada. \\
 \hline
  \cellcolor{azulillo} \textbf{Estado}             &       Finalizado        &    \cellcolor{azulillo} \textbf{Estabilidad}          &     Alta         \\
 \hline
-\cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{} \\
+\cellcolor{azulillo} \textbf{Comentarios}        &  \multicolumn{3}{|c|}{-} \\
 \hline
 \end{tabularx}
 \end{table}
@@ -1040,7 +1042,17 @@ Se han llevado a cabo dos tipos de pruebas:
 
 \textcolor{red}{Añadiré alguna capturilla cuando compruebe que el aspecto de la aplicación no va a cambiar más (veáse la semana que viene cuando comprobemos que va todo bien)}
 
+\section{Diseño de la interfaz de usuario}
 
+\textcolor{red}{Completar}
+
+\section{Manual de usuario}
+
+\textcolor{red}{Completar}
+
+\section{Datos reales}
+
+\textcolor{red}{Hacer}
 
 
 
