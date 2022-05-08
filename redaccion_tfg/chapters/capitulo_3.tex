@@ -240,12 +240,6 @@ En \eqref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|
 
 
 
-
-
-\section{Pruebas unitarias}
-
-
-
 \section{Casos de uso}
 
 A partir de los requisitos listados anteriormente, se obtienen los siguientes casos de uso:
@@ -1013,6 +1007,51 @@ El diagrama de actividad correspondiente a la modificación de parámetros en lo
 \includegraphics[scale=0.45]{diagrama_actividad-Ajuste_parametros.drawio}
 \end{center}
 \end{figure}
+
+
+\section{Pruebas}
+
+A medida que se desarrollaba el proyecto, se han llevado a cabo diversas pruebas de las distintas funcionalidades que se han desarrollado incrementalmente, con el fin de garantizar en todo momento que se disponía de un producto mínimamente viable.
+
+Se han llevado a cabo dos tipos de pruebas:
+
+\begin{itemize}
+\item \textbf{Pruebas unitarias:} Tienen como objetivo asegurar el correcto funcionamiento de las funciones creadas de forma independiente de las demás. 
+\item \textbf{Pruebas de usuario:} Tratan de simular la interacción entre un usuario y la interfaz del proyecto.
+\end{itemize}
+
+\subsection{Pruebas unitarias}
+
+\begin{itemize}
+\item \textbf{Preprocesamiento de valores de parámetros.} Se ha probado a introducir diversos valores para los parámetros modificables en los modelos interactivos, con el fin de asegurarnos de que se preprocesan adecuadamente. El comportamiento esperado es sustituir el valor introducido por $0$ en caso de que este sea un carácter o un valor negativo.
+\item \textbf{Correcta generación de datos para diversos modelos.} Se han representado gráficamente los datos generados por las funciones de los modelos y contrastando el comportamiento de los datos obtenidos con el descrito en la teoría, asegurando así la correcta generación de los datos de acuerdo a los diversos modelos.
+\item \textbf{Subida de ficheros.} Se ha probado a subir ficheros con extensiones permitidas (csv y txt) y comprobado que se han copiado al directorio pertinente para disponer de los ficheros cuando se requiera, así como a subir ficheros con extensiones no permitidas, verificando que se muestra el error pertinente al no permitirse.
+\end{itemize}
+
+\subsection{Pruebas de usuario}
+
+\begin{itemize}
+\item \textbf{Prueba de población constante.} Si el usuario introduce valores para las condiciones iniciales ($S_0, I_0$ y $R_0$ si es pertinente) tal que su suma no sea $N$ se actualiza el valor de la población de forma que $S_0+I_0+R_0=N$.
+\item \textbf{Formato de los valores para parámetros.} Si el usuario introduce un valor de un parámetro con formato incorrecto se sustituye por $0$.
+\item \textbf{Condiciones iniciales son números enteros.} Si el usuario introduce un valor no entero positivo se toma como valor real la parte entera del valor introducido por el usuario.
+\item \textbf{Subida de fichero inexistente.} Si se trata de subir un fichero al que no se puede acceder o no selecciona ningún fichero antes de pulsar en subir fichero se muestra el error pertinente.
+\item \textbf{Interacción con las gráficas.} Los usuarios pueden hacer zoom, desplazarse y obtener el valor numérico de las representaciones gráficas en cada momento en tiempo real, así como descargar las gráficas generadas.
+\end{itemize}
+
+\textcolor{red}{Añadiré alguna capturilla cuando compruebe que el aspecto de la aplicación no va a cambiar más (veáse la semana que viene cuando comprobemos que va todo bien)}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
