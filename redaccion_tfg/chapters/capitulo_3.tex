@@ -1044,7 +1044,49 @@ Se han llevado a cabo dos tipos de pruebas:
 
 \section{Diseño de la interfaz de usuario}
 
-\textcolor{red}{Completar}
+Para finalizar el diseño del proyecto, hemos realizado unos prototipos del aspecto aproximado que tendrá la interfaz de la página web en algunas de sus páginas. Se ha tratado de conseguir una interfaz sencilla e intuitiva, que permita al usuario una navegación clara y eficaz por la página web, resultando así cómoda desde el primer momento.
+
+Los prototipos de la interfaz se muestran en las figuras \eqref{wire: home}, \eqref{wire: home_desplegable}, \eqref{wire: modelo_interactivo}, \eqref{wire: ajuste} y \eqref{wire: ayuda}.
+
+\begin{figure}
+\begin{center}
+\caption{Prototipo de la página home.}
+\label{wire: home}
+\includegraphics[scale=0.25]{Home}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Prototipo de la página home, con desplegable mostrándose.}
+\label{wire: home_desplegable}
+\includegraphics[scale=0.25]{Home_desplegable}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Prototipo de la página de un modelo interactivo.}
+\label{wire: modelo_interactivo}
+\includegraphics[scale=0.25]{Modelo_interactivo}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Prototipo de la página de ajuste de datos subidos desde un fichero.}
+\label{wire: ajuste}
+\includegraphics[scale=0.25]{Ajuste_datos}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Prototipo de la página de ayuda.}
+\label{wire: ayuda}
+\includegraphics[scale=0.25]{Ayuda}
+\end{center}
+\end{figure}
 
 \section{Manual de usuario}
 
@@ -1052,7 +1094,27 @@ Se han llevado a cabo dos tipos de pruebas:
 
 \section{Datos reales}
 
-\textcolor{red}{Hacer}
+\textcolor{red}{Ha habido problemillas}
+
+\textcolor{blue}{He estado probando los ajustes de datos reales y no hay por donde cogerlos, me explico: he cogido datos del covid y del VIH (aunque con estos he trabajado menos). He encontrado un articulo o dos donde se confirma que el covid sigue el SIR y se puede ajustar y tal, hasta ahí todo sonaba fantástico, pero ni de broma.}
+
+\textcolor{blue}{Comenzamos con el problema: nuestros datos de la pandemia (en este caso de España, pero pasa en todos lados), violan un supuesto del modelo SIR, que dice básicamente que la población es homogénea. Sobre todo al principio de la pandemia, y luego al principio de cada ola, los infectados no están entremezclados con la poblacion del todo, así que el modelo ya empieza mal. SI tienes el primer infectado en granada todos los infectados van a salir ne Granada, no por todas lados. Así que al principio de cada ola no parece EN ABSOLUTO un modelo SIR, se parece si acaso al final.}
+
+\textcolor{blue}{Además, como la N es toda la población de España, y esta es supergrande, cualquier variación de los parámetros, por diminuta que sea, se nota una barbaridad. Por tanto se nos va muchísimo de madre para ajustar los parámetros.}
+
+\textcolor{blue}{Como consecuencia añadida de que cualquier variación de los parámetros afecta muchísimo, una variación de 0.001 en $I_0$ hace catástrofes increíbles con el ajuste.}
+
+\textcolor{blue}{Por si esto fuera poco, la forma que tienen de dar los datos es proporcionando el número de nuevos infectados al día y el número de muertos por día, que está muy bien en teoría, pero da muchos problemas. Para ajustar los modelos trabajamos con el número de infectados ACTIVOS, no con los nuevos. Como el covid dura (más o menos) unos 10 días, he considerado como los infectados activos en cada momento la suma de los nuevos infectados en los últimos 10 días. (He probado muchas cosas, esta ha parecido ser la forma menos mala). Asimismo, con los recuperados pasa algo similar. No hay reportes de los recuperados y los necesitamos para ajustar el SIR, así que he considerado a los recuperados como los recuperados que ya había más los nuevos infectados de 10 días atrás. De esta forma, los datos experimentales PARECEN tener sentido y suena razonable. He probado otras opciones y me ha salido cada cosa que da susto.}
+
+\textcolor{blue}{Tras toda esta larga lista de dificultades, sospecho que la suma de todas ellas hace que el curvefit, el pobre método, no tire más de su alma y hace unos ajustes penosos, porque le falta capacidad y no hay manera de tenerla.}
+
+\textcolor{blue}{Hay un paper que hace un ajuste de datos del covid, podría seguirlo paso a paso y hacer un ajuste imitándolo, pero su metodología es completamente aparte de la aplicación y no veo forma de implementar esto en la web, con lo cuál no sé si merece la pena. Voy a subir el paper este a la documentación del drive para que le echéis un vistazo si queréis y ya me decís si merece la pena o no meternos en ese berenjenal.}
+
+\textcolor{blue}{El artículo que digo es este: \href{https://arxiv.org/pdf/2204.12550.pdf}{https://arxiv.org/pdf/2204.12550.pdf}}
+
+\textcolor{blue}{En un intento desesperado por intentar hacer un ajuste que no de vergüenza ajena, he intentado realizar el ajuste considerando el modelo con los nuevos infectados, no con los infectados activos. Pero tras varias horas terribles me he rendido y no lo veo viable.}
+
+\textcolor{blue}{El resumen es: el ajuste de datos reales parece que va a ser terriblemente malo, y de hacerse no creo que sea posible realizarlo en la web, sería más fácil realizarlo de forma independiente. No sé hasta que punto realizar el ajuste sin hacerlo desde la web merecería la pena, ni sé cómo de mal quedará poner básicamente: 'hemos probado a hacer ajustes chulis y han salido fatal, PERO es por esto, esto y esto'. Así que bueno, a ver si realizamos ajuste de datos reales, o no, o cómo lo hacemos.}
 
 
 
