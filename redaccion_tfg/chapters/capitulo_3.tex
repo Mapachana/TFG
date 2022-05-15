@@ -1006,7 +1006,7 @@ El diagrama de actividad correspondiente a la modificación de parámetros en lo
 \begin{center}
 \caption{Diagrama de actividad del ajuste de datos.}
 \label{diag: actividad_ajuste}
-\includegraphics[scale=0.45]{diagrama_actividad-Ajuste_parametros.drawio}
+\includegraphics[scale=0.4]{diagrama_actividad-Ajuste_parametros.drawio}
 \end{center}
 \end{figure}
 
@@ -1040,7 +1040,7 @@ Se han llevado a cabo dos tipos de pruebas:
 \item \textbf{Interacción con las gráficas.} Los usuarios pueden hacer zoom, desplazarse y obtener el valor numérico de las representaciones gráficas en cada momento en tiempo real, así como descargar las gráficas generadas.
 \end{itemize}
 
-\textcolor{red}{Añadiré alguna capturilla cuando compruebe que el aspecto de la aplicación no va a cambiar más (veáse la semana que viene cuando comprobemos que va todo bien)}
+%\clearpage
 
 \section{Diseño de la interfaz de usuario}
 
@@ -1090,32 +1090,49 @@ Los prototipos de la interfaz se muestran en las figuras \eqref{wire: home}, \eq
 
 \section{Manual de usuario}
 
-\textcolor{red}{Completar}
+\subsection{Descripción del proyecto}
+
+El proyecto consiste en una página web de objetivo didáctico a la par que práctico, en la que se ofrece información sobre diversos modelos básicos de epidemiología de forma sencilla y clara a cualquier usuario.
+
+De esta forma, el usuario puede aprender sobre varios modelos de epidemiología comprobando interactivamente el comportamiento de estos modelos en tiempo real, y cómo afectan los parámetros de cada uno de ellos a la evolución de los mismos.
+
+Además, se pueden subir ficheros con datos, ya sean generados por el propio usuario o datos reales recogidos y comprobar el resultado de ajustar estos datos a los modelos mencionados, así como elegir el mejor modelo que ajusta a dichos datos.
+
+Para acceder a la página web el usuario solo requiere de un dispositivo con un navegador de internet mediante el que acceder a la web, introduciendo la url correspondiente.
+
+\subsection{Comenzando a usar la web}
+
+Una vez introducida la url de la web en el navegador, aparecemos en la página principal de esta, la cual puede verse en \eqref{manual:home}.
+
+\begin{figure}
+\begin{center}
+\caption{Página home o principal de la web.}
+\label{manual: home}
+\includegraphics[scale=0.3]{pagina_home}
+\end{center}
+\end{figure}
+
+Desde esta página podemos acceder a todas las funcionalidades e información de la web desde la barra de navegación y el menú lateral.
+
+Además, la página principal es accesible en cualquier momento. Para volver a ella basta clicar en el logo de la esquina superior izquierda o el nombre de la página situado a su lado.
+
+Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. 
+
+\subsection{Funcionalidades}
+
+\subsubsection{Modificación de parámetros de los modelos interactivos}
+
+\subsection{Ajuste de datos}
+
+\subsection{Instalación del backend}
+
+
+
+
 
 \section{Datos reales}
 
-\textcolor{red}{Ha habido problemillas}
-
-\textcolor{blue}{He estado probando los ajustes de datos reales y no hay por donde cogerlos, me explico: he cogido datos del covid y del VIH (aunque con estos he trabajado menos). He encontrado un articulo o dos donde se confirma que el covid sigue el SIR y se puede ajustar y tal, hasta ahí todo sonaba fantástico, pero ni de broma.}
-
-\textcolor{blue}{Comenzamos con el problema: nuestros datos de la pandemia (en este caso de España, pero pasa en todos lados), violan un supuesto del modelo SIR, que dice básicamente que la población es homogénea. Sobre todo al principio de la pandemia, y luego al principio de cada ola, los infectados no están entremezclados con la poblacion del todo, así que el modelo ya empieza mal. SI tienes el primer infectado en granada todos los infectados van a salir ne Granada, no por todas lados. Así que al principio de cada ola no parece EN ABSOLUTO un modelo SIR, se parece si acaso al final.}
-
-\textcolor{blue}{Además, como la N es toda la población de España, y esta es supergrande, cualquier variación de los parámetros, por diminuta que sea, se nota una barbaridad. Por tanto se nos va muchísimo de madre para ajustar los parámetros.}
-
-\textcolor{blue}{Como consecuencia añadida de que cualquier variación de los parámetros afecta muchísimo, una variación de 0.001 en $I_0$ hace catástrofes increíbles con el ajuste.}
-
-\textcolor{blue}{Por si esto fuera poco, la forma que tienen de dar los datos es proporcionando el número de nuevos infectados al día y el número de muertos por día, que está muy bien en teoría, pero da muchos problemas. Para ajustar los modelos trabajamos con el número de infectados ACTIVOS, no con los nuevos. Como el covid dura (más o menos) unos 10 días, he considerado como los infectados activos en cada momento la suma de los nuevos infectados en los últimos 10 días. (He probado muchas cosas, esta ha parecido ser la forma menos mala). Asimismo, con los recuperados pasa algo similar. No hay reportes de los recuperados y los necesitamos para ajustar el SIR, así que he considerado a los recuperados como los recuperados que ya había más los nuevos infectados de 10 días atrás. De esta forma, los datos experimentales PARECEN tener sentido y suena razonable. He probado otras opciones y me ha salido cada cosa que da susto.}
-
-\textcolor{blue}{Tras toda esta larga lista de dificultades, sospecho que la suma de todas ellas hace que el curvefit, el pobre método, no tire más de su alma y hace unos ajustes penosos, porque le falta capacidad y no hay manera de tenerla.}
-
-\textcolor{blue}{Hay un paper que hace un ajuste de datos del covid, podría seguirlo paso a paso y hacer un ajuste imitándolo, pero su metodología es completamente aparte de la aplicación y no veo forma de implementar esto en la web, con lo cuál no sé si merece la pena. Voy a subir el paper este a la documentación del drive para que le echéis un vistazo si queréis y ya me decís si merece la pena o no meternos en ese berenjenal.}
-
-\textcolor{blue}{El artículo que digo es este: \href{https://arxiv.org/pdf/2204.12550.pdf}{https://arxiv.org/pdf/2204.12550.pdf}}
-
-\textcolor{blue}{En un intento desesperado por intentar hacer un ajuste que no de vergüenza ajena, he intentado realizar el ajuste considerando el modelo con los nuevos infectados, no con los infectados activos. Pero tras varias horas terribles me he rendido y no lo veo viable.}
-
-\textcolor{blue}{El resumen es: el ajuste de datos reales parece que va a ser terriblemente malo, y de hacerse no creo que sea posible realizarlo en la web, sería más fácil realizarlo de forma independiente. No sé hasta que punto realizar el ajuste sin hacerlo desde la web merecería la pena, ni sé cómo de mal quedará poner básicamente: 'hemos probado a hacer ajustes chulis y han salido fatal, PERO es por esto, esto y esto'. Así que bueno, a ver si realizamos ajuste de datos reales, o no, o cómo lo hacemos.}
-
+\textcolor{red}{Completar}
 
 
 
