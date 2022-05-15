@@ -191,7 +191,7 @@ def funcion(valor_menu, is_open):
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, p0=(0.01, 0.05, 5, 5), bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
 
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
@@ -402,8 +402,8 @@ def funcion(valor_menu, is_open):
                         yaxis_title='Número de individuos')
 
 
-    #fig2.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles datos")
-    #fig2.add_scatter(x=df["t"], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
+    fig2.add_scatter(x=df["t"], y=df["S"], mode="markers", name="Susceptibles datos")
+    fig2.add_scatter(x=df["t"], y=S_ajuste, mode="lines", name="Susceptibles ajuste")
     fig2.add_scatter(x=df["t"], y=df["I"], mode="markers", name="Infectados datos")
     fig2.add_scatter(x=df["t"], y=I_ajuste, mode="lines", name="Infectados ajuste")
 

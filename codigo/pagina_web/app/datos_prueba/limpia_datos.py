@@ -27,7 +27,8 @@ columnas = ['new_cases', 'new_deaths']
 #for columna in columnas:
 #    df_spain[columna] = df_spain[columna].fillna(df[columna].mean())
 
-poblacion_spain = 46787961
+#poblacion_spain = 46787961
+poblacion_spain = 40000
 
 I = np.array(df_spain['new_cases'])
 R = np.empty(len(df_spain['new_deaths']))
