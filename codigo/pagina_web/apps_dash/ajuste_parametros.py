@@ -109,8 +109,6 @@ def funcion(valor_menu, is_open):
     df = df.dropna()
     df = df.reset_index()
 
-    print(df)
-
     mejor_modelo = modelos_ajuste_disponibles[0]
 
 
