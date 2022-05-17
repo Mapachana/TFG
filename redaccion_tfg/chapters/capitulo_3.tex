@@ -1116,30 +1116,257 @@ Desde esta página podemos acceder a todas las funcionalidades e información de
 
 Además, la página principal es accesible en cualquier momento. Para volver a ella basta clicar en el logo de la esquina superior izquierda o el nombre de la página situado a su lado.
 
-Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. 
+Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. En esta página encontramos dos secciones: preguntas frecuentes, que puede verse en \eqref{manual: ayuda1}, y contacto, que se muestra en \eqref{manual: ayuda2}, para recibir asistencia personalizada o sugerir mejoras a la página web.
+
+\begin{figure}
+\begin{center}
+\caption{Página de ayuda, sección de preguntas frecuentes.}
+\label{manual: ayuda1}
+\includegraphics[scale=0.3]{pagina_ayuda}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Página de ayuda, sección de contacto.}
+\label{manual: ayuda2}
+\includegraphics[scale=0.3]{pagina_ayuda2}
+\end{center}
+\end{figure}
+
+También puede accederse a la página de ayuda desde el menú lateral, clicando en \verb|¿Cómo funciona?| para mostrar las opciones del desplegable y luego en ayuda. Aparte, en notación hay un resumen de la notación usada en toda la página web, haciendo fácil consultarla en cualquier momento. El apartado de notación se muestra en \eqref{manual: notacion}.
+
+\begin{figure}
+\begin{center}
+\caption{Página de notación.}
+\label{manual: notacion}
+\includegraphics[scale=0.3]{pagina_notacion}
+\end{center}
+\end{figure}
+
+Finalmente, las distintas funcionalidades de la página se encuentran en el menú lateral. Estas funcionalidades se explican a continuación.
 
 \subsection{Funcionalidades}
 
 \subsubsection{Modificación de parámetros de los modelos interactivos}
 
+En el menú lateral encontramos dos menús desplegables, llamados \verb|Modelos discretos| y \verb|Modelos Continuos|. Al pulsar sobre cualquiera de ellos se muestran tres enlaces, a los modelos SI, SIR y SIS, como se ve en \eqref{manual: desplegable}. Al seleccionar cualquiera de ellos llegamos a la página de dicho modelo.
+
+\begin{figure}
+\begin{center}
+\caption{Desplegable de modelos discretos desplegado.}
+\label{manual: desplegable}
+\includegraphics[scale=0.3]{pagina_desplegable}
+\end{center}
+\end{figure}
+
+En las páginas de los modelos podemos distinguir varias partes principales:
+
+\begin{itemize}
+\item Al comienzo de la página de cada modelo se explica la teoría y ecuaciones correspondientes a dicho modelo. Por ejemplo, para el modelo SI discreto se puede ver la explicación teórica en \eqref{manual: modeloSI1}.
+\item A continuación se muestran los parámetros del modelo, que el usuario puede modificar con el fin de ver cómo varía el comportamiento del modelo que se está estudiando. En el modelo SI por ejemplo se pueden modificar los modelos que se ven en \eqref{manual: modeloSI2}.
+\item Finalmente, se muestran una serie de gráficas que ilustran el comportamiento del modelo con los parámetros dados. La primera es una funcion de cada grupo explícita grupo, se puede ver en \eqref{manual: modeloSI2}, mientras el resto son funciones implícitas del tiempo, se muestra en \eqref{manual: modeloSI3}.
+\end{itemize}
+
+\begin{figure}
+\begin{center}
+\caption{Página del modelo SI, explicación teórica.}
+\label{manual: modeloSI1}
+\includegraphics[scale=0.3]{pagina_modeloSI}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Página del modelo SI, campos para la modificación de parámetros y gráfica explícita del tiempo.}
+\label{manual: modeloSI2}
+\includegraphics[scale=0.3]{pagina_modeloSI2}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Página del modelo SI, gráfica implícita del tiempo.}
+\label{manual: modeloSI3}
+\includegraphics[scale=0.3]{pagina_modeloSI3}
+\end{center}
+\end{figure}
+
 \subsection{Ajuste de datos}
+
+También es posible subir un fichero en formato \verb|csv| con datos para ajustar con alguno de los modelos disponibles.
+
+Es importante que el fichero a subir tenga como mínimo dos filas y tres columnas llamadas \verb|t|, \verb|S| e \verb|I|, siendo estas el tiempo, los individuos susceptibles en ese tiempo y los individuos infectados en ese tiempo, respectivamente. Adicionalmente, si fuera pertinente se podría tener una cuarta columna \verb|R| con los recuperados en ese tiempo.
+
+Un ejemplo de un fichero válido sería \verb|fichero_ejemplo.csv| conteniendo:
+
+\begin{verbatim}
+t,S,I,R
+0,97.01665754023489,3.377399973205731,-3.816768927775707
+1,102.24543170326915,3.341582397679812,-1.2931795115592053
+2,104.19872670845312,6.0049071497214,-3.2175059735520164
+3,99.79707480976897,10.796475445761393,0.6508408522616295
+4,99.993286104437,3.8927305934099175,0.6722548513086043
+\end{verbatim}
+
+Para subir el fichero en \eqref{manual: ajuste1} seleccionamos \verb|Examinar|, de forma que se abre el navegador de archivos y podemos seleccionar nuestro fichero de datos. Una vez seleccionado pulsamos \verb|Upload| y cargamos el archivo.
+
+\begin{figure}
+\begin{center}
+\caption{Página de ajuste de datos. Subida de fichero.}
+\label{manual: ajuste1}
+\includegraphics[scale=0.3]{pagina_ajuste}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\caption{Página de ajuste de datos. Gráfica de representación de los datos del fichero.}
+\label{manual: ajuste2}
+\includegraphics[scale=0.3]{pagina_ajuste2}
+\end{center}
+\end{figure}
+
+Una vez cargado el fichero se nos muestra una gráfica con los datos del fichero representados, como se ve en \eqref{manual: ajuste2}. A continuación, se muestra un desplegable para elegir el modelo con el que se van a intentar ajustar los datos. Las opciones de este son:
+
+\begin{itemize}
+\item \textbf{Modelo SI}. Ajusta un modelo SI a los datos.
+\item \textbf{Modelo SIR}. Ajusta un modelo SIR a los datos.
+\item \textbf{Modelo SIS}. Ajusta un modelo SIS a los datos.
+\item \textbf{Mejor modelo}. El sistema decide cuál es el modelo de los ya mencionados que mejor se ajusta a los datos en base a los errores obtenidos y lo muestra. Realiza el ajuste con dicho modelo.
+\end{itemize}
+
+Además, se muestra una gráfica donde se representan los datos y el ajuste obtenido. Este desplegable y la gráfica representando el ajuste se muestran en \eqref{manual: ajuste3}.
+
+\begin{figure}
+\begin{center}
+\caption{Página de ajuste de datos. Desplegable y gráfica con el ajuste.}
+\label{manual: ajuste3}
+\includegraphics[scale=0.3]{pagina_ajuste3}
+\end{center}
+\end{figure}
+
+Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al modelo seleccionado y los errores correspondientes. En caso de que la opción para el ajuste haya sido \verb|Mejor modelo| se muestra también el modelo elegido. Estas estimaciones se ven en \eqref{manual: ajuste4}.
+
+\begin{figure}
+\begin{center}
+\caption{Página de ajuste de datos. Estimaciones de parámetros y errores.}
+\label{manual: ajuste4}
+\includegraphics[scale=0.3]{pagina_ajuste4}
+\end{center}
+\end{figure}
+
 
 \subsection{Instalación del backend}
 
+Para lanzar la página web de una manera cómoda, rápida y simple, se ha creado un contenedor docker actualizado con todas las dependencias necesarias para el funcionamiento de la misma.
 
+De esta manera, basta con ejecutar el contenedor docker, accesible en Dockerhub, descargarlo y ejecutarlo. El contenedor puede obtenerse en 
 
+\href{aquí}{https://hub.docker.com/repository/docker/mapachana/plotsir}.
 
 
 \section{Datos reales}
 
-\textcolor{red}{Completar}
+Una vez estudiados los modelos teóricos y terminada la implementación vamos a realizar el ajuste de varios modelos aplicado a datos reales de enfermedades. De esta forma, podemos comprobar si los modelos estudiados sirven para ajustar los datos de algunas enfermedades, ayudando también así a la comprensión del desarrollo de estas.
 
+\section{El VIH en Baleares}
 
+Se han obtenido los datos de \cite{datos_vih}.
 
+El VIH es una enfermedad sin cura, por lo que los individuos infectados nunca dejan de serlo. Por ello, esta enfermedad sigue un modelo SI.
 
+En el informe se proporcionan los nuevos casos detectados, luego los datos con los que vamos a trabajar son la suma acumulada de estos casos nuevos. Esto se debe a que el modelo considera los casos activos, no solo los nuevos. Por tanto, tenemos que los casos activos son los nuevos más todos los que había antes.
 
+Además, para que el modelo funcione bien el número total de individuos consideramos es el número de individuos estudiados, en este caso $N=2704$.
 
+Teniendo esto en cuenta, generamos un fichero csv con el formato de la página web.
 
+Primeramente, observamos la representación de los datos en \eqref{datos_vih}. Vemos que el número de individuos susceptibles va descendiendo, así como el de infectados creciendo en términos globales. Pese a esto, en ciertas partes de la gráfica se aprecia una leve curvatura, donde los susceptibles pasan de ser cóncavos a convexos y los infectados de convexo a cóncavo.
+
+\begin{figure}
+\begin{center}
+\caption{Representación de los datos del VIH en Baleares.}
+\label{datos_vih}
+\includegraphics[scale=0.5]{datos_vih}
+\end{center}
+\end{figure}
+
+Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SI.
+
+La representación gráfica del ajuste se puede ver en \eqref{ajuste_vih}. En las curvas del ajuste generado apreciamos con mayor claridad ese cambio de curvatura de cóncavo a convexo y viceversa en el ajuste. 
+
+\begin{figure}
+\begin{center}
+\caption{Representación del ajuste con el modelo SI a los datos del VIH en Baleares.}
+\label{ajuste_vih}
+\includegraphics[scale=0.5]{ajuste_vih}
+\end{center}
+\end{figure}
+
+En \eqref{estimacion_vih} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.31$ e $I_0 \approx 287$. Dado que los valores de estos parámetros son razonables y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por VIH en Baleares en efecto siguen un modelo SI.
+
+\begin{figure}
+\begin{center}
+\caption{Estimaciones y errores del ajuste con el modelo SI a los datos del VIH en Baleares.}
+\label{estimacion_vih}
+\includegraphics[scale=0.5]{estimacion_vih}
+\end{center}
+\end{figure}
+
+\section{El covid en España}
+
+Se han tomado los datos de \cite{datos_covid}.
+
+El covid es una enfermedad similar a una neumonía o un resfriado que se extendió globalmente en 2020. Desde su aparición, diversos investigadores la han estudiado y propuesto diversos modelos para ella. En \cite{enrique_amaro} se comprueba que se puede modelar mediante el modelo SIR. Vamos a tratar de ajustarla siguiendo este modelo.
+
+En el fichero csv de los datos hay mucha información, pero realmente solo vamos a usar las columnas \verb|new_cases|, que indica los nuevos casos reportados y \verb|new_deaths|, que informa de las nuevas muertes.
+
+Del fichero, nos quedamos con los datos de España y esas dos columnas, que a continuación trataremos, ya que al igual que en el caso anterior, necesitamos todos los casos activos y todos los recuperados hasta el momento.
+
+Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 11 de Febrero de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los sigueintes 170 días, esto es, unos 6 meses, pues es aproximadamente 6 meses, lo que se estima duró la primera ola.
+
+Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la readlidad. El modelo SIR ajusta solamente las olas de forma independiente.
+
+Para calcular el número de infectados activos, dado que el covid al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
+
+Asimismo, como recuperados se han considerados los fallecidos y los nuevos infectados de hace más de 10 días atrás, pues ya habrían superado la enfermedad y no podrían volver a infectarse.
+
+Además, para que el modelo funcione bien el número total de individuos considerados es el número de individuos estudiados aproximadamente, en este caso $N=40000$.
+
+Teniendo esto en cuenta, generamos un fichero csv con el formato necesario para realizar un ajuste en la página web.
+
+Al igual que antes, comenzamos observando la representación de los datos en \eqref{datos_covid}. El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados, que primero suben y luego descienden, indicando así el final de la ola.
+
+\begin{figure}
+\begin{center}
+\caption{Representación de los datos del covid en España.}
+\label{datos_covid}
+\includegraphics[scale=0.5]{datos_covid}
+\end{center}
+\end{figure}
+
+Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SIR.
+
+La representación gráfica del ajuste se puede ver en \eqref{ajuste_covid}. El ajuste parece seguir las tendencias generales de los datos, aunque los infectados quedan ligeramente por encima en el ajuste que en los datos experimentales, así como los recuperados y susceptibles ajustan peor al final, pues cuanto más nos alejamos de la ola en sí, peor es el ajuste al modelo SIR.
+
+\begin{figure}
+\begin{center}
+\caption{Representación del ajuste con el modelo SIR a los datos del covid en España.}
+\label{ajuste_covid}
+\includegraphics[scale=0.5]{ajuste_covid}
+\end{center}
+\end{figure}
+
+En \eqref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por covid en España en efecto siguen un modelo SIR.
+
+\begin{figure}
+\begin{center}
+\caption{Estimaciones y errores del ajuste con el modelo SIR a los datos del covid en España.}
+\label{estimacion_covid}
+\includegraphics[scale=0.5]{estimacion_covid}
+\end{center}
+\end{figure}
 
 
 

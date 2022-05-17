@@ -73,6 +73,7 @@ ENTRY
     title
     type
     url
+    urldate
     volume
     year
   }
@@ -1119,6 +1120,34 @@ FUNCTION {misc}
   fin.entry
   write.url
 }
+
+FUNCTION {output.urldate.check}
+{ urldate empty$
+    { "empty urldate in " cite$ * warning$ }
+    { write$
+      " (" urldate * extra.label * ")" *
+      mid.sentence 'output.state :=
+    }
+  if$
+}
+
+FUNCTION {online}
+{ output.bibitem
+  format.authors output
+  author format.key output				% special for
+  %output.year.check					% apalike
+  output.urldate.check
+  new.block
+  format.title output
+  new.block
+  howpublished output
+  write.url
+  new.block
+  %note output
+  fin.entry
+}
+
+
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
