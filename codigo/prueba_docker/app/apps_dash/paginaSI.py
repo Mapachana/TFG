@@ -128,7 +128,7 @@ def calcular_modelo(N_SI, alfa, S0, I0, T):
     fig2.add_trace(go.Scatter(x=S, y=I,
                         mode='lines'))
 
-    fig2.update_layout(title='Modelo SI, variación de infectados en función de susceptibles',
+    fig2.update_layout(title='Modelo SI, variación de infectados y susceptibles con dependencia implícita del tiempo',
                     xaxis_title='Susceptibles',
                     yaxis_title='Infectados')
 

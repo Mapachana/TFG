@@ -3,6 +3,7 @@
 services:
     app:
         build: .
+        image: mapachana/plotsir
         ports:
             - 5000:5000
             - 8050:8050

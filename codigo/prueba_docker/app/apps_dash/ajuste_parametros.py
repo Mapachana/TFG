@@ -8,7 +8,7 @@ import plotly.graph_objects as go # or plotly.express as px
 
 from dash import dcc
 from dash import html
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 
 from app_dash import app
 
@@ -21,7 +21,14 @@ modelos_ajuste_disponibles = ["Modelo SI", "Modelo SIR", "Modelo SIS", "Mejor mo
 
 
 layout = html.Div([
+   
+    dcc.ConfirmDialog(
+        id='alerta',
+        message='Formato de fichero incorrecto o longitud insuficiente.',
+        displayed=False,
+    ),
     dcc.Graph(id="scat", figure=fig),
+
     html.P("Selecciona el modelo con el que se van a ajustar los datos:"),
     dcc.Dropdown(
         id='selector_modelo_ajuste',
@@ -71,6 +78,7 @@ def solucion_SIR(t, alfa, gamma, I0, R0):
     res = np.concatenate((I, R))
     return res
 
+
 # Asumo que el I0 no lo sabes 
 def solucion_SIS(t, alfa, gamma, I0):
     N = t[0]
@@ -92,15 +100,31 @@ def solucion_SIS(t, alfa, gamma, I0):
     Output('errores', 'children'),
     Output('modelo', 'children'),
     Output('ajuste', 'figure'),
-    Input('selector_modelo_ajuste', 'value'))
-def funcion(valor_menu):
+    Output("alerta", "displayed"),
+    Input('selector_modelo_ajuste', 'value'),
+    State("alerta", "displayed"))
+def funcion(valor_menu, is_open):
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
+    df = df.dropna()
+    df = df.reset_index()
 
-    # Añado columna de tiempo para representacion
-    secciones = len(df["t"])
-    deltaT = df.loc[1].at["t"]-df.loc[0].at["t"]
-    N = df.loc[0].at["S"]+df.loc[0].at["I"]
+    mejor_modelo = modelos_ajuste_disponibles[0]
+
+
+    if  't' not in df.columns or 'S' not in df.columns or 'I' not in df.columns or len(df['t']) < 2:
+        fig = px.scatter()
+        fig2 = px.scatter()
+        respuesta_params = ""
+        respuesta_errores = ""
+        modelo_elegido = ""
+
+        return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2, not is_open
+
+    # Tomo datos de secciones, deltaT y N para representacion
+    secciones = len(df["t"]) 
+    deltaT = df.loc[1].at["t"]-df.loc[0].at["t"] 
+    N = df.loc[0].at["S"]+df.loc[0].at["I"] 
 
     # Actualizo primera grafica
     fig = px.scatter()
@@ -165,7 +189,7 @@ def funcion(valor_menu):
         else:
             datos_comp = np.concatenate([np.array(df['I'].tolist()), np.zeros(secciones)], axis=None)
 
-        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, 1, N, N)))
+        popt, pcov = curve_fit(solucion_SIR, indep, datos_comp, bounds=((0, 0, 0, 0), (np.inf, np.inf, N, N)))
 
         soluciones = solucion_SIR(indep, popt[0], popt[1], popt[2], popt[3])
         I_ajuste, R_ajuste = soluciones[:secciones], soluciones[secciones:]
@@ -193,7 +217,7 @@ def funcion(valor_menu):
 
     elif(valor_menu == modelos_ajuste_disponibles[2]): # Modelo SIS
 
-        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, 1, N)))
+        popt, pcov = curve_fit(solucion_SIS, indep, df['I'], bounds=((0, 0, 0), (np.inf, np.inf, N)))
 
         I_ajuste = solucion_SIS(indep, popt[0], popt[1], popt[2])
         S_ajuste = N - I_ajuste
@@ -226,7 +250,6 @@ def funcion(valor_menu):
 
     else: # Mejor modelo
 
-        mejor_modelo = modelos_ajuste_disponibles[0]
         mejor_error_S = 0
         mejor_error_I = 0
         mejor_S = np.empty(secciones)
@@ -385,8 +408,8 @@ def funcion(valor_menu):
 
     if 'R' in df.columns:
         fig2.add_scatter(x=df["t"], y=df["R"], mode="markers", name="Recuperados datos")
-    if (valor_menu == modelos_ajuste_disponibles[1]):
+    if (valor_menu == modelos_ajuste_disponibles[1] or mejor_modelo == modelos_ajuste_disponibles[1]):
             fig2.add_scatter(x=df["t"], y=R_ajuste, mode="lines", name="Recuperados ajuste")
 
-    return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2
+    return fig, respuesta_params, respuesta_errores, modelo_elegido, fig2, is_open
 

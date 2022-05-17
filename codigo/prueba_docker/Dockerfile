@@ -7,8 +7,6 @@ RUN pip install -r requirements.txt
         
 ENV FLASK_APP app.py
 ENV FLASK_RUN_HOST 0.0.0.0
-ENV FLASK_ENV development
+ENV FLASK_ENV production
 
-CMD ["sh", "-c", "ls; pwd; python3 ./index_dash.py & (cd app && flask run)"]
-#CMD ["ls", "&&", "python3", "paginaSIS.py", "&"]
-#, "(", "cd", "app", "&&", "flask", "run", ")"]
+CMD ["sh", "-c", "cd app && (python3 index_dash.py & (cd app && flask run))"]

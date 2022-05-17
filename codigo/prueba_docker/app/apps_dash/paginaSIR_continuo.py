@@ -153,7 +153,7 @@ def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
     figSI.add_trace(go.Scatter(x=S, y=I,
                         mode='lines'))
 
-    figSI.update_layout(title='Modelo SIR, variación de infectados en función de susceptibles',
+    figSI.update_layout(title='Modelo SIR, variación de infectados y susceptibles con dependencia implícita del tiempo',
                     xaxis_title='Susceptibles',
                     yaxis_title='Infectados')
 
@@ -165,7 +165,7 @@ def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
     figSR.add_trace(go.Scatter(x=S, y=R,
                         mode='lines'))
 
-    figSR.update_layout(title='Modelo SIR, variación de recuperados en función de susceptibles',
+    figSR.update_layout(title='Modelo SIR, variación de recuperados y susceptibles con dependencia implícita del tiempo',
                     xaxis_title='Susceptibles',
                     yaxis_title='Recuperados')
 
@@ -177,7 +177,7 @@ def calcular_modelo(N_SIR, alfa, gamma, S0, I0, R0, T):
     figIR.add_trace(go.Scatter(x=I, y=R,
                         mode='lines'))
 
-    figIR.update_layout(title='Modelo SIR, variación de recuperados en función de infectados',
+    figIR.update_layout(title='Modelo SIR, variación de recuperados e infectados con dependencia implícita del tiempo',
                     xaxis_title='Infectados',
                     yaxis_title='Recuperados')
 

@@ -3,7 +3,7 @@ from dash import html
 from dash.dependencies import Input, Output
 
 from app_dash import app
-from apps_dash import app1, app2, paginaSIS, paginaSI, paginaSIR, ajuste_parametros, paginaSI_continuo, paginaSIR_continuo, paginaSIS_continuo
+from apps_dash import paginaSIS, paginaSI, paginaSIR, ajuste_parametros, paginaSI_continuo, paginaSIR_continuo, paginaSIS_continuo
 
 
 app.layout = html.Div([
@@ -37,4 +37,4 @@ def display_page(pathname):
         return '404'
 
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port='8050', debug=None, load_dotenv=True)
+    app.run_server(host='0.0.0.0', port='8050', debug=False)

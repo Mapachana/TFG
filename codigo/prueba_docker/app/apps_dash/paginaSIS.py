@@ -131,7 +131,7 @@ def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
     figSI.add_trace(go.Scatter(x=S, y=I,
                         mode='lines'))
 
-    figSI.update_layout(title='Modelo SIS, variación de infectados en función de susceptibles',
+    figSI.update_layout(title='Modelo SIS, variación de infectados y susceptibles con dependencia implícita del tiempo',
                     xaxis_title='Susceptibles',
                     yaxis_title='Infectados')
 

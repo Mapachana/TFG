@@ -72,6 +72,7 @@ def ajustar_fichero(fichero):
 
 @app.route('/ajuste_archivo', methods=['GET', 'POST'])
 def ajuste_archivo():
+    error = ""
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
@@ -80,14 +81,19 @@ def ajuste_archivo():
         file = request.files['file']
         # If the user does not select a file, the browser submits an
         # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
+
+        file.seek(0, os.SEEK_END)
+        if file.tell() == 0 or file.filename == '':
+            error = "No se ha seleccionado ningún fichero válido, por favor seleccione uno."
+
+            return render_template('ajuste_datos.html', error=error)
+        file.seek(0) # Vuelvo a poner el puntero al inicio para poder trabajar con el
+        
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #return redirect(url_for('download_file', name=filename))
+
             return redirect(url_for('ajustar_fichero', fichero=filename))
 
-    return render_template('ajuste_datos.html')
+    return render_template('ajuste_datos.html', error=error)
 
