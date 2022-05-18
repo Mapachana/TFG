@@ -1272,9 +1272,13 @@ Una vez estudiados los modelos teóricos y terminada la implementación vamos a 
 
 \section{El VIH en Baleares}
 
-Se han obtenido los datos de \cite{datos_vih}.
+Se han obtenido los datos de \cite{datos_vih}. ESTO ASÍ NO
 
-El VIH es una enfermedad sin cura, por lo que los individuos infectados nunca dejan de serlo. Por ello, esta enfermedad sigue un modelo SI.
+El VIH es una enfermedad sin cura, por lo que los individuos infectados nunca dejan de serlo. Por ello, esta enfermedad sigue un modelo SI. EXTENDER DESCRIPCIÓN
+
+Para esta experimentación vamos a usar los datos de \cite{datos_vih}.
+
+FALTA PONER COMO SE HAN MUESTREADO LOS DATOS (anualmente) Y DURANTE EL PERIODO.
 
 En el informe se proporcionan los nuevos casos detectados, luego los datos con los que vamos a trabajar son la suma acumulada de estos casos nuevos. Esto se debe a que el modelo considera los casos activos, no solo los nuevos. Por tanto, tenemos que los casos activos son los nuevos más todos los que había antes.
 
@@ -1318,13 +1322,24 @@ En \eqref{estimacion_vih} se muestra la estimación de los parámetros obtenidos
 
 Se han tomado los datos de \cite{datos_covid}.
 
+NO PONER QUE ES SIMILAR A UNA NEUMONIA.
+
+ESTA INDEXADO EN EL TIEMPO, EL ANTERIOR HA SIDO MUESTREADO.
+
+CORREGIR CAPTION CON LAS FECHAS DE LOS DATOS.
+
+VOY A DEFINIR LA OLA. "Lo quede forma coloquial se conoce como l aprimera ola".
+
+
+
+
 El covid es una enfermedad similar a una neumonía o un resfriado que se extendió globalmente en 2020. Desde su aparición, diversos investigadores la han estudiado y propuesto diversos modelos para ella. En \cite{enrique_amaro} se comprueba que se puede modelar mediante el modelo SIR. Vamos a tratar de ajustarla siguiendo este modelo.
 
 En el fichero csv de los datos hay mucha información, pero realmente solo vamos a usar las columnas \verb|new_cases|, que indica los nuevos casos reportados y \verb|new_deaths|, que informa de las nuevas muertes.
 
 Del fichero, nos quedamos con los datos de España y esas dos columnas, que a continuación trataremos, ya que al igual que en el caso anterior, necesitamos todos los casos activos y todos los recuperados hasta el momento.
 
-Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 11 de Febrero de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los sigueintes 170 días, esto es, unos 6 meses, pues es aproximadamente 6 meses, lo que se estima duró la primera ola.
+Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 11 de Febrero de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los siguientes 170 días, esto es, unos 6 meses, pues es aproximadamente 6 meses, lo que se estima duró la primera ola.
 
 Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la readlidad. El modelo SIR ajusta solamente las olas de forma independiente.
 
@@ -1358,7 +1373,7 @@ La representación gráfica del ajuste se puede ver en \eqref{ajuste_covid}. El 
 \end{center}
 \end{figure}
 
-En \eqref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por covid en España en efecto siguen un modelo SIR.
+En \eqref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por covid en España en efecto siguen un modelo SIR.
 
 \begin{figure}
 \begin{center}
