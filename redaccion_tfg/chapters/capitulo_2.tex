@@ -74,6 +74,26 @@ $$I(t) = \frac{I_0e^{\alpha t}N}{(N-I_0)+I_0e^{\alpha t}} = \frac{I_0N}{(N-I_0)e
 Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
 
 
+\section{Modelo SIS continuo}
+
+El modelo continuo correspondiente al modelo SIS se comporta de la misma forma que el modelo discreto, y viene expresado por:
+
+\begin{equation}
+\label{eqn: modelo_SIS_continuo}
+\begin{aligned}
+S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
+I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
+\end{aligned}
+\end{equation}
+
+donde $S(0)+I(0)=N$.
+
+Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
+
+\textcolor{red}{Completar. Pongo alguna grafiquita o algo?}
+
+
+
 \section{Modelo SIR continuo}
 
 
@@ -180,23 +200,7 @@ De esta manera, si $\mathcal{R}_{KMK}<1$ no hay una epidemia, mientras si $\math
 
 
 
-\section{Modelo SIS continuo}
 
-El modelo continuo correspondiente al modelo SIS se comporta de la misma forma que el modelo discreto, y viene expresado por:
-
-\begin{equation}
-\label{eqn: modelo_SIS_continuo}
-\begin{aligned}
-S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
-I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
-\end{aligned}
-\end{equation}
-
-donde $S(0)+I(0)=N$.
-
-Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
-
-\textcolor{red}{Completar. Pongo alguna grafiquita o algo?}
 
 \section{Análisis de los parámetros de los modelos}
 
