@@ -43,6 +43,14 @@ Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística 
 
 $$I' = \frac{\alpha}I{N}(N-I).$$
 
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SI continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=99, I(0) = 1, \alpha = 0.1,T_0 = 0, T = 100$.}
+\label{fig: SI_continuo}
+\includegraphics[scale=0.5]{SI_continuo_modelo}
+\end{center}
+\end{figure}
+
 Esta ecuación diferencial se puede resolver por separación de variables como sigue:
 
 \begin{equation}
@@ -73,6 +81,7 @@ $$I(t) = \frac{I_0e^{\alpha t}N}{(N-I_0)+I_0e^{\alpha t}} = \frac{I_0N}{(N-I_0)e
 
 Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
 
+En \eqref{fig: SI_continuo} tenemos la representación gráfica del comportamiento del modelo SI continuo. Podemos comprobar que su comportamiento es análogo al modelo discreto. También es claro que se cumple que $I$ es siempre creciente y tiende a $N$, mientras $S$ es decreciente y tiende a $0$.
 
 \section{Modelo SIS continuo}
 
@@ -90,8 +99,36 @@ donde $S(0)+I(0)=N$.
 
 Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
 
-\textcolor{red}{Completar. Pongo alguna grafiquita o algo?}
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIS continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=95, I(0) = 5, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 150$.}
+\label{fig: SIS_continuo}
+\includegraphics[scale=0.5]{SIS_continuo_modelo}
+\end{center}
+\end{figure}
 
+En \eqref{fig: SIS_continuo} comprobamos al igual que hicimos antes que su comportamiento es análogo al modelo discreto. También se observa que al igual que en el modelo SI el número de individuos susceptibles es decreciente y tendiente a $0$ y el de infectados creciente y tiende a $N$, pero esto no siempre es así y se debe a los parámetros usados.
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIS continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=95, I(0) = 5, \alpha = 0.1, \gamma = 0.05, T_0 = 0, T = 150$.}
+\label{fig: SIS_continuo2}
+\includegraphics[scale=0.5]{SIS_continuo_modelo2}
+\end{center}
+\end{figure}
+
+
+Por ejemplo, en \eqref{fig: SIS_continuo2} vemos como variando solamente $\gamma$ el modelo se comporta de forma muy diferente, pues los susceptibles e infectados parecen estabilizarse en torno a la mitad de la población.
+
+Por otro lado, si $\gamma > \alpha$ entonces tenemos que no se produce una epidemia, pues los infectados tienden a $0$ y los susceptibles a $N$, como puede verse en \eqref{fig: SIS_continuo3}.
+
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIS continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=95, I(0) = 5, \alpha = 0.1, \gamma = 0.2, T_0 = 0, T = 150$.}
+\label{fig: SIS_continuo3}
+\includegraphics[scale=0.5]{SIS_continuo_modelo3}
+\end{center}
+\end{figure}
 
 
 \section{Modelo SIR continuo}
@@ -112,21 +149,31 @@ donde $S(0)+I(0)+R(0)=N$. El número básico reproductivo en este caso se define
 $$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma },$$
 y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor, se dice que sí la hay.
 
+\begin{figure}
+\begin{center}
+\caption{Gráfica del modelo SIR continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=99, I(0) = 1, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 300$.}
+\label{fig: SIR_continuo}
+\includegraphics[scale=0.5]{SIR_continuo_modelo}
+\end{center}
+\end{figure}
+
+En \eqref{fig: SIR_continuo} observamos el comportamiento del modelo SIR representado. Al igual que en su análogo discreto, el número de individuos susceptibles siempre decreciente y el de recuperados siempre creciente.
+
 \section{Modelo Kermack-McKendrick}
 
 La información para el desarrollo de esta sección se ha obtenido principalmente de \cite{brauerMathematicalModelsPopulation2012}.
 
 El modelo de Kermack-McKendrick es un modelo sencillo basado en suposiciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
 
-Este modelo es, por tanto, una modificación del modelo SIR ya estudiado. La diferencia con el modelo SIR ya estudiado es que en este modelo se supone que un individuo infectado hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, mientras en el modelo SIR se supone que $\alpha$ es el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en una unidad de tiempo.
+Este modelo es, por tanto, una modificación del modelo SIR ya estudiado. La diferencia con el modelo SIR ya estudiado es que en este modelo se supone que un individuo infectado hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, mientras en el modelo SIR se supone que $\alpha$ es el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en una unidad de tiempo. Por tanto, en este apartado y para hacer notar esta diferencia usaremos $\bar{\alpha}$ en lugar de $\alpha$.
 
 El modelo se describe como:
 
 \begin{equation}
 \label{eqn: KMK}
 \begin{aligned}
-S' & = -\alpha SI \\
-I' & = \alpha SI - \gamma I \\
+S' & = -\bar{\alpha} SI \\
+I' & = \bar{\alpha} SI - \gamma I \\
 R' & = \gamma I
 \end{aligned}
 \end{equation}
@@ -134,7 +181,7 @@ R' & = \gamma I
 Las suposiciones en las que se basa el modelo descrito son:
 
 \begin{itemize}
-\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
+\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\bar{\alpha} N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
 \item Los infectados pasan a recuperados, inmunizados o fallecidos con la tasa $\gamma I$ por unidad de tiempo.
 \item La población total es constante, no hay incorporaciones ni salidas.
 \item No se consideran fallecimientos como grupo aparte, así la población es constante.
@@ -147,7 +194,7 @@ Las suposiciones en las que se basa el modelo descrito son:
 \end{center}
 \end{figure}
 
-De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\alpha NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\alpha  N S I}{N}=\alpha SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
+De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\alpha NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\bar{\alpha}  N S I}{N}=\bar{\alpha} SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
 
 Observemos también que, al igual que en el modelo SIR, se cumple $N=S+I+R$.
 
@@ -163,19 +210,19 @@ Por tanto, la fracción de infectados que siguen estando en la clase infectados 
 $$\int_0^\infty e^{-\gamma s}ds=1/\gamma,$$
 y esto es lo que la segunda suposición realmente significa. Si en lugar de suponer esto, suponemos que la fracción de infectados que permanecen infectados en un tiempo $\tau$ después de haberse infectado es $P(\tau )$, la segunda ecuación de \eqref{eqn: KMK} se reemplaza por:
 
-$$I(t)=I_0(t)+\int_0^\infty \alpha S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
+$$I(t)=I_0(t)+\int_0^\infty \bar{\alpha} S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
 
 donde $I_0(t)$ hace referencia a los miembros de la población que eran infectados en el instante inicial y siguen siendo infecciosos en el momento $t$.
 
-Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\alpha$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
+Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\bar{\alpha}$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
 
 En nuestro modelo \eqref{eqn: KMK}, $R$ se determina una vez que se conocen $S$ e $I$, pero podemos eliminar la tercera ecuación del modelo, dejando este formado solamente por dos ecuaciones:
 
 \begin{equation}
 \label{eqn: KMK_sinR}
 \begin{aligned}
-S' & = -\alpha SI, \\
-I' & = (\alpha S - \gamma ) I,
+S' & = -\bar{\alpha} SI, \\
+I' & = (\bar{\alpha} S - \gamma ) I,
 \end{aligned}
 \end{equation}
 
@@ -185,16 +232,16 @@ $$S(0)=S_0, \quad I(0)=I_0, \quad S_0+I_0=N.$$
 El modelo solo tiene sentido si $S(t)$ e $I(t)$ se mantienen no negativos, luego si alguno de los dos llega a $0$, consideramos que el estudio ha terminado.
 
 \begin{lemma}
-Dado el modelo \eqref{eqn: KMK_sinR}, se tiene que $S'<0$ para todo $t$, y además $I'>0$ si, y solo si, $S>\frac{\gamma}{\alpha}$.
+Dado el modelo \eqref{eqn: KMK_sinR}, se tiene que $S'<0$ para todo $t$, y además $I'>0$ si, y solo si, $S>\frac{\gamma}{\bar{\alpha}}$.
 \end{lemma}
 
-Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\gamma}{\alpha}$, pero como $S$ decrece para todo $t$, finalmente se tiene que $S<\frac{\gamma}{\alpha}$, y por tanto $I$ deja de aumentar.
+Es decir, $I$ aumenta mientras se cumpla que $S>\frac{\gamma}{\bar{\alpha}}$, pero como $S$ decrece para todo $t$, finalmente se tiene que $S<\frac{\gamma}{\bar{\alpha}}$, y por tanto $I$ deja de aumentar.
 
-Si $S_0<\frac{\gamma}{\alpha}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\gamma}{\alpha}$, $I$ comienza creciendo hasta el máximo obtenido cuando $S=\frac{\gamma}{\alpha}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
+Si $S_0<\frac{\gamma}{\bar{\alpha}}$, entonces $I$ decrece a $0$ y no hay una epidemia, mientras que si $S_0>\frac{\gamma}{\bar{\alpha}}$, $I$ comienza creciendo hasta el máximo obtenido cuando $S=\frac{\gamma}{\bar{\alpha}}$ y luego decrece hasta $0$, en cuyo caso hay una epidemia.
 
 Definimos el número básico reproductivo como:
 
-$$\mathcal{R}_{KMK}=\frac{\alpha S_0}{\gamma}.$$
+$$\mathcal{R}_{KMK}=\frac{\bar{\alpha} S_0}{\gamma}.$$
 
 De esta manera, si $\mathcal{R}_{KMK}<1$ no hay una epidemia, mientras si $\mathcal{R}_{KMK}>1$ hay una epidemia. 
 

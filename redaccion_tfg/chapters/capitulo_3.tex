@@ -1272,6 +1272,8 @@ docker pull mapachana/plotsir:latest
 docker run -t -p 5000:5000 -p 8050:8050  mapachana/plotsir:latest
 \end{verbatim}
 
+Tras esto accedemos a la url \verb|localhost:5000| en nuestro navegador.
+
 
 \section{Datos reales}
 
@@ -1279,13 +1281,13 @@ Una vez estudiados los modelos teóricos y terminada la implementación vamos a 
 
 \section{El VIH en Baleares}
 
-Se han obtenido los datos de \cite{datos_vih}. ESTO ASÍ NO
+El VIH (Virus de Inmunodeficiencia Humana) es un virus que ataca al sistema inmunitario del cuerpo. Si no se trata, puede causar SIDA. Actualmente no hay ninguna cura efectiva contra el VIH, por lo que una vez que se contrae, se tiene de por vida.
 
-El VIH es una enfermedad sin cura, por lo que los individuos infectados nunca dejan de serlo. Por ello, esta enfermedad sigue un modelo SI. EXTENDER DESCRIPCIÓN
+El VIH provino de una especie de chimpancé de África, desde la que se propagó primero por dicho continente, y se estima que lleva en Estados Unidos desde finales de los años 70.
 
-Para esta experimentación vamos a usar los datos de \cite{datos_vih}.
+Dado que es una enfermedad para la que una vez infectado no dejas de tenerla, se tiene que sigue un modelo SI.
 
-FALTA PONER COMO SE HAN MUESTREADO LOS DATOS (anualmente) Y DURANTE EL PERIODO.
+El conjunto de datos que se va a usar contiene los datos de los reportes de nuevos infectados por VIH en Baleares desde 2003 hasta 2019 anualmente. La fuente de dichos datos es \cite{datos_vih}.
 
 En el informe se proporcionan los nuevos casos detectados, luego los datos con los que vamos a trabajar son la suma acumulada de estos casos nuevos. Esto se debe a que el modelo considera los casos activos, no solo los nuevos. Por tanto, tenemos que los casos activos son los nuevos más todos los que había antes.
 
@@ -1327,28 +1329,21 @@ En \eqref{estimacion_vih} se muestra la estimación de los parámetros obtenidos
 
 \section{El covid en España}
 
-Se han tomado los datos de \cite{datos_covid}.
+El covid es una enfermedad respiratoria aguda causada por el virus SARS-CoV-2. Se informó respecto a ella por primera vez en Diciembre de 2019, tras detectarse varios casos en Wuhan. Posteriormente se extendió a otros países, entre los que se encuentra España.
 
-NO PONER QUE ES SIMILAR A UNA NEUMONIA.
+A lo largo de la pandemia del covid en el mundo se han recopilado una gran cantidad de datos para estudiar esta enfermedad. Para este estudio vamos a usar el conjunto de datos obtenido de \cite{datos_covid}.
 
-ESTA INDEXADO EN EL TIEMPO, EL ANTERIOR HA SIDO MUESTREADO.
-
-CORREGIR CAPTION CON LAS FECHAS DE LOS DATOS.
-
-VOY A DEFINIR LA OLA. "Lo quede forma coloquial se conoce como l aprimera ola".
-
-
-
-
-El covid es una enfermedad similar a una neumonía o un resfriado que se extendió globalmente en 2020. Desde su aparición, diversos investigadores la han estudiado y propuesto diversos modelos para ella. En \cite{enrique_amaro} se comprueba que se puede modelar mediante el modelo SIR. Vamos a tratar de ajustarla siguiendo este modelo.
+En \cite{enrique_amaro} se comprueba que se puede modelar mediante el modelo SIR. Vamos a tratar de ajustarla siguiendo este modelo.
 
 En el fichero csv de los datos hay mucha información, pero realmente solo vamos a usar las columnas \verb|new_cases|, que indica los nuevos casos reportados y \verb|new_deaths|, que informa de las nuevas muertes.
 
 Del fichero, nos quedamos con los datos de España y esas dos columnas, que a continuación trataremos, ya que al igual que en el caso anterior, necesitamos todos los casos activos y todos los recuperados hasta el momento.
 
-Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 11 de Febrero de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los siguientes 170 días, esto es, unos 6 meses, pues es aproximadamente 6 meses, lo que se estima duró la primera ola.
+Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 5 de Marzo de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los siguientes 170 días, esto es, hasta el 21 de Agosto de 2020, pues es aproximadamente 6 meses, lo que se estima duró lo que se conoce coloquialmente como la primera ola.
 
-Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la readlidad. El modelo SIR ajusta solamente las olas de forma independiente.
+Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondiendo por tanto al 5 de Marzo el índice 0 y al 21 de Agosto el 170.
+
+Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realiidad. El modelo SIR ajusta solamente las olas de forma independiente.
 
 Para calcular el número de infectados activos, dado que el covid al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
 
@@ -1362,7 +1357,7 @@ Al igual que antes, comenzamos observando la representación de los datos en \eq
 
 \begin{figure}
 \begin{center}
-\caption{Representación de los datos del covid en España.}
+\caption{Representación de los datos del covid en España desde el 5 de Marzo hasta e 21 de Agosto de 2020.}
 \label{datos_covid}
 \includegraphics[scale=0.5]{datos_covid}
 \end{center}
@@ -1374,7 +1369,7 @@ La representación gráfica del ajuste se puede ver en \eqref{ajuste_covid}. El 
 
 \begin{figure}
 \begin{center}
-\caption{Representación del ajuste con el modelo SIR a los datos del covid en España.}
+\caption{Representación del ajuste con el modelo SIR a los datos del covid en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.}
 \label{ajuste_covid}
 \includegraphics[scale=0.5]{ajuste_covid}
 \end{center}

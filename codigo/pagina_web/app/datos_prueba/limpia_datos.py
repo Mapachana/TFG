@@ -14,9 +14,13 @@ df_spain = df[:180]
 t0 = df_spain.loc[0].at["date"]
 t0 = datetime.strptime(t0, '%Y-%m-%d')
 
-
+print("FECHAAAAAAAS")
+print(df_spain.loc[10].at['date'])
+print(df_spain.loc[len(df_spain)-1].at['date'])
 
 tiempo = []
+
+print(df_spain['date'][0:20])
 
 for fecha in df_spain["date"]:
     aux = datetime.strptime(fecha, '%Y-%m-%d')
@@ -68,6 +72,7 @@ tiempo = np.arange(0, len(I)-10)
 S = S[10:]
 I = I[10:]
 R = R[10:]
+
 #S = poblacion_spain-I-R
 
 columns = ["t", "S", "I", "R"]
