@@ -44,24 +44,60 @@ En \cite{demongeotSIEpidemicModel} se trata de ajustar los parámetros del model
 
 También se pueden encontrar trabajos exponiendo por qué estos modelos, pese a su capacidad de análisis de diversas enfermedades, no pueden ser usado para predecir el comportamiento de estas. Un ejemplo es \cite{turningpoint}, donde se describe de forma precisa el comportamiento del covid en España usando un modelo SIR, pero al intentar predecir su evolución se obtienen resultados pésimos y contradictorios con la realidad.
 
-Como ya hemos mencionado, es especialmente relevante comprobar la efectividad de diversas medidas de contención 
+Como ya hemos mencionado, es especialmente relevante comprobar la efectividad de diversas medidas de contención. En \cite{gutierrez2020analisis} modifican el modelo SIR para contemplar las medidas de contención aplicadas en España y comprobar si realmente frenan la propagación de la epidemia. En \cite{inferringinterventions} también usan un modelo SIR y combinándolo con diversas técnicas de estadística Bayesiana comprueban la efectividad de diferentes medidas, aplicado a los datos y restricciones de Alemania.
 
+Adicionalmente, en \cite{Mancastroppa2021} comprueban la efectividad y cómo afecta el método de rastreo de contacto para realentizar los contagios, comparando el rastreo manual con el digital, como es la aplicación covid. También se han realizado estudios como \cite{vaccinationproblem}, que analizan cómo influye que la población se vacune y por qué es difícil de convencer a veces para hacerlo.
 
-
-
+Actualmente, los modelos no se usan solamente de forma teórica o para ajustar los datos, pues como hemos visto proporcionan información de interés durante diversos brotes de enfermedades.
 
 
 \section{Objetivos}
 
+A lo largo de este proyecto, se exponen distintos modelos matemáticos para modelar epidemias, a la vez que se han implementado simulaciones del comportamiento de los mismos. Estas simulaciones se han integrado en una página web que se ha desarrollado a lo largo de todo el proyecto. Los objetivos son dobles, pues se ha intentado realizar tanto una exposición y análisis teórico de los modelos como mostrar mediante la implementación y ajuste de datos reales su aplicación práctica.
+
+Inicialmente, los objetivos que nos marcamos consistían en estudiar las versiones discretas de distintos modelos epidemiológicos, analizando sus particularidades, como lo son sus restricciones y proporcionando condiciones para asegurar la positividad de las soluciones. Respecto a la parte práctica, el objetivo era desarrollar software para visualizar de forma sencilla los modelos estudiados anteriormente.
+
+Durante la realización del proyecto se cumplirán los objetivos marcados al inicio de este, y se profundizará en distintas áreas complementarias que facilitan la comprensión de lo presentado e ilustran la relevancia de los temas tratados. Los objetivos que finalmente se llevarán a cabo son:
+
+\begin{itemize}
+\item \textbf{Descripción de modelos discretos en epidemiología}. Se presentarán y analizarán diversos modelos discretos en epidemiología mostrando su comportamiento, características y particularidades de cada uno.
+\item \textbf{Descripción de modelos continuos en epidemiología}. Se van a presentar y analizar los modelos continuos análogos a los discretos anteriormente, explicando las diferencias entre su versión discreta y continua en cada caso.
+\item \textbf{Visualización del comportamiento de los modelos}. Se realizarán representaciones gráficas de las simulaciones de los modelos con el fin de facilitar la comprensión y mostrar el comportamiento de los modelos en cada caso.
+\item \textbf{Desarrollo de una página web}. Se desarrollará una página web donde se recoja una breve explicación de cada modelo, tanto discretos como continuos, y se puedan modificar los distintos parámetros de cada uno, obteniendo las gráficas pertinentes en cada caso.
+\item \textbf{Ajuste de datos}. Se va a implementar una funcionalidad en la página web para poder ajustar ficheros de datos subidos por el usuario usando los modelos epidemiológicos ya presentados. El usuario podrá elegir el modelo o el sistema determinará cuál es el modelo que mejor se ajusta a dichos datos.
+\item \textbf{Ajuste de datos reales}. Usando datos de enfermedades reales, va a realizarse un ajuste con los modelos estudiados con el fin de presentar una aplicación práctica real.
+\end{itemize}
 
 
 \section{Descripción}
 
+El proyecto desarrollado recoge una exposición teórica de modelos discretos y continuos en epidemiología, analizando cada uno de estos, su comportamiento, suposiciones necesarias para su funcionamiento y presentando conceptos relevantes en epidemiología.
+
+Por otro lado, se ha implementado una página web en la que los usuarios pueden modificar interactivamente los parámetros de cada uno de estos modelos, actualizando las gráficas del comportamiento de estos y viendo por tanto de manera simple e intuitiva cómo afecta cada parámetro y las mecánicas que subyacen en el modelo.
+
+También se pueden subir ficheros de datos y obtener un ajuste con alguno de los modelos a elegir, o que el sistema determine a partir del error cuál es el modelo que mejor ajusta esos datos introducidos, prorcionando en todos los casos los parámetros que se han estimado y los errores obtenidos. De esta forma, es posible realizar ajustes con datos reales simplemente subiendo un fichero con un formato correcto a la página web y comprobando la bondad del ajuste realizado.
 
 
 \section{Estructura de la documentación}
 
+En esta memoria se pueden distinguir varias partes claramente diferenciadas:
 
+\begin{itemize}
+\item Presentación de herramientas necesarias.
+\item Modelos discretos y continuos en epidemiología.
+\item Diseño y análisis del software.
+\item Aplicación a datos reales.
+\item Conclusiones y vías futuras.
+\end{itemize}
 
+En la primera de estas secciones se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
+
+Seguidamente, se presentan y explican una selección de modelos discretos y sus análogos continuos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, así como distintas simulaciones para ilustrar su comportamiento. 
+
+Durante la tercera sección se va a desarrollar toda la documentación del desarrollo de la página web, incluyendo la gestión de recursos y planificación temporal. Se detallan los requisitos derivados de los objetivos previamente expuestos y se realizan los casos de uso de acuerdo a estos. También se añade en la documentación el diagrama conceptual, herramientas usadas, prototipos de la interfaz de usuario y el manual de la página web.
+
+En la siguiente sección se va a usar el software desarrollado para realizar un ajuste de datos reales de varias enfermedades, obteniendo aproximaciones de parámetros y sus errores, así como la representación del ajuste sobre los datos.
+
+Para terminar, en la última sección se discutirán diversos puntos sobre el proyecto, los objetivos que se han alcanzado y diversos trabajos o mejoras que pueden hacerse a lo expuesto en esta memoria, de cara a seguir investigando en este campo.
 
 
