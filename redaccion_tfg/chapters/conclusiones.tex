@@ -7,9 +7,42 @@
 
 \section{Conclusiones}
 
+Los modelos epidemiológicos, ya sean discretos o continuos, son un método intuitivo de analizar comportamientos de diversas enfermedades. Aunque los modelos presentados en este proyecto son modelos relativamente simples, siguen siendo una herramienta muy útil en el campo de la epidemiología.
 
+Estos modelos presentan muchas limitaciones, ya que se usan suposiciones que rara vez pasan en casos reales, ya que la población de un lugar nunca es constante, hay gente entrando y saliendo, y no es cierto que todos los individuos interactúen con todos los demás individuos de la población, pues una persona no tiene relación con todas las personas del resto de España. Aún con estas restricciones que en la realidad no se cumplen, hemos comprobado que los modelos ajustan relativamente bien los datos reales. También se supone que todo individuo infectado es siempre igual de contagioso, mientras que la carga viral y por tanto cómo de contagioso resulta a otras personas varía en el tiempo.
+
+Sumado a estos problemas, tenemos que tener en cuenta también el ruido y la incompletitud que tienen los datos reales. Dado que realizar experimentos en epidemiología es muy difícil, se suele trabajar con datos reales de epidemias, lo que supone muchos problemas. Muchas veces estos datos están incompletos, ya que algunos días pueden no reportarse los casos nuevos infectados, o los reportes de unos lugares con otros pueden no ser consistentes. Por ejemplo durante la epidemia del covid, cada comunidad autónoma tenía un sistema propio para realizar los reportes de datos, y este además fue cambiando a lo largo del desarrollo de la pandemia, produciendo más cambios y desajuste en los datos. A esto se suma que nunca se sabe el número real de individuos infectados, solo los que se reportan, y que no hay un método efectivo de medir los recuperados de una enfermedad.
+
+El estudio de las epidemias es muy complejo, y con el fin de solventar los problemas mencionados, se pueden realizar modificaciones a los modelos fundamentales presentados en este proyecto para conseguir ajustes mejores.
+
+También, a medida que se descubren nuevos datos sobre las enfermedades que surgen, se mejoran los modelos. Asimismo, cada vez podemos ajustar modelos más complejos o con mayor cantidad de parámetros conforme avanza la potencia de los ordenadores para realizar simulaciones, así como podemos usar mayores cantidades de datos.
+
+A pesar de las limitaciones encontradas, hemos comprobado con las simulaciones realizadas cómo los ajustes de los datos son bastante buenos, y dichos ajustes me han ayudado a comprender mejor la evolución de las epidemias, así como he adquirido conocimientos de análisis teórico de estos modelos.
+
+
+Durante la realización del proyecto se han cumplido los objetivos marcados al inicio de este, y se ha profundizado en distintas áreas complementarias que facilitan la comprensión de lo presentado e ilustran la relevancia de los temas tratados. Los objetivos que finalmente se han completado son:
+
+\begin{itemize}
+\item \textbf{Descripción de modelos discretos en epidemiología}. Se han presentado y analizado diversos modelos discretos en epidemiología mostrando su comportamiento, características y particularidades de cada uno.
+\item \textbf{Descripción de modelos continuos en epidemiología}. Se han presentado y analizado los modelos continuos análogos a los discretos anteriormente, explicando las diferencias entre su versión discreta y continua en cada caso.
+\item \textbf{Visualización del comportamiento de los modelos}. Se han realizado representaciones gráficas de las simulaciones de los modelos con el fin de facilitar la comprensión y mostrar el comportamiento de los modelos en cada caso.
+\item \textbf{Desarrollo de una página web}. Se ha desarrollado una página web donde se recoge una breve explicación de cada modelo, tanto discretos como continuos, y se pueden modificar los distintos parámetros de cada uno, obteniendo las gráficas pertinentes en cada caso.
+\item \textbf{Ajuste de datos}. Se ha implementado una funcionalidad en la página web para poder ajustar ficheros de datos subidos por el usuario usando los modelos epidemiológicos ya presentados. El usuario puede elegir el modelo o el sistema determinará cuál es el modelo que mejor se ajusta a dichos datos.
+\item \textbf{Ajuste de datos reales}. Usando datos de enfermedades reales, se ha realizado un ajuste con los modelos estudiados con el fin de presentar una aplicación práctica real.
+\end{itemize}
 
 \section{Vías futuras}
+
+Como vías futuras para ampliar este trabajo tenemos muchas opciones. Partiendo de los ajustes de datos reales que hemos realizado, podemos realizar modificaciones al modelo SIR como en \cite{gutierrez2020analisis} para contemplar más estados posibles de los individuos. En \cite{RAMOS2021105937} también se propone otro modelo, aún más complejo para el covid.
+
+Otra posibilidad es, sin modificar los modelos con los que se ha trabajado, tratar de hacer un mejor tratamiento de los datos de los que se dispone, minimizando así el ruido de estos y mejorando los resultados.
+
+En \cite{enrique_amaro} además realiza el ajuste al modelo SIR de los datos del covid de forma distinta a como se ha hecho en este proyecto, pues no tiene en cuenta el número de recuperados (que es muy difícil de medir) y trabaja solo con los infectados. Repetir nuestro ajuste considerando solo el número de infectados podría mejorar sus resultados.
+
+También, como ya se comentó al principio del trabajo, podemos ajustar varios modelos de acuerdo a las restricciones vigentes en cada momento o no, y comprobar cuáles son más efectivas, así como podríamos comparar usando el mismo modelo si se producen cambios significativos en la propagación de epidemias antes y después de la vacunación de la misma.
+
+
+
 
 
 
