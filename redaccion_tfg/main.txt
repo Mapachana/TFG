@@ -8,7 +8,24 @@ Teresa E. Pérez
 Manuel Pegalajar Cuéllar
 facultad de ciencias
 e.t.s. ingenierías informática y de telecomunicación
-Granada, a 21 de mayo de 2022
+Granada, a 23 de mayo de 2022
+
+RESUMEN
+
+Palabras clave: Enfermedad, modelo discreto, modelo continuo, propagación, epidemia, representación gráfica, parámetro, simulación, ajuste de datos.
+A lo largo de la historia y en la actualidad
+
+2
+
+ABSTRACT
+
+Keywords: Disease, discrete model, continuous model, propagation, epidemic, graphic representation, param, simulation, data fit.
+
+3
+
+AGRADECIMIENTOS
+
+4
 
 ÍNDICE GENERAL
 
@@ -21,254 +38,181 @@ introducción
 
 Motivación . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-4
+7
 
 1.2.
 
-Estado del arte . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Contexto histórico . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-5
+8
 
 1.3.
 
-Objetivos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Estado del arte . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-6
+9
 
 1.4.
 
-Descripción . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+Objetivos . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-6
+11
 
 1.5.
 
-Fuentes y resultados . . . . . . . . . . . . . . . . . . . . . . . . .
+Descripción . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-6
+11
 
 1.6.
 
 Estructura de la documentación . . . . . . . . . . . . . . . . . .
 
-6
+12
 
 herramientas básicas
 
 4.
 
-2
-
-7
+13
 
 Ecuaciones en diferencias . . . . . . . . . . . . . . . . . . . . . .
 
-7
+13
 
 2.1.1.
 
 Sistemas de ecuaciones en diferencias . . . . . . . . . .
 
-9
+15
 
 2.1.2.
 
 Puntos de equilibrio . . . . . . . . . . . . . . . . . . . .
 
-9
+15
 
 2.2.
 
 La ecuación logística . . . . . . . . . . . . . . . . . . . . . . . .
 
-11
+17
 
 2.3.
 
 Epidemiología . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-15
+21
 
 2.4.
 
 Tipos de modelos epidemiológicos . . . . . . . . . . . . . . . .
 
-16
+22
 
 2.5.
 
 Optimización de parámetros . . . . . . . . . . . . . . . . . . . .
 
-16
+22
 
 2.1.
 
 3.
 
-4
+7
 
 modelos discretos en epidemiología
 
-19
+25
 
 3.1.
 
 Modelos discretos . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-19
+25
 
 3.2.
 
 Modelo SI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-19
+25
 
 3.3.
 
 Modelo SIR . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-22
+28
 
 3.4.
 
 Modelo SIS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-29
+35
 
 3.5.
 
 Modelos multipoblacionales . . . . . . . . . . . . . . . . . . . .
 
-33
+39
 
 3.5.1.
 
 Modelo SI . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-35
+41
 
 3.5.2.
 
 Modelo SIR . . . . . . . . . . . . . . . . . . . . . . . . .
 
-36
+42
 
 3.5.3.
 
 Modelo SIS . . . . . . . . . . . . . . . . . . . . . . . . .
 
-37
+43
 
 modelos continuos en epidemiología
 
-39
+45
 
 4.1.
 
 Tipos de modelos . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-39
+45
 
 4.2.
 
 Modelo SI continuo . . . . . . . . . . . . . . . . . . . . . . . . .
 
-40
+46
 
 4.3.
 
 Modelo SIS continuo . . . . . . . . . . . . . . . . . . . . . . . .
 
-42
+48
 
 4.4.
 
 Modelo SIR continuo . . . . . . . . . . . . . . . . . . . . . . . .
 
-44
+50
 
 4.5.
 
 Modelo Kermack-McKendrick . . . . . . . . . . . . . . . . . . .
 
-45
+51
 
-Índice general
+5
 
-.
-.
-.
-.
+6
 
-48
-48
-50
-52
-
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-.
-
-53
-53
-54
-55
-55
-55
-56
-57
-57
-59
-61
-62
-63
-64
-72
-73
-74
-74
-75
-75
-75
-78
-81
-82
-86
-86
-86
-89
-
-conclusiones y vías futuras
-6.1. Conclusiones . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-6.2. Vías futuras . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-
-93
-93
-93
+Índice general
 
 4.6.
 
@@ -309,8 +253,6 @@ desarrollo del software: análisis y
 5.11. Datos reales . . . . . . . . . . . . . . . .
 5.12. El VIH en Baleares . . . . . . . . . . . .
 5.13. El covid en España . . . . . . . . . . . .
-
-Bibliografía
 
 .
 .
@@ -585,9 +527,81 @@ diseño
 .
 .
 
-93
+.
+.
+.
+.
 
-3
+54
+54
+56
+58
+
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+
+59
+59
+60
+61
+61
+61
+62
+63
+63
+65
+67
+68
+69
+70
+78
+79
+80
+80
+81
+81
+81
+84
+87
+88
+92
+92
+92
+94
+
+conclusiones y vías futuras
+99
+6.1. Conclusiones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 99
+6.2. Vías futuras . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 102
+
+Bibliografía
+
+102
 
 1
 INTRODUCCIÓN
@@ -615,9 +629,11 @@ de grave va a ser la epidemia?”, ”¿Cuántas personas van a contagiarse?” 
 Dado que los experimentos para obtener información acerca de las epidemias
 son casi imposibles de llevar a cabo por la propia naturaleza de las epidemias
 
-4
+7
 
-1.2 estado del arte
+8
+
+introducción
 
 y cuestiones éticas y morales, se suelen obtener los datos de las epidemias que
 surgen naturalmente, por lo que muchos de estos datos no están completos
@@ -628,7 +644,7 @@ comportamientos que no son evidentes en los datos empíricos.
 
 1.2
 
-estado del arte
+contexto histórico
 
 La epidemiología tiene su origen con Hipócrates de Cos, conocido como el
 padre de la medicina. Fue la primera persona de la que se tiene conocimiento
@@ -648,11 +664,7 @@ Además, Wu Youke también tuvo la idea de que algunas enfermedades eran
 causadas por agentes transmisibles cuando observó varias epidemias. Sus
 consideraciones aún resultan muy relevantes en la medicina china en la actualidad.
 
-5
-
-6
-
-introducción
+1.3 estado del arte
 
 Thomas Sydenham fue el primero en distinguir entre diversas fiebres entre
 la población de Londres a finales de 1600.
@@ -670,37 +682,134 @@ Broad Street, que el doctor estableció se debía al agua proveniente de un pozo
 bomba del pozo, frenando así la epidemia. Esto supuso un gran avance de
 cara a la higiene y sanidad pública, pese a que sus investigaciones y avances
 no fueron puestas en práctica hasta después de su fallecimiento.
-A principios del siglo XX se introdujeron modelos matemáticos en la epidemiología por Ronald Ross, Janed Lane-Claypon y Anderson Gray mcKendrick (cuyo modelo presentaremos más adelante), entre otros. Desde entonces, muchos especialistas se unieron progresivamente al estudio de este campo.
+A principios del siglo XX se introdujeron modelos matemáticos en la epidemiología por Ronald Ross, Janed Lane-Claypon y Anderson Gray mcKendrick (cuyo modelo presentaremos más adelante), entre otros. Desde entonces, muchos especialistas se unieron progresivamente al estudio de este campo, cuya eficacia para mejorar la salud pública ha ido mejorando a la par que
+lo hacía la tecnología.
 
 1.3
 
-objetivos
+estado del arte
+
+En la actualidad con la proliferación de varias enfermedades infecciosas como el covid entre otras la epidemiología se ha convertido en un campo fundamental para la salud pública. Con la proliferación de estas enfermedades
+ha habido un auge en la investigación y simulación del comportamiento de
+las enfermedades usando diversos modelos epidemiológicos, ya sea con el
+fin de comprender cómo se propaga la enfermedad o la efectividad ciertas
+medidas que se pueden instaurar para frenar la epidemia.
+
+9
+
+10
+
+introducción
+
+En los últimos años la mayoría de los esfuerzos de este campo se han enfocado al estudio y contención de la epidemia del covid. Se ha tratado de
+comprender esta enfermedad y de comprobar la efectividad de las medidas
+tomadas desde Marzo de 2020, cuando se convirtió en un problema de salud
+generalizado.
+En [8] se trata de ajustar los parámetros del modelo compartimental usado,
+aplicandolo a los datos del covid en China , con el fin de conocer y comprender mejor el covid. Y en esta misma línea, en [2] se ajustan los datos del covid
+de diferentes países muy afectados por esta enfermedad durante la primera
+ola usando un modelo SIR, y comprobando que describe bastante bien su
+comportamiento.
+También se pueden encontrar trabajos exponiendo por qué estos modelos,
+pese a su capacidad de análisis de diversas enfermedades, no pueden ser
+usado para predecir el comportamiento de estas. Un ejemplo es [4], donde
+se describe de forma precisa el comportamiento del covid en España usando
+un modelo SIR, pero al intentar predecir su evolución se obtienen resultados
+pésimos y contradictorios con la realidad.
+Como ya hemos mencionado, es especialmente relevante comprobar la efectividad de diversas medidas de contención. En [9] modifican el modelo SIR
+para contemplar las medidas de contención aplicadas en España y comprobar si realmente frenan la propagación de la epidemia. En [7] también usan
+un modelo SIR y combinándolo con diversas técnicas de estadística Bayesiana comprueban la efectividad de diferentes medidas, aplicado a los datos y
+restricciones de Alemania.
+Adicionalmente, en [10] comprueban la efectividad y cómo afecta el método
+de rastreo de contacto para realentizar los contagios, comparando el rastreo
+manual con el digital, como es la aplicación covid. También se han realizado
+estudios como [5], que analizan cómo influye que la población se vacune y
+por qué es difícil de convencer a veces para hacerlo.
+Actualmente, los modelos no se usan solamente de forma teórica o para ajustar los datos, pues como hemos visto proporcionan información de interés
+durante diversos brotes de enfermedades.
+
+1.4 objetivos
 
 1.4
 
-descripción
+objetivos
+
+A lo largo de este proyecto, se exponen distintos modelos matemáticos para modelar epidemias, a la vez que se han implementado simulaciones del
+comportamiento de los mismos. Estas simulaciones se han integrado en una
+página web que se ha desarrollado a lo largo de todo el proyecto. Los objetivos son dobles, pues se ha intentado realizar tanto una exposición y análisis
+teórico de los modelos como mostrar mediante la implementación y ajuste
+de datos reales su aplicación práctica.
+Inicialmente, los objetivos que nos marcamos consistían en:
+Estudiar las versiones discretas de distintos modelos epidemiológicos,
+analizando sus particularidades, como lo son sus restricciones y proporcionando condiciones para asegurar la positividad de las soluciones.
+Desarrollar software para visualizar de forma sencilla los modelos estudiados anteriormente.
 
 1.5
 
-fuentes y resultados
+descripción
+
+El proyecto desarrollado recoge una exposición teórica de modelos discretos y
+continuos en epidemiología, analizando cada uno de estos, su comportamiento, suposiciones necesarias para su funcionamiento y presentando conceptos
+relevantes en epidemiología.
+Por otro lado, se ha implementado una página web en la que los usuarios pueden modificar interactivamente los parámetros de cada uno de estos modelos,
+actualizando las gráficas del comportamiento de estos y viendo por tanto de
+manera simple e intuitiva cómo afecta cada parámetro y las mecánicas que
+subyacen en el modelo.
+También se pueden subir ficheros de datos y obtener un ajuste con alguno
+de los modelos a elegir, o que el sistema determine a partir del error cuál es
+el modelo que mejor ajusta esos datos introducidos, prorcionando en todos
+los casos los parámetros que se han estimado y los errores obtenidos. De esta
+forma, es posible realizar ajustes con datos reales simplemente subiendo un
+fichero con un formato correcto a la página web y comprobando la bondad
+del ajuste realizado.
+
+11
+
+12
+
+introducción
 
 1.6
 
 estructura de la documentación
+
+En esta memoria se pueden distinguir varias partes claramente diferenciadas:
+Presentación de herramientas necesarias.
+Modelos discretos y continuos en epidemiología.
+Diseño y análisis del software.
+Aplicación a datos reales.
+Conclusiones y vías futuras.
+En la primera de estas secciones se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas
+veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
+Seguidamente, se presentan y explican una selección de modelos discretos
+y sus análogos continuos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, así como distintas simulaciones
+para ilustrar su comportamiento.
+Durante la tercera sección se va a desarrollar toda la documentación del desarrollo de la página web, incluyendo la gestión de recursos y planificación
+temporal. Se detallan los requisitos derivados de los objetivos previamente expuestos y se realizan los casos de uso de acuerdo a estos. También se
+añade en la documentación el diagrama conceptual, herramientas usadas,
+prototipos de la interfaz de usuario y el manual de la página web.
+En la siguiente sección se va a usar el software desarrollado para realizar un
+ajuste de datos reales de varias enfermedades, obteniendo aproximaciones
+de parámetros y sus errores, así como la representación del ajuste sobre los
+datos.
+Para terminar, en la última sección se discutirán diversos puntos sobre el
+proyecto, los objetivos que se han alcanzado y diversos trabajos o mejoras que
+pueden hacerse a lo expuesto en esta memoria, de cara a seguir investigando
+en este campo.
 
 2
 H E R R A M I E N TA S B Á S I C A S
 
 En este capítulo se presentarán algunos conceptos y herramientas básicas que
 nos resultarán útiles a lo largo de los siguientes capítulos. Como referencias
-se ha usado principalmente [3], [7] y [8].
+se ha usado principalmente [3], [13] y [14].
 
 2.1
 
 ecuaciones en diferencias
 
 Comenzamos presentando la teoría básica necesaria. Para su elaboración se
-ha usado principalmente [7].
+ha usado principalmente [13].
 Definición 1. Se define una ecuación en diferencias de orden k, con k ≥ 1,
 como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
 
@@ -718,9 +827,9 @@ considerarse el tiempo, por lo que en estas se considera positivo y discreto.
 Definición 2. Una ecuación en diferencias de orden k, con k ≥ 1 se dice que
 está en forma normal si está expresada de la forma:
 
-7
+13
 
-8
+14
 
 herramientas básicas
 
@@ -809,9 +918,9 @@ Definición 6. Sea D ⊂ Rm y Φ : D → D una función continua. Entonces
 un vector X ∗ ∈ Rm se dice que es un punto de equilibrio de un sistema de
 ecuaciones en diferencias de la forma (6) si
 
-9
+15
 
-10
+16
 
 herramientas básicas
 
@@ -870,7 +979,7 @@ la ecuación logística
 
 En este apartado describiremos la ecuación logística discreta y sus principales
 propiedades que serán utilizadas más adelante. La teoría puede ampliarse en
-[8].
+[14].
 Definición 10. La ecuación logística discreta tiene la siguiente forma:
 
 xn+1 = µxn (1 − xn ),
@@ -906,9 +1015,9 @@ f
 2
 4
 
-11
+17
 
-12
+18
 
 herramientas básicas
 
@@ -992,7 +1101,7 @@ Demostración. Tenemos que f ( p) = q y f (q) = p es equivalente a f ( f ( p)) =
 p y f ( f (q)) = q, es decir, p es un punto fijo al iterar dos veces la función
 dada.
 
-13
+19
 
 herramientas básicas
 
@@ -1007,7 +1116,7 @@ x0 = 0.2, µ = 3.8
 
 µx(1 − x)
 
-14
+20
 
 0.4
 
@@ -1082,9 +1191,9 @@ situaciones endémicas, en las que la enfermedad está siempre presente.
 Los individuos de una población se pueden dividir en tres grupos, haciendo
 referencia a su situación con respecto a la enfermedad.
 
-15
+21
 
-16
+22
 
 herramientas básicas
 
@@ -1154,9 +1263,9 @@ función dada a los datos, y con el argumento method='lm', se usa el algoritmo d
 algoritmo solo admite problemas sin restricciones, no se usará, pues todos
 los parámetros en los modelos epidemiológicos están sujetos a restricciones.
 
-17
+23
 
-18
+24
 
 herramientas básicas
 
@@ -1212,9 +1321,9 @@ N
 donde Sn indica el número de individuos susceptibles en el instante tn , e In
 hace referencia al número de individuos infectados en ese instante. ∆t es el
 
-19
+25
 
-20
+26
 
 modelos discretos en epidemiología
 
@@ -1332,7 +1441,7 @@ N
 
 S∗ + I ∗ = N
 
-21
+27
 
 modelos discretos en epidemiología
 
@@ -1343,7 +1452,7 @@ con valores iniciales S0 = 99, I0 = 1, α = 0,1, T0 = 0, T = 100.
 80
 Datos
 
-22
+28
 
 60
 
@@ -1427,9 +1536,9 @@ un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo
 de tiempo, con α > 0 y γ > 0.
 Se supone que la población permanece constante, esto es: Sn + In + Rn = N.
 
-23
+29
 
-24
+30
 
 modelos discretos en epidemiología
 
@@ -1532,7 +1641,7 @@ pues si no fuera así, tendríamos que In crece hacia un equilibrio, I∞ , lo q
 implica que Rn se aproxima a infinito cuando n → ∞, lo que no es posible, pues el total de la población es constante. Así, el número de infectados
 finalmente comienza a decrecer.
 
-25
+31
 
 modelos discretos en epidemiología
 
@@ -1542,7 +1651,7 @@ Figura 5: Gráfica del modelo SIR, en una población total de 100 individuos, co
 80
 Datos
 
-26
+32
 
 60
 
@@ -1581,7 +1690,7 @@ S0 α
 Nγ
 
 El valor de RSIR determina el comportamiento global del modelo. En particular, si RSIR < 1 se considera que no hay epidemia.
-En otros trabajos como [5] este número básico reproductivo se llama tasa de
+En otros trabajos como [8] este número básico reproductivo se llama tasa de
 transmisión media.
 En la figura 6 se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son
 
@@ -1612,7 +1721,7 @@ rápidamente a menor número de individuos susceptibles.
 Finalmente, en la figura 8 se muestran los individuos recuperados en función
 de los infectados, en una gráfica implícita del tiempo.
 
-27
+33
 
 modelos discretos en epidemiología
 
@@ -1624,7 +1733,7 @@ individuos, con valores iniciales S0 = 99, I0 = 1, α = 0,1, γ = 0,01, T0 =
 
 5HFXSHUDGRV
 
-28
+34
 
 6XVFHSWLEOHV
 
@@ -1657,9 +1766,9 @@ modelo sis
 El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles a múltiples reinfecciones. Por ejemplo, los resfriados pueden modelarse usando SIS.
 El modelo es una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
 
-29
+35
 
-30
+36
 
 modelos discretos en epidemiología
 
@@ -1819,9 +1928,9 @@ N
 
 (12)
 
-31
+37
 
-32
+38
 
 modelos discretos en epidemiología
 
@@ -1942,7 +2051,7 @@ modelos multipoblacionales
 
 Los modelos multipoblacionales agrupan la población en varias subpoblaciones. En estas subpoblaciones, los individuos pertenecientes a una misma
 
-33
+39
 
 modelos discretos en epidemiología
 
@@ -1965,7 +2074,7 @@ individuos, con valores iniciales S0 = 95, I0 = 5, α = 0,1, γ = 0,01, T0 =
 
 –QIHFWDGRV
 
-34
+40
 
 6XVFHSWLEOHV
 
@@ -2032,9 +2141,9 @@ K
 
 ≤1
 
-35
+41
 
-36
+42
 
 modelos discretos en epidemiología
 
@@ -2179,9 +2288,9 @@ donde i = 1, · · · , K, y con las condiciones iniciales S0i > 0 y I0i ≥ 0 p
 valor de i, existiendo algún k cumpliendo I0k > 0. Y además, para todo i debe
 satisfacerse S0i + I0i = N i , siendo N i el tamaño de la i-ésima subpoblación.
 
-37
+43
 
-38
+44
 
 modelos discretos en epidemiología
 
@@ -2247,9 +2356,9 @@ En estos modelos se hacen dos suposiciones:
 2. El total de la población es constante y lo denotaremos por N.
 En este capítulo estudiaremos los principales modelos epidemiológicos continuos análogos a los estudiados en el capítulo anterior.
 
-39
+45
 
-40
+46
 
 modelos continuos en epidemiología
 
@@ -2365,9 +2474,9 @@ N − I0
 
 (22)
 
-41
+47
 
-42
+48
 
 modelos continuos en epidemiología
 
@@ -2428,9 +2537,9 @@ Figura 13: Gráfica del modelo SIS continuo, en una población total de 100 indi
 con valores iniciales S(0) = 95, I (0) = 5, α = 0,1, γ = 0,05, T0 = 0, T =
 150.
 
-43
+49
 
-44
+50
 
 modelos continuos en epidemiología
 
@@ -2491,9 +2600,9 @@ diferencia con el modelo SIR ya estudiado es que en este modelo se supone
 que un individuo infectado hace contacto suficiente para contagiar la enfermedad con αN individuos por unidad de tiempo, mientras en el modelo SIR
 se supone que α es el número medio de individuos con los que un infectado
 
-45
+51
 
-46
+52
 
 modelos continuos en epidemiología
 
@@ -2574,9 +2683,9 @@ similares a estos modelos más simples.
 En nuestro modelo (25), R se determina una vez que se conocen S e I, pero podemos eliminar la tercera ecuación del modelo, dejando este formado
 solamente por dos ecuaciones:
 
-47
+53
 
-48
+54
 
 modelos continuos en epidemiología
 
@@ -2632,7 +2741,7 @@ transmisión.
 Todos los factores pueden cambiar con el tiempo. El primero, debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto,
 observar el decrecimiento de la transmisión media en una enfermedad es
 una buena forma de comprobar la efectividad de las medidas de contención.
-En el artículo [5] se presenta un modelo SI modificado con el objetivo de
+En el artículo [8] se presenta un modelo SI modificado con el objetivo de
 compararlo con los datos obtenidos en la pandemia de la COVID-19 en China
 hasta el momento, y así tratar de predecir su comportamiento en el futuro.
 El modelo SI continuo considerado es el siguiente:
@@ -2655,9 +2764,9 @@ Ahora, consideramos que al final del período infeccioso nos han informado
 de una fracción del total de casos, en este caso la fracción la denotamos por
 f ∈ (0, 1]. Sea CR (t) el número total acumulado de casos reportados. Entonces:
 
-49
+55
 
-50
+56
 
 modelos continuos en epidemiología
 
@@ -2677,7 +2786,7 @@ I (w)dw
 siendo C I el número total de infectados acumulado.
 Asumimos conocidos S0 > 0, 1/v > 0, f ∈ (0, 1]. Por tanto, queremos averiguar el número inicial de infectados I0 y la tasa de transmisión τ (t).
 4.6.2 Aproximación de I0 y τ (t0 )
-Siguiendo [5], procedemos a intentar aproximar I0 y τ (t0 ):
+Siguiendo [8], procedemos a intentar aproximar I0 y τ (t0 ):
 Al comienzo de la pandemia podemos suponer que S(t) y τ (t) son constantes
 e iguales a S0 y τ0 = τ (t0 ), respectivamente. Sustituyendo estos valores en la
 ecuación (27) obtenemos:
@@ -2748,9 +2857,9 @@ I 0 (t) = S0 exp (−τ0 C I (t))τ0 C 0I (t) − vI (t)
 Finalmente, integrando entre t0 y t tenemos que:
 I (t) = C 0I (t) = I0 + S0 (1 − exp (−τ0 C I (t))) − vC I (t).
 
-51
+57
 
-52
+58
 
 modelos continuos en epidemiología
 
@@ -2830,7 +2939,7 @@ t0
 
 + vCR0 − vCR (t)
 
-Así, obtenemos el Teorema 3.1 de [5], que nos da la relación directa buscada.
+Así, obtenemos el Teorema 3.1 de [8], que nos da la relación directa buscada.
 
 5
 D E S A R R O L L O D E L S O F T WA R E : A N Á L I S I S Y D I S E Ñ O
@@ -2859,9 +2968,9 @@ de los parámetros y los errores.
 mejor a los datos.
 Requisitos no funcionales
 
-53
+59
 
-54
+60
 
 desarrollo del software: análisis y diseño
 
@@ -2942,9 +3051,9 @@ CPU: Intel Core i5-6200U.
 RAM 8GB RAM DDR3.
 Disco duro: 1TB.
 
-55
+61
 
-56
+62
 
 desarrollo del software: análisis y diseño
 
@@ -3006,9 +3115,9 @@ T2. Especificación de requisitos. En base a la información obtenida del
 proyecto, en esta etapa se han especificado los requisitos que el software
 debe cumplir.
 
-57
+63
 
-58
+64
 
 desarrollo del software: análisis y diseño
 
@@ -3097,9 +3206,9 @@ modelado de objetos UML y modelos de navegación y presentación usando UML. As�
 web a la vez que se integra con las restantes vistas del esquema conceptual
 mediante una notación UML adaptada.
 
-59
+65
 
-60
+66
 
 desarrollo del software: análisis y diseño
 
@@ -3125,9 +3234,9 @@ casos de uso
 A partir de los requisitos listados anteriormente, se obtienen los siguientes
 casos de uso:
 
-61
+67
 
-62
+68
 
 desarrollo del software: análisis y diseño
 
@@ -3169,9 +3278,9 @@ los posibles casos de uso, así como sus relaciones entre ellos. El diagrama
 resultante puede verse en (24).
 Figura 24: Diagrama de casos de uso
 
-63
+69
 
-64
+70
 
 desarrollo del software: análisis y diseño
 
@@ -3309,9 +3418,9 @@ Alto
 Alta
 Alta
 
-65
+71
 
-66
+72
 
 desarrollo del software: análisis y diseño
 
@@ -3440,9 +3549,9 @@ Alto
 Alta
 Alta
 
-67
+73
 
-68
+74
 
 desarrollo del software: análisis y diseño
 
@@ -3572,9 +3681,9 @@ Alto
 Alta
 Alta
 
-69
+75
 
-70
+76
 
 desarrollo del software: análisis y diseño
 
@@ -3715,9 +3824,9 @@ Alto
 Baja
 Alta
 
-71
+77
 
-72
+78
 
 desarrollo del software: análisis y diseño
 
@@ -3744,9 +3853,9 @@ pruebas
 A medida que se desarrollaba el proyecto, se han llevado a cabo diversas
 pruebas de las distintas funcionalidades que se han desarrollado incremen-
 
-73
+79
 
-74
+80
 
 desarrollo del software: análisis y diseño
 
@@ -3808,9 +3917,9 @@ tiempo real, y cómo afectan los parámetros de cada uno de ellos a la evolució
 Además, se pueden subir ficheros con datos, ya sean generados por el propio
 usuario o datos reales recogidos y comprobar el resultado de ajustar estos
 
-75
+81
 
-76
+82
 
 desarrollo del software: análisis y diseño
 
@@ -3824,9 +3933,9 @@ Figura 29: Prototipo de la página de un modelo interactivo.
 
 Figura 30: Prototipo de la página de ajuste de datos subidos desde un fichero.
 
-77
+83
 
-78
+84
 
 desarrollo del software: análisis y diseño
 
@@ -3865,9 +3974,9 @@ ayuda. Aparte, en notación hay un resumen de la notación usada en toda la
 página web, haciendo fácil consultarla en cualquier momento. El apartado de
 notación se muestra en (35).
 
-79
+85
 
-80
+86
 
 desarrollo del software: análisis y diseño
 
@@ -3877,7 +3986,7 @@ Figura 35: Página de notación.
 
 5.10 manual de usuario
 
-81
+87
 
 Figura 36: Desplegable de modelos discretos desplegado.
 
@@ -3903,7 +4012,7 @@ modelo que se está estudiando. En el modelo SI por ejemplo se pueden
 modificar los modelos que se ven en (38).
 Finalmente, se muestran una serie de gráficas que ilustran el comportamiento del modelo con los parámetros dados. La primera es una fun-
 
-82
+88
 
 desarrollo del software: análisis y diseño
 
@@ -3937,9 +4046,9 @@ Figura 38: Página del modelo SI, campos para la modificación de parámetros y 
 
 Figura 39: Página del modelo SI, gráfica implícita del tiempo.
 
-83
+89
 
-84
+90
 
 desarrollo del software: análisis y diseño
 
@@ -3973,9 +4082,9 @@ Figura 42: Página de ajuste de datos. Desplegable y gráfica con el ajuste.
 
 Figura 43: Página de ajuste de datos. Estimaciones de parámetros y errores.
 
-85
+91
 
-86
+92
 
 desarrollo del software: análisis y diseño
 
@@ -3985,8 +4094,7 @@ Instalación del backend
 
 Para lanzar la página web de una manera cómoda, rápida y simple, se ha
 creado un contenedor docker actualizado con todas las dependencias necesarias para el funcionamiento de la misma.
-De esta manera, basta con ejecutar el contenedor docker, accesible en Dockerhub, descargarlo y ejecutarlo. El contenedor puede obtenerse en
-https://hub.docker.com/repository/docker/mapachana/plotsir.
+De esta manera, basta con ejecutar el contenedor docker, accesible en Dockerhub, descargarlo y ejecutarlo. El contenedor puede obtenerse aquí.
 Para obtener y lanzar la imagen debe abrirse una terminal y ejecutar los
 siguientes comandos:
 docker pull mapachana/plotsir:latest
@@ -4013,14 +4121,16 @@ no hay ninguna cura efectiva contra el VIH, por lo que una vez que se contrae,
 se tiene de por vida.
 El VIH provino de una especie de chimpancé de África, desde la que se propagó primero por dicho continente, y se estima que lleva en Estados Unidos
 desde finales de los años 70.
+Dado que es una enfermedad para la que una vez infectado no dejas de
+tenerla, se tiene que sigue un modelo SI.
 
 5.12 el vih en baleares
 
-Dado que es una enfermedad para la que una vez infectado no dejas de
-tenerla, se tiene que sigue un modelo SI.
+Figura 44: Representación de los datos del VIH en Baleares.
+
 El conjunto de datos que se va a usar contiene los datos de los reportes de
 nuevos infectados por VIH en Baleares desde 2003 hasta 2019 anualmente. La
-fuente de dichos datos es [4].
+fuente de dichos datos es [6].
 En el informe se proporcionan los nuevos casos detectados, luego los datos
 con los que vamos a trabajar son la suma acumulada de estos casos nuevos.
 Esto se debe a que el modelo considera los casos activos, no solo los nuevos.
@@ -4033,6 +4143,15 @@ Primeramente, observamos la representación de los datos en (44). Vemos que
 el número de individuos susceptibles va descendiendo, así como el de infectados creciendo en términos globales. Pese a esto, en ciertas partes de la gráfica
 se aprecia una leve curvatura, donde los susceptibles pasan de ser cóncavos
 a convexos y los infectados de convexo a cóncavo.
+
+93
+
+94
+
+desarrollo del software: análisis y diseño
+
+Figura 45: Representación del ajuste con el modelo SI a los datos del VIH en Baleares.
+
 Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo
 SI.
 La representación gráfica del ajuste se puede ver en (45). En las curvas del
@@ -4044,21 +4163,6 @@ son razonables y la representación gráfica del ajuste aproxima relativamente
 bien los datos obtenidos, parece que las infecciones por VIH en Baleares en
 efecto siguen un modelo SI.
 
-87
-
-88
-
-desarrollo del software: análisis y diseño
-
-Figura 44: Representación de los datos del VIH en Baleares.
-
-Figura 45: Representación del ajuste con el modelo SI a los datos del VIH en Baleares.
-
-5.13 el covid en españa
-
-Figura 46: Estimaciones y errores del ajuste con el modelo SI a los datos del VIH en
-Baleares.
-
 5.13
 
 el covid en españa
@@ -4066,9 +4170,15 @@ el covid en españa
 El covid es una enfermedad respiratoria aguda causada por el virus SARSCoV-2. Se informó respecto a ella por primera vez en Diciembre de 2019, tras
 detectarse varios casos en Wuhan. Posteriormente se extendió a otros países,
 entre los que se encuentra España.
+
+5.13 el covid en españa
+
+Figura 46: Estimaciones y errores del ajuste con el modelo SI a los datos del VIH en
+Baleares.
+
 A lo largo de la pandemia del covid en el mundo se han recopilado una gran
 cantidad de datos para estudiar esta enfermedad. Para este estudio vamos a
-usar el conjunto de datos obtenido de [6].
+usar el conjunto de datos obtenido de [11].
 En [2] se comprueba que se puede modelar mediante el modelo SIR. Vamos
 a tratar de ajustarla siguiendo este modelo.
 En el fichero csv de los datos hay mucha información, pero realmente solo
@@ -4083,18 +4193,21 @@ datos reportados pese a que aparecen en los datos, y durante los siguientes
 170 días, esto es, hasta el 21 de Agosto de 2020, pues es aproximadamente
 6 meses, lo que se estima duró lo que se conoce coloquialmente como la
 primera ola.
-
-89
-
-90
-
-desarrollo del software: análisis y diseño
-
 Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondiendo por tanto al 5 de Marzo el índice 0 y al 21 de Agosto el 170.
 Es importante ajustar solamente una ola, pues el modelo SIR considera que
 tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse,
 pero esto no es así en la realiidad. El modelo SIR ajusta solamente las olas de
 forma independiente.
+
+95
+
+96
+
+desarrollo del software: análisis y diseño
+
+Figura 47: Representación de los datos del covid en España desde el 5 de Marzo
+hasta e 21 de Agosto de 2020.
+
 Para calcular el número de infectados activos, dado que el covid al principio
 de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como
 activos.
@@ -4108,6 +4221,11 @@ para realizar un ajuste en la página web.
 Al igual que antes, comenzamos observando la representación de los datos
 en (47). El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados,
 que primero suben y luego descienden, indicando así el final de la ola.
+
+5.13 el covid en españa
+
+Figura 48: Representación del ajuste con el modelo SIR a los datos del covid en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.
+
 Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo
 SIR.
 La representación gráfica del ajuste se puede ver en (48). El ajuste parece
@@ -4115,28 +4233,20 @@ seguir las tendencias generales de los datos, aunque los infectados quedan
 ligeramente por encima en el ajuste que en los datos experimentales, así como
 los recuperados y susceptibles ajustan peor al final, pues cuanto más nos
 alejamos de la ola en sí, peor es el ajuste al modelo SIR.
-
-5.13 el covid en españa
-
-Figura 47: Representación de los datos del covid en España desde el 5 de Marzo
-hasta e 21 de Agosto de 2020.
-
-Figura 48: Representación del ajuste con el modelo SIR a los datos del covid en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.
-
-91
-
-92
-
-desarrollo del software: análisis y diseño
-
-Figura 49: Estimaciones y errores del ajuste con el modelo SIR a los datos del covid
-en España.
-
 En (49) se muestra la estimación de los parámetros obtenidos para el ajuste,
 resultando un α ≈ 0,21, γ ≈ 0,08, I0 ≈ 1, R0 ≈ 536. Dado que los valores de
 estos parámetros son razonables, salvo quizá por una estimación ligeramente
 alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por
 covid en España en efecto siguen un modelo SIR.
+
+97
+
+98
+
+desarrollo del software: análisis y diseño
+
+Figura 49: Estimaciones y errores del ajuste con el modelo SIR a los datos del covid
+en España.
 
 6
 CONCLUSIONES Y VÍAS FUTURAS
@@ -4145,11 +4255,125 @@ CONCLUSIONES Y VÍAS FUTURAS
 
 conclusiones
 
+Los modelos epidemiológicos, ya sean discretos o continuos, son un método
+intuitivo de analizar comportamientos de diversas enfermedades. Aunque los
+modelos presentados en este proyecto son modelos relativamente sencillos,
+siguen siendo una herramienta muy útil en el campo de la epidemiología.
+Estos modelos presentan muchas limitaciones, ya que se usan suposiciones
+que rara vez pasan en casos reales, porque la población de un lugar nunca es
+constante, hay gente entrando y saliendo, y no es cierto que todos los individuos interactúen con todos los demás individuos de la población, pues una
+persona no tiene relación con todas las personas del resto de España. Aún con
+estas restricciones que en la realidad no se cumplen, hemos comprobado que
+los modelos ajustan relativamente bien los datos reales. También se supone
+que todo individuo infectado es siempre igual de contagioso, mientras que la
+carga viral y por tanto cómo de contagioso resulta a otras personas varía en
+el tiempo.
+Sumado a estos problemas, tenemos que tener en cuenta también el ruido y
+la incompletitud que tienen los datos reales. Dado que realizar experimentos
+en epidemiología es muy difícil, se suele trabajar con datos reales de epidemias, lo que supone muchos problemas. Muchas veces estos datos están
+incompletos, ya que algunos días pueden no reportarse los casos nuevos infectados, o los reportes de unos lugares con otros pueden no ser consistentes.
+Por ejemplo durante la epidemia del covid, cada comunidad autónoma tenía
+un sistema propio para realizar los reportes de datos, y este además fue cam-
+
+99
+
+100
+
+conclusiones y vías futuras
+
+biando a lo largo del desarrollo de la pandemia, produciendo más cambios
+y desajuste en los datos. A esto se suma que nunca se sabe el número real
+de individuos infectados, solo los que se reportan, y que no hay un método
+efectivo de medir los recuperados de una enfermedad.
+El estudio de las epidemias es muy complejo, y con el fin de solventar los
+problemas mencionados, se pueden realizar modificaciones a los modelos
+fundamentales presentados en este proyecto para conseguir ajustes mejores.
+También, a medida que se descubren nuevos datos sobre las enfermedades
+que surgen, se mejoran los modelos. Asimismo, cada vez podemos ajustar modelos más complejos o con mayor cantidad de parámetros conforme avanza
+la potencia de los ordenadores para realizar simulaciones, así como podemos
+usar mayores cantidades de datos.
+Además, dado que cada enfermedad tiene características bastante distintas
+a las demás, sería conveniente usar métodos de ajuste distintos para cada
+conjunto de datos. Pese a que, em la realización de este trabajo, con el ajuste
+que hemos implementado en la página web se obtengan buenos resultados
+en general para varios conjuntos de datos distintos y varios modelos, siempre
+puede mejorarse haciendo estudios más específicos de cada problema.
+A pesar de las limitaciones encontradas, durante este proyecto hemos comprobado con las simulaciones realizadas cómo los ajustes de los datos son
+bastante buenos. En el caso de los datos del covid en España, el modelo
+que mejor se ajusta a estos datos es el modelo SIR. Esto se debe a la propia
+naturaleza de la enfermedad, pues el desarrollo de esta consiste en ser vulnerable a ser infectado, una vez infectado puedes contagiar a las personas de tu
+entorno y, al recuperarte, se tiene una cierta inmunidad durante un tiempo
+posterior. Al realizarse los ajustes por olas y durar estas menos que el tiempo
+de inmunidad tras superar el covid, a efectos prácticos de este modelo una
+vez recuperado permaneces así. Un modelo SI en este caso no ajustaría bien
+pues una vez infectado no permaneces infectado y contagiando a los demás
+indefinidamente, así como un modelo SIS tampoco, pues eres inmune al contagio durante un tiempo. Por el contrario, en el ajuste realizado con los datos
+del VIH, dado que una vez infectado siempre permaneces infectado y puedes
+producir contagios nuevos, un modelo SI se ajusta mejor que los otros, pues
+el modelo SIS no se adapta porque los infectados deberáin poder recuperarse.
+
+6.1 conclusiones
+
+Sí sería una opcion ajustar mediante un modelo SIR, considerando como los
+recuperados el número de fallecidos por la enfermedad, pues ya no pueden
+contagiarse. Pese a esto, el modelo que mejor parece ajustarse es el modelo SI,
+lo que creo que es debido a la baja mortalidad del VIH en los últimos años.
+Durante la realización del proyecto se han cumplido los objetivos marcados
+al inicio de este, y se ha profundizado en distintas áreas complementarias
+que facilitan la comprensión de lo presentado e ilustran la relevancia de los
+temas tratados. Los objetivos que finalmente se han completado son:
+Descripción de modelos discretos en epidemiología. Se han presentado y analizado diversos modelos discretos en epidemiología mostrando
+su comportamiento, características y particularidades de cada uno.
+Descripción de modelos continuos en epidemiología. Se han presentado y analizado los modelos continuos análogos a los discretos anteriormente, explicando las diferencias entre su versión discreta y continua
+en cada caso.
+Visualización del comportamiento de los modelos. Se han realizado
+representaciones gráficas de las simulaciones de los modelos con el fin
+de facilitar la comprensión y mostrar el comportamiento de los modelos
+en cada caso.
+Desarrollo de una página web. Se ha desarrollado una página web
+donde se recoge una breve explicación de cada modelo, tanto discretos
+como continuos, y se pueden modificar los distintos parámetros de cada
+uno, obteniendo las gráficas pertinentes en cada caso.
+Ajuste de datos. Se ha implementado una funcionalidad en la página
+web para poder ajustar ficheros de datos subidos por el usuario usando
+los modelos epidemiológicos ya presentados. El usuario puede elegir el
+modelo o el sistema determinará cuál es el modelo que mejor se ajusta
+a dichos datos.
+Ajuste de datos reales. Usando datos de enfermedades reales, se ha
+realizado un ajuste con los modelos estudiados con el fin de presentar
+una aplicación práctica real.
+
+101
+
+102
+
+conclusiones y vías futuras
+
 6.2
 
 vías futuras
 
-93
+Como vías futuras para ampliar este trabajo tenemos muchas opciones. Partiendo de los ajustes de datos reales que hemos realizado, podemos realizar
+modificaciones al modelo SIR para contemplar más estados posibles de los
+individuos, por ejemplo añadiendo estados de cuarentena o de exposición,
+como se ha hecho en [9]. En [12] también se propone otro modelo, aún más
+complejo y con más estados para el covid.
+Otra posibilidad es, sin modificar los modelos con los que se ha trabajado,
+tratar de hacer un mejor tratamiento de los datos de los que se dispone,
+minimizando así el ruido de estos y mejorando los resultados.
+Además, más adelante se podría realizar el ajuste con el modelo SIR de los
+datos del covid de forma distinta a como se hecho en este proyecto, pues no
+tiene en cuenta el número de recuperados (que es muy difícil de medir) y
+trabaja solo con los infectados. Repetir nuestro ajuste considerando solo el
+número de infectados podría mejorar sus resultados al disminuir el ruido
+que se introduce en los datos. Minimizar lo más posible el ruido es especialmente importante al trabajar en estos modelos, pues al tratarse de modelos
+exponenciales el error se magnifica. Un ejemplo de cómo se podría llevar a
+cabo este ajuste se encuentra en [2].
+También, como ya se comentó al principio del trabajo, podemos ajustar varios
+modelos de acuerdo a las restricciones vigentes en cada momento o no, y
+comprobar cuáles son más efectivas, así como podríamos comparar usando
+el mismo modelo si se producen cambios significativos en la propagación de
+epidemias antes y después de la vacunación de la misma.
 
 BIBLIOGRAFÍA
 
@@ -4159,26 +4383,60 @@ Mathematical biosciences, 124(1), 83–105.
 exact sir solutions and gumbel distributions.
 URL https://arxiv.org/abs/2204.12550
 [3] Brauer, F., & Castillo-Chavez, C. (2012). Mathematical Models in Population
-Biology and Epidemiology, vol. 40 of Texts in Applied Mathematics. New York,
-NY: Springer New York.
-[4] de España, G. (2022-05-16).
+Biology and Epidemiology, vol. 40 of Texts in Applied Mathematics. New
+York, NY: Springer New York.
+[4] Castro, M., Ares, S., Cuesta, J. A., & Manrubia, S. (2020). The turning
+point and end of an expanding epidemic cannot be precisely forecast.
+Proceedings of the National Academy of Sciences, 117(42), 26190–26196.
+URL https://www.pnas.org/doi/abs/10.1073/pnas.2007868117
+[5] Chen, X., & Fu, F. (2019). Imperfect vaccine and hysteresis. Proceedings
+of the Royal Society B: Biological Sciences, 286(1894), 20182406.
+URL
+https://royalsocietypublishing.org/doi/abs/10.1098/rspb.
+2018.2406
+
+[6] de España, G. (2022-05-16).
 URL
 https://www.sanidad.gob.es/ciudadanos/enfLesiones/
 enfTransmisibles/sida/vigilancia/Informe_VIH_SIDA_20201130.pdf
 
 Informe vigilancia epidemiológica vih españa 2019.
-[5] Demongeot, J., Griette, Q., & Magal, P. (2021). SI epidemic model applied
+[7] Dehning, J., Zierenberg, J., Spitzner, F. P., Wibral, M., Neto, J. P., Wilczek,
+M., & Priesemann, V. (2020). Inferring change points in the spread of
+covid-19 reveals the effectiveness of interventions. Science, 369(6500),
+eabb9789.
+URL https://www.science.org/doi/abs/10.1126/science.abb9789
+
+103
+
+104
+
+Bibliografía
+
+[8] Demongeot, J., Griette, Q., & Magal, P. (2021). SI epidemic model applied
 to COVID-19 data in mainland China. Royal Society Open Science, 7(12),
 201878.
-[6] owid (2022-05-16).
+[9] Gutiérrez, J. M., & Varona, J. L. (2020). Análisis de la posible evolución
+de la epidemia de coronavirus covid-19 por medio de un modelo seir.
+Departamento de Matemáticas y Computación Universidad de La Rioja.
+[10] Mancastroppa, M., Castellano, C., Vezzani, A., & Burioni, R. (2021). Stochastic sampling effects favor manual over digital contact tracing. Nature
+Communications, 12(1), 1919.
+URL https://doi.org/10.1038/s41467-021-22082-7
+[11] owid (2022-05-16).
 URL https://github.com/owid/covid-19-data/tree/master/public/
 data/ Owid, covid-19 data.
-[7] Salinelli, E., & Tomarelli, F. (2014). Discrete Dynamical Models, vol. 76 of
+[12] Ramos, A., Vela-Pérez, M., Ferrández, M., Kubik, A., & Ivorra, B.
+(2021). Modeling the impact of sars-cov-2 variants and vaccines on the
+spread of covid-19. Communications in Nonlinear Science and Numerical
+Simulation, 102, 105937.
+URL
+https://www.sciencedirect.com/science/article/pii/
+S1007570421002495
+
+[13] Salinelli, E., & Tomarelli, F. (2014). Discrete Dynamical Models, vol. 76 of
 UNITEXT. Cham: Springer International Publishing.
-[8] Strogatz, S. H. (1994). Nonlinear Dynamics and Chaos: With Applications
+[14] Strogatz, S. H. (1994). Nonlinear Dynamics and Chaos: With Applications
 to Physics, Biology, Chemistry, and Engineering. Studies in Nonlinearity.
 Reading, Mass: Addison-Wesley Pub.
-
-94
 
 
