@@ -64,6 +64,8 @@ Inicialmente, los objetivos que nos marcamos consistían en:
 \item Desarrollar software para visualizar de forma sencilla los modelos estudiados anteriormente.
 \end{itemize}
 
+Finalmente se han llevado a cabo más objetivos de los que se marcaron al inicio del proyecto. Además de los objetivos ya mencionados, se han estudiado e implementado los modelos continuos análogos a los discretos estudiados, complementando así el trabajo. También se ha añadido funcionalidad para además de visualizar el comportamiento de los modelos, poder realizar ajustes de datos usándolos. Estos objetivos se detallarán más adelante en las conclusiones.
+
 
 \section{Descripción}
 
@@ -71,7 +73,7 @@ El proyecto desarrollado recoge una exposición teórica de modelos discretos y 
 
 Por otro lado, se ha implementado una página web en la que los usuarios pueden modificar interactivamente los parámetros de cada uno de estos modelos, actualizando las gráficas del comportamiento de estos y viendo por tanto de manera simple e intuitiva cómo afecta cada parámetro y las mecánicas que subyacen en el modelo.
 
-También se pueden subir ficheros de datos y obtener un ajuste con alguno de los modelos a elegir, o que el sistema determine a partir del error cuál es el modelo que mejor ajusta esos datos introducidos, prorcionando en todos los casos los parámetros que se han estimado y los errores obtenidos. De esta forma, es posible realizar ajustes con datos reales simplemente subiendo un fichero con un formato correcto a la página web y comprobando la bondad del ajuste realizado.
+También se pueden subir ficheros de datos y obtener un ajuste con alguno de los modelos a elegir, o que el sistema determine a partir del error cuál es el modelo que mejor ajusta esos datos introducidos, prorcionando en todos los casos los parámetros que se han estimado y los errores obtenidos. De esta forma, es posible realizar ajustes con datos reales simplemente subiendo un fichero con un formato adecuado a la página web y comprobando la bondad del ajuste realizado.
 
 
 \section{Estructura de la documentación}
@@ -80,20 +82,23 @@ En esta memoria se pueden distinguir varias partes claramente diferenciadas:
 
 \begin{itemize}
 \item Presentación de herramientas necesarias.
-\item Modelos discretos y continuos en epidemiología.
+\item Modelos discretos en epidemiología.
+\item Modelos continuos en epidemiología.
 \item Diseño y análisis del software.
 \item Aplicación a datos reales.
 \item Conclusiones y vías futuras.
 \end{itemize}
 
-En la primera de estas secciones se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
+En el primer capítulo se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
 
-Seguidamente, se presentan y explican una selección de modelos discretos y sus análogos continuos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, así como distintas simulaciones para ilustrar su comportamiento. 
+Seguidamente, se presentan y explican una selección de modelos discretos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, estudiando cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y enunciando las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. También se define el número básico reproductivo, que indica según su valor si se considera que se va a producir una epidemia o no. Además se realizan distintas simulaciones para ilustrar su comportamiento. 
 
-Durante la tercera sección se va a desarrollar toda la documentación del desarrollo de la página web, incluyendo la gestión de recursos y planificación temporal. Se detallan los requisitos derivados de los objetivos previamente expuestos y se realizan los casos de uso de acuerdo a estos. También se añade en la documentación el diagrama conceptual, herramientas usadas, prototipos de la interfaz de usuario y el manual de la página web.
+A continuación, se presentan y explican los modelos continuos análogos a los modelos discretos presentados previamente. Se estudian las diferencias entre los modelos continuos y sus análogos discretos, se estudia cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y se indican las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. Al igual que en el apartado anterior se realizan distintas simulaciones para ilustrar su comportamiento.
 
-En la siguiente sección se va a usar el software desarrollado para realizar un ajuste de datos reales de varias enfermedades, obteniendo aproximaciones de parámetros y sus errores, así como la representación del ajuste sobre los datos.
+Durante el cuarto capítulo se va a desarrollar toda la documentación del desarrollo de la página web, incluyendo la gestión de recursos y planificación temporal. Se detallan los requisitos derivados de los objetivos previamente expuestos y se realizan los casos de uso de acuerdo a estos. También se añade en la documentación el diagrama conceptual, herramientas usadas, prototipos de la interfaz de usuario y el manual de la página web.
 
-Para terminar, en la última sección se discutirán diversos puntos sobre el proyecto, los objetivos que se han alcanzado y diversos trabajos o mejoras que pueden hacerse a lo expuesto en esta memoria, de cara a seguir investigando en este campo.
+En el siguiente capítulo se va a usar el software desarrollado para realizar un ajuste de datos reales de varias enfermedades, obteniendo aproximaciones de parámetros y sus errores, así como la representación del ajuste sobre los datos.
+
+Para terminar, en el último capítulo se discutirán diversos puntos sobre el proyecto, los objetivos que se han alcanzado y diversos trabajos o mejoras que pueden hacerse a lo expuesto en esta memoria, de cara a seguir investigando en este campo.
 
 
