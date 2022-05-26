@@ -34,5 +34,74 @@ Furthermore functionality to fit data according to different models, with the sy
 
 Finally, using the software developed before, some real data from different diseases with high relevance nowadays will be fitted, determining which models fit best for describing their behaviour.
 
-\textcolor{red}{EXTENDER A 1500 PALABRAS AMOS}
+\section*{Introduction}
 
+Contagious diseases such as the flu or tuberculosis can cause significant problems to a city or region. Recents epidemics such as covid and aids have had a huge impact in society nowadays. The behaviour of contagious diseases is specially important in less developed countries and regions due to high mortality and lack of medical resources. This causes a shorter life expectancy and a significant impact on the economy.
+
+Throughout history epidemics have affected civilization development. There are books which refer to epidemics as plagues, they contain information about how the Antonine Plague contributed to the fall of the Roman Empire or similarly didthe Han Dinasty. The bubonic plague also caused severe problems in Europe and China during the XIV century.
+
+When discussing contagious diseases many questions arise: ''How severe will the epidemic be?'', ''How many people will get sick?'', ''How long will the epidemic last?''
+
+Experiments to obtain information about epidemics are really difficult to make due to the irreproducibility of the context, so only naturally caused epidemics are studied. This implies that data is incomplete and not accurate.
+
+Mathematical models in epidemiology help understand the underlying mechanisms of disease propagation as well as suggest different techniques to improve disease control.
+
+\section*{Objectives}
+
+In this work, different mathematical models has been used to simulate epidemics and their behavior. The simulations are included on a website that has been developed as a part of this project. We have tried to make a theoretical exhibition and analysis of mathematical models as well as show its importance in the real world implementing simulations and data fits with real data from diseases.
+
+The objectives that has been accomplished are:
+
+\begin{itemize}
+\item Discrete mathematical models in epidemiology. Discrete mathematical models  have been studied, finding their fixed points, their stability and overall expected behavior using the reproductive number. The particularities, parameters and characteristics of every model has been explained.
+\item Continuous mathematical models in epidemiology. Continuous versions of the discrete mathematical models studied before have been studied, finding their fixed points, their stability and overall expected behavior using the reproductive number. The particularities, parameters and characteristics of every model has been explained, as well as their differences with their discrete version.
+\item Visualization of model's behavior. Graphic representations of the simulations of every model have been made in order to help understanding and show the behavior of models.
+\item Website development. A website have been implemented where you can find a brief explanation of each model, discrete or continuous, and parameters values can be modified, showing graphics of the behavior according the given values of the parameters.
+\item Data fit. There is a functionality on the website for the user to upload their data files and fit a model. The model to fit can be chosen by the user or the system can determine which model fits better the data.
+\item Real data fit. Using real data of current epidemics we have fitted the data with the studied models to present a real use of this project.
+\end{itemize}
+
+\section*{Description}
+
+This project contains a theoretical explanation about discrete and continuous mathematical models in epidemiology, analyzing the SI, SIR and SIS models, their behavior, fixed points and their stability, necessary and sufficient conditions to guarantee positivity of solutions and particular characteristics of each of them. 
+
+Furthermore, a website has been implemented so the users can have an easy access to a brief explanation of each model and modify the value of the parameters of each model, refreshing graphics that show the behavior of the model according to the values of the given parameters. This way the user can graphically and intuitively see the behavior of the model and understand it.
+
+In the website the user also can upload data files and obtain a fit for them using the studied models. The user can manually choose which model use for the data fit or let the system determine which model fits them better. The data fit provides an approximation for the values of the parameters for the selected model and the error obtained when using those values to describe the data selected. This way, data fits can be done by simply formatting the data file to the specified format.
+
+\section*{Structure}
+
+In this document we can see several differentiated parts:
+
+\begin{itemize}
+\item Bases and necessary tools.
+\item Discrete mathematical models in epidemiology.
+\item Continuous mathematical models in epidemiology.
+\item Software design and analysis.
+\item Real data fit.
+\item Discussion and future work.
+\end{itemize}
+
+\subsection*{Bases and necessary tools}
+
+In this chapter some fundamental concepts and propositions that are necessary in order to understand the next chapters are explained.  This tools will be used several times during the development of the project.
+
+\subsection*{Discrete mathematical models in epidemiology}
+
+Discrete mathematical models in epidemiology are defined and studied, finding their fixed points and their stability. Their characteristics and how the values of their parameters impact their behavior is studied and simulated. In this chapter the reproductive number is also defined, used to try to predict if an epidemic is going to happen or not.
+
+\subsection*{Continuous mathematical models in epidemiology}
+
+Continuous versions of the previous discrete mathematical models in epidemiology are defined and studied, finding their fixed points and their stability. Their characteristics and how the values of their parameters impact their behavior is studied and simulated. The difference between this models and their discrete versions will be explained in each model.
+
+\subsection*{Software design and analysis}
+
+In this chapter the documentation of the website development will be presented, including resource management and time planification of the project. The requisites of the software are detailed and the use cases. A conceptual diagram, used tools and frameworks, prototypes and the user manual can be found here too.
+
+\subsection*{Real data fit}
+
+Using the already developed software that is detailed in the previous chapter a data fit using real data from covid and vih diseases is done, determining in each case which model fits each disease. By doing this, we calculate an aproximation of the values of the parameters for each model and the error obtained by using that value of the parameters to describe the real data. A graphic representation of the data is also provided in order to help the visualization of the fit and its accuracy.
+
+\subsection*{Discussion and future works}
+
+Lastly, we discuss different topics about the project, such as the assumptions that are used by the models and if they are satisfied in the real data collected or the problems that we can face when trying to collect data from a disease. The accomplished objectives, improvements to this project that can be done or additional works to deepen on this field are also talked about in this chapter.
