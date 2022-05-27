@@ -93,7 +93,8 @@ El software necesario para el proyecto es el siguiente:
 
 \begin{itemize}
 \item \textbf{Flask}. Flask es un microframework web en python. Proporciona funcionalidad básica para, de forma sencilla, crear una aplicación web. Una posible alternativa habría sido Django, pero finalmente se ha optado por Flask debido a su simplicidad, legibilidad y que en este proyecto no se requieren muchas de las funcionalidades que Django ofrece integradas. 
-\item \textbf{Dash}. Dash es un framework opensource basado en plotly.js y react.js que permite crear fácilmente aplicaciones basadas en datos. En este proyecto se ha usado principalmente por su capacidad de crear gráficas interactivas en tiempo real. 
+\item \textbf{Dash}. Dash es un framework opensource basado en plotly.js y react.js que permite crear fácilmente aplicaciones basadas en datos. En este proyecto se ha usado principalmente por su capacidad de crear gráficas interactivas en tiempo real.
+\item \textbf{Scipy}. Scipy es una librería de código abierto para python que proporciona algoritmos para optimización, integración, ecuaciones diferenciales y estadística, entre otros. Se ha usado principalmente para optimizar, integrar en los modelos continuos y realizar los ajustes. 
 \item \textbf{VSCode}. Se ha usado VSCode como editor de texto, ya que proporciona una gran cantidad de plugins para cualquier lenguaje, así como integración con git.
 \item \textbf{Draw.io}. Para la realización de diagramas de distintas clases, se ha usado el software de dibujo gratuito Draw.io.
 \item \textbf{Docker}. Con el fin de simplificar el lanzamiento y ejecución de la aplicación web desarrollada se ha usado docker para virtualizar el entorno y evitar la necesidad de instalar en cualquier máquina el software necesario para ejecutarla.
@@ -140,6 +141,8 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
   Flask & 0,00 \\
   \hline
   Dash & 0,00 \\
+  \hline 
+  Scipy & 0,00 \\
   \hline 
   VSCode & 0,00 \\
   \hline
@@ -1102,7 +1105,7 @@ Para acceder a la página web el usuario solo requiere de un dispositivo con un 
 
 \subsection{Comenzando a usar la web}
 
-Una vez introducida la url de la web en el navegador, aparecemos en la página principal de esta, la cual puede verse en \eqref{manual:home}.
+Una vez introducida la url de la web en el navegador, aparecemos en la página principal de esta, la cual puede verse en \eqref{manual: home}.
 
 \begin{figure}
 \begin{center}
@@ -1202,11 +1205,11 @@ Un ejemplo de un fichero válido sería \verb|fichero_ejemplo.csv| conteniendo:
 
 \begin{verbatim}
 t,S,I,R
-0,97.01665754023489,3.377399973205731,-3.816768927775707
-1,102.24543170326915,3.341582397679812,-1.2931795115592053
-2,104.19872670845312,6.0049071497214,-3.2175059735520164
-3,99.79707480976897,10.796475445761393,0.6508408522616295
-4,99.993286104437,3.8927305934099175,0.6722548513086043
+2003,97.01665754023489,3.377399973205731,-3.816768927775707
+2004,102.24543170326915,3.341582397679812,-1.2931795115592053
+2005,104.19872670845312,6.0049071497214,-3.2175059735520164
+2006,99.79707480976897,10.796475445761393,0.6508408522616295
+2007,99.993286104437,3.8927305934099175,0.6722548513086043
 \end{verbatim}
 
 Para subir el fichero en \eqref{manual: ajuste1} seleccionamos \verb|Examinar|, de forma que se abre el navegador de archivos y podemos seleccionar nuestro fichero de datos. Una vez seleccionado pulsamos \verb|Upload| y cargamos el archivo.
