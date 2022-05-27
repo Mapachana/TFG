@@ -12,7 +12,7 @@ En este capítulo se presentarán algunos conceptos y herramientas básicas que 
 Comenzamos presentando la teoría básica necesaria. Para su elaboración se ha usado principalmente \cite{salinelliDiscreteDynamicalModels2014}.
 
 \begin{definition}
-Se define una \textbf{ecuación en diferencias de orden $k$}, con $k\geq 1$, como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión.
+Se define una \textbf{ecuación en diferencias de orden $k$}, con $k\geq 1$, como una ecuación en la que intervienen un número fijo de términos consecutivos de una sucesión:
 
 \begin{equation}
 \label{def_ec_diferencias}
@@ -108,7 +108,7 @@ Una \textbf{solución} de un sistema de ecuaciones en diferencias son las soluci
 \subsection{Puntos de equilibrio}
 
 \begin{definition}
-Sea $D\subset \mathbb{R}^m$ y $\Phi :D\rightarrow D$ una función continua. Entonces un vector $X^* \in \mathbb{R}^m$ se dice que es un \textbf{punto de equilibrio} de un sistema de ecuaciones en diferencias de la forma (\ref{def_sist_ec}) si
+Sea $D\subset \mathbb{R}^m$ y $\Phi :D\rightarrow D$ una función continua. Entonces un vector $X^* \in D$ se dice que es un \textbf{punto de equilibrio} de un sistema de ecuaciones en diferencias de la forma (\ref{def_sist_ec}) si
 
 $$X^* = \Phi (X^*),\quad X^* \in D.$$
 
@@ -167,13 +167,13 @@ En este apartado describiremos la ecuación logística discreta y sus principale
 \begin{definition}
 La ecuación logística discreta tiene la siguiente forma:
 
-$$x_{n+1} = \mu x_n(1-x_n),\quad \mu > 0,$$
+$$x_{n+1} = \mu x_n(1-x_n),\quad \mu \geq 0,$$
 
 que está definida en el intervalo $ [ 0, 1 ] $. Definimos
 
 $$f(x)=\mu x(1-x)$$
 
-Para que $0\leq x_n\leq 1$ es necesario que $x_n=f(x_{n-1})$ esté en el intervalo $[0,1]$. Tenemos que $f(x)$ es una parábola cóncava con puntos de corte con el eje x en $0$ y $1$. Para que $f(x)<1$ su máximo debe ser menor que $1$.
+Para que $0\leq x_n\leq 1$ es necesario que $x_n=f(x_{n-1})$ esté en el intervalo $[0,1]$. Tenemos que $f(x)$ es una parábola cóncava con puntos de corte con el eje x en $0$ y $1$. Para que $f(x)\leq 1$ su máximo debe ser menor o igual que $1$.
 
 Este máximo se alcanza en $\frac{1}{2}$ y su valor es
 $$f\left(\frac{1}{2}\right) = \mu \frac{1}{2}\left(1-\frac{1}{2}\right) = \frac{\mu}{4}.$$
@@ -204,11 +204,11 @@ $$f'(0)=1,$$
 $$f''(0)=0,$$
 $$f'''(0)=-2.$$
 
-Por tanto, $0$ es localmente asintóticamente estable.
+Por tanto, $0$ es localmente asintóticamente estable para $\mu = 1$.
 
 Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es localmente asintóticamente estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
 
-Se ha comprobado gráficamente mediante las representaciones gráficas \eqref{fig: cobweb_2.8} y \eqref{fig: cobweb_3.8}.
+Se mustra gráficamente el comportamiento mediante las representaciones gráficas \eqref{fig: cobweb_2.8} y \eqref{fig: cobweb_3.8}.
 
 \begin{figure}
 \begin{center}
@@ -226,7 +226,7 @@ Se ha comprobado gráficamente mediante las representaciones gráficas \eqref{fi
 \end{center}
 \end{figure}
 
-En \eqref{fig: cobweb_2.8} podemos ver como el punto de equilibrio $x^*=0$ es inestable y como el otro punto de equilibrio $x^*$ es localmente asintóticamente estable.
+En \eqref{fig: cobweb_2.8} podemos ver como el punto de equilibrio $x^*=0$ es inestable y como el otro punto de equilibrio $x^*=1-\frac{1}{\mu}$ es localmente asintóticamente estable.
 
 Asimismo, en \eqref{fig: cobweb_3.8} observamos como ambos puntos de equilibrio son inestables.
 
@@ -301,34 +301,36 @@ En estos modelos se hacen dos suposiciones:
 
 \section{Optimización de parámetros}
 
-Para la realización de este proyecto se va a desarrollar una funcionalidad quee estime los parámetros de los modelos de forma automática. Para ello, se va a utilizar una función de pérdida que sea flexible a varios modelos, buscando un equilibrio entre su rapidez y precisión.
+Para la realización de este proyecto se va a desarrollar una funcionalidad que estime los parámetros de los modelos de forma automática. Para ello, se va a utilizar una función de pérdida que sea flexible a varios modelos, buscando un equilibrio entre su rapidez y precisión.
 
-Se ha decidido utilizar scipy, pues proporciona diversas funciones para minimizar o maximizar funciones objetivo, posiblemente sujetas a restricciones. Es importante destacar también que sirve para problemas no lineales, como lo son los modelos epidemiológicos a estudiar.
+Se ha decidido utilizar la librería scipy, pues es una librería de código abierto que proporciona diversas funciones para minimizar o maximizar funciones objetivo, posiblemente sujetas a restricciones. Es importante destacar también que sirve para problemas no lineales, como lo son los modelos epidemiológicos a estudiar.
 
 \begin{definition}
 Llamamos función objetivo a la función que queremos maximizar o minimizar.
 \end{definition}
 
-Dado un conjunto de datos con $N$ datos $(x,y)$ y un modelo que aproxima $y$ en función de $x$, al que notamos $\hat{y}=f(x,w)+\varepsilon$. Tenemos que $\hat{y}$ es una aproximación de $y$ y $\varepsilon$ el error de la aproximación según el modelo $f$. A los parámetros del modelo, los hemos denotado $w$, son desconocidos y son los que buscamos estimar de forma que $\hat{y}$ sea lo más parecido o cercano a $y$ posible.
+Dado un conjunto con $N$ datos de la forma $(x_i,y_i)$ con $i=1,\cdots,N$ y un modelo que aproxima $y$ en función de $x$, al que notamos $\hat{y}=f(x,w)+\varepsilon$, tenemos que $\hat{y}$ es una aproximación de $y$ y $\varepsilon$ es el error de la aproximación según el modelo $f$. A los parámetros del modelo, los hemos denotado $w$, son desconocidos y son los que buscamos estimar de forma que $\hat{y}$ sea lo más parecido o cercano posible a $y$.
 
 Para medir la bondad del ajuste, escogemos una medida del error, en este caso se ha tomado como medida $\frac{1}{1+MSE}$, donde MSE es el Minimum Squared Error o Error Cuadrático Medio.
 
 \begin{definition}
 El Error Cuadrático Medio (MSE) de una aproximación $\hat{y}$ de $y$ se calcula como:
-$$MSE(\hat{y}, y)= {1\over N}\sum_{i=1}^N (\hat{y}-y)^2$$
+$$MSE(\hat{y}, y)= {1\over N}\sum_{i=1}^N (\hat{y_i}-y_i)^2.$$
 \end{definition}
 
 Por tanto, queremos encontrar los parámetros que hagan mínima esta medida del error, siendo esta nuestra función objetivo.
 
 Para estimar estos parámetros, scipy nos ofrece varias funciones que podemos usar. Se han probado dos alternativas, \verb|minimize| y \verb|curve_fit|, ambas de \verb|scipy.optimize|.
 
-Debido a la simplicidad, rapidez y resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
+Debido a la simplicidad y rapidez, y resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
 
-\verb|curve_fit| usa el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, y con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Pero dado que este algoritmo solo admite problemas sin restricciones, no se usará, pues todos los parámetros en los modelos epidemiológicos están sujetos a restricciones.
+La función \verb|curve_fit| usa el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, y con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Pero dado que este algoritmo solo admite problemas sin restricciones, no se usará, pues todos los parámetros en los modelos epidemiológicos están sujetos a restricciones.
 
-Para su utilización, se define una función con el modelo para el ajuste, que será el primer argumento de \verb|curve_fit|. En nuestro caso esta función será un modelo epidemiológico. Su segundo argumento serán los datos $x$ o independientes, en el caso de modelos epidemiológicos será el tiempo, también los datos $y$, que en nuestro caso serán el número de infectados, y finalmente como último parámetro se pueden proporcionar restricciones de los intervalos a los que pertenecen los parámetros buscados.
+Para su utilización, se define una función con el modelo para el ajuste, que será el primer argumento de \verb|curve_fit|. En nuestro caso esta función será un modelo epidemiológico. Su segundo argumento serán los datos independientes, que en el caso de modelos epidemiológicos vendrán dados por el tiempo, también los datos dependientes, que en nuestro caso serán el número de infectados, y finalmente como último parámetro se pueden proporcionar restricciones de los intervalos a los que pertenecen los parámetros buscados.
 
-La función devuelve los parámetros optimizados, a partir de los cuales obtenemos $\hat{y}$ y podemos calcular el error de forma explícita y la covarianza estimada de los parámetros optimizados.
+La función devuelve los parámetros optimizados, a partir de los cuales obtenemos los valores $\hat{y}$, y podemos calcular el error de forma explícita y la covarianza estimada de los parámetros optimizados.
+
+Un ejemplo de uso de esta función sería:
 
 \begin{verbatim}
 popt, pcov = curve_fit(modeloSI, tiempo, I, bounds=((0, 0), (np.inf, N)))
