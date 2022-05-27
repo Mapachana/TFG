@@ -4,7 +4,7 @@
 
 En este capítulo estudiaremos los principales modelos epidemiológicos discretos.
 
-En un modelo discreto el tiempo se considera que toma valores discretos, siendo estos $1,2,3...$, expresado en horas, días, semanas...
+En un modelo discreto el tiempo se considera que toma valores discretos, siendo estos $0,1,2,3...$, expresado en horas, días, semanas...
 
 Para realizar este capítulo se ha usado principalmente la referencia \cite{allenDiscretetimeSISIR1994}.
 
@@ -45,7 +45,7 @@ $$X_{n+1} = (1 + \alpha\Delta t ) X_n(1-X_n).$$
 Que se corresponde con la expresión de la ecuación logística tomando $\mu = 1+\alpha\Delta t$.
 
 
-Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, ya que sería hablar de un número negativo de individuos, ya sean infectados, recuperados o susceptibles de contraer la enfermedad.
+Pasaremos a imponer las suposiciones descritas anteriormente para estos modelos. En primer lugar, suponemos que la población se mezcla de manera homogénea de ahora en adelante. Para imponer la segunda suposición, la población total se mantiene constante, siendo trivial que se cumpla siempre, ya que sumando el sistema de ecuaciones el resultado es $N$ y asumimos que las soluciones son siempre positivas dado que las soluciones negativas no tienen sentido, pues sería hablar de un número negativo de individuos, independientemente de que sean infectados, recuperados o susceptibles de contraer la enfermedad.
 
 \begin{proposition}
 Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\alpha\Delta t \leq 1$.
@@ -94,7 +94,7 @@ Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del número de susceptibles se aprecia una relación lineal pero inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
+En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del número de susceptibles se aprecia una relación inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
 
 \begin{figure}
 \begin{center}
@@ -174,7 +174,7 @@ $S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
 
 \begin{proof}
 
-Por el Lema 1 de \cite{allenDiscretetimeSISIR1994}, se tiene que $\lim_{n\rightarrow\infty} S_n = S_\infty > 0$,  cuyo límite existe, pues es una sucesión estrictamente decreciente y acotada inferiormente por $0$. 
+Puesto que $\{S_n\}_{n\geq 0}$ es una sucesión estrictamente decreciente y acotada inferiormente por $0$, se tiene que existe el límite $\displaystyle S_\infty = \lim_{n \rightarrow \infty} S_n$. Se tiene que $S_\infty > 0$ por el Lema 1 de \cite{allenDiscretetimeSISIR1994}.
 
 Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
 
@@ -201,7 +201,7 @@ En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico repr
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI no son cantidades inversamente proporcionales. Vemos que primero los infectados crecen muy rápidamente y después decaen más lentamente, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
+En la figura \ref{fig: SIR_IsobreS} se representan el número de infectados y los individuos susceptibles. En este modelo, al contrario de lo que ocurría en el modelo SI, no son cantidades inversamente proporcionales. Vemos que primero los infectados crecen muy rápidamente y después decaen más lentamente, esto es porque las personas susceptibles se infectan, pero después aunque los individuos susceptibles sigan disminuyendo los infectados bajan, esto es debido a que los individuos previamente infectados se están recuperando.
 
 \begin{figure}
 \begin{center}
@@ -316,7 +316,7 @@ Distinguimos por tanto dos posibles casos:
 
 O bien, si $I^*=0$ se da la igualdad, y, dado que $S^*+I^*=N$ tenemos que $S^*=N$. Un primer punto de equilibrio sería por tanto $(S^*,I^*)=(N,0)$.
 
-O bien $I^*\neq 0$, luego se tiene que $S=\frac{N\gamma}{\alpha}$, y por tanto $I^*=N-\frac{N\gamma}{\alpha}$. El punto de equilibrio por tanto sería $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
+O bien $I^*\neq 0$, luego se tiene que $S^*=\frac{N\gamma}{\alpha}$, y por tanto $I^*=N-\frac{N\gamma}{\alpha}$. El punto de equilibrio por tanto sería $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
 
 
 \end{proof}
@@ -429,7 +429,7 @@ donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\geq
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
 \begin{proposition}
-Las soluciones del sistema \eqref{eqn: SI multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+Las soluciones del sistema \eqref{eqn: SI multipoblational} son no negativas para cualesquiera condiciones iniciales si, y solo si,
 $$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i} \right\} \leq 1$$
 \end{proposition}
 
