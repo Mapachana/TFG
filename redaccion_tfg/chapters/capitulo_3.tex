@@ -1286,9 +1286,9 @@ El VIH (Virus de Inmunodeficiencia Humana) es un virus que ataca al sistema inmu
 
 El VIH provino de una especie de chimpancé de África, desde la que se propagó primero por dicho continente, y se estima que lleva en Estados Unidos desde finales de los años 70.
 
-Dado que es una enfermedad para la que una vez infectado no dejas de tenerla, se tiene que sigue un modelo SI.
+Dado que es una enfermedad para la que una vez infectado siempre se es portador, se tiene que sigue un modelo SI.
 
-El conjunto de datos que se va a usar contiene los datos de los reportes de nuevos infectados por VIH en Baleares desde 2003 hasta 2019 anualmente. La fuente de dichos datos es \cite{datos_vih}.
+El conjunto de datos escogido contiene los datos de los reportes de nuevos infectados por VIH en Baleares desde 2003 hasta 2019 anualmente. La fuente de dichos datos es \cite{datos_vih}.
 
 En el informe se proporcionan los nuevos casos detectados, luego los datos con los que vamos a trabajar son la suma acumulada de estos casos nuevos. Esto se debe a que el modelo considera los casos activos, no solo los nuevos. Por tanto, tenemos que los casos activos son los nuevos más todos los que había antes.
 
@@ -1344,7 +1344,7 @@ Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a 
 
 Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondiendo por tanto al 5 de Marzo el índice 0 y al 21 de Agosto el 170.
 
-Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realiidad. El modelo SIR ajusta solamente las olas de forma independiente.
+Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. `
 
 Para calcular el número de infectados activos, dado que el covid al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
 

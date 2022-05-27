@@ -30,7 +30,7 @@ Una ecuación en diferencias de orden $k$, con $k\geq 1$ se dice que está en \t
 
 \begin{equation}
 \label{def_ec_forma_normal}
-X_{n+k} = \Phi (n, X_n, X_{n+1}\cdots , X_{n+k-1})
+X_{n+k} = \Phi (n, X_n, X_{n+1}\cdots , X_{n+k-1}),
 \end{equation}
 
 
@@ -182,6 +182,10 @@ Luego debe ser $0< \mu \leq 4$.
 
 \end{definition}
 
+\begin{definition}
+Un diagrama cobweb es una herramienta visual usada en sistemas dinámicos para mostrar el comportamiento de sistemas iterativos o ecuaciones en diferencias unidimensionales como la ecuación logística.
+\end{definition}
+
 
 \begin{proposition}
 Consideramos la ecuación logística con $0\leq x_0\leq 1$ y $0< \mu\leq 4$. Entonces los puntos de equilibrio son $0$, siendo este estable si $\mu < 1$ e inestable si $\mu > 1$; y $1-\frac{1}{\mu}$ con $\mu\geq 1$ siendo estable si $1<\mu<3$ e inestable si $\mu > 3$.
@@ -212,7 +216,7 @@ Se mustra gráficamente el comportamiento mediante las representaciones gráfica
 
 \begin{figure}
 \begin{center}
-\caption{Diagrama Cobweb de la ecuación logística, con $x_0=0.2$, $\mu=2.8$.}
+\caption{Diagrama cobweb de la ecuación logística, con $x_0=0.2$, $\mu=2.8$.}
 \label{fig: cobweb_2.8}
 \includegraphics[scale=0.6]{cobweb_0.2_2.8}
 \end{center}
@@ -274,7 +278,7 @@ A continuación se explican algunos conceptos básicos de epidemiología. Para e
 Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
 \end{definition}
 
-Los individuos de una población se pueden dividir en tres grupos, haciendo referencia a su situación con respecto a la enfermedad.
+Los individuos de una población se van a dividir en tres grupos, haciendo referencia a su situación con respecto a la enfermedad. Es posible dividir a la población en más grupos, como se hace en \cite{gutierrez2020analisis}, donde consideran un grupo adicional a los aquí presentados.
 
 \begin{definition}
 Los individuos \textbf{susceptibles}, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
@@ -291,11 +295,11 @@ Los individuos recuperados hacen referencia a los individuos inmunizados, aislad
 
 \section{Tipos de modelos epidemiológicos}
 
-Los modelos epidemiológicos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
+Los modelos epidemiológicos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI los individuos pasan de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS los individuos alternan entre susceptible e infectado.
 
 En estos modelos se hacen dos suposiciones:
 \begin{enumerate}
-\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
+\item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de interactuar entre ellos y contraer la enfermedad.
 \item El total de la población es constante y lo denotaremos por $N$.
 \end{enumerate}
 

@@ -8,9 +8,9 @@
 
 \textbf{Palabras clave: } Enfermedad, modelo discreto, modelo continuo, modelo SI, modelo SIR, modelo SIS, propagación, epidemia, representación gráfica, parámetro, simulación, ajuste de datos.
 
-A lo largo de la historia y en la actualidad la población en todo el mundo se ha visto afectada por enfermedades de diversa índole, ya sean nuevas o conocidas. Estas enfermedades, dependiendo de su velocidad de propagación y su gravedad, suponen un problema a la población. Si la enfermedad está ampliamente extendida hablamos de una epidemia, que puede suponer graves consecuencias de salud pública, sociales y económicas.
+A lo largo\footnote{Hola} de la historia y en la actualidad la población en todo el mundo se ha visto afectada por enfermedades de diversa índole, ya sean nuevas o conocidas. Estas enfermedades, dependiendo de su velocidad de propagación y su gravedad, suponen un problema a la población. Si la enfermedad está ampliamente extendida hablamos de una epidemia, que puede suponer graves consecuencias de salud pública, sociales y económicas.
 
-Con el fin de comprender el desarrollo y comportamiento de las enfermedades, así como de frenar su propagación, se empezaron a usar los modelos epidemiológicos, tanto discretos como continuos. En este trabajo se han seleccionado para estudiar los modelos SI, SIR y SIS, en sus versiones tanto discretas como continuas. De cada uno de ellos se realizará un análisis teórico para estudiar su comportamiento y cómo evolucionará de acuerdo a los valores de los parámetros que caracterizan a cada uno de ellos. Se estudiarán así las condiciones necesarias para el correcto funcionamiento del modelo, garantizando positividad de las soluciones, y el desarrollo esperado estudiando puntos de equilibrio y la estabilidad de estos, así como tratar de prever si se producirá una epidemia de acuerdo a los valores de los parámetros dados usando el número básico reproductivo.
+Con el fin de comprender el desarrollo y comportamiento de las enfermedades, así como de frenar su propagación, se empezaron a usar los modelos epidemiológicos, tanto discretos como continuos. En este trabajo se han seleccionado para estudiar modelos clásicos de epidemiología SI, SIR y SIS, en sus versiones tanto discretas como continuas. De cada uno de ellos se realizará un análisis teórico para estudiar su comportamiento y cómo evolucionará de acuerdo a los valores de los parámetros que caracterizan a cada uno de ellos. Se estudiarán así las condiciones necesarias para el correcto funcionamiento del modelo, garantizando positividad de las soluciones, y el desarrollo esperado estudiando puntos de equilibrio y la estabilidad de estos, así como tratar de prever si se producirá una epidemia de acuerdo a los valores de los parámetros dados usando el número básico reproductivo.
 
 Además, se implementará software que permite obtener representaciones gráficas del comportamiento de cada modelo de acuerdo a parámetros introducidos por el usuario, facilitando así la visualización e interpretación de estos modelos.
 
@@ -24,19 +24,19 @@ Finalmente, usando el software desarrollado se ajustarán datos reales de divers
 
 \textbf{Keywords: } Disease, discrete model, continuous model, SI model, SIR model, SIS model, propagation, epidemic, graphic representation, paramether, simulation, data fit.
 
-Throughout history and nowadays population around the world has been affected by deseases of various kinds, those being new or already known at the moment. These diseases, depending of their propagation speed and severity, can be a problem to population. If a disease is widely spreaded we talk about an epidemic. An epidemic can provoke severe impact on society, economy and public health.
+Throughout history and nowadays population around the world has been affected by deseases of various kinds, those being new or already known at the moment. These diseases, depending on their propagation speed and severity, can be a problem to population. If a disease has widely spread we talk about an epidemic. An epidemic can provoke severe impact on society, economy and public health.
 
-In an effort to understand the development and behaviour of disease, as well as slowing down their spreading, mathematical models started to be used, both discrete and continuos models. A theorical analysis on each of them will be done with the purpose of studying their behaviour and how they will evolve according to the values of the paramethers which characterize each one of them. Thus, necessary conditions for the correct functioning of the model and the expected development will be studied, as well as trying to predict if an epidemic will take place according to the values of the paramethers.
+In an effort to understand the development and behaviour of disease, as well as slowing down their spreading, both discrete and continuos models started to be used. A theorical analysis on each of them will be done with the purpose of studying their behaviour and how they will evolve according to the values of the paramethers which characterize each one of them. Thus, necessary conditions for the correct functioning of the model and the expected development will be studied, as well as trying to predict if an epidemic will take place according to the values of the paramethers.
 
-In addition to this, software  to obtain graphic representation of the behaviour of each model according to the parametheres values stablished by the user will be implemented. This way, visualization and interpretation of the models is easier to the user.
+In addition to this, software  to obtain graphic representation of the behaviour of each model according to the parameteres values stablished by the user will be implemented. This way, visualization and interpretation of the models is easier to the user.
 
-Furthermore functionality to fit data according to different models, with the system being able to determine which one of the available models is best for the selected data will be implemented. For each dataset to fit and each model the software will show a graphic representation of the fit, the value of the fitted paramethers and the error obtained by doing this.
+Furthermore functionality to fit data according to different models, with the system being able to determine which one of the available models is best for the selected data will be implemented. For each dataset to fit and each model the software will show a graphic representation of the fit, the value of the fitted paramethers and the estimated fitting error.
 
 Finally, using the software developed before, some real data from different diseases with high relevance nowadays will be fitted, determining which models fit best for describing their behaviour.
 
 \section*{Introduction}
 
-Contagious diseases such as the flu or tuberculosis can cause significant problems to a city or region. Recents epidemics such as covid and aids have had a huge impact in society nowadays. The behaviour of contagious diseases is specially important in less developed countries and regions due to high mortality and lack of medical resources. This causes a shorter life expectancy and a significant impact on the economy.
+Contagious diseases such as the flu or tuberculosis can cause significant problems to a city or region. Recents epidemics such as covid-19 and aids have had a huge impact in society nowadays. The behaviour of contagious diseases is specially important in less developed countries and regions due to high mortality and lack of medical resources. This causes a shorter life expectancy and a significant impact on the economy.
 
 Throughout history epidemics have affected civilization development. There are books which refer to epidemics as plagues, they contain information about how the Antonine Plague contributed to the fall of the Roman Empire or similarly didthe Han Dinasty. The bubonic plague also caused severe problems in Europe and China during the XIV century.
 
@@ -100,7 +100,7 @@ In this chapter the documentation of the website development will be presented, 
 
 \subsection*{Real data fit}
 
-Using the already developed software that is detailed in the previous chapter a data fit using real data from covid and vih diseases is done, determining in each case which model fits each disease. By doing this, we calculate an aproximation of the values of the parameters for each model and the error obtained by using that value of the parameters to describe the real data. A graphic representation of the data is also provided in order to help the visualization of the fit and its accuracy.
+Using the already developed software that is detailed in the previous chapter a data fit using real data from covid-19 and vih diseases is done, determining in each case which model fits each disease. By doing this, we calculate an aproximation of the values of the parameters for each model and the error obtained by using that value of the parameters to describe the real data. A graphic representation of the data is also provided in order to help the visualization of the fit and its accuracy.
 
 \subsection*{Discussion and future works}
 
