@@ -23,7 +23,7 @@ Expresando $\alpha$ como una tasa podemos obtener las ecuaciones diferenciales a
 
 $$\frac{S_{n+1} - S_n}{\Delta t} \approx S'(t),$$
 
-El análogo continuo al sistema \eqref{eqn: SI} viene dado por:
+el análogo continuo al sistema \eqref{eqn: SI} viene dado por:
 
 \begin{equation}
 \label{eqn:SI_continuo}
@@ -97,7 +97,7 @@ I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
 
 donde $S(0)+I(0)=N$.
 
-Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ entonces hay una epidemia.
+Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_{SIS} > 1$ hay una epidemia.
 
 \begin{figure}
 \begin{center}
@@ -107,7 +107,7 @@ Si $\mathcal{R}_{SIS}\leq 1$ entonces no ocurre una epidemia, y si $\mathcal{R}_
 \end{center}
 \end{figure}
 
-En \eqref{fig: SIS_continuo} comprobamos al igual que hicimos antes que su comportamiento es análogo al modelo discreto. También se observa que al igual que en el modelo SI el número de individuos susceptibles es decreciente y tendiente a $0$ y el de infectados creciente y tiende a $N$, pero esto no siempre es así y se debe a los parámetros usados.
+En \eqref{fig: SIS_continuo} comprobamos, al igual que hicimos antes, que su comportamiento es análogo al modelo discreto. También se observa que al igual que en el modelo SI el número de individuos susceptibles es decreciente y tiende a $0$ y el de infectados creciente y tiende a $N$, pero esto no siempre es así y se debe a los parámetros usados.
 
 \begin{figure}
 \begin{center}
@@ -307,9 +307,9 @@ $$I'(t) = (\tau_0 S_0 -v) I(t).$$
 
 Resolviendo la ecuación diferencial llegamos a:
 
-$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))}.$$
+$$I(t) = I_0\exp{((\tau_0 S_0-v)(t-t_0))},$$
 
-Sustituyendo en \eqref{eqn: acumulada}:
+y sustituyendo en \eqref{eqn: acumulada}:
 
 $$C_R(t) = {C_R}_0 + vfI_0\frac{\mathrm{e}^{(\tau_0 S_0 -v)(t-t_0)} -1}{\tau_0 S_0-v}.$$
 
