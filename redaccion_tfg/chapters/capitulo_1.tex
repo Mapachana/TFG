@@ -24,7 +24,7 @@ I_{n+1}=I_n\left( 1+\frac{\alpha\Delta t}{N}S_n\right)
 
 donde $S_n$ indica el número de individuos susceptibles en el instante $t_n$, e $I_n$ hace referencia al número de individuos infectados en ese instante. $\Delta t$ es el tiempo transcurrido entre dos instantes $t_{n+1}-t_n$, y N es el tamaño total de la población, con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
 
-En estas ecuaciones $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
+En estas ecuaciones $\alpha$ es la tasa de contacto\footnote{Esta definición de ha tomado de \cite{allenDiscretetimeSISIR1994}. En otros trabajos se define la tasa de contacto xomo la probabilidad de contagio de un susceptible por un infectado en un intervalo de tiempo.}; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo. Por tanto, $S_n$ representa el número de individuos susceptibles en el tiempo $n\Delta t$.
 
 
 Además, cabe destacar que a partir de \eqref{eqn: SI} podemos obtener la ecuación logística. Usando $S_n+I_n=N$ tenemos
@@ -121,7 +121,7 @@ R_{n+1} = & R_n + \gamma \Delta t I_n
 
 con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
 
-En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto\footnote{Esta definición de ha tomado de \cite{allenDiscretetimeSISIR1994}. En otros trabajos se define la tasa de contacto xomo la probabilidad de contagio de un susceptible por un infectado en un intervalo de tiempo.}, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
 
 Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$.
 
@@ -188,7 +188,7 @@ Por tanto, a partir del resultado anterior podemos deducir que el intervalo de t
 El comportamiento global del sistema es fácil de ver. Definimos el número básico reproductivo como la constante 
 $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
 
-El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo. En particular, si $\mathcal{R}_{SIR}<1$ se considera que no hay epidemia.
+El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo. En particular, si $\mathcal{R}_{SIR}<1$ se considera que no hay epidemia, pues los infectados se recuperan más rápido de lo que contagian a otros individuos, y si $\mathcal{R}_{SIR}>1$ se considera que sí la hay, pues un infectado tarda más en recuperarse que en contagiar a otros individuos, propagando así la enfermedad\footnote{El comportamiento de la epidemia solo está definido cuando $\mathcal{R}_{SIR}<1$ o $\mathcal{R}_{SIR}>1$, pero no cuando su valor exacto es 1.}.
 
 En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico reproductivo se llama tasa de transmisión media.
 
@@ -254,7 +254,7 @@ I_{n+1} & = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto\footnote{Esta definición de ha tomado de \cite{allenDiscretetimeSISIR1994}. En otros trabajos se define la tasa de contacto xomo la probabilidad de contagio de un susceptible por un infectado en un intervalo de tiempo.}, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
 \begin{proposition}
 Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
