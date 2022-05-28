@@ -1134,17 +1134,16 @@ FUNCTION {output.urldate.check}
 FUNCTION {online}
 { output.bibitem
   format.authors output
-  author format.key output				% special for
-  %output.year.check					% apalike
-  output.urldate.check
-  new.block
+  author format.key output
+  %format.date "year" output.check
+  date.block
   format.title output
   new.block
-  howpublished output
-  write.url
+  howpublished "howpublished" bibinfo.check output
   new.block
-  %note output
+  format.note output
   fin.entry
+  write.url
 }
 
 
