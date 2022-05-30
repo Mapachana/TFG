@@ -307,7 +307,7 @@ En estos modelos se hacen dos suposiciones:
 
 Para la realización de este proyecto se va a desarrollar una funcionalidad que estime los parámetros de los modelos de forma automática. Para ello, se va a utilizar una función de pérdida que sea flexible a varios modelos, buscando un equilibrio entre su rapidez y precisión.
 
-Se ha decidido utilizar la librería scipy, pues es una librería de código abierto que proporciona diversas funciones para minimizar o maximizar funciones objetivo, posiblemente sujetas a restricciones. Es importante destacar también que sirve para problemas no lineales, como lo son los modelos epidemiológicos a estudiar.
+Se ha decidido utilizar la librería scipy, \cite{scipy}, pues es una librería de código abierto que proporciona diversas funciones para minimizar o maximizar funciones objetivo, posiblemente sujetas a restricciones. Es importante destacar también que sirve para problemas no lineales, como lo son los modelos epidemiológicos a estudiar.
 
 \begin{definition}
 Llamamos función objetivo a la función que queremos maximizar o minimizar.
@@ -328,7 +328,7 @@ Para estimar estos parámetros, scipy nos ofrece varias funciones que podemos us
 
 Debido a la simplicidad y rapidez, y resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
 
-La función \verb|curve_fit| usa el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, y con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Pero dado que este algoritmo solo admite problemas sin restricciones, no se usará, pues todos los parámetros en los modelos epidemiológicos están sujetos a restricciones.
+La función \verb|curve_fit| usa el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, y con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Pero dado que este algoritmo solo admite problemas sin restricciones, no se usará, pues todos los parámetros en los modelos epidemiológicos están sujetos a restricciones. Se puede consultar más información sobre ella en \cite{scipy_curvefit}.
 
 Para su utilización, se define una función con el modelo para el ajuste, que será el primer argumento de \verb|curve_fit|. En nuestro caso esta función será un modelo epidemiológico. Su segundo argumento serán los datos independientes, que en el caso de modelos epidemiológicos vendrán dados por el tiempo, también los datos dependientes, que en nuestro caso serán el número de infectados, y finalmente como último parámetro se pueden proporcionar restricciones de los intervalos a los que pertenecen los parámetros buscados.
 

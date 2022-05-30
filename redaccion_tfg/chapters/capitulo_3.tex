@@ -92,13 +92,13 @@ El proyecto se ha llevado a cabo usando como sistema operativo Ubuntu 20.04 LTS,
 El software necesario para el proyecto es el siguiente:
 
 \begin{itemize}
-\item \textbf{Flask}. Flask es un microframework web en python. Proporciona funcionalidad básica para, de forma sencilla, crear una aplicación web. Una posible alternativa habría sido Django, pero finalmente se ha optado por Flask debido a su simplicidad, legibilidad y que en este proyecto no se requieren muchas de las funcionalidades que Django ofrece integradas. 
-\item \textbf{Dash}. Dash es un framework opensource basado en plotly.js y react.js que permite crear fácilmente aplicaciones basadas en datos. En este proyecto se ha usado principalmente por su capacidad de crear gráficas interactivas en tiempo real.
-\item \textbf{Scipy}. Scipy es una librería de código abierto para python que proporciona algoritmos para optimización, integración, ecuaciones diferenciales y estadística, entre otros. Se ha usado principalmente para optimizar, integrar en los modelos continuos y realizar los ajustes. 
+\item \textbf{Flask}. Flask es un microframework web en python. Proporciona funcionalidad básica para, de forma sencilla, crear una aplicación web. Una posible alternativa habría sido Django, pero finalmente se ha optado por Flask debido a su simplicidad, legibilidad y que en este proyecto no se requieren muchas de las funcionalidades que Django ofrece integradas. La documentación de Flask puede verse aquí \cite{flask}.
+\item \textbf{Dash}. Dash es un framework opensource basado en plotly.js y react.js que permite crear fácilmente aplicaciones basadas en datos. En este proyecto se ha usado principalmente por su capacidad de crear gráficas interactivas en tiempo real. La documentación del framework puede consultarse aquí \cite{dash}.
+\item \textbf{Scipy}. Scipy es una librería de código abierto para python que proporciona algoritmos para optimización, integración, ecuaciones diferenciales y estadística, entre otros. Se ha usado principalmente para optimizar, integrar en los modelos continuos y realizar los ajustes. Para su utilización se ha consultado \cite{scipy}.
 \item \textbf{VSCode}. Se ha usado VSCode como editor de texto, ya que proporciona una gran cantidad de plugins para cualquier lenguaje, así como integración con git.
 \item \textbf{Draw.io}. Para la realización de diagramas de distintas clases, se ha usado el software de dibujo gratuito Draw.io.
-\item \textbf{Docker}. Con el fin de simplificar el lanzamiento y ejecución de la aplicación web desarrollada se ha usado docker para virtualizar el entorno y evitar la necesidad de instalar en cualquier máquina el software necesario para ejecutarla.
-\item \textbf{Git}. Se ha empleado Git como controlador de versiones, integrado con Github.
+\item \textbf{Docker}. Con el fin de simplificar el lanzamiento y ejecución de la aplicación web desarrollada se ha usado docker para virtualizar el entorno y evitar la necesidad de instalar en cualquier máquina el software necesario para ejecutarla. Durante el desarrollo, para facilitar la utilización de esta herramienta se ha consultado la documentación de docker \cite{docker}, usando docker compose, \cite{dockercompose}, para construir el contenedor y docker hub, \cite{dockerhub}, para la publicación del mismo.
+\item \textbf{Git}. Se ha empleado Git como controlador de versiones, integrado con Github. Puede consultarse más información sobre esta herramienta en \cite{git}.
 \item \textbf{Texmaker}. Para redactar la memoria, se ha usado el editor de LaTeX Texmaker.
 \end{itemize}
 
@@ -262,7 +262,10 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 
 \subsection{Actores del sistema}
 
+En este sistema solo tenemos un actor, que es el usuario que va a usar la página web. La información del usuario puede consultarse en \eqref{tab: actores}.
+
 \begin{table}[!h]
+\caption{Actores del sistema.}
 \begin{tabular}{|c|c|c|c|c|c|c|c|}
 \hline
  \rowcolor{azulillo} \textbf{Actor} & \multicolumn{6}{|c|}{Usuario} & {A-1} \\
@@ -278,6 +281,7 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 \cellcolor{azulillo} \textbf{Autor}                &   Ana  & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Fecha}} &  25/04/22   & \multicolumn{2}{|c|}{\cellcolor{azulillo} \textbf{Versión}} & 1.0  \\
 \hline
 \end{tabular}
+\label{tab: actores}
 \end{table}
 
 \subsection{Diagrama de casos de uso}
@@ -1264,7 +1268,7 @@ Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al model
 
 Para lanzar la página web de una manera cómoda, rápida y simple, se ha creado un contenedor docker actualizado con todas las dependencias necesarias para el funcionamiento de la misma.
 
-De esta manera, basta con ejecutar el contenedor docker, accesible en Dockerhub, descargarlo y ejecutarlo. El contenedor puede obtenerse \href{https://hub.docker.com/repository/docker/mapachana/plotsir}{aquí}.
+De esta manera, basta con ejecutar el contenedor docker, accesible en Docker Hub, descargarlo y ejecutarlo. El contenedor puede obtenerse \href{https://hub.docker.com/repository/docker/mapachana/plotsir}{aquí}.
 
 Para obtener y lanzar la imagen debe abrirse una terminal y ejecutar los siguientes comandos:
 
