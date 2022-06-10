@@ -3,11 +3,11 @@
 %\end{center}}
 
 %\part{Parte de informática}
-\chapter*{Introducción}
+\chapter{Introducción}
 
 \section{Motivación}
 
-Las enfermedades contagiosas como la influenza, conocida comúnmente como gripe, o tuberculosis son problemas importantes, así como epidemias más recientes como el SIDA, el SARS, el Ébola o el covid-19. Estas enfermedades y sus comportamientos son interesantes para una gran parte de la población. En especial, los efectos de estas u otras enfermedades en países menos desarrollados adquiere aún más relevancia ya que debido a la falta de medios la mortalidad y consecuencias de las epidemias en estas regiones es mucho más grave que en otros lugares, lo que afecta entre otros factores a su esperanza de vida y economía.
+Las enfermedades contagiosas como la influenza (conocida comúnmente como gripe) o tuberculosis son problemas importantes, así como epidemias más recientes como el SIDA, el SARS, el Ébola o el covid-19. Estas enfermedades y sus comportamientos son relevantes para una gran parte de la población. En especial, los efectos de estas u otras enfermedades en países menos desarrollados adquiere aún más relevancia ya que, debido a la falta de medios la mortalidad y consecuencias de las epidemias en estas regiones, es mucho más grave que en otros lugares, lo que afecta entre otros factores a su esperanza de vida y economía.
 
 Las epidemias han tenido un peso importante en la civilización a lo largo de la historia, encontrando referencias a ellas en diversos escritos históricos, pese a que antiguamente se referían a estas epidemias como plagas, que registran caídas de imperios como el Imperio Romano por la plaga de Antonine o el Imperio de Han en China en circunstancias similares, de acuerdo a \cite{Sommerfeld2003} y \cite{duncan-jones_1996}. De la misma manera, hay constancia de las importantes consecuencias que tuvo la plaga de la peste en Asia y Europa durante el siglo XIV.
 
@@ -38,9 +38,9 @@ A principios del siglo XX se introdujeron modelos matemáticos en la epidemiolog
 
 \section{Estado del arte}
 
-En la actualidad, con la proliferación de enfermedades infecciosas como el covid-19 o el sida entre otras, ha habido un aumento del interés en la comunidad científica por el campo de la epidemiología. Con la proliferación de estas enfermedades ha habido un auge en la investigación y simulación del comportamiento de la propagación de las enfermedades usando diversos modelos epidemiológicos, ya sea con el fin de comprender cómo se propaga la enfermedad o la efectividad de ciertas medidas que se pueden instaurar para frenar la epidemia.
+En la actualidad, con la proliferación de enfermedades infecciosas como el covid-19 o el SIDA entre otras, ha habido un aumento del interés en la comunidad científica por el campo de la epidemiología. Con la proliferación de estas enfermedades ha habido un auge en la investigación y simulación del comportamiento de la propagación de las enfermedades usando diversos modelos epidemiológicos, ya sea con el fin de comprender cómo se propaga la enfermedad o la efectividad de ciertas medidas que se pueden instaurar para frenar la epidemia.
 
-En los últimos años la mayoría de los esfuerzos de este campo se han enfocado al estudio y contención de la epidemia del covid-19. Se ha tratado de comprender esta enfermedad y de comprobar la efectividad de las medidas tomadas desde Marzo de 2020, cuando se convirtió en un problema de salud mundial.
+En los últimos años, la mayoría de los esfuerzos de este campo se han enfocado al estudio y contención de la epidemia del covid-19. Se ha tratado de comprender esta enfermedad y de comprobar la efectividad de las medidas tomadas desde Marzo de 2020, cuando se convirtió en un problema de salud mundial.
 
 En \cite{demongeotSIEpidemicModel} se trata de ajustar los parámetros del modelo compartimental, aplicándolo a los datos del covid-19 en China, con el fin de conocer y comprender mejor el covid-19. Y en esta misma línea, en \cite{enrique_amaro} se ajustan los datos del covid-19 de diferentes países muy afectados por esta enfermedad durante la primera ola usando un modelo SIR, y comprobando que describe bastante bien su comportamiento.
 
@@ -55,16 +55,16 @@ Actualmente, los modelos no se usan solamente de forma teórica o para ajustar l
 
 \section{Objetivos}
 
-A lo largo de este proyecto, se exponen distintos modelos matemáticos para modelar epidemias, a la vez que se han implementado simulaciones del comportamiento de los mismos. Estas simulaciones se han integrado en una página web que se ha desarrollado a lo largo de todo el proyecto. Los objetivos son dobles, pues se ha intentado realizar tanto una exposición y análisis teórico de los modelos como mostrar mediante la implementación y ajuste de datos reales su aplicación práctica.
+A lo largo de este proyecto, se exponen distintos modelos matemáticos para modelar epidemias, a la vez que se han implementado simulaciones del comportamiento de los mismos. Estas simulaciones se han integrado en una página web que se ha desarrollado a lo largo de todo el proyecto. De este modo el objetivo general del proyecto es realizar tanto una exposición y análisis teórico de los modelos como mostrar mediante la implementación y ajuste de datos reales su aplicación práctica.
 
-Inicialmente, los objetivos que nos marcamos consistían en:
+Este objetivo se implementa en los objetivos específicos siguientes:
 
 \begin{itemize}
 \item Estudiar las versiones discretas de distintos modelos epidemiológicos, analizando sus particularidades, como lo son sus restricciones y proporcionando condiciones para asegurar la positividad de las soluciones.
 \item Desarrollar software para visualizar de forma sencilla los modelos estudiados anteriormente.
 \end{itemize}
 
-Finalmente se han llevado a cabo más objetivos de los que se marcaron al inicio del proyecto. Además de los objetivos ya mencionados, se han estudiado e implementado los modelos continuos análogos a los discretos estudiados, complementando así el trabajo. También se ha añadido funcionalidad para además de visualizar el comportamiento de los modelos, poder realizar ajustes de datos usándolos. Estos objetivos se detallarán más adelante en las conclusiones.
+Al finalizar el trabajo, se ha incorporado una ampliación de los objetivos marcados al inicio del proyecto. Además de los objetivos ya mencionados, se han analizado e implementado los modelos continuos análogos a los discretos estudiados, complementando así el trabajo. También se ha añadido funcionalidad para además de visualizar el comportamiento de los modelos, poder realizar ajustes de datos usándolos. Estos objetivos se detallarán más adelante en las conclusiones.
 
 
 \section{Descripción}
@@ -80,15 +80,6 @@ También se pueden subir ficheros de datos y obtener un ajuste con alguno de los
 
 En esta memoria se pueden distinguir varias partes claramente diferenciadas:
 
-\begin{itemize}
-\item Presentación de herramientas necesarias.
-\item Modelos discretos en epidemiología.
-\item Modelos continuos en epidemiología.
-\item Diseño y análisis del software.
-\item Aplicación a datos reales.
-\item Conclusiones y vías futuras.
-\end{itemize}
-
 En el primer capítulo se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
 
 Seguidamente, se presentan y explican una selección de modelos discretos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, estudiando cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y enunciando las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. También se define el número básico reproductivo, que indica según su valor si se considera que se va a producir una epidemia o no. Además se realizan distintas simulaciones para ilustrar su comportamiento. 
@@ -97,7 +88,7 @@ A continuación, se presentan y explican los modelos continuos análogos a los m
 
 Durante el cuarto capítulo se va a desarrollar toda la documentación del desarrollo de la página web, incluyendo la gestión de recursos y planificación temporal. Se detallan los requisitos derivados de los objetivos previamente expuestos y se realizan los casos de uso de acuerdo a estos. También se añade en la documentación el diagrama conceptual, herramientas usadas, prototipos de la interfaz de usuario y el manual de la página web.
 
-En el siguiente capítulo se va a usar el software desarrollado para realizar un ajuste de datos reales de varias enfermedades, obteniendo aproximaciones de parámetros y sus errores, así como la representación del ajuste sobre los datos.
+En el mismo capítulo, se expondrá un ejemplo del uso del software desarrollado para realizar un ajuste de datos reales de varias enfermedades, obteniendo aproximaciones de parámetros y sus errores, así como la representación del ajuste sobre los datos.
 
 Para terminar, en el último capítulo se discutirán diversos puntos sobre el proyecto, los objetivos que se han alcanzado y diversos trabajos o mejoras que pueden hacerse a lo expuesto en esta memoria, de cara a seguir investigando en este campo.
 

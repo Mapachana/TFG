@@ -112,7 +112,7 @@ Para los recursos humanos, dado que se considera que la alumna ha trabajado apro
 
 A los tutores, dada su formación profesional se les supone un coste estimado de 50€/h, y aproximando que se dedican 3 horas semanales para la tutorización del proyecto, se tiene que el coste total tras los 9 meses es de 5.400,00€ por tutor.
 
-Dado que el portátil empleado tiene una vida útil estimada de 5 años, le corresponde un coste de 120,00€ durante la realización del proyecto.
+Dado que el portátil empleado tiene una vida útil estimada de 5 años, le corresponde un coste de 120,00€ por amortización durante la realización del proyecto.
 
 Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto aparece desglosado en la tabla \eqref{tabla_pres}.
 
@@ -195,7 +195,7 @@ Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribu
 
 \section{Diagrama conceptual}
 
-Para el modelado conceptual de la aplicación web, se ha optado por utilizar OOWS (Object-Oriented approach for Web Solutions modelling), que usa modelado de objetos UML y modelos de navegación y presentación usando UML. Así, se expresan las características navegacionales de la aplicación web a la vez que se integra con las restantes vistas del esquema conceptual mediante una notación UML adaptada.
+Para el modelado conceptual de la aplicación web, se ha optado por utilizar OOWS (Object-Oriented approach for Web Solutions modeling) \cite{pastorobject}, que usa modelado de objetos UML y modelos de navegación y presentación usando UML. Así, se expresan las características navegacionales de la aplicación web a la vez que se integra con las restantes vistas del esquema conceptual mediante una notación UML adaptada.
 
 En \eqref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down:
 
@@ -262,7 +262,7 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 
 \subsection{Actores del sistema}
 
-En este sistema solo tenemos un actor, que es el usuario que va a usar la página web. La información del usuario puede consultarse en \eqref{tab: actores}.
+En este sistema solo tenemos un actor, que es el usuario que va a usar la página web. La información del usuario puede consultarse en el cuadro \eqref{tab: actores}.
 
 \begin{table}[!h]
 \caption{Actores del sistema.}
@@ -286,7 +286,7 @@ En este sistema solo tenemos un actor, que es el usuario que va a usar la págin
 
 \subsection{Diagrama de casos de uso}
 
-Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todos los posibles casos de uso, así como sus relaciones entre ellos. El diagrama resultante puede verse en \eqref{diag: casos_uso}.
+Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todos los posibles casos de uso, así como sus relaciones entre ellos. El diagrama resultante puede verse en la figura \eqref{diag: casos_uso}.
 
 \begin{figure}[!h]
 \begin{center}
@@ -298,11 +298,12 @@ Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todo
 
 
 
-\clearpage
 
 \subsection{Plantillas de casos de uso}
 
+Para cada uno de los casos de uso mencionados se ha rellenado una plantilla descriptiva con información necesaria del desarrollo de estos. En esta plantilla se detallan las condiciones que deben cumplirse antes y después del caso de uso, así como su propósito, su funcionamiento y su curso, pudiendo ser este un curso normal (o esperado) o alterno (menos frecuente).
 
+\clearpage
 
 \begin{table}[!h]
 \begin{tabularx}{\textwidth}{|Y|Y|Y|Y|Y|Y|Y|Y|Y|}
@@ -1053,7 +1054,16 @@ Se han llevado a cabo dos tipos de pruebas:
 
 Para finalizar el diseño del proyecto, hemos realizado unos prototipos del aspecto aproximado que tendrá la interfaz de la página web en algunas de sus páginas. Se ha tratado de conseguir una interfaz sencilla e intuitiva, que permita al usuario una navegación clara y eficaz por la página web, resultando así cómoda desde el primer momento.
 
-Los prototipos de la interfaz se muestran en las figuras \eqref{wire: home}, \eqref{wire: home_desplegable}, \eqref{wire: modelo_interactivo}, \eqref{wire: ajuste} y \eqref{wire: ayuda}.
+Se han prototipado en concreto las siguientes páginas:
+
+\begin{itemize}
+\item \textbf{Home}. La página home o principal de la página web es la primera página que se ve al visitar el sitio. Mostrará el logotipo de la página web y una breve descripción del proyecto. Desde aquí, podemos acceder a todas las demás páginas mediante los menús laterales o el menú de navegación. Esta página puede verse en la figura \eqref{wire: home}. Además, los menús en la página serán desplegables. Estos desplegables se ven en el protipo \eqref{wire: home_desplegable}.
+\item \textbf{Modelo interactivo}. Se ha diseñado la vista genérica de la página de cualquier modelo interactivo, ya sea este discreto o continuo. Se mostrarían en primer lugar las ecuaciones del modelo junto con una explicación del mismo. Bajo esto, se podrían editar los parámetros y encontraríamos las gráficas correspondientes a dichos parámetros. Esta página se muestra en la figura \eqref{wire: modelo_interactivo}.
+\item \textbf{Ajuste de datos}. También encontramos el prototipo \eqref{wire: ajuste}, que muestra el concepto de la página de ajuste de datos. Esta contendría primeramente una representación gráfica de los datos del fichero subido por el usuario. Después, se mostraría un selector para elegir el modelo de ajuste. Finalmente encontraríamos una gráfica representando los datos junto con el ajuste realizado y la información relativa a valores estimados de parámetros y los errores.
+\item \textbf{Ayuda}. Se ha diseñado una página de ayuda con preguntas frecuentes e información de contacto para que, en caso de que los usuarios tuvieran alguna duda sobre el uso de la página, puedan consultarla. Esta página puede verse en el prototipo \eqref{wire: ayuda}.
+\end{itemize}
+
+
 
 \begin{figure}
 \begin{center}
@@ -1097,9 +1107,9 @@ Los prototipos de la interfaz se muestran en las figuras \eqref{wire: home}, \eq
 
 \section{Manual de usuario}
 
-\subsection{Descripción del proyecto}
+\subsection{Descripción del software}
 
-El proyecto consiste en una página web de objetivo didáctico a la par que práctico, en la que se ofrece información sobre diversos modelos básicos de epidemiología de forma sencilla y clara a cualquier usuario.
+El software consiste en el desarrollo de una página web de objetivo didáctico a la par que práctico, en la que se ofrece información sobre diversos modelos básicos de epidemiología de forma sencilla y clara a cualquier usuario.
 
 De esta forma, el usuario puede aprender sobre varios modelos de epidemiología comprobando interactivamente el comportamiento de estos modelos en tiempo real, y cómo afectan los parámetros de cada uno de ellos a la evolución de los mismos.
 
@@ -1109,7 +1119,7 @@ Para acceder a la página web el usuario solo requiere de un dispositivo con un 
 
 \subsection{Comenzando a usar la web}
 
-Una vez introducida la url de la web en el navegador, aparecemos en la página principal de esta, la cual puede verse en \eqref{manual: home}.
+Una vez introducida la url de la web en el navegador, aparecemos en la página principal de esta, la cual puede verse en la figura \eqref{manual: home}.
 
 \begin{figure}
 \begin{center}
@@ -1123,7 +1133,7 @@ Desde esta página podemos acceder a todas las funcionalidades e información de
 
 Además, la página principal es accesible en cualquier momento. Para volver a ella basta clicar en el logo de la esquina superior izquierda o el nombre de la página situado a su lado.
 
-Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. En esta página encontramos dos secciones: preguntas frecuentes, que puede verse en \eqref{manual: ayuda1}, y contacto, que se muestra en \eqref{manual: ayuda2}, para recibir asistencia personalizada o sugerir mejoras a la página web.
+Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. En esta página encontramos dos secciones: preguntas frecuentes, que puede verse en la imagen \eqref{manual: ayuda1}, y contacto, que se muestra en la figura \eqref{manual: ayuda2}, para recibir asistencia personalizada o sugerir mejoras a la página web.
 
 \begin{figure}
 \begin{center}
@@ -1141,7 +1151,7 @@ Asimismo, en la barra de navegación, situado al lado del título de la página 
 \end{center}
 \end{figure}
 
-También puede accederse a la página de ayuda desde el menú lateral, clicando en \verb|¿Cómo funciona?| para mostrar las opciones del desplegable y luego en ayuda. Aparte, en notación hay un resumen de la notación usada en toda la página web, haciendo fácil consultarla en cualquier momento. El apartado de notación se muestra en \eqref{manual: notacion}.
+También puede accederse a la página de ayuda desde el menú lateral, clicando en \verb|¿Cómo funciona?| para mostrar las opciones del desplegable y luego en ayuda. Aparte, en notación hay un resumen de la notación usada en toda la página web, haciendo fácil consultarla en cualquier momento. El apartado de notación se muestra en la figura \eqref{manual: notacion}.
 
 \begin{figure}
 \begin{center}
