@@ -3,8 +3,6 @@ import numpy as np
 import pandas as pd
 import re
 
-import dash
-
 from dash import dcc
 from dash import html
 from dash.dependencies import Input, Output
@@ -14,9 +12,6 @@ from app_dash import app
 # Declaramos la figura
 fig = go.Figure()
 fig2 = go.Figure()
-
-mathjax = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML'
-app.scripts.append_script({ 'external_url' : mathjax })
 
 # Funcion para preprocesar el input en modo texto para formato y nulos
 def preprocesar_input(N, alfa, S0, I0, T):
