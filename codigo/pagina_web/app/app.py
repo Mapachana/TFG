@@ -2,7 +2,7 @@
 import os
 import shutil
 from flask import Flask, render_template, flash, request, redirect, url_for, send_from_directory
-from pandas import DataFrame, read_csv
+from pandas import read_csv
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './files'
@@ -64,7 +64,6 @@ def ajustar_fichero(fichero):
     # Leo el fichero subido y lo muestro en terminal
     fichero_subido = app.config['UPLOAD_FOLDER']+"/"+fichero
     df = read_csv(fichero_subido)
-    print(df)
 
     shutil.copy(fichero_subido, "./fichero_ajuste/actual.csv")
 
