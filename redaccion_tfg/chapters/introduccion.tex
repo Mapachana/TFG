@@ -3,9 +3,9 @@
 %\end{center}}
 
 %\part{Parte de informática}
-\chapter{Introducción}
+\chapter*{Introducción}
 
-\section{Motivación}
+\section*{Motivación}
 
 Las enfermedades contagiosas como la influenza (conocida comúnmente como gripe) o tuberculosis son problemas importantes, así como epidemias más recientes como el SIDA, el SARS, el Ébola o el covid-19. Estas enfermedades y sus comportamientos son relevantes para una gran parte de la población. En especial, los efectos de estas u otras enfermedades en países menos desarrollados adquiere aún más relevancia ya que, debido a la falta de medios la mortalidad y consecuencias de las epidemias en estas regiones, es mucho más grave que en otros lugares, lo que afecta entre otros factores a su esperanza de vida y economía.
 
@@ -18,7 +18,7 @@ Dado que los experimentos para obtener información acerca de las epidemias son 
 Los modelos matemáticos en epidemiología ayudan a comprender los mecanismos que intervienen en la propagación de la enfermedad a la vez que sugieren mecanismos para el control de esta. Los modelos suelen identificar comportamientos que no son evidentes en los datos empíricos.
 
 
-\section{Contexto histórico}
+\section*{Contexto histórico}
 
 Para la realización de esta sección se han usado principalmente \cite{Byrne2012-ej}, \cite{Merril2010-nm} y \cite{Johnson2011-di}.
 
@@ -36,9 +36,15 @@ John Snow es ampliamente conocido por sus investigaciones sobre la epidemia de c
 
 A principios del siglo XX se introdujeron modelos matemáticos en la epidemiología por Ronald Ross, Janed Lane-Claypon y Anderson Gray mcKendrick (cuyo modelo presentaremos más adelante), entre otros. Desde entonces, muchos especialistas se unieron progresivamente al estudio de este campo, cuya eficacia para mejorar la salud pública ha ido avanzando a la par que lo hacía la tecnología.
 
-\section{Estado del arte}
+\section*{Estado del arte}
 
 En la actualidad, con la proliferación de enfermedades infecciosas como el covid-19 o el SIDA entre otras, ha habido un aumento del interés en la comunidad científica por el campo de la epidemiología. Con la proliferación de estas enfermedades ha habido un auge en la investigación y simulación del comportamiento de la propagación de las enfermedades usando diversos modelos epidemiológicos, ya sea con el fin de comprender cómo se propaga la enfermedad o la efectividad de ciertas medidas que se pueden instaurar para frenar la epidemia.
+
+En \cite{sulsky2012using} usan un modelo SIR para modelar la epidemia de plaga bubónica que tuvo lugar en la ciudad de Bombay a finales del siglo XIX, así como la epidemia de gripe en una escuela inglesa en 1978 y la epidemia del pueblo de Eyam en Inglaterra durante los años 1665 y 1666.
+
+También se ha desarrollado modificaciones sencillas del modelo SIR con el objetivo de modelar mejor la epidemia de Ébola que ocurrió en África en 2014. Este modelo se presenta y analiza en \cite{sirmodificadoebola},
+
+Además, en \cite{kobe2015controlling} se modela la malaria de nuevo mediante un modelo SIR, con el propósito de comprobar la efectividad de varias medidas para evitar la propagación de la epidemia.
 
 En los últimos años, la mayoría de los esfuerzos de este campo se han enfocado al estudio y contención de la epidemia del covid-19. Se ha tratado de comprender esta enfermedad y de comprobar la efectividad de las medidas tomadas desde Marzo de 2020, cuando se convirtió en un problema de salud mundial.
 
@@ -48,12 +54,12 @@ También se pueden encontrar trabajos exponiendo por qué estos modelos, pese a 
 
 Como ya hemos mencionado, es especialmente relevante comprobar la efectividad de diversas medidas de contención. En \cite{gutierrez2020analisis} modifican el modelo SIR para contemplar las medidas de contención aplicadas en España y comprobar si realmente frenan la propagación de la epidemia. En \cite{inferringinterventions} también usan un modelo SIR y combinándolo con diversas técnicas de estadística Bayesiana comprueban la efectividad de diferentes medidas, aplicado a los datos y restricciones de Alemania.
 
-Adicionalmente, en \cite{Mancastroppa2021} comprueban la efectividad y cómo afecta el método de rastreo de contacto para realentizar los contagios, comparando el rastreo manual con el digital, como es la aplicación covid-19. También se han realizado estudios como \cite{vaccinationproblem}, que analizan cómo influye que la población se vacune y por qué a veces es difícil de convencer.
+Adicionalmente, en \cite{Mancastroppa2021} comprueban la efectividad y cómo afecta el método de rastreo de contacto para realentizar los contagios, comparando el rastreo manual con el digital, como es la aplicación covid-19. También se han realizado estudios como \cite{vaccinationproblem}, que analizan cómo influye que la población se vacune y por qué a veces es difícil de convencer. En la misma línea, en el artículo \cite{Laguzet2015} se llevó a cabo un estudio para ver cómo afectaba la vacunación de la población a la epidemia de Influenza (H1N1) que tuvo lugar en Francia durante los años 2009 y 2010.
 
 Actualmente, los modelos no se usan solamente de forma teórica o para ajustar los datos, pues como hemos visto proporcionan información de interés durante diversos brotes de enfermedades.
 
 
-\section{Objetivos}
+\section*{Objetivos}
 
 A lo largo de este proyecto, se exponen distintos modelos matemáticos para modelar epidemias, a la vez que se han implementado simulaciones del comportamiento de los mismos. Estas simulaciones se han integrado en una página web que se ha desarrollado a lo largo de todo el proyecto. De este modo el objetivo general del proyecto es realizar tanto una exposición y análisis teórico de los modelos como mostrar mediante la implementación y ajuste de datos reales su aplicación práctica.
 
@@ -67,22 +73,22 @@ Este objetivo se implementa en los objetivos específicos siguientes:
 Al finalizar el trabajo, se ha incorporado una ampliación de los objetivos marcados al inicio del proyecto. Además de los objetivos ya mencionados, se han analizado e implementado los modelos continuos análogos a los discretos estudiados, complementando así el trabajo. También se ha añadido funcionalidad para además de visualizar el comportamiento de los modelos, poder realizar ajustes de datos usándolos. Estos objetivos se detallarán más adelante en las conclusiones.
 
 
-\section{Descripción}
+\section*{Descripción}
 
-El proyecto desarrollado recoge una exposición teórica de modelos discretos y continuos en epidemiología, analizando cada uno de estos, su comportamiento, suposiciones necesarias para su funcionamiento y presentando conceptos relevantes en epidemiología.
+El proyecto desarrollado recoge una exposición teórica de modelos discretos y continuos en epidemiología, analizando cada uno de estos, su comportamiento, suposiciones necesarias para su funcionamiento, garantizar positividad de las soluciones, encontrando los puntos de equilibrio estudiando su estabilidad y presentando conceptos relevantes en epidemiología como el número reproductivo base..
 
 Por otro lado, se ha implementado una página web en la que los usuarios pueden modificar interactivamente los parámetros de cada uno de estos modelos, actualizando las gráficas del comportamiento de estos y viendo por tanto de manera simple e intuitiva cómo afecta cada parámetro y las mecánicas que subyacen en el modelo.
 
 También se pueden subir ficheros de datos y obtener un ajuste con alguno de los modelos a elegir, o que el sistema determine a partir del error cuál es el modelo que mejor ajusta esos datos introducidos, prorcionando en todos los casos los parámetros que se han estimado y los errores obtenidos. De esta forma, es posible realizar ajustes con datos reales simplemente subiendo un fichero con un formato adecuado a la página web y comprobando la bondad del ajuste realizado.
 
 
-\section{Estructura de la documentación}
+\section*{Estructura de la documentación}
 
 En esta memoria se pueden distinguir varias partes claramente diferenciadas:
 
 En el primer capítulo se indican distintos conceptos y proposiciones fundamentales que es necesario conocer, pues van a ser usadas repetidas veces a lo largo del resto de las secciones. En esta parte se recogen los conceptos básicos que vamos a necesitar para el desarrollo del proyecto.
 
-Seguidamente, se presentan y explican una selección de modelos discretos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, estudiando cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y enunciando las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. También se define el número básico reproductivo, que indica según su valor si se considera que se va a producir una epidemia o no. Además se realizan distintas simulaciones para ilustrar su comportamiento. 
+Seguidamente, se presentan y explican una selección de modelos discretos en epidemiología. Se realiza un análisis de las características más relevantes de cada modelo, estudiando cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y enunciando las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. También se define el número básico reproductivo, que indica según su valor si se considera que se va a producir una epidemia o no y se presentan algunos modelos multipoblaciones. Además se realizan distintas simulaciones para ilustrar su comportamiento. 
 
 A continuación, se presentan y explican los modelos continuos análogos a los modelos discretos presentados previamente. Se estudian las diferencias entre los modelos continuos y sus análogos discretos, se estudia cómo afectan los valores de sus parámetros, encontrando sus puntos de equilibrio y la estabilidad de estos y se indican las condiciones necesarias y suficientes para el correcto funcionamiento del modelo y garantizar la positividad de las soluciones. Al igual que en el apartado anterior se realizan distintas simulaciones para ilustrar su comportamiento.
 

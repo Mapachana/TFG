@@ -188,7 +188,7 @@ Por tanto, a partir del resultado anterior podemos deducir que el intervalo de t
 El comportamiento global del sistema es fácil de ver. Definimos el número básico reproductivo como la constante 
 $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
 
-El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo. En particular, si $\mathcal{R}_{SIR}<1$ se considera que no hay epidemia, pues los infectados se recuperan más rápido de lo que contagian a otros individuos, y si $\mathcal{R}_{SIR}>1$ se considera que sí la hay, pues un infectado tarda más en recuperarse que en contagiar a otros individuos, propagando así la enfermedad\footnote{El comportamiento de la epidemia solo está definido cuando $\mathcal{R}_{SIR}<1$ o $\mathcal{R}_{SIR}>1$, pero no cuando su valor exacto es 1.}.
+El valor de $\mathcal{R}_{SIR}$ determina el comportamiento global del modelo. En particular, si $\mathcal{R}_{SIR}\leq 1$ se considera que no hay epidemia, pues los infectados se recuperan más rápido de lo que contagian a otros individuos, y si $\mathcal{R}_{SIR}>1$ se considera que sí la hay, pues un infectado tarda más en recuperarse que en contagiar a otros individuos, propagando así la enfermedad.
 
 En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico reproductivo se llama tasa de transmisión media.
 
@@ -291,6 +291,8 @@ $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2
 
 En el modelo SIS, el número básico reproductivo se define como 
 $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
+
+Si $\mathcal{R}_{SIS}\leq 1$ se considera que no hay epidemia y si $\mathcal{R}_{SIS}>1$ se considera que sí la hay..
 
 \begin{lemma}
 Los puntos de equilibrio de \eqref{eqn: modelo_SIS} son o bien $(S^*,I^*)=(N,0)$, o bien $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
