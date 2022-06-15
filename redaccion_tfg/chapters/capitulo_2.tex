@@ -8,7 +8,7 @@ Mientras en los modelos discretos consideramos un $\Delta t$ que hace referencia
 
 Al igual que los modelos discretos, los modelos continuos (principalmente SI, SIR y SIS) usan los estados Susceptible, Infectado y Recuperado. Los nombres suelen hacer referencia al flujo que se sigue para pasar entre los estados. Así, por ejemplo un modelo SI pasa de susceptible a infectado, uno SIR de susceptible a infectado y recuperado y SIS alterna entre susceptible e infectado.
 
-En estos modelos se hacen dos suposiciones:
+En estos modelos se hacen las mismas suposiciones que en los modelos discretos:
 \begin{enumerate}
 \item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de contraer la enfermedad.
 \item El total de la población es constante y lo denotaremos por $N$.
@@ -41,7 +41,7 @@ Calculamos los puntos de equilibrio de manera análoga al caso discreto, es deci
 
 Sustituyendo en el modelo $S=N-I$ obtenemos la ecuación diferencial logística continua
 
-$$I' = \frac{\alpha}I{N}(N-I).$$
+$$I' = \frac{\alpha}{N}I(N-I).$$
 
 \begin{figure}
 \begin{center}
@@ -81,7 +81,7 @@ $$I(t) = \frac{I_0e^{\alpha t}N}{(N-I_0)+I_0e^{\alpha t}} = \frac{I_0N}{(N-I_0)e
 
 Es claro que $I$ tiende monótonamente a $N$, luego tiene el mismo comportamiento que el modelo discreto.
 
-En \eqref{fig: SI_continuo} tenemos la representación gráfica del comportamiento del modelo SI continuo. Podemos comprobar que su comportamiento es análogo al modelo discreto. También es claro que se cumple que $I$ es siempre creciente y tiende a $N$, mientras $S$ es decreciente y tiende a $0$.
+En la figura \ref{fig: SI_continuo} mostramos la representación gráfica del comportamiento del modelo SI continuo. Podemos comprobar que su comportamiento es análogo al modelo discreto. También es claro que se cumple que $I$ es siempre creciente y tiende a $N$, mientras $S$ es decreciente y tiende a $0$.
 
 \section{Modelo SIS continuo}
 
@@ -107,7 +107,7 @@ Si $\mathcal{R}_{SIS}\leq 1$ entonces no se considera que haya una epidemia, y s
 \end{center}
 \end{figure}
 
-En \eqref{fig: SIS_continuo} comprobamos, al igual que hicimos antes, que su comportamiento es análogo al modelo discreto. También se observa que al igual que en el modelo SI el número de individuos susceptibles es decreciente y tiende a $0$ y el de infectados creciente y tiende a $N$, pero esto no siempre es así y se debe a los parámetros usados.
+En la figura \ref{fig: SIS_continuo} comprobamos, al igual que hicimos antes, que su comportamiento es análogo al modelo discreto. También se observa que al igual que en el modelo SI el número de individuos susceptibles es decreciente y tiende a $0$ y el de infectados creciente y tiende a $N$, pero esto no siempre es así y se debe a los parámetros usados.
 
 \begin{figure}
 \begin{center}
@@ -118,9 +118,9 @@ En \eqref{fig: SIS_continuo} comprobamos, al igual que hicimos antes, que su com
 \end{figure}
 
 
-Por ejemplo, en \eqref{fig: SIS_continuo2} vemos como variando solamente $\gamma$ el modelo se comporta de forma muy diferente, pues los susceptibles e infectados parecen estabilizarse en torno a la mitad de la población.
+Por ejemplo, en la figura \ref{fig: SIS_continuo2} vemos como variando solamente $\gamma$ el modelo se comporta de forma muy diferente, pues los susceptibles e infectados parecen estabilizarse en torno a la mitad de la población.
 
-Por otro lado, si $\gamma > \alpha$ entonces tenemos que no se produce una epidemia, pues los infectados tienden a $0$ y los susceptibles a $N$, como puede verse en \eqref{fig: SIS_continuo3}.
+Por otro lado, si $\gamma > \alpha$ entonces tenemos que no se produce una epidemia, pues los infectados tienden a $0$ y los susceptibles a $N$, como puede verse en la figura \ref{fig: SIS_continuo3}.
 
 \begin{figure}
 \begin{center}
@@ -147,7 +147,7 @@ R'(t) = & \gamma I
 
 donde $S(0)+I(0)+R(0)=N$. El número básico reproductivo en este caso se define como
 $$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma },$$
-y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor, se dice que sí la hay.
+y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pero en cambio, si es mayor que $1$, se dice que sí la hay.
 
 \begin{figure}
 \begin{center}
@@ -157,15 +157,15 @@ y si como hemos visto $\mathcal{R}_{SIR}\leq 1$  se dice que no hay epidemia, pe
 \end{center}
 \end{figure}
 
-En \eqref{fig: SIR_continuo} observamos el comportamiento del modelo SIR representado. Al igual que en su análogo discreto, el número de individuos susceptibles siempre decreciente y el de recuperados siempre creciente.
+En la figura \ref{fig: SIR_continuo} observamos el comportamiento del modelo SIR representado. Al igual que en su análogo discreto, el número de individuos susceptibles siempre decreciente y el de recuperados siempre es creciente.
 
 \section{Modelo Kermack-McKendrick}
 
 La información para el desarrollo de esta sección se ha obtenido principalmente de \cite{brauerMathematicalModelsPopulation2012}.
 
-El modelo de Kermack-McKendrick es un modelo sencillo basado en suposiciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
+El modelo clásico de Kermack-McKendrick es un modelo sencillo basado en suposiciones simples en el flujo de la población de unos grupos a otros según su estado respecto a la enfermedad. Estos grupos son susceptibles, infectados y recuperados, inmunizados o fallecidos.
 
-Este modelo es, por tanto, una modificación del modelo SIR ya estudiado. La diferencia con el modelo SIR ya estudiado es que en este modelo se supone que un individuo infectado hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, mientras en el modelo SIR se supone que $\alpha$ es el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en una unidad de tiempo. Por tanto, en este apartado y para hacer notar esta diferencia usaremos $\bar{\alpha}$ en lugar de $\alpha$.
+Este modelo es, por tanto, una modificación del modelo SIR. La diferencia con el modelo SIR ya estudiado es que en este modelo se supone que un individuo infectado hace contacto suficiente para contagiar la enfermedad con $\alpha N$ individuos por unidad de tiempo, mientras en el modelo SIR se supone que $\alpha$ es el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en una unidad de tiempo. Por tanto, en este apartado y para hacer notar esta diferencia usaremos $\bar{\alpha}$ en lugar de $\alpha$.
 
 El modelo se describe como:
 
@@ -181,10 +181,10 @@ R' & = \gamma I
 Las suposiciones en las que se basa el modelo descrito son:
 
 \begin{itemize}
-\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\bar{\alpha} N$ individuos por unidad de tiempo, sienod $N$ el total de la población.
+\item Un individuo hace contacto suficiente para contagiar la enfermedad con $\bar{\alpha} N$ individuos por unidad de tiempo, siendo $N$ el total de la población.
 \item Los infectados pasan a recuperados, inmunizados o fallecidos con la tasa $\gamma I$ por unidad de tiempo.
 \item La población total es constante, no hay incorporaciones ni salidas.
-\item No se consideran fallecimientos como grupo aparte, así la población es constante.
+\item No se consideran los fallecimientos como grupo aparte, así la población es constante.
 \end{itemize}
 
 \begin{figure}
@@ -194,7 +194,7 @@ Las suposiciones en las que se basa el modelo descrito son:
 \end{center}
 \end{figure}
 
-De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\alpha NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\bar{\alpha}  N S I}{N}=\bar{\alpha} SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
+De acuerdo con la primera suposición, dado que la probabilidad de que aleatoriamente el contacto de un infectado sea con un individuo susceptible es $\frac{S}{N}$, el número de nuevos infectados por unidad de tiempo por infectado es $\frac{\bar{\alpha} NS}{N}$, dando lugar a una tasa de nuevos infectados de $\frac{\bar{\alpha}  N S I}{N}=\bar{\alpha} SI$. Notemos que ambas aproximaciones dan lugar a la misma tasa de nuevos infectados.
 
 Observemos también que, al igual que en el modelo SIR, se cumple $N=S+I+R$.
 
@@ -212,7 +212,7 @@ y esto es lo que la segunda suposición realmente significa. Si en lugar de supo
 
 $$I(t)=I_0(t)+\int_0^\infty \bar{\alpha} S(t-\tau )I(t-\tau )P(\tau ) d\tau ,$$
 
-donde $I_0(t)$ hace referencia a los miembros de la población que eran infectados en el instante inicial y siguen siendo infecciosos en el momento $t$.
+donde $I_0(t)$ hace referencia a los miembros de la población que estaban infectados en el instante inicial y siguen siendo infecciosos en el momento $t$.
 
 Las suposiciones de que la tasa de contactos es proporcional al tamaño de la población $N$ con una constante de proporcionalidad constante $\bar{\alpha}$ y de una distribución exponencial de tasa de recuperación son demasiado simples para ser realistas. Existen otros modelos más generales que se pueden analizar, pero finalmente muchos modelos más realistas muestran comportamientos similares a estos modelos más simples.
 
@@ -251,8 +251,6 @@ De esta manera, si $\mathcal{R}_{KMK}\leq 1$ no hay una epidemia, mientras si $\
 
 \section{Análisis de los parámetros de los modelos}
 
-\subsection{Introducción}
-
 Estimar la tasa de transmisión media es uno de los aspectos más cruciales en epidemiología. Esta tasa condiciona la fase de la epidemia e incluso si va a extinguirse. Es combinación de tres factores:
 
 \begin{enumerate}
@@ -265,7 +263,7 @@ Los dos primeros factores se tienen en cuenta a la vez en la probabilidad de tra
 
 Todos los factores pueden cambiar con el tiempo. El primero, debido a mutaciones del virus y los dos últimos por medidas de contención. Por tanto, observar el decrecimiento de la transmisión media en una enfermedad es una buena forma de comprobar la efectividad de las medidas de contención.
 
-En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la COVID-19 en China hasta el momento, y así tratar de predecir su comportamiento en el futuro.
+En el artículo \cite{demongeotSIEpidemicModel} se presenta un modelo SI modificado con el objetivo de compararlo con los datos obtenidos en la pandemia de la Covid-19 en China hasta el momento, y así tratar de predecir su comportamiento en el futuro.
 
 El modelo SI continuo considerado es el siguiente:
 
@@ -283,7 +281,7 @@ Se consideran las condiciones iniciales
 
 $$S(t_0)=S_0>0, \: I(t_0)=I_0>0.$$
 
-Ahora, consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso la fracción la denotamos por $f\in (0,1]$. Sea $C_R(t)$ el número total acumulado de casos reportados. Entonces:
+Siguiendo \cite{demongeotSIEpidemicModel}, ahora consideramos que al final del período infeccioso nos han informado de una fracción del total de casos, en este caso la fracción la denotamos por $f\in (0,1]$. Sea $C_R(t)$ el número total acumulado de casos reportados. Entonces:
 
 \begin{equation}
 \label{eqn: acumulada}
@@ -347,11 +345,11 @@ I'(t) = \tau_0S(t)I(t) -vI(t)
 
 Usando la ecuación de $S(t)$ y resolviéndola obtenemos:
 
-$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(w) dw \right)} = S_0\exp{(-\tau_0 C_I(t))}$$
+$$S(t) = S_0\exp{\left( -\tau_0 \int_{t_0}^t I(w) dw \right)} = S_0\exp{(-\tau_0 C_I(t))}.$$
 
 Ahora, sustituyendo esta expresión en la ecuación de $I(t)$ del modelo y usando $C_I'(t)=I(t)$:
 
-$$I'(t) = S_0\exp{\left( -\tau_0 C_I(t)\right) }\tau_0 C_I'(t)-vI(t)$$
+$$I'(t) = S_0\exp{\left( -\tau_0 C_I(t)\right) }\tau_0 C_I'(t)-vI(t).$$
 
 Finalmente, integrando entre $t_0$ y $t$ tenemos que:
 

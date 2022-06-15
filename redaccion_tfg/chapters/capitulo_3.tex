@@ -7,7 +7,7 @@
 
 \section{Objetivos y análisis de requisitos}
 
-Los objetivos que se persiguen al realizar este proyecto son realizar un estudio de distintos modelos de epidemiología. Se pretende comprender cómo afectan sus parámetros y condiciones iniciales a la evolución en el tiempo de estos modelos desde un punto de vista tanto teórico como práctico, apoyándonos en distintas gráficas interactivas para ilustrar dichos comportamientos. Asimismo, se va a analizar la bondad de ajustes de parámetros de algunos de los modelos presentados aplicados a datos reales comprobando cuáles proporcionan mejores resultados en cada caso. Con el fin de satisfacer todos estos objetivos, se ha extraído la siguiente lista de requisitos:
+Los objetivos que se persiguen al realizar este proyecto son realizar un estudio de distintos modelos de epidemiología. Se pretende comprender cómo afectan sus parámetros y condiciones iniciales a la evolución en el tiempo de estos modelos desde un punto de vista tanto teórico como práctico, apoyándonos en distintas gráficas interactivas para ilustrar dichos comportamientos. Asimismo, se va a analizar la bondad de los ajustes de los parámetros de algunos de los modelos presentados aplicados a datos reales comprobando cuáles proporcionan mejores resultados en cada caso. Con el fin de satisfacer todos estos objetivos, se ha extraído la siguiente lista de requisitos:
 
 \begin{itemize}
 \item \textbf{Requisitos funcionales}
@@ -35,7 +35,7 @@ Los objetivos que se persiguen al realizar este proyecto son realizar un estudio
 
 \section{Desarrollo del proyecto}
 
-Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior, como se describe en la figura \eqref{modelo_espiral}.
+Actualmente hay diversas metodologías de desarrollo del software. Cada uno de estos modelos consta de una serie de etapas en las que se ha dividido el desarrollo. Para este proyecto, se ha optado por el modelo en espiral. En este modelo el software se desarrolla de forma incremental, es decir, se van añadiendo funcionalidades y mejoras al software según se van evaluando las que ya tiene. Cada bucle o iteración representa un conjunto de actividades. Estas actividades no están fijadas a ninguna prioridad, sino que las siguientes se eligen en función del análisis de riesgo, comenzando por el bucle interior, como se describe en la figura \ref{modelo_espiral}.
 
 \begin{figure}
 \begin{center}
@@ -45,7 +45,7 @@ Actualmente hay diversas metodologías de desarrollo del software. Cada uno de e
 \end{center}
 \end{figure}
 
-Se ha elegido este método de desarrollo ya que se consigue un desarrollo muy estable, pues toda funcionalidad añadida al software es probada y evaluada. De esta forma, aunque el proyecto no esté completo, siempre se tiene una parte funcional, y se va incrementando de forma que siempre disponemos de un producto mínimamente viable. 
+Se ha elegido este método de desarrollo ya que se consigue un avance el proyecto siempre muy estable, pues toda funcionalidad añadida al software es probada y evaluada. De esta forma, aunque el proyecto no esté completo, siempre se tiene una parte funcional, y se va incrementando de forma que siempre disponemos de un producto mínimamente viable. 
 
 \section{Gestión de recursos}
 
@@ -64,7 +64,7 @@ El proyecto consta de un equipo de 3 personas para llevarlo a cabo:
 	\item Pruebas para el correcto funcionamiento del proyecto.
 	\item Redacción de la documentación del proyecto.
 	\end{itemize}
-\item Tutores: Manuel Pegalajar Cuéllar y Teresa Encarnación Pérez Fernández, encargados de:
+\item Tutores: Manuel Pegalajar Cuéllar y Teresa E. Pérez Fernández, encargados de:
 	\begin{itemize}
 	\item Idea original del proyecto.
 	\item Proporcionar bibliografía.
@@ -92,7 +92,7 @@ El proyecto se ha llevado a cabo usando como sistema operativo Ubuntu 20.04 LTS,
 El software necesario para el proyecto es el siguiente:
 
 \begin{itemize}
-\item \textbf{Flask}. Flask es un microframework web en python. Proporciona funcionalidad básica para, de forma sencilla, crear una aplicación web. Una posible alternativa habría sido Django, pero finalmente se ha optado por Flask debido a su simplicidad, legibilidad y que en este proyecto no se requieren muchas de las funcionalidades que Django ofrece integradas. La documentación de Flask puede verse aquí \cite{flask}.
+\item \textbf{Flask}. Flask es un microframework web en Python. Proporciona funcionalidad básica para, de forma sencilla, crear una aplicación web. Una posible alternativa habría sido Django, pero finalmente se ha optado por Flask debido a su simplicidad, legibilidad y que en este proyecto no se requieren muchas de las funcionalidades que Django ofrece integradas. La documentación de Flask puede verse aquí \cite{flask}.
 \item \textbf{Dash}. Dash es un framework opensource basado en plotly.js y react.js que permite crear fácilmente aplicaciones basadas en datos. En este proyecto se ha usado principalmente por su capacidad de crear gráficas interactivas en tiempo real. La documentación del framework puede consultarse aquí \cite{dash}.
 \item \textbf{Scipy}. Scipy es una librería de código abierto para python que proporciona algoritmos para optimización, integración, ecuaciones diferenciales y estadística, entre otros. Se ha usado principalmente para optimizar, integrar en los modelos continuos y realizar los ajustes. Para su utilización se ha consultado \cite{scipy}.
 \item \textbf{VSCode}. Se ha usado VSCode como editor de texto, ya que proporciona una gran cantidad de plugins para cualquier lenguaje, así como integración con git.
@@ -108,13 +108,13 @@ Todo el software utilizado ha sido gratuito, por lo que no ha tenido coste algun
 
 A partir de los recursos previamente listados, se va a realizar una aproximación del coste de la consecución del proyecto, considerando que la duración del mismo es de 9 meses.
 
-Para los recursos humanos, dado que se considera que la alumna ha trabajado aproximadamente 450 horas de acuerdo a los créditos correspondientes asignados al TFG, y el gasto aproximado es 15€/h en calidad de alumna de prácticas, se tiene que el coste es de 6.750,00€.
+Para los recursos humanos, dado que se considera que la alumna ha trabajado aproximadamente 450 horas de acuerdo a los $18$ créditos ECTS correspondientes asignados al TFG, y el gasto aproximado es 15€/h en calidad de alumna de prácticas, se tiene que el coste es de 6.750,00€.
 
 A los tutores, dada su formación profesional se les supone un coste estimado de 50€/h, y aproximando que se dedican 3 horas semanales para la tutorización del proyecto, se tiene que el coste total tras los 9 meses es de 5.400,00€ por tutor.
 
 Dado que el portátil empleado tiene una vida útil estimada de 5 años, le corresponde un coste de 120,00€ por amortización durante la realización del proyecto.
 
-Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto aparece desglosado en la tabla \eqref{tabla_pres}.
+Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto aparece desglosado en la tabla \ref{tabla_pres}.
 
 \begin{table}[!h]
 \caption{Desglose de presupuesto del proyecto.}
@@ -172,8 +172,8 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
 Para la realización del proyecto se han distinguido distintas etapas, y en cada una de ellas se ha implementado y trabajado sobre una funcionalidad concreta, de acuerdo al modelo en espiral. Las distintas partes del proyecto han sido:
 
 \begin{itemize}
-\item \textbf{T1. Estudio de bibliografía y estado actual de la epidemiología}. Se han consultado diversos libros, artículos y páginas de interés con el fin de comprender mejor y obtener los recursos necesarios para la realización del proyecto. Además, se ha realizado una selección de los modelos a estudiar y tratar durante el desarrollo del mismo.
-\item \textbf{T2. Especificación de requisitos}. En base a la información obtenida del proyecto, en esta etapa se han especificado los requisitos que el software debe cumplir.
+\item \textbf{T1. Estudio de bibliografía y estado actual de la epidemiología}. Se han consultado diversos libros, artículos y páginas de interés con el fin de comprender mejor y obtener los recursos necesarios para la realización de la parte teórica del proyecto. Además, se ha realizado una selección de los modelos a estudiar y tratar durante el desarrollo del mismo.
+\item \textbf{T2. Especificación de requisitos}. En base a la información obtenida de la primera parte, en esta etapa se han especificado los requisitos que el software debe cumplir.
 \item \textbf{T3. Diseño del sistema}. A partir de los requisitos especificados, se ha diseñado la arquitectura del sistema y cómo será la interfaz con la que van a interactuar los usuarios.
 \item \textbf{T4. Marco teórico}. Se han indicado conceptos y modelos, así como estudiado las características de estos con el fin de desarrollar la teoría necesaria para trabajar con modelos epidemiológicos. Asimismo, se ha indicado el contexto en el que la epidemiología es de gran utilidad.
 \item \textbf{T5. Implementación de los modelos discretos}. Se ha realizado la implementación de los modelos discretos SI, SIR y SIS, incluyendo gráficas interactivas de los mismos.
@@ -182,7 +182,7 @@ Para la realización del proyecto se han distinguido distintas etapas, y en cada
 \item \textbf{T8. Documentación del proyecto}. Se ha llevado a cabo la documentación del proyecto durante todo su desarrollo.
 \end{itemize}
 
-Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribuido el tiempo del proyecto, se ha realizado el diagrama \eqref{fig: planificacion} en el que se puede ver cuánto tiempo se ha dedicado a cada etapa del desarrollo del proyecto durante los 10 meses de duración del mismo.
+Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribuido el tiempo del proyecto, se ha realizado el diagrama \ref{fig: planificacion} en el que se puede ver cuánto tiempo se ha dedicado a cada etapa del desarrollo del proyecto durante los $9$ meses de duración del mismo.
 
 \begin{figure}[!h]
 \begin{center}
@@ -197,7 +197,7 @@ Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribu
 
 Para el modelado conceptual de la aplicación web, se ha optado por utilizar OOWS (Object-Oriented approach for Web Solutions modeling) \cite{pastorobject}, que usa modelado de objetos UML y modelos de navegación y presentación usando UML. Así, se expresan las características navegacionales de la aplicación web a la vez que se integra con las restantes vistas del esquema conceptual mediante una notación UML adaptada.
 
-En \eqref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down:
+En la figura \ref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down:
 
 \begin{figure}[!h]
 \begin{center}
@@ -207,7 +207,7 @@ En \eqref{diag: modelo_concep}, se muestra el diagrama conceptual, construido me
 \end{center}
 \end{figure}
 
-En \eqref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|Home|, en \eqref{diag: modelo_concep_modelos} se ve el detalle de \verb|Modelos Interactivos|, así como en \eqref{diag: modelo_concep_ayuda} el de \verb|Ayuda| y en \eqref{diag: modelo_concep_ajuste} el de \verb|Ajuste de datos|.
+En la figura \ref{diag: modelo_concep_home} se muestra el detalle del contexto de \verb|Home|, en la figura \ref{diag: modelo_concep_modelos} se ve el detalle de \verb|Modelos Interactivos|, así como en \ref{diag: modelo_concep_ayuda} el de \verb|Ayuda| y en \ref{diag: modelo_concep_ajuste} el de \verb|Ajuste de datos|.
 
 \begin{figure}[!h]
 \begin{center}
@@ -262,7 +262,7 @@ A partir de los requisitos listados anteriormente, se obtienen los siguientes ca
 
 \subsection{Actores del sistema}
 
-En este sistema solo tenemos un actor, que es el usuario que va a usar la página web. La información del usuario puede consultarse en el cuadro \eqref{tab: actores}.
+En este sistema solo tenemos un actor, que es el usuario que va a usar la página web. La información del usuario puede consultarse en el cuadro \ref{tab: actores}.
 
 \begin{table}[!h]
 \caption{Actores del sistema.}
@@ -286,7 +286,7 @@ En este sistema solo tenemos un actor, que es el usuario que va a usar la págin
 
 \subsection{Diagrama de casos de uso}
 
-Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todos los posibles casos de uso, así como sus relaciones entre ellos. El diagrama resultante puede verse en la figura \eqref{diag: casos_uso}.
+Se incluye también el diagrama de los casos de uso, con el fin de ilustrar todos los posibles casos de uso, así como sus relaciones entre ellos. El diagrama resultante puede verse en la figura \ref{diag: casos_uso}.
 
 \begin{figure}[!h]
 \begin{center}
@@ -1000,7 +1000,7 @@ Se descarga la imagen de una gráfica generada. \\
 
 Para facilitar la comprensión del funcionamiento de las distintas funcionalidades del sistema, se han realizado diagramas de actividad de sus funcionalidades más importantes, siendo estas la posible modificación de los parámetros de los modelos interactivos y el ajuste de datos subidos mediante un fichero de datos.
 
-El diagrama de actividad correspondiente a la modificación de parámetros en los modelos se muestra en \eqref{diag: actividad_modificacion} y el del ajuste de parámetros se puede ver en \eqref{diag: actividad_ajuste}.
+El diagrama de actividad correspondiente a la modificación de parámetros en los modelos se muestra en la figura \ref{diag: actividad_modificacion} y el del ajuste de parámetros se puede ver en la figura \ref{diag: actividad_ajuste}.
 
 \begin{figure}[!h]
 \begin{center}
@@ -1014,7 +1014,7 @@ El diagrama de actividad correspondiente a la modificación de parámetros en lo
 \begin{center}
 \caption{Diagrama de actividad del ajuste de datos.}
 \label{diag: actividad_ajuste}
-\includegraphics[scale=0.4]{diagrama_actividad-Ajuste_parametros.drawio}
+\includegraphics[scale=0.42]{diagrama_actividad-Ajuste_parametros.drawio}
 \end{center}
 \end{figure}
 
@@ -1035,16 +1035,16 @@ Se han llevado a cabo dos tipos de pruebas:
 \begin{itemize}
 \item \textbf{Preprocesamiento de valores de parámetros.} Se ha probado a introducir diversos valores para los parámetros modificables en los modelos interactivos, con el fin de asegurarnos de que se preprocesan adecuadamente. El comportamiento esperado es sustituir el valor introducido por $0$ en caso de que este sea un carácter o un valor negativo.
 \item \textbf{Correcta generación de datos para diversos modelos.} Se han representado gráficamente los datos generados por las funciones de los modelos y contrastando el comportamiento de los datos obtenidos con el descrito en la teoría, asegurando así la correcta generación de los datos de acuerdo a los diversos modelos.
-\item \textbf{Subida de ficheros.} Se ha probado a subir ficheros con extensiones permitidas (csv y txt) y comprobado que se han copiado al directorio pertinente para disponer de los ficheros cuando se requiera, así como a subir ficheros con extensiones no permitidas, verificando que se muestra el error pertinente al no permitirse.
+\item \textbf{Subida de ficheros.} Se ha probado a subir ficheros con extensiones permitidas (csv y txt) y comprobado que se han copiado al directorio pertinente para disponer de los ficheros cuando se requiera, así como a subir ficheros con extensiones no permitidas, verificando que se muestra el error correspondiente al no permitirse.
 \end{itemize}
 
 \subsection{Pruebas de usuario}
 
 \begin{itemize}
-\item \textbf{Prueba de población constante.} Si el usuario introduce valores para las condiciones iniciales ($S_0, I_0$ y $R_0$ si es pertinente) tal que su suma no sea $N$ se actualiza el valor de la población de forma que $S_0+I_0+R_0=N$.
+\item \textbf{Prueba de población constante.} Si el usuario introduce valores para las condiciones iniciales ($S_0, I_0$ y $R_0$ si es requerido) tal que su suma no sea $N$ se actualiza el valor de la población de forma que $S_0+I_0+R_0=N$.
 \item \textbf{Formato de los valores para parámetros.} Si el usuario introduce un valor de un parámetro con formato incorrecto se sustituye por $0$.
-\item \textbf{Condiciones iniciales son números enteros.} Si el usuario introduce un valor no entero positivo se toma como valor real la parte entera del valor introducido por el usuario.
-\item \textbf{Subida de fichero inexistente.} Si se trata de subir un fichero al que no se puede acceder o no selecciona ningún fichero antes de pulsar en subir fichero se muestra el error pertinente.
+\item \textbf{Condiciones iniciales deben ser números enteros.} Si el usuario introduce un valor no entero positivo se toma como valor real la parte entera del valor introducido por el usuario.
+\item \textbf{Subida de fichero inexistente.} Si se trata de subir un fichero al que no se puede acceder o no selecciona ningún fichero antes de pulsar en subir fichero se muestra el error correspondiente.
 \item \textbf{Interacción con las gráficas.} Los usuarios pueden hacer zoom, desplazarse y obtener el valor numérico de las representaciones gráficas en cada momento en tiempo real, así como descargar las gráficas generadas.
 \end{itemize}
 
@@ -1057,10 +1057,10 @@ Para finalizar el diseño del proyecto, hemos realizado unos prototipos del aspe
 Se han prototipado en concreto las siguientes páginas:
 
 \begin{itemize}
-\item \textbf{Home}. La página home o principal de la página web es la primera página que se ve al visitar el sitio. Mostrará el logotipo de la página web y una breve descripción del proyecto. Desde aquí, podemos acceder a todas las demás páginas mediante los menús laterales o el menú de navegación. Esta página puede verse en la figura \eqref{wire: home}. Además, los menús en la página serán desplegables. Estos desplegables se ven en el protipo \eqref{wire: home_desplegable}.
-\item \textbf{Modelo interactivo}. Se ha diseñado la vista genérica de la página de cualquier modelo interactivo, ya sea este discreto o continuo. Se mostrarían en primer lugar las ecuaciones del modelo junto con una explicación del mismo. Bajo esto, se podrían editar los parámetros y encontraríamos las gráficas correspondientes a dichos parámetros. Esta página se muestra en la figura \eqref{wire: modelo_interactivo}.
-\item \textbf{Ajuste de datos}. También encontramos el prototipo \eqref{wire: ajuste}, que muestra el concepto de la página de ajuste de datos. Esta contendría primeramente una representación gráfica de los datos del fichero subido por el usuario. Después, se mostraría un selector para elegir el modelo de ajuste. Finalmente encontraríamos una gráfica representando los datos junto con el ajuste realizado y la información relativa a valores estimados de parámetros y los errores.
-\item \textbf{Ayuda}. Se ha diseñado una página de ayuda con preguntas frecuentes e información de contacto para que, en caso de que los usuarios tuvieran alguna duda sobre el uso de la página, puedan consultarla. Esta página puede verse en el prototipo \eqref{wire: ayuda}.
+\item \textbf{Home}. La página home o principal de la página web es la primera página que se ve al visitar el sitio. Mostrará el logotipo de la página web y una breve descripción del proyecto. Desde aquí, podemos acceder a todas las demás páginas mediante los menús laterales o el menú de navegación. Esta página puede verse en la figura \ref{wire: home}. Además, los menús en la página serán desplegables. Estos desplegables se ven en el prototipo \ref{wire: home_desplegable}.
+\item \textbf{Modelo interactivo}. Se ha diseñado la vista genérica de la página de cualquier modelo interactivo, ya sea discreto o continuo. Se mostrarían en primer lugar las ecuaciones del modelo junto con una explicación del mismo. Bajo esto, se podrían editar los parámetros y encontraríamos las gráficas correspondientes a dichos parámetros. Esta página se muestra en la figura \ref{wire: modelo_interactivo}.
+\item \textbf{Ajuste de datos}. También encontramos el prototipo \ref{wire: ajuste}, que muestra el concepto de la página de ajuste de datos. Esta contiene primero una representación gráfica de los datos del fichero subido por el usuario. Después, se muestra un selector para elegir el modelo de ajuste. Finalmente encontramos una gráfica representando los datos junto con el ajuste realizado y la información relativa a valores estimados de parámetros y los errores.
+\item \textbf{Ayuda}. Se ha diseñado una página de ayuda con preguntas frecuentes e información de contacto para que, en caso de que los usuarios tuvieran alguna duda sobre el uso de la página, puedan consultarla. Esta página puede verse en el prototipo \ref{wire: ayuda}.
 \end{itemize}
 
 
@@ -1111,9 +1111,9 @@ Se han prototipado en concreto las siguientes páginas:
 
 El software consiste en el desarrollo de una página web de objetivo didáctico a la par que práctico, en la que se ofrece información sobre diversos modelos básicos de epidemiología de forma sencilla y clara a cualquier usuario.
 
-De esta forma, el usuario puede aprender sobre varios modelos de epidemiología comprobando interactivamente el comportamiento de estos modelos en tiempo real, y cómo afectan los parámetros de cada uno de ellos a la evolución de los mismos.
+De esta forma, el usuario puede aprender sobre varios modelos de epidemiología comprobando interactivamente su comportamiento en tiempo real, y cómo afectan los parámetros de cada uno de ellos a la evolución de los mismos.
 
-Además, se pueden subir ficheros con datos, ya sean generados por el propio usuario o datos reales recogidos y comprobar el resultado de ajustar estos datos a los modelos mencionados, así como elegir el mejor modelo que ajusta a dichos datos.
+Además, se pueden subir ficheros con datos, ya sean generados por el propio usuario o datos reales recogidos y comprobar el resultado de ajustar estos datos a los modelos mencionados, así como elegir el mejor modelo que ajusta dichos datos.
 
 Para acceder a la página web el usuario solo requiere de un dispositivo con un navegador de internet mediante el que acceder a la web, introduciendo la url correspondiente.
 
@@ -1133,7 +1133,7 @@ Desde esta página podemos acceder a todas las funcionalidades e información de
 
 Además, la página principal es accesible en cualquier momento. Para volver a ella basta clicar en el logo de la esquina superior izquierda o el nombre de la página situado a su lado.
 
-Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. En esta página encontramos dos secciones: preguntas frecuentes, que puede verse en la imagen \eqref{manual: ayuda1}, y contacto, que se muestra en la figura \eqref{manual: ayuda2}, para recibir asistencia personalizada o sugerir mejoras a la página web.
+Asimismo, en la barra de navegación, situado al lado del título de la página encontramos el enlace a la ayuda de la misma. En esta página encontramos dos secciones: preguntas frecuentes, que puede verse en la imagen \ref{manual: ayuda1}, y contacto, que se muestra en la figura \ref{manual: ayuda2}, para recibir asistencia personalizada o sugerir mejoras a la página web.
 
 \begin{figure}
 \begin{center}
@@ -1151,7 +1151,7 @@ Asimismo, en la barra de navegación, situado al lado del título de la página 
 \end{center}
 \end{figure}
 
-También puede accederse a la página de ayuda desde el menú lateral, clicando en \verb|¿Cómo funciona?| para mostrar las opciones del desplegable y luego en ayuda. Aparte, en notación hay un resumen de la notación usada en toda la página web, haciendo fácil consultarla en cualquier momento. El apartado de notación se muestra en la figura \eqref{manual: notacion}.
+También puede accederse a la página de ayuda desde el menú lateral, clicando en \verb|¿Cómo funciona?| para mostrar las opciones del desplegable y luego en ayuda. Aparte, en \verb|notación| hay un resumen de la notación usada en toda la página web, haciendo fácil consultarla en cualquier momento. El apartado de notación se muestra en la figura \ref{manual: notacion}.
 
 \begin{figure}
 \begin{center}
@@ -1167,7 +1167,7 @@ Finalmente, las distintas funcionalidades de la página se encuentran en el men�
 
 \subsubsection{Modificación de parámetros de los modelos interactivos}
 
-En el menú lateral encontramos dos menús desplegables, llamados \verb|Modelos discretos| y \verb|Modelos Continuos|. Al pulsar sobre cualquiera de ellos se muestran tres enlaces, a los modelos SI, SIR y SIS, como se ve en \eqref{manual: desplegable}. Al seleccionar cualquiera de ellos llegamos a la página de dicho modelo.
+En el menú lateral encontramos dos menús desplegables, llamados \verb|Modelos| \verb|discretos| y \verb|Modelos Continuos|. Al pulsar sobre cualquiera de ellos se muestran tres enlaces, a los modelos SI, SIR y SIS, como se ve en la figura \ref{manual: desplegable}. Al seleccionar cualquiera de ellos llegamos a la página de dicho modelo.
 
 \begin{figure}
 \begin{center}
@@ -1180,9 +1180,9 @@ En el menú lateral encontramos dos menús desplegables, llamados \verb|Modelos 
 En las páginas de los modelos podemos distinguir varias partes principales:
 
 \begin{itemize}
-\item Al comienzo de la página de cada modelo se explica la teoría y ecuaciones correspondientes a dicho modelo. Por ejemplo, para el modelo SI discreto se puede ver la explicación teórica en \eqref{manual: modeloSI1}.
-\item A continuación se muestran los parámetros del modelo, que el usuario puede modificar con el fin de ver cómo varía el comportamiento del modelo que se está estudiando. En el modelo SI por ejemplo se pueden modificar los modelos que se ven en \eqref{manual: modeloSI2}.
-\item Finalmente, se muestran una serie de gráficas que ilustran el comportamiento del modelo con los parámetros dados. La primera es una funcion de cada grupo explícita grupo, se puede ver en \eqref{manual: modeloSI2}, mientras el resto son funciones implícitas del tiempo, se muestra en \eqref{manual: modeloSI3}.
+\item Al comienzo de la página de cada modelo se explica la teoría y ecuaciones correspondientes a dicho modelo. Por ejemplo, para el modelo SI discreto se puede ver la explicación teórica en la figura \ref{manual: modeloSI1}.
+\item A continuación se muestran los parámetros del modelo, que el usuario puede modificar con el fin de ver cómo varía el comportamiento del modelo que se está estudiando. En el modelo SI por ejemplo se pueden modificar los modelos que se ven en la imagen \ref{manual: modeloSI2}.
+\item Finalmente, se muestran una serie de gráficas que ilustran el comportamiento del modelo con los parámetros dados. La primera es una funcion de cada grupo de individuos dependiendo explícitamente del tiempo, se puede ver en la gráfica \ref{manual: modeloSI2}, mientras el resto son funciones implícitas del tiempo, se muestra en la figura \ref{manual: modeloSI3}.
 \end{itemize}
 
 \begin{figure}
@@ -1213,7 +1213,7 @@ En las páginas de los modelos podemos distinguir varias partes principales:
 
 También es posible subir un fichero en formato \verb|csv| con datos para ajustar con alguno de los modelos disponibles.
 
-Es importante que el fichero a subir tenga como mínimo dos filas y tres columnas llamadas \verb|t|, \verb|S| e \verb|I|, siendo estas el tiempo, los individuos susceptibles en ese tiempo y los individuos infectados en ese tiempo, respectivamente. Adicionalmente, si fuera pertinente se podría tener una cuarta columna \verb|R| con los recuperados en ese tiempo.
+Es importante que el fichero a subir tenga como mínimo dos filas y tres columnas llamadas \verb|t|, \verb|S| e \verb|I|, siendo estas el tiempo, los individuos susceptibles en ese tiempo y los individuos infectados en ese tiempo, respectivamente. Adicionalmente, se podría tener una cuarta columna \verb|R| con los recuperados en ese tiempo.
 
 Un ejemplo de un fichero válido sería \verb|fichero_ejemplo.csv| conteniendo:
 
@@ -1226,7 +1226,7 @@ t,S,I,R
 2007,99.993286104437,3.8927305934099175,0.6722548513086043
 \end{verbatim}
 
-Para subir el fichero en \eqref{manual: ajuste1} seleccionamos \verb|Examinar|, de forma que se abre el navegador de archivos y podemos seleccionar nuestro fichero de datos. Una vez seleccionado pulsamos \verb|Upload| y cargamos el archivo.
+Para subir el fichero en la página \ref{manual: ajuste1} seleccionamos \verb|Examinar|, de forma que se abre el navegador de archivos y podemos seleccionar nuestro fichero de datos. Una vez seleccionado pulsamos \verb|Upload| y cargamos el archivo.
 
 \begin{figure}
 \begin{center}
@@ -1244,16 +1244,16 @@ Para subir el fichero en \eqref{manual: ajuste1} seleccionamos \verb|Examinar|, 
 \end{center}
 \end{figure}
 
-Una vez cargado el fichero se nos muestra una gráfica con los datos del fichero representados, como se ve en \eqref{manual: ajuste2}. A continuación, se muestra un desplegable para elegir el modelo con el que se van a intentar ajustar los datos. Las opciones de este son:
+Una vez cargado el fichero se nos muestra una gráfica con los datos del fichero representados, como se ve en la figura \ref{manual: ajuste2}. A continuación, se muestra un desplegable para elegir el modelo con el que se van a intentar ajustar los datos. Las opciones de este son:
 
 \begin{itemize}
 \item \textbf{Modelo SI}. Ajusta un modelo SI a los datos.
 \item \textbf{Modelo SIR}. Ajusta un modelo SIR a los datos.
 \item \textbf{Modelo SIS}. Ajusta un modelo SIS a los datos.
-\item \textbf{Mejor modelo}. El sistema decide cuál es el modelo de los ya mencionados que mejor se ajusta a los datos en base a los errores obtenidos y lo muestra. Realiza el ajuste con dicho modelo.
+\item \textbf{Mejor modelo}. El sistema decide cuál es el modelo que mejor se ajusta a los datos en base a los errores obtenidos y lo muestra. Realiza el ajuste con dicho modelo.
 \end{itemize}
 
-Además, se muestra una gráfica donde se representan los datos y el ajuste obtenido. Este desplegable y la gráfica representando el ajuste se muestran en \eqref{manual: ajuste3}.
+Además, se muestra una gráfica donde se representan los datos y el ajuste obtenido. Este desplegable y la gráfica representando el ajuste se muestran en la figura \ref{manual: ajuste3}.
 
 \begin{figure}
 \begin{center}
@@ -1263,7 +1263,7 @@ Además, se muestra una gráfica donde se representan los datos y el ajuste obte
 \end{center}
 \end{figure}
 
-Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al modelo seleccionado y los errores correspondientes. En caso de que la opción para el ajuste haya sido \verb|Mejor modelo| se muestra también el modelo elegido. Estas estimaciones se ven en \eqref{manual: ajuste4}.
+Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al modelo seleccionado y los errores correspondientes. En caso de que la opción para el ajuste haya sido \verb|Mejor modelo| se muestra también el modelo elegido. Estas estimaciones se pueden ver en la figura \ref{manual: ajuste4}.
 
 \begin{figure}
 \begin{center}
@@ -1292,7 +1292,7 @@ Tras esto accedemos a la url \verb|localhost:5000| en nuestro navegador.
 
 \section{Datos reales}
 
-Una vez estudiados los modelos teóricos y terminada la implementación vamos a realizar el ajuste de varios modelos aplicado a datos reales de enfermedades. De esta forma, podemos comprobar si los modelos estudiados sirven para ajustar los datos de algunas enfermedades, ayudando también así a la comprensión del desarrollo de estas.
+Una vez estudiados los modelos teóricos y terminada la implementación vamos a realizar el ajuste de varios modelos aplicado a datos reales de enfermedades. De esta forma, podemos comprobar si los modelos estudiados sirven para ajustar los datos de algunas enfermedades, ayudando también así a la comprensión de la evolución de estas.
 
 \section{El VIH en Baleares}
 
@@ -1302,7 +1302,7 @@ El VIH provino de una especie de chimpancé de África, desde la que se propagó
 
 Dado que es una enfermedad para la que una vez infectado siempre se es portador, se tiene que sigue un modelo SI.
 
-El conjunto de datos escogido contiene los datos de los reportes de nuevos infectados por VIH en Baleares desde 2003 hasta 2019 anualmente. La fuente de dichos datos es \cite{datos_vih}.
+El conjunto de datos escogido contiene los datos de los reportes de nuevos infectados por VIH en Baleares anualmente desde 2003 hasta 2019. La fuente utilizada para dichos datos es \cite{datos_vih}.
 
 En el informe se proporcionan los nuevos casos detectados, luego los datos con los que vamos a trabajar son la suma acumulada de estos casos nuevos. Esto se debe a que el modelo considera los casos activos, no solo los nuevos. Por tanto, tenemos que los casos activos son los nuevos más todos los que había antes.
 
@@ -1310,7 +1310,7 @@ Además, para que el modelo funcione bien el número total de individuos conside
 
 Teniendo esto en cuenta, generamos un fichero csv con el formato de la página web.
 
-Primeramente, observamos la representación de los datos en \eqref{datos_vih}. Vemos que el número de individuos susceptibles va descendiendo, así como el de infectados creciendo en términos globales. Pese a esto, en ciertas partes de la gráfica se aprecia una leve curvatura, donde los susceptibles pasan de ser cóncavos a convexos y los infectados de convexo a cóncavo.
+Primeramente, observamos la representación de los datos en la figura \ref{datos_vih}. Vemos que el número de individuos susceptibles va descendiendo, así como el de infectados creciendo en términos globales. Pese a esto, en ciertas partes de la gráfica se aprecia una leve curvatura, donde los datos de susceptibles pasan de ser cóncavos a convexos y los datos de infectados de convexo a cóncavo.
 
 \begin{figure}
 \begin{center}
@@ -1322,7 +1322,7 @@ Primeramente, observamos la representación de los datos en \eqref{datos_vih}. V
 
 Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SI.
 
-La representación gráfica del ajuste se puede ver en \eqref{ajuste_vih}. En las curvas del ajuste generado apreciamos con mayor claridad ese cambio de curvatura de cóncavo a convexo y viceversa en el ajuste. 
+La representación gráfica del ajuste se puede ver en la figura \ref{ajuste_vih}. En las curvas del ajuste generado apreciamos con mayor claridad ese cambio de curvatura de cóncavo a convexo y viceversa. 
 
 \begin{figure}
 \begin{center}
@@ -1332,7 +1332,7 @@ La representación gráfica del ajuste se puede ver en \eqref{ajuste_vih}. En la
 \end{center}
 \end{figure}
 
-En \eqref{estimacion_vih} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.31$ e $I_0 \approx 287$. Dado que los valores de estos parámetros son razonables y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por VIH en Baleares en efecto siguen un modelo SI.
+En  la gráfica \ref{estimacion_vih} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.31$ e $I_0 \approx 287$. Dado que los valores de estos parámetros son razonables y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por VIH en Baleares en efecto siguen un modelo SI.
 
 \begin{figure}
 \begin{center}
@@ -1342,17 +1342,17 @@ En \eqref{estimacion_vih} se muestra la estimación de los parámetros obtenidos
 \end{center}
 \end{figure}
 
-\section{El covid en España}
+\section{El Covid-19 en España}
 
-El covid es una enfermedad respiratoria aguda causada por el virus SARS-CoV-2. Se informó respecto a ella por primera vez en Diciembre de 2019, tras detectarse varios casos en Wuhan. Posteriormente se extendió a otros países, entre los que se encuentra España.
+El Covid-19 es una enfermedad respiratoria aguda causada por el virus SARS-CoV-2. Se informó respecto a ella por primera vez en Diciembre de 2019, tras detectarse varios casos en Wuhan. Posteriormente se extendió a otros países, entre los que se encuentra España.
 
-A lo largo de la pandemia del covid en el mundo se han recopilado una gran cantidad de datos para estudiar esta enfermedad. Para este estudio vamos a usar el conjunto de datos obtenido de \cite{datos_covid}.
+A lo largo de la pandemia del Covid-19 en el mundo se han recopilado una gran cantidad de datos para estudiar esta enfermedad. Para este estudio vamos a usar el conjunto de datos obtenido de \cite{datos_covid}.
 
 En \cite{enrique_amaro} se comprueba que se puede modelar mediante el modelo SIR. Vamos a tratar de ajustarla siguiendo este modelo.
 
 En el fichero csv de los datos hay mucha información, pero realmente solo vamos a usar las columnas \verb|new_cases|, que indica los nuevos casos reportados y \verb|new_deaths|, que informa de las nuevas muertes.
 
-Del fichero, nos quedamos con los datos de España y esas dos columnas, que a continuación trataremos, ya que al igual que en el caso anterior, necesitamos todos los casos activos y todos los recuperados hasta el momento.
+Del fichero nos quedamos con los datos de España y esas dos columnas, que a continuación trataremos, ya que al igual que en el caso anterior, necesitamos trabajar con todos los casos activos y todos los recuperados hasta el momento.
 
 Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a partir del día de 5 de Marzo de 2020, ya que en los 10 días anteriores no hay datos reportados pese a que aparecen en los datos, y durante los siguientes 170 días, esto es, hasta el 21 de Agosto de 2020, pues es aproximadamente 6 meses, lo que se estima duró lo que se conoce coloquialmente como la primera ola.
 
@@ -1360,7 +1360,7 @@ Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondi
 
 Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. `
 
-Para calcular el número de infectados activos, dado que el covid al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
+Para calcular el número de infectados activos, dado que el Covid-19 al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
 
 Asimismo, como recuperados se han considerados los fallecidos y los nuevos infectados de hace más de 10 días atrás, pues ya habrían superado la enfermedad y no podrían volver a infectarse.
 
@@ -1368,11 +1368,11 @@ Además, para que el modelo funcione bien el número total de individuos conside
 
 Teniendo esto en cuenta, generamos un fichero csv con el formato necesario para realizar un ajuste en la página web.
 
-Al igual que antes, comenzamos observando la representación de los datos en \eqref{datos_covid}. El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados, que primero suben y luego descienden, indicando así el final de la ola.
+Al igual que antes, comenzamos observando la representación de los datos en la gráfica \ref{datos_covid}. El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados, que primero suben y luego descienden, indicando así el final de la ola.
 
 \begin{figure}
 \begin{center}
-\caption{Representación de los datos del covid en España desde el 5 de Marzo hasta e 21 de Agosto de 2020.}
+\caption{Representación de los datos del Covid-19 en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.}
 \label{datos_covid}
 \includegraphics[scale=0.5]{datos_covid}
 \end{center}
@@ -1380,21 +1380,21 @@ Al igual que antes, comenzamos observando la representación de los datos en \eq
 
 Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SIR.
 
-La representación gráfica del ajuste se puede ver en \eqref{ajuste_covid}. El ajuste parece seguir las tendencias generales de los datos, aunque los infectados quedan ligeramente por encima en el ajuste que en los datos experimentales, así como los recuperados y susceptibles ajustan peor al final, pues cuanto más nos alejamos de la ola en sí, peor es el ajuste al modelo SIR.
+La representación gráfica del ajuste se puede ver en la figura \ref{ajuste_covid}. El ajuste parece seguir las tendencias generales de los datos, aunque los infectados quedan ligeramente por encima en el ajuste que en los datos experimentales, así como los recuperados y susceptibles ajustan peor al final, pues cuanto más nos alejamos de la ola en sí, peor es el ajuste al modelo SIR.
 
 \begin{figure}
 \begin{center}
-\caption{Representación del ajuste con el modelo SIR a los datos del covid en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.}
+\caption{Representación del ajuste con el modelo SIR a los datos del Covid-19 en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.}
 \label{ajuste_covid}
 \includegraphics[scale=0.5]{ajuste_covid}
 \end{center}
 \end{figure}
 
-En \eqref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por covid en España en efecto siguen un modelo SIR.
+En la figura \ref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por Covid-19 en España en efecto siguen un modelo SIR.
 
 \begin{figure}
 \begin{center}
-\caption{Estimaciones y errores del ajuste con el modelo SIR a los datos del covid en España.}
+\caption{Estimaciones y errores del ajuste con el modelo SIR a los datos del Covid-19 en España.}
 \label{estimacion_covid}
 \includegraphics[scale=0.5]{estimacion_covid}
 \end{center}

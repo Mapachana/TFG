@@ -212,7 +212,7 @@ Por tanto, $0$ es localmente asintóticamente estable para $\mu = 1$.
 
 Por otra parte, $f'\left(1-\frac{1}{\mu}\right) = 2-\mu$. Por tanto es localmente asintóticamente estable si $-1<2-\mu<1$, o, equivalentemente, $1<\mu < 3$ y es inestable si $\mu > 3$.
 
-Se mustra gráficamente el comportamiento mediante las representaciones gráficas \eqref{fig: cobweb_2.8} y \eqref{fig: cobweb_3.8}.
+Se muestra gráficamente el comportamiento mediante las representaciones gráficas \ref{fig: cobweb_2.8} y \ref{fig: cobweb_3.8}.
 
 \begin{figure}
 \begin{center}
@@ -230,9 +230,9 @@ Se mustra gráficamente el comportamiento mediante las representaciones gráfica
 \end{center}
 \end{figure}
 
-En \eqref{fig: cobweb_2.8} podemos ver como el punto de equilibrio $x^*=0$ es inestable y como el otro punto de equilibrio $x^*=1-\frac{1}{\mu}$ es localmente asintóticamente estable.
+En \ref{fig: cobweb_2.8} podemos ver como el punto de equilibrio $x^*=0$ es inestable y como el otro punto de equilibrio $x^*=1-\frac{1}{\mu}$ es localmente asintóticamente estable.
 
-Asimismo, en \eqref{fig: cobweb_3.8} observamos como ambos puntos de equilibrio son inestables.
+Asimismo, en \ref{fig: cobweb_3.8} observamos como ambos puntos de equilibrio son inestables.
 
 \end{proof}
 
@@ -326,7 +326,7 @@ Por tanto, queremos encontrar los parámetros que hagan mínima esta medida del 
 
 Para estimar estos parámetros usaremos la biblioteca de software scipy para python. Esta biblioteca nos ofrece varias funciones que podemos usar para este fin. Se han probado dos alternativas, \verb|minimize| y \verb|curve_fit|, ambas de \verb|scipy.optimize|.
 
-Debido a la simplicidad y rapidez, y resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
+Debido a la simplicidad y rapidez, y por resultar más intuitiva para su utilización, finalmente se ha optado por usar \verb|curve_fit| en lugar de \verb|minimize|.
 
 La función \verb|curve_fit| puede usarse con el método de mínimos cuadrados no lineales para ajustar la función dada a los datos, o, con el argumento \verb|method='lm'|, se usa el algoritmo de Levenberg-Marquardt en mínimos cuadrados. Dado que en los modelos con los que vamos a trabajar se requiere poder especificar restricciones, usaremos el ajuste por mínimos cuadrados, pues el algoritmo de Levenberg-Marquardt no puede trabajar con ellas. Se puede consultar más información sobre esta función en \cite{scipy_curvefit}.
 

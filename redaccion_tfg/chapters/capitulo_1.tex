@@ -94,7 +94,7 @@ Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N
 \end{center}
 \end{figure}
 
-En la figura \ref{fig: SI_IsobreS}, se representa el número de individuos infectados en función del número de susceptibles se aprecia una relación inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
+En la figura \ref{fig: SI_IsobreS} se representa el número de individuos infectados en función del número de susceptibles. Se aprecia una relación inversamente proporcional, donde al subir el número de infectados baja el de susceptibles y al contrario.
 
 \begin{figure}
 \begin{center}
@@ -121,9 +121,9 @@ R_{n+1} = & R_n + \gamma \Delta t I_n
 
 con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
 
-En estas ecuaciones, de nuevo tenemos que $\alpha$ es la tasa de contacto\footnote{Esta definición de ha tomado de \cite{allenDiscretetimeSISIR1994}. En otros trabajos se define la tasa de contacto xomo la probabilidad de contagio de un susceptible por un infectado en un intervalo de tiempo.}, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, de nuevo $\alpha$ es la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado/fallecido en un intervalo de tiempo, con $\alpha >0$ y $\gamma >0$.
 
-Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$.
+Se supone que la población permanece constante, esto es: $S_n+I_n+R_n=N$, $n \geq 0$.
 
 \begin{proposition}
 Las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
@@ -145,9 +145,9 @@ Lo cual es evidente, pues $\frac{I_n}{N}<1$ por hipótesis del modelo y $\alpha 
 Por un razonamiento análogo, como $\gamma\Delta t < 1$, tenemos que $$1-\gamma \Delta t+\frac{\alpha\Delta t}{N}S_0 > 0.$$
 Y finalmente $$R_0+\gamma\Delta t I_0>0$$ pues $\gamma>0$ y $\Delta t >0$.
 
-Aplicando un razonamiento por inducción, suponiéndolo para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas.
+Aplicando un razonamiento por inducción, suponiéndolo cierto para $n$ se puede demostrar que $S_{n+1}, I_{n+1}, R_{n+1}$ son siempre positivas.
 
-Para probar el recíproco basta probar que ambas cantidades son menores o iguales a $1$. Comenzamos trabajando en la primera ecuación \eqref{eqn: SIR_modelo}.
+Para probar el recíproco veremos que ambas cantidades son menores o iguales a $1$. Comenzamos trabajando en la primera ecuación \eqref{eqn: SIR_modelo}.
 % suponemos la positividad para $n$ y probándola para $n+1$:
 
 $$S_{n+1}=S_n\left(1-\frac{\alpha\Delta t}{N}I_n\right)$$
@@ -156,12 +156,10 @@ $$0<1-\frac{\alpha\Delta t}{N}I_n \leq 1-\alpha\Delta t,$$
 y por tanto:
 $$\alpha\Delta t  \leq 1.$$
 
-Puesto que $\alpha\Delta t \leq 1$ y $I_n\leq N$, $n\geq 0$, entonces $S_{n+1}<S_n$ para cualquier $n\geq 0$, luego es una sucesión estrictamente decreciente. Por otro lado, $I_n$ es siempre positiva, por tanto
+Puesto que $\alpha\Delta t \leq 1$ e $I_n\leq N$, $n\geq 0$, entonces $S_{n+1}<S_n$ para cualquier $n\geq 0$, luego es una sucesión estrictamente decreciente. Por otro lado, $I_n$ es siempre positiva, por tanto
 $$1-\gamma\Delta t+\frac{\alpha\Delta t}{N} S_n > 0 \quad n\geq 0,$$
 
-y $S_n$ estrictamente decreciente, por tanto $1-\gamma\Delta t\geq 0$.
-
-Luego, despejando tenemos $\gamma\Delta t \leq 1$.
+y $S_n$ estrictamente decreciente, por tanto $1-\gamma\Delta t\geq 0$. Luego, despejando tenemos $\gamma\Delta t \leq 1$.
 
 De la última ecuación no sacamos ninguna condición más, pues su solución es siempre positiva por definición de $\gamma$ y $\Delta t$.
 
@@ -174,11 +172,11 @@ $S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
 
 \begin{proof}
 
-Puesto que $\{S_n\}_{n\geq 0}$ es una sucesión estrictamente decreciente y acotada inferiormente por $0$, se tiene que existe el límite $\displaystyle S_\infty = \lim_{n \rightarrow \infty} S_n$. Se tiene que $S_\infty > 0$ por el Lema 1 de \cite{allenDiscretetimeSISIR1994}.
+Puesto que $\{S_n\}_{n\geq 0}$ es una sucesión estrictamente decreciente y acotada inferiormente por $0$, se tiene que existe el límite $\displaystyle S_\infty = \lim_{n \rightarrow \infty} S_n$. Se verifica que $S_\infty > 0$ por el Lema 1 de \cite{allenDiscretetimeSISIR1994}.
 
 Estudiamos las condiciones iniciales. Si $S_0\leq \frac{\gamma N}{\alpha}$, y, como $S_n$ es estrictamente decreciente, tenemos que $I_{n+1}\leq I_n$, es decir, no hay epidemia, ya que la velocidad de propagación no es lo bastante alta.
 
-En otro caso, tenemos $S_0> \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer.
+En otro caso, si $S_0 > \frac{\gamma N}{\alpha}$, entonces $I_1>I_0$. Debe ocurrir que $S_\infty <\frac{N\gamma}{\alpha}$, pues si no fuera así, tendríamos que $I_n$ crece hacia un equilibrio, $I_\infty$, lo que implica que $R_n$ se aproxima a infinito cuando $n\rightarrow\infty$, lo que no es posible, pues el total de la población es constante. Así, el número de infectados finalmente comienza a decrecer.
 \end{proof}
 
 Por tanto, a partir del resultado anterior podemos deducir que el intervalo de tiempo, $\Delta t$, debe ser menor que el tiempo medio requerido para contagiar a otro individuo susceptible, $\alpha$, y menor que el período medio infeccioso, $\gamma$.
@@ -197,7 +195,7 @@ En otros trabajos como \cite{demongeotSIEpidemicModel} este número básico repr
 \begin{figure}
 \begin{center}
 \caption{Gráfica del modelo SIR, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, R_0 = 0, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 300$.}
-\includegraphics[scale=1]{graficaSIR}
+\includegraphics[scale=0.7]{graficaSIR}
 \end{center}
 \end{figure}
 
@@ -219,7 +217,7 @@ A medida que los individuos susceptibles crecen los recuperados disminuyen, en p
 \begin{center}
 \caption{Gráfica del modelo SIR discreto, representando el número de recuperados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_RsobreS}
-\includegraphics[scale=0.7]{SIR_RsobreS}
+\includegraphics[scale=0.65]{SIR_RsobreS}
 \end{center}
 \end{figure}
 
@@ -234,7 +232,7 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 
 \caption{Gráfica del modelo SIR discreto, representando el número de recuperados según el número de individuos infectados, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 300$.}
 \label{fig: SIR_RsobreI}
-\includegraphics[scale=0.7]{SIR_RsobreI}
+\includegraphics[scale=0.65]{SIR_RsobreI}
 \end{center}
 \end{figure}
 
@@ -242,7 +240,7 @@ Al comenzar el número de recuperados es bajo y crece despacio a medida que aume
 El modelo SIS es similar al SI, con la salvedad de que los individuos son susceptibles a múltiples reinfecciones.
 Por ejemplo, los resfriados pueden modelarse usando SIS.
 
-El modelo es una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
+El modelo puede verse como una perturbación del modelo SI descrito anteriormente. Se define de la siguiente forma:
 
 \begin{equation}
 \label{eqn: modelo_SIS}
@@ -254,7 +252,7 @@ I_{n+1} & = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)
 
 con condiciones iniciales positivas $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$. Por lo tanto, el tamaño de la población es constante.
 
-En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto\footnote{Esta definición de ha tomado de \cite{allenDiscretetimeSISIR1994}. En otros trabajos se define la tasa de contacto xomo la probabilidad de contagio de un susceptible por un infectado en un intervalo de tiempo.}, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
+En estas ecuaciones, $\alpha$ de nuevo representa la tasa de contacto, esto es, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo, y $\gamma$ es la probabilidad de que un infectado pase a recuperado/retirado/aislado en un intervalo de tiempo, donde se cumple $\alpha >0$ y $\gamma >0$.
 
 \begin{proposition}
 Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
@@ -272,7 +270,7 @@ I_1 & =\epsilon\left(1-\gamma\Delta t+\alpha\Delta t\frac{N-\epsilon}{N}\right) 
 \end{aligned}
 \end{equation}
 
-Luego tenemos que ver cuándo la parábola satisface $0<p(\epsilon)<N$ para $0<\epsilon<N$.
+Luego tenemos que ver cuándo la parábola $p(\epsilon )$ satisface $0<p(\epsilon)<N$ para $0<\epsilon<N$.
 
 Notemos que $p(0)=0$ y $p(N)=N(1-\gamma\Delta t).$
 
@@ -292,7 +290,7 @@ $$1-\gamma\Delta t < \alpha \Delta t < \left( 1+\sqrt{\gamma \Delta t} \right)^2
 En el modelo SIS, el número básico reproductivo se define como 
 $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
 
-Si $\mathcal{R}_{SIS}\leq 1$ se considera que no hay epidemia y si $\mathcal{R}_{SIS}>1$ se considera que sí la hay..
+Al igual que ocurría en el modelo SIR, si $\mathcal{R}_{SIS}\leq 1$ se considera que no hay epidemia y si $\mathcal{R}_{SIS}>1$ se considera que sí la hay.
 
 \begin{lemma}
 Los puntos de equilibrio de \eqref{eqn: modelo_SIS} son o bien $(S^*,I^*)=(N,0)$, o bien $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
@@ -382,7 +380,7 @@ luego obtenemos la ecuación logística con parámetro $\mu = 1-\gamma \Delta t+
 
 $$x_{n+1} = (1 - \gamma \Delta t +\alpha \Delta t)x_n(1-x_n).$$
 
-En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$, restricción del parámetro de la ecuación logística para la convergencia, como vimos en el capítulo 1.
+En el modelo SIS la restricción necesaria para garantizar soluciones positivas no es suficiente para asegurar la convergencia. En este caso a dicha restricción hay que añadir la condición $\alpha \Delta t \leq 2+\gamma \Delta t$, restricción del parámetro de la ecuación logística para la convergencia, como vimos en el Capítulo 1.
 
 \end{proof}
 
@@ -394,9 +392,9 @@ En el modelo SIS la restricción necesaria para garantizar soluciones positivas 
 \end{center}
 \end{figure}
 
-En la figura \eqref{fig: SIS_IsobreS} se representa el número de infectados en función del número de individuos susceptibles. Se puede ver que son inversamente proporcionales, es decir, a mayor número de infectados menos individuos susceptibles hay y al revés.
+En la figura \ref{fig: SIS_IsobreS} se representa el número de infectados en función del número de individuos susceptibles. Se puede ver que son inversamente proporcionales, es decir, a mayor número de infectados menos individuos susceptibles hay y al revés.
 
-Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{fig: SI_IsobreS}.
+Cabe destacar el parecido de esta gráfica con su análoga del modelo SI, figura \ref{fig: SI_IsobreS}.
 
 \begin{figure}
 \begin{center}
@@ -412,7 +410,7 @@ Cabe destacar el parecido de esta gráfica con su análoga del modelo SI \eqref{
 
 Los modelos multipoblacionales agrupan la población en varias subpoblaciones. En estas subpoblaciones, los individuos pertenecientes a una misma subpoblación interactúan entre ellos, y, al mismo tiempo, interactúan las distintas subpoblaciones entre ellas.
 
-De esta forma, se obtiene un modelo más realista, pues no se asume que todos los individuos interactúan igual con todos los demás individuos de la población, si no que se relacionan formando grupos más pequeños que a su vez interactúan entre ellos.
+De esta forma, se obtiene un modelo más realista, pues no se asume que todos los individuos interactúan igual con todos los demás individuos de la población, sino que se relacionan formando grupos más pequeños que a su vez interactúan entre ellos.
 
 \subsection{Modelo SI}
 
@@ -459,7 +457,7 @@ donde $i=1, \cdots , K$ y con las condiciones iniciales $S_0^i > 0$, $R_0^i \geq
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i+R_n^i=N^i$.
 
 \begin{proposition}
-Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualquiera condiciones iniciales si, y solo si,
+Las soluciones del sistema \eqref{eqn: SIR multipoblational} son no negativas para cualesquiera condiciones iniciales si, y solo si,
 $$\max_i \left\{ \sum_{k=1}^{K} \frac{\alpha_{ik}\Delta t N^k}{N^i}, \gamma_i\Delta t \right\} \leq 1$$
 \end{proposition}
 
@@ -501,7 +499,7 @@ donde $i=1, \cdots , K$, y con las condiciones iniciales $S_0^i > 0$ y $I_0^i\ge
 Como en el caso discreto ya estudiado, el tamaño de cada subpoblación se mantiene constante, $S_n^i+I_n^i=N^i$.
 
 \begin{proposition}
-Las soluciones del sistema \eqref{eqn: SIS multipoblational} son no negativas para cualquieras condiciones iniciales si, y solo si,
+Las soluciones del sistema \eqref{eqn: SIS multipoblational} son no negativas para cualesquiera condiciones iniciales si, y solo si,
 $$\max_i \left\{ \sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}, \gamma_i\Delta t \right\} \leq 1, \quad  \alpha_{ii}\Delta t\leq \left( \sqrt{1-\sum_{k\neq i}\frac{\alpha_{ik}\Delta tN^k}{N^i}} + \sqrt{\gamma_i\Delta t} \right)^2$$
 \end{proposition}
 
