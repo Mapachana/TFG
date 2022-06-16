@@ -12,22 +12,23 @@ app.layout = html.Div([
 ])
 
 
+# Paginas que se van a mostrar y sus urls
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):
-    if pathname == '/apps/modeloSIS':
+    if pathname == '/apps/modeloSIS': # modelo SIS discreto
         return paginaSIS.layout
-    elif pathname == '/apps/modeloSI':
+    elif pathname == '/apps/modeloSI': # modelo SI discreto
         return paginaSI.layout
-    elif pathname == '/apps/modeloSIR':
+    elif pathname == '/apps/modeloSIR': # modelo SIR discreto
         return paginaSIR.layout
-    elif pathname == '/apps/modeloSI_continuo':
+    elif pathname == '/apps/modeloSI_continuo': # modelo SI continuo
         return paginaSI_continuo.layout
-    elif pathname == '/apps/modeloSIR_continuo':
+    elif pathname == '/apps/modeloSIR_continuo': # modelo SIR continuo
         return paginaSIR_continuo.layout
-    elif pathname == '/apps/modeloSIS_continuo':
+    elif pathname == '/apps/modeloSIS_continuo': # modelo SIS continuo
         return paginaSIS_continuo.layout
-    elif pathname == '/apps/ajuste_datos':
+    elif pathname == '/apps/ajuste_datos': # ajuste de datos de fichero
         return ajuste_parametros.layout
     else:
         return '404'

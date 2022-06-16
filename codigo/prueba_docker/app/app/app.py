@@ -18,47 +18,52 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def hello_world():
     return render_template('index.html')
 
-# Ruta para cada uno de los modelos basicos, de momento todas devuelven home
+# Ruta para cada modelo SI discreto
 @app.route('/modeloSI')
 def modeloSI():
     return render_template('modeloSI.html')
 
+# Ruta para cada modelo SIR discreto
 @app.route('/modeloSIR')
 def modeloSIR():
     return render_template('modeloSIR.html')
 
+# Ruta para cada modelo SIS discreto
 @app.route('/modeloSIS')
 def modeloSIS():
     return render_template('modeloSIS.html')
 
+# Ruta para cada modelo SI continuo
 @app.route('/modeloSI_continuo')
 def modeloSI_continuo():
     return render_template('modeloSI_continuo.html')
 
+# Ruta para cada modelo SIR continuo
 @app.route('/modeloSIR_continuo')
 def modeloSIR_continuo():
     return render_template('modeloSIR_continuo.html')
 
+# Ruta para cada modelo SIS continuo
 @app.route('/modeloSIS_continuo')
 def modeloSIS_continuo():
     return render_template('modeloSIS_continuo.html')
 
+# Pagina de ayuda
 @app.route('/ayuda')
 def ayuda():
     return render_template('ayuda.html')
 
+# Pagina de notacion
 @app.route('/notacion')
 def notacion():
     return render_template('notacion.html')
 
+# Funcion auxiliar para comprobar si un archivo subido es valido
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/uploads/<name>')
-def download_file(name):
-    return send_from_directory(app.config["UPLOAD_FOLDER"], name)
-
+# Pagina para mostrar el ajuste de los datos de un fichero
 @app.route('/ajustar_fichero/<fichero>', methods=['GET', 'POST'])
 def ajustar_fichero(fichero):
     # Leo el fichero subido y lo muestro en terminal
@@ -69,6 +74,7 @@ def ajustar_fichero(fichero):
 
     return render_template('ajustar_fichero.html')
 
+# Pagina para subir un fichero de datos que ajustar
 @app.route('/ajuste_archivo', methods=['GET', 'POST'])
 def ajuste_archivo():
     error = ""
@@ -82,7 +88,7 @@ def ajuste_archivo():
         # empty file without a filename.
 
         file.seek(0, os.SEEK_END)
-        if file.tell() == 0 or file.filename == '':
+        if file.tell() == 0 or file.filename == '' or not allowed_file(file.filename):
             error = "No se ha seleccionado ningún fichero válido, por favor seleccione uno."
 
             return render_template('ajuste_datos.html', error=error)

@@ -16,10 +16,10 @@ from app_dash import app
 fig = go.Figure()
 fig2 = go.Figure()
 
-
+# Opciones para ajustar los datos de ficheros
 modelos_ajuste_disponibles = ["Modelo SI", "Modelo SIR", "Modelo SIS", "Mejor modelo"]
 
-
+# Layout de la pagina
 layout = html.Div([
    
     dcc.ConfirmDialog(
@@ -44,7 +44,7 @@ layout = html.Div([
     html.Div(id="errores")
 ])
 
-
+# Funcion que describe las ecuaciones a las que se ajusta el modelo SI
 def solucion_SI(t, alfa, I0):
     N = t[0]
     secciones = len(t)-1
@@ -59,6 +59,7 @@ def solucion_SI(t, alfa, I0):
     return I
 
 # Asumo que el I0 no lo sabes y R0 tampoco
+# Funcion que describe las ecuaciones a las que se ajusta el modelo SIR
 def solucion_SIR(t, alfa, gamma, I0, R0):
     N = t[0]
     secciones = len(t)-1
@@ -79,7 +80,8 @@ def solucion_SIR(t, alfa, gamma, I0, R0):
     return res
 
 
-# Asumo que el I0 no lo sabes 
+# Asumo que el I0 no lo sabes
+# Funcion que describe las ecuaciones a las que se ajusta el modelo SIS
 def solucion_SIS(t, alfa, gamma, I0):
     N = t[0]
     secciones = len(t)-1
@@ -380,19 +382,7 @@ def funcion(valor_menu, is_open):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # Actualizo graficas
 
     fig2 = px.scatter()
     fig2.update_layout(title='Ajuste de los datos del fichero',

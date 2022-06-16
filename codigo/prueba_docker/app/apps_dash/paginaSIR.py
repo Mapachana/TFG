@@ -65,7 +65,7 @@ def preprocesar_input(N, alfa, gamma, S0, I0, R0, T):
     return N, alfa, gamma, S0, I0, R0, T
 
 
-# Función que actualiza la grafica, recibe como argumento los parametros (input) y devuelve la grafica (output)
+# Función que actualiza la grafica
 @app.callback(
     Output("N_SIR", "value"),
     Output("graph-SIR", "figure"),
@@ -254,6 +254,5 @@ layout = html.Div([
 ])
 
 
-#app.run_server(debug=True, use_reloader=True)  # Turn off reloader if inside Jupyter
 
 # Regex sacada de https://codereview.stackexchange.com/questions/223970/a-regex-pattern-that-matches-all-forms-of-integers-and-decimal-numbers-in-python
