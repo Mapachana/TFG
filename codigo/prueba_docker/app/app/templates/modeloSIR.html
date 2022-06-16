@@ -5,7 +5,7 @@
 <div class="d-flex align-items-center flex-column">
     <h2> Modelo SIR</h2>
     <p>El modelo SIR comienza como el SI, pero tras infectarse los individuos pasan a un estado Recuperado, en el cual no pueden volver a infectarse ni infectar a otros.</p>
-    <p>El modelo tiene la siguiente forma:</p>
+    <p>El modelo se ajusta a las ecuaciones:</p>
     $$S_{n+1} = S_n \left(1-\frac{\alpha\Delta t}{N} I_n \right)$$
     $$I_{n+1} = I_n \left( 1-\gamma \Delta t + \frac{\alpha\Delta t}{N} S_n \right)$$
     $$R_{n+1} = R_n + \gamma \Delta t I_n$$
