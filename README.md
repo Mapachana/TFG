@@ -8,6 +8,8 @@ La epidemiología se encarga estudia el control, causa y los patrones de las enf
 
 En este proyecto se han estudiado los principales modelos matemáticos de la epidemiología, en su versión tanto discreta como continua. Además, se ha desarrollado software para visualizar el comportamiento de cada uno de estos modelos, así como permitir ajustar datos subidos por el usuario mediante estos.
 
+---
+
 ![](./redaccion_tfg/figures/logo.png)
 
 ## Guía de instalación y uso
