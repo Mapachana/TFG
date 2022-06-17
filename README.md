@@ -12,7 +12,7 @@ En este proyecto se han estudiado los principales modelos matemáticos de la epi
 
 Para ejecutar este proyecto, comienza por descargar los archivos fuente del repositorio. Esto puede hacerse descargando el repositorio directamente desde la web de github o clonando el repositorio (más información sobre cómo clonar un repositorio [aquí](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)).
 
-Tenemos varias opciones para instalar y ejecutar el software, basta elegir una. Se recomienda usar alguna de las opciones con docker, si se tiene instalado.
+Tenemos varias opciones para instalar y ejecutar el software, basta elegir una.
 
 ### 1. Descargando la imagen de docker hub
 
@@ -45,40 +45,3 @@ Y una vez construido (basta construirlo una vez) para lanzarlo usamos:
 ```bash
 docker run -t -p 5000:5000 -p 8050:8050 mapachana/plotsir:latest
 ```
-
-### 3. Manualmente
-
-#### 3.1 Dependencias
-
-Podemos simplemente instalar la lista de `requirements.txt` usando:
-
-```
-pip install -r requirements.txt
-```
-
-O podemos hacerlo manualmente:
-
-Hay que instalar los paquetes indicados en [https://plotly.com/python/getting-started/](https://plotly.com/python/getting-started/).
-También es necesario instalar numpy y pandas.
-
-Además hay que instalar [flask](https://flask.palletsprojects.com/en/2.0.x/) (debería bastar con pip install flask) y especificar la carpeta de flask app con `export FLASK_APP=app`.
-
-También será necesario instalar scipy.
-
-#### 3.2 Cómo se usa
-
-Nos situamos dentro de la carpeta app, que es donde se encuentran los archivos de la página web en sí.
-
-Primero lanzamos dash, para lo que en el directorio raiz ejecutamos:
-
-```bash
-python3 index_dash.py
-```
-
-Para ejecutar el fichero de la pagina web, en el directorio `app` donde está el fichero y ejecutar:
-
-```bash
-flask run
-```
-
-Después hay que abrir tu navegador de internet e ir a la dirección `localhost:5000` que se indica en tu terminal.
