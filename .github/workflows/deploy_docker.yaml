@@ -28,7 +28,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./codigo/web_plotsir/
           push: true
           tags: mapachana/plotsir:latest
           labels: ${{ steps.meta.outputs.labels }}

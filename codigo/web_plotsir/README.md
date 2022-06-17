@@ -56,4 +56,3 @@ flask run
 ```
 
 Después hay que abrir tu navegador de internet e ir a la dirección `localhost:5000` que se indica en tu terminal.
-
