@@ -39,7 +39,6 @@ Además hay que instalar [flask](https://flask.palletsprojects.com/en/2.0.x/) (d
 
 También será necesario instalar scipy.
 
-
 ### Cómo se usa
 
 Nos situamos dentro de la carpeta app, que es donde se encuentran los archivos de la página web en sí.
