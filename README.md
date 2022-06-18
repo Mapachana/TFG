@@ -4,7 +4,7 @@
 
 ## ¿Qué es?
 
-La epidemiología se encarga estudia el control, causa y los patrones de las enfermedades en grupos de personas. Hablamos de una epidemia cuando tenemos brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
+La epidemiología se encarga de estudiar el control, causa y los patrones de las enfermedades en grupos de personas. Hablamos de una epidemia cuando tenemos brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
 
 En este proyecto se han estudiado los principales modelos matemáticos de la epidemiología, en su versión tanto discreta como continua. Además, se ha desarrollado software para visualizar el comportamiento de cada uno de estos modelos, así como permitir ajustar datos subidos por el usuario mediante estos.
 
