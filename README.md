@@ -18,11 +18,49 @@ Para ejecutar este proyecto, comienza por descargar los archivos fuente del repo
 
 Tenemos varias opciones para instalar y ejecutar el software, basta elegir una. Se recomienda instalar y lanzar el software.
 
+### 2. Manualmente
+
+Para ejecutar el software nos situamos en la carpeta `codigo/web_plotsir`.
+
+#### 2.1 Dependencias
+
+Para instalar las dependencias ejecutamos el comando:
+
+```bash
+make install_deps
+```
+
+O también podemos simplemente instalar la lista de dependencias `requirements.txt` usando:
+
+```
+pip install -r requirements.txt
+```
+
+#### 2.2 Cómo se usa
+
+Para ejecutarla, en esa misma carpeta usamos:
+
+```bash
+make -j2
+```
+
+Otra forma de hacerlo es situándonos dentro de la carpeta `codigo/web_plotsir/app` y ejecutando:
+
+```bash
+python3 index_dash.py & (cd app && flask run)
+```
+
 ### 1. Construyendo la imagen de docker
 
 Una vez clonado o descargado, nos situamos en `código/web_plotsir`, y abrimos una terminal.
 
-Podemos lanzar la aplicación usando docker (y, para más comodidad, docker-compose), para lo cuál primero construimos el contenedor:
+Podemos lanzar la aplicación usando docker (y, para más comodidad, docker-compose), para lo cuál primero construimos el contenedor, para ello escribimos en la terminal:
+
+```bash
+make build_docker
+```
+
+También podemos hacerlo manualmente ejecutando:
 
 ```bash
 docker-compose build
@@ -31,34 +69,13 @@ docker-compose build
 Y una vez construido (basta construirlo una vez) para lanzarlo usamos:
 
 ```bash
-docker run -t -p 5000:5000 -p 8050:8050 mapachana/plotsir:latest
+make run_docker
 ```
 
-### 2. Manualmente
-
-#### 2.1 Dependencias
-
-En la carpeta `codigo/web_plotsir` podemos simplemente instalar la lista de dependencias `requirements.txt` usando:
-
-```
-pip install -r requirements.txt
-```
-
-O podemos hacerlo manualmente:
-
-Hay que instalar los paquetes indicados en [https://plotly.com/python/getting-started/](https://plotly.com/python/getting-started/).
-También es necesario instalar numpy y pandas.
-
-Además hay que instalar [flask](https://flask.palletsprojects.com/en/2.0.x/) (basta con ejecutar `pip install flask`) y especificar la carpeta de flask app con `export FLASK_APP=app`.
-
-También será necesario instalar scipy.
-
-#### 2.2 Cómo se usa
-
-Nos situamos dentro de la carpeta `codigo/web_plotsir/app` y ejecutamos:
+O, de nuevo, podemos hacerlo manualmente ejecutando:
 
 ```bash
-python3 index_dash.py & (cd app && flask run)
+docker run -t -p 5000:5000 -p 8050:8050 mapachana/plotsir:latest
 ```
 
 ### 3. Descargando la imagen de docker hub
@@ -71,7 +88,13 @@ Vamos a bajarnos la imagen del contenedor en docker hub ejecutando:
 docker pull mapachana/plotsir:latest
 ```
 
-Y finalmente la lanzamos mediante:
+Y finalmente la lanzamos como antes ejecutando:
+
+```bash
+make run_docker
+```
+
+O, si lo preferimos:
 
 ```bash
 docker run -t -p 5000:5000 -p 8050:8050 mapachana/plotsir:latest
