@@ -98,7 +98,7 @@ El software necesario para el proyecto es el siguiente:
 \item \textbf{VSCode}. Se ha usado VSCode como editor de texto, ya que proporciona una gran cantidad de plugins para cualquier lenguaje, así como integración con git.
 \item \textbf{Draw.io}. Para la realización de diagramas de distintas clases, se ha usado el software de dibujo gratuito Draw.io.
 \item \textbf{Docker}. Con el fin de simplificar el lanzamiento y ejecución de la aplicación web desarrollada se ha usado docker para virtualizar el entorno y evitar la necesidad de instalar en cualquier máquina el software necesario para ejecutarla. Durante el desarrollo, para facilitar la utilización de esta herramienta se ha consultado la documentación de docker \cite{docker}, usando docker compose, \cite{dockercompose}, para construir el contenedor y docker hub, \cite{dockerhub}, para la publicación del mismo.
-\item \textbf{Git y Github}. Se ha empleado Git como controlador de versiones, integrado con Github. Puede consultarse más información sobre esta herramienta en \cite{git}.
+\item \textbf{Git y Github}. Se ha empleado Git como controlador de versiones, integrado con Github. Puede consultarse más información sobre esta herramienta en \cite{git}.También se puede ver el desarrollo del proyecto en el \href{https://github.com/Mapachana/TFG}{repositorio de Github}.
 \item \textbf{Texmaker}. Para redactar la memoria, se ha usado el editor de LaTeX Texmaker.
 \end{itemize}
 
@@ -1276,7 +1276,18 @@ Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al model
 
 \subsection{Instalación del backend}
 
-Para lanzar la página web de una manera cómoda, rápida y simple, se ha creado un contenedor docker actualizado con todas las dependencias necesarias para el funcionamiento de la misma.
+Para lanzar la página web de una manera cómoda, rápida y simple, hay varias opciones:
+
+La primera opción consiste en acceder al \href{https://github.com/Mapachana/TFG}{repositorio de Github}, descargarlo, colocarnos en la carpeta \verb|codigo/web_plotsir| y ejecutar los comandos:
+
+\begin{verbatim}
+make install_deps
+make -j2
+\end{verbatim}
+
+Una vez hecho esto, ya podemos acceder a la url \verb|localhost:5000| en el navegador.
+
+Como alternativa, se ha creado un contenedor docker actualizado con todas las dependencias necesarias para el funcionamiento de la misma.
 
 De esta manera, basta con ejecutar el contenedor docker, accesible en Docker Hub, descargarlo y ejecutarlo. El contenedor puede obtenerse \href{https://hub.docker.com/repository/docker/mapachana/plotsir}{aquí}.
 
@@ -1360,18 +1371,6 @@ Vamos a ajustar solo el principio de la pandemia, en concreto vamos a ajustar a 
 
 Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondiendo por tanto al 5 de Marzo el índice 0 y al 21 de Agosto el 170.
 
-Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. `
-
-Para calcular el número de infectados activos, dado que el Covid-19 al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
-
-Asimismo, como recuperados se han considerados los fallecidos y los nuevos infectados de hace más de 10 días atrás, pues ya habrían superado la enfermedad y no podrían volver a infectarse.
-
-Además, para que el modelo funcione bien el número total de individuos considerados es el número de individuos estudiados aproximadamente, en este caso $N=40000$.
-
-Teniendo esto en cuenta, generamos un fichero csv con el formato necesario para realizar un ajuste en la página web.
-
-Al igual que antes, comenzamos observando la representación de los datos en la gráfica \ref{datos_covid}. El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados, que primero suben y luego descienden, indicando así el final de la ola.
-
 \begin{figure}
 \begin{center}
 \caption{Representación de los datos del Covid-19 en España desde el 5 de Marzo hasta el 21 de Agosto de 2020.}
@@ -1380,9 +1379,11 @@ Al igual que antes, comenzamos observando la representación de los datos en la 
 \end{center}
 \end{figure}
 
-Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SIR.
+Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. `
 
-La representación gráfica del ajuste se puede ver en la figura \ref{ajuste_covid}. El ajuste parece seguir las tendencias generales de los datos, aunque los infectados quedan ligeramente por encima en el ajuste que en los datos experimentales, así como los recuperados y susceptibles ajustan peor al final, pues cuanto más nos alejamos de la ola en sí, peor es el ajuste al modelo SIR.
+Para calcular el número de infectados activos, dado que el Covid-19 al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
+
+Asimismo, como recuperados se han considerados los fallecidos y los nuevos infectados de hace más de 10 días atrás, pues ya habrían superado la enfermedad y no podrían volver a infectarse.
 
 \begin{figure}
 \begin{center}
@@ -1392,7 +1393,9 @@ La representación gráfica del ajuste se puede ver en la figura \ref{ajuste_cov
 \end{center}
 \end{figure}
 
-En la figura \ref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por Covid-19 en España en efecto siguen un modelo SIR.
+Además, para que el modelo funcione bien el número total de individuos considerados es el número de individuos estudiados aproximadamente, en este caso $N=40000$.
+
+Teniendo esto en cuenta, generamos un fichero csv con el formato necesario para realizar un ajuste en la página web.
 
 \begin{figure}
 \begin{center}
@@ -1401,6 +1404,16 @@ En la figura \ref{estimacion_covid} se muestra la estimación de los parámetros
 \includegraphics[scale=0.5]{estimacion_covid}
 \end{center}
 \end{figure}
+
+Al igual que antes, comenzamos observando la representación de los datos en la gráfica \ref{datos_covid}. El número de recuperados siempre es creciente, así como el de susceptibles es siempre decreciente. Llama la atención la forma de los infectados, que primero suben y luego descienden, indicando así el final de la ola.
+
+Elegimos como modelo de ajuste mejor modelo, donde obtenemos que el mejor modelo según el sistema es, como se comentaba inicialmente, el modelo SIR.
+
+La representación gráfica del ajuste se puede ver en la figura \ref{ajuste_covid}. El ajuste parece seguir las tendencias generales de los datos, aunque los infectados quedan ligeramente por encima en el ajuste que en los datos experimentales, así como los recuperados y susceptibles ajustan peor al final, pues cuanto más nos alejamos de la ola en sí, peor es el ajuste al modelo SIR.
+
+En la figura \ref{estimacion_covid} se muestra la estimación de los parámetros obtenidos para el ajuste, resultando un $\alpha \approx 0.21$, $\gamma \approx 0.08$, $I_0 \approx 1$, $R_0 \approx 536$. Dado que los valores de estos parámetros son razonables, salvo quizá por una estimación ligeramente alta de los recuperados iniciales, y la representación gráfica del ajuste aproxima relativamente bien los datos obtenidos, parece que las infecciones por Covid-19 en España en efecto siguen un modelo SIR.
+
+
 
 
 
