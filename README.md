@@ -18,11 +18,11 @@ Para ejecutar este proyecto, comienza por descargar los archivos fuente del repo
 
 Tenemos varias opciones para instalar y ejecutar el software, basta elegir una. Se recomienda instalar y lanzar el software.
 
-### 2. Manualmente
+### 1. Manualmente
 
 Para ejecutar el software nos situamos en la carpeta `codigo/web_plotsir`.
 
-#### 2.1 Dependencias
+#### 1.1 Dependencias
 
 Para instalar las dependencias ejecutamos el comando:
 
@@ -36,7 +36,7 @@ O también podemos simplemente instalar la lista de dependencias `requirements.t
 pip install -r requirements.txt
 ```
 
-#### 2.2 Cómo se usa
+#### 1.2 Cómo se usa
 
 Para ejecutarla, en esa misma carpeta usamos:
 
@@ -50,7 +50,7 @@ Otra forma de hacerlo es situándonos dentro de la carpeta `codigo/web_plotsir/a
 python3 index_dash.py & (cd app && flask run)
 ```
 
-### 1. Construyendo la imagen de docker
+### 2. Construyendo la imagen de docker
 
 Una vez clonado o descargado, nos situamos en `código/web_plotsir`, y abrimos una terminal.
 
