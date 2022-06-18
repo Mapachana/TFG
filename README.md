@@ -99,3 +99,11 @@ O, si lo preferimos:
 ```bash
 docker run -t -p 5000:5000 -p 8050:8050 mapachana/plotsir:latest
 ```
+
+## Problemas frecuentes y soluciones
+
+- Si hay algçún problema al lanzar la aplicación por algún error de `Flask` relativo a no encontrar la aplicación, se puede deber a que no se ha definido la variable de entorno FLASK_APP, debe crearse como se muestra:
+
+```bash
+export FLASK_APP=app
+```
