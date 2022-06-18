@@ -13,59 +13,80 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 
-# Ruta / (home) de la pagina          
 @app.route('/')
 def hello_world():
+    ''' Ruta / (home) de la pagina '''          
+
     return render_template('index.html')
 
-# Ruta para cada modelo SI discreto
+
 @app.route('/modeloSI')
 def modeloSI():
+    ''' Ruta para cada modelo SI discreto '''
+
     return render_template('modeloSI.html')
 
-# Ruta para cada modelo SIR discreto
+
 @app.route('/modeloSIR')
 def modeloSIR():
+    ''' Ruta para cada modelo SIR discreto '''
+
     return render_template('modeloSIR.html')
 
-# Ruta para cada modelo SIS discreto
+
 @app.route('/modeloSIS')
 def modeloSIS():
+    ''' Ruta para cada modelo SIS discreto '''
+
     return render_template('modeloSIS.html')
 
-# Ruta para cada modelo SI continuo
+
 @app.route('/modeloSI_continuo')
 def modeloSI_continuo():
+    ''' Ruta para cada modelo SI continuo '''
+
     return render_template('modeloSI_continuo.html')
 
-# Ruta para cada modelo SIR continuo
+
 @app.route('/modeloSIR_continuo')
 def modeloSIR_continuo():
+    ''' Ruta para cada modelo SIR continuo '''
+
     return render_template('modeloSIR_continuo.html')
 
-# Ruta para cada modelo SIS continuo
+
 @app.route('/modeloSIS_continuo')
 def modeloSIS_continuo():
+    ''' Ruta para cada modelo SIS continuo '''
+
     return render_template('modeloSIS_continuo.html')
 
-# Pagina de ayuda
+
 @app.route('/ayuda')
 def ayuda():
+    ''' Pagina de ayuda '''
+
     return render_template('ayuda.html')
 
-# Pagina de notacion
+
 @app.route('/notacion')
 def notacion():
+    ''' Pagina de notacion '''
+
     return render_template('notacion.html')
 
-# Funcion auxiliar para comprobar si un archivo subido es valido
+
 def allowed_file(filename):
+    ''' Funcion auxiliar para comprobar si un archivo subido es valido '''
+
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# Pagina para mostrar el ajuste de los datos de un fichero
+
 @app.route('/ajustar_fichero/<fichero>', methods=['GET', 'POST'])
 def ajustar_fichero(fichero):
+    ''' Pagina para mostrar el ajuste de los datos de un fichero '''
+
     # Leo el fichero subido y lo muestro en terminal
     fichero_subido = app.config['UPLOAD_FOLDER']+"/"+fichero
     df = read_csv(fichero_subido)
@@ -74,9 +95,11 @@ def ajustar_fichero(fichero):
 
     return render_template('ajustar_fichero.html')
 
-# Pagina para subir un fichero de datos que ajustar
+
 @app.route('/ajuste_archivo', methods=['GET', 'POST'])
 def ajuste_archivo():
+    ''' Pagina para subir un fichero de datos que ajustar '''
+
     error = ""
     if request.method == 'POST':
         # check if the post request has the file part

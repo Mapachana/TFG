@@ -14,8 +14,9 @@ fig = go.Figure()
 figSI = go.Figure() 
 
 
-# Funcion para preprocesar el input en modo texto para formato y nulos
 def preprocesar_input(N, alfa, gamma, S0, I0, T):
+    ''' Funcion para preprocesar el input en modo texto para formato y nulos '''
+
     # Regex ed int o float
     pattern = re.compile("^[+-]?((\d+(\.\d+)?)|(\.\d+))$")
     
@@ -58,7 +59,6 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
     return N, alfa, gamma, S0, I0, T
 
 
-# Función que actualiza la grafica
 @app.callback(
     Output("N_SIS", "value"),
     Output("graph-SIS", "figure"),
@@ -70,6 +70,7 @@ def preprocesar_input(N, alfa, gamma, S0, I0, T):
     [Input("I0", "value")],
     [Input("T", "value")])
 def calcular_modelo(N_SIS, alfa, gamma, S0, I0, T):
+    ''' Función que actualiza la grafica '''
 
     N, alfa, gamma, S0, I0, T = preprocesar_input(N_SIS, alfa, gamma, S0, I0, T)
     

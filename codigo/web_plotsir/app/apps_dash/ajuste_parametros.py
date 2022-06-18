@@ -44,8 +44,9 @@ layout = html.Div([
     html.Div(id="errores")
 ])
 
-# Funcion que describe las ecuaciones a las que se ajusta el modelo SI
 def solucion_SI(t, alfa, I0):
+    ''' Funcion que describe las ecuaciones a las que se ajusta el modelo SI'''
+
     N = t[0]
     secciones = len(t)-1
     deltaT = t[2]-t[1]
@@ -58,9 +59,10 @@ def solucion_SI(t, alfa, I0):
         
     return I
 
-# Asumo que el I0 no lo sabes y R0 tampoco
-# Funcion que describe las ecuaciones a las que se ajusta el modelo SIR
 def solucion_SIR(t, alfa, gamma, I0, R0):
+    ''' Funcion que describe las ecuaciones a las que se ajusta el modelo SIR 
+        Asumo que el I0 no lo sabes y R0 tampoco '''
+
     N = t[0]
     secciones = len(t)-1
     deltaT = t[2]-t[1]
@@ -80,9 +82,9 @@ def solucion_SIR(t, alfa, gamma, I0, R0):
     return res
 
 
-# Asumo que el I0 no lo sabes
-# Funcion que describe las ecuaciones a las que se ajusta el modelo SIS
 def solucion_SIS(t, alfa, gamma, I0):
+    ''' Funcion que describe las ecuaciones a las que se ajusta el modelo SIS
+        Asumo que el I0 no lo sabes '''
     N = t[0]
     secciones = len(t)-1
     deltaT = t[2]-t[1]
@@ -106,6 +108,8 @@ def solucion_SIS(t, alfa, gamma, I0):
     Input('selector_modelo_ajuste', 'value'),
     State("alerta", "displayed"))
 def funcion(valor_menu, is_open):
+    '''Funcion para actualizar las graficas y valores estimados'''
+
     # Leo dataframe
     df = pd.read_csv("./app/fichero_ajuste/actual.csv")
     df = df.dropna()

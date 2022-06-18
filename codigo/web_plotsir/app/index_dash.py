@@ -12,10 +12,11 @@ app.layout = html.Div([
 ])
 
 
-# Paginas que se van a mostrar y sus urls
 @app.callback(Output('page-content', 'children'),
               Input('url', 'pathname'))
 def display_page(pathname):
+    ''' Paginas que se van a mostrar y sus urls '''
+
     if pathname == '/apps/modeloSIS': # modelo SIS discreto
         return paginaSIS.layout
     elif pathname == '/apps/modeloSI': # modelo SI discreto
