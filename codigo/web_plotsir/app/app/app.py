@@ -6,6 +6,8 @@ from pandas import read_csv
 from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = './files'
+WORKING_FOLDER = './fichero_ajuste'
+WORKING_FILE = WORKING_FOLDER+"/actual.csv"
 ALLOWED_EXTENSIONS = {'txt', 'csv'}
 
 app = Flask(__name__)
@@ -91,7 +93,7 @@ def ajustar_fichero(fichero):
     fichero_subido = app.config['UPLOAD_FOLDER']+"/"+fichero
     df = read_csv(fichero_subido)
 
-    shutil.copy(fichero_subido, "./fichero_ajuste/actual.csv")
+    shutil.copy(fichero_subido, WORKING_FILE)
 
     return render_template('ajustar_fichero.html')
 
@@ -121,7 +123,7 @@ def ajuste_archivo():
             filename = secure_filename(file.filename)
 
             os.makedirs(UPLOAD_FOLDER, exist_ok=True)
-            os.makedirs('./fichero_ajuste', exist_ok=True)
+            os.makedirs(WORKING_FOLDER, exist_ok=True)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return redirect(url_for('ajustar_fichero', fichero=filename))
