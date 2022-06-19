@@ -7,7 +7,7 @@ launch_flask:
 	cd app/app && flask run
 
 clean_data_files:
-	cd app/app && rm fichero_ajuste/actual.csv && rm files/*
+	cd app/app && rm -rf fichero_ajuste/* files/*
 
 build_docker:
 	$(MAKE) clean_data_files
