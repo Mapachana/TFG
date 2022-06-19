@@ -119,6 +119,9 @@ def ajuste_archivo():
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
+
+            os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+            os.makedirs('./fichero_ajuste', exist_ok=True)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
             return redirect(url_for('ajustar_fichero', fichero=filename))
