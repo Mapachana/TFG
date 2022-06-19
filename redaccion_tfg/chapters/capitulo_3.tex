@@ -114,7 +114,7 @@ A los tutores, dada su formación profesional se les supone un coste estimado de
 
 Dado que el portátil empleado tiene una vida útil estimada de 5 años, le corresponde un coste de 120,00€ por amortización durante la realización del proyecto.
 
-Finalmente, dado que todo el software empleado es gratuito, el coste aproximado del proyecto aparece desglosado en la tabla \ref{tabla_pres}.
+Finalmente, todo el software empleado es gratuito. El coste aproximado del proyecto aparece desglosado en la tabla \ref{tabla_pres}.
 
 \begin{table}[!h]
 \caption{Desglose de presupuesto del proyecto.}
@@ -128,6 +128,7 @@ Finalmente, dado que todo el software empleado es gratuito, el coste aproximado 
  Tutor 1 & 5.400,00 \\
  \hline 
  Tutor 2 & 5.400,00 \\
+ \hline
  \textbf{Suma} & \textbf{17.550,00} \\
  \hline
  \textbf{Recursos hardware} & \textbf{Coste (€)} \\ 
@@ -197,7 +198,7 @@ Con el fin de ayudar a hacer más fácil la comprensión de cómo se ha distribu
 
 Para el modelado conceptual de la aplicación web, se ha optado por utilizar OOWS (Object-Oriented approach for Web Solutions modeling) \cite{pastorobject}, que usa modelado de objetos UML y modelos de navegación y presentación usando UML. Así, se expresan las características navegacionales de la aplicación web a la vez que se integra con las restantes vistas del esquema conceptual mediante una notación UML adaptada.
 
-En la figura \ref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down:
+En la figura \ref{diag: modelo_concep}, se muestra el diagrama conceptual, construido mediante una estrategia top-down (de más general a menos):
 
 \begin{figure}[!h]
 \begin{center}
@@ -1253,7 +1254,7 @@ Una vez cargado el fichero se nos muestra una gráfica con los datos del fichero
 \item \textbf{Mejor modelo}. El sistema decide cuál es el modelo que mejor se ajusta a los datos en base a los errores obtenidos y lo muestra. Realiza el ajuste con dicho modelo.
 \end{itemize}
 
-Además, se muestra una gráfica donde se representan los datos y el ajuste obtenido. Este desplegable y la gráfica representando el ajuste se muestran en la figura \ref{manual: ajuste3}.
+Además, se muestra una gráfica donde se representan los datos y el ajuste obtenido. Este desplegable y la gráfica representando el ajuste se pueden ver en la figura \ref{manual: ajuste3}.
 
 \begin{figure}
 \begin{center}
@@ -1263,7 +1264,7 @@ Además, se muestra una gráfica donde se representan los datos y el ajuste obte
 \end{center}
 \end{figure}
 
-Bajo ella, se pueden ver las estimaciones de los parámetros de acuerdo al modelo seleccionado y los errores correspondientes. En caso de que la opción para el ajuste haya sido \verb|Mejor modelo| se muestra también el modelo elegido. Estas estimaciones se pueden ver en la figura \ref{manual: ajuste4}. Los valores que se muestran tienen solo 6 cifras decimales por motivos de formato y visualización.
+Bajo ella, se muestran las estimaciones de los parámetros de acuerdo al modelo seleccionado y los errores correspondientes. En caso de que la opción para el ajuste haya sido \verb|Mejor modelo| se muestra también el modelo elegido. Estas estimaciones se pueden ver en la figura \ref{manual: ajuste4}. Los valores que se muestran tienen solo 6 cifras decimales por motivos de formato y visualización.
 
 \begin{figure}
 \begin{center}
@@ -1379,7 +1380,7 @@ Por comodidad, vamos a tratar los datos como indexados en el tiempo, correspondi
 \end{center}
 \end{figure}
 
-Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. `
+Es importante ajustar solamente una ola, pues el modelo SIR considera que tras recuperarse, los individuos no vuelven a ser susceptibles ni a infectarse, pero esto no es así en la realidad. Como el tiempo promedio necesario para volver a ser susceptible a la enfermedad tras recuperarse de esta es mayor que la duración de una ola, este efecto puede ser despreciado. Por tanto, el modelo SIR ajusta solamente las olas de forma independiente. 
 
 Para calcular el número de infectados activos, dado que el Covid-19 al principio de la pandemia tenía una duración aproximada de 10 días, se han considerado todos los nuevos casos reportados desde 10 días atrás hasta ese día como activos.
 
