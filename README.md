@@ -16,7 +16,7 @@ En este proyecto se han estudiado los principales modelos matemáticos de la epi
 
 Para ejecutar este proyecto, comienza por descargar los archivos fuente del repositorio. Esto puede hacerse descargando el repositorio directamente desde la web de github o clonando el repositorio (más información sobre cómo clonar un repositorio [aquí](https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository)).
 
-Tenemos varias opciones para instalar y ejecutar el software, basta elegir una. Se recomienda instalar y lanzar el software.
+Tenemos varias opciones para instalar y ejecutar el software, basta elegir una. Se recomienda instalar y lanzar el software de forma manual (opción 1).
 
 ### 1. Manualmente
 
