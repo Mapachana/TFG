@@ -1,6 +1,6 @@
 main.pdf: main.tex pseudo_clean #prepare_bibliography
 	pdflatex --shell-escape main.tex
-	#bibtex main
+	bibtex main
 	pdflatex --shell-escape main.tex
 	pdflatex --shell-escape main.tex
 	#cp main.pdf ../main.pdf
