@@ -55,8 +55,25 @@
 %\end{frame}
 
 
-
 \begin{frame}{Conceptos fundamentales (I)}
+
+    \begin{block}{Epidemia}
+        Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
+    \end{block}  
+
+    \pause
+
+    En todos los modelos se parte de realizar las siguientes suposiciones \cite{allenDiscretetimeSISIR1994}:
+
+    \begin{itemize}
+        \item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de interactuar entre ellos y contraer la enfermedad.
+        \item El total de la población es constante y lo denotaremos por $N$.
+    \end{itemize}
+
+\end{frame}
+
+
+\begin{frame}{Conceptos fundamentales (II)}
 
     \begin{block}{Individuos susceptibles}
         Los individuos \textbf{susceptibles}, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
@@ -79,24 +96,6 @@
 \end{frame}
 
 
-\begin{frame}{Conceptos fundamentales (II)}
-
-    \begin{block}{Epidemia}
-        Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
-    \end{block}  
-
-    \pause
-
-    En todos los modelos se parte de realizan las siguientes suposiciones:
-
-    \begin{itemize}
-        \item La población se mezcla de manera homogénea, es decir, todos los individuos tienen la misma probabilidad de interactuar entre ellos y contraer la enfermedad.
-        \item El total de la población es constante y lo denotaremos por $N$.
-    \end{itemize}
-
-\end{frame}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -108,7 +107,7 @@
 
 \begin{frame}{Modelo SI (I)}
 
-    \begin{block}{Modelo SI}
+    \begin{block}{Modelo SI  \cite{allenDiscretetimeSISIR1994}}
 
         \begin{equation}
         \label{eqn: SI}
@@ -157,7 +156,7 @@
 \begin{frame}{Modelo SI (III)}
     \begin{figure}
         \begin{center}
-        \caption{Gráfica del modelo SI discreto, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
+        \caption{Modelo SI discreto, $N=100$, $S_0=99$, $I_0 = 1$, $\alpha = 0.1$, $T_0 = 0$, $T = 100$.}
         \includegraphics[scale=0.6]{graficaSI}
         \end{center}
     \end{figure}
@@ -180,7 +179,7 @@
 
 \begin{frame}{Modelo SIR (I)}
 
-    \begin{block}{Modelo SIR}
+    \begin{block}{Modelo SIR \cite{allenDiscretetimeSISIR1994}}
         \begin{equation}
         \label{eqn: SIR_modelo}
         \begin{aligned}
@@ -224,7 +223,7 @@
 \begin{frame}{Modelo SIR (III)}
     \begin{figure}
         \begin{center}
-        \caption{Gráfica del modelo SIR, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, R_0 = 0, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 300$.}
+        \caption{Modelo SIR, $N=100$, $S_0=99$, $I_0 = 1$, $R_0 = 0$, $\alpha = 0.1$, $\gamma = 0.01$, $T_0 = 0$, $T = 300$.}
         \includegraphics[scale=0.6]{graficaSIR}
         \end{center}
     \end{figure}
@@ -264,7 +263,7 @@
 
 
 \begin{frame}{Modelo SIS (I)}
-    \begin{block}{Modelo SIS}
+    \begin{block}{Modelo SIS \cite{allenDiscretetimeSISIR1994}}
         \begin{equation}
             \label{eqn: modelo_SIS}
             \begin{aligned}
@@ -305,7 +304,7 @@
 
     \begin{figure}
         \begin{center}
-        \caption{Gráfica del modelo SIS, en una población total de $100$ individuos, con valores iniciales $S_0=95, I_0 = 5, \alpha = 0.1, \gamma=0.01, T_0 = 0, T = 150$.}
+        \caption{Modelo SIS, $N=100$, $S_0=95$, $I_0 = 5$, $\alpha = 0.1$, $\gamma=0.01$, $T_0 = 0$, $T = 150$.}
         \includegraphics[scale=0.5]{SIS_modelo}
         \end{center}
     \end{figure}
@@ -319,11 +318,13 @@
 \section{Modelos continuos en epidemiología}
 
 
-\subsection{Modelo SI}
 
+\begin{frame}{Conversión de discreto a continuo}
 
-\begin{frame}{Modelo SI (I)}
-
+    Para obtener las versiones análogas continuas de los modelos discretos estudiados consideramos:    
+    $$\frac{S_{n+1} - S_n}{\Delta t} \approx S'(t).$$
+    
+    \pause
     \begin{block}{Modelo SI}
         \begin{equation}
             \label{eqn:SI_continuo}
@@ -335,80 +336,11 @@
             
         Con condiciones iniciales $S(0)+I(0)=N$.
     \end{block}
-    
-    \pause
-    De \eqref{eqn:SI_continuo} se puede ver que $I'>0$ y $S'<0$, luego ambas funciones son estrictamente monótonas
-    \\~\\
-
-    \pause
-    Resolviendo el sistema de ecuaciones, vemos que las soluciones convergen a $(S^*,I^*)=(0,N)$.
 \end{frame}
 
 
-\begin{frame}{Modelo SI (II)}
+\begin{frame}{Modelos SIR y SIS continuo}
 
-    \begin{figure}
-    \begin{center}
-    \caption{Gráfica del modelo SI continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=99, I(0) = 1, \alpha = 0.1,T_0 = 0, T = 100$.}
-    \label{fig: SI_continuo}
-    \includegraphics[scale=0.4]{SI_continuo_modelo}
-    \end{center}
-    \end{figure}
-
-\end{frame}
-
-
-\subsection{Modelo SIS}
-
-
-\begin{frame}{Modelo SIS (I)}
-    \begin{block}{Modelo SIS}
-    \begin{equation}
-        \label{eqn: modelo_SIS_continuo}
-        \begin{aligned}
-        S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
-        I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
-        \end{aligned}
-        \end{equation}
-    
-        Con $S(0)+I(0)=N$. 
-    \end{block}
-    
-    \pause
-    El número básico reproductivo se define como $\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}$.
-        
-\end{frame}
-
-
-\begin{frame}{Modelo SIS (II)}
-    \begin{figure}
-    \begin{center}
-        \caption{Gráfica del modelo SIS continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=95, I(0) = 5, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 150$.}
-        \label{fig: SIS_continuo}
-        \includegraphics[scale=0.35]{SIS_continuo_modelo}
-        %\includegraphics[scale=0.25]{SIS_continuo_modelo3}
-        \end{center}
-        \end{figure}
-
-    
-
-\end{frame}
-
-\begin{frame}{Modelo SIS (III)}
-    \begin{figure}
-        \begin{center}
-        \caption{Gráfica del modelo SIS continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=95, I(0) = 5, \alpha = 0.1, \gamma = 0.2, T_0 = 0, T = 150$.}
-        \label{fig: SIS_continuo3}
-        \includegraphics[scale=0.35]{SIS_continuo_modelo3}
-        \end{center}
-        \end{figure}
-
-\end{frame}
-
-\subsection{Modelo SIR}
-
-
-\begin{frame}{Modelo SIR (I)}
     \begin{block}{Modelo SIR}
         \begin{equation}
             \label{eqn: modelo_SIR_continuo}
@@ -423,22 +355,19 @@
     \end{block}
 
     \pause
-    El número básico reproductivo en este caso se define como
-    $$\mathcal{R}_{SIR}=\frac{S(0)\alpha }{N\gamma }$$
 
+    \begin{block}{Modelo SIS}
+        \begin{equation}
+            \label{eqn: modelo_SIS_continuo}
+            \begin{aligned}
+            S'(t) = & -\frac{\alpha}{N}SI+\gamma I \\
+            I'(t) = & I\left( \frac{\alpha}{N}S-\gamma \right) \\
+            \end{aligned}
+            \end{equation}
+        
+            Con $S(0)+I(0)=N$. 
+        \end{block}
 \end{frame}
-
-
-\begin{frame}{Modelo SIR (II)}
-    \begin{figure}
-        \begin{center}
-        \caption{Gráfica del modelo SIR continuo, en una población total de $100$ individuos, con valores iniciales $S(0)=99, I(0) = 1, \alpha = 0.1, \gamma = 0.01, T_0 = 0, T = 300$.}
-        \label{fig: SIR_continuo}
-        \includegraphics[scale=0.35]{SIR_continuo_modelo}
-        \end{center}
-        \end{figure}
-\end{frame}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -453,18 +382,18 @@
 \begin{frame}{Herramientas}
 
     \begin{itemize}
-        \item Gráficas interactivas $\Rightarrow$ Dash.
+        \item Gráficas interactivas $\Rightarrow$ Dash \cite{dash}.
         \pause
-        \item Framework para la web $\Rightarrow$ Flask.
+        \item Framework para la web $\Rightarrow$ Flask \cite{flask}.
         \pause
-        \item Virtualización $\Rightarrow$ Docker.
+        \item Virtualización $\Rightarrow$ Docker \cite{docker}.
         \pause
-        \item Control de versiones y repositorio $\Rightarrow$ Git y Github.
+        \item Control de versiones y repositorio $\Rightarrow$ Git y Github \cite{git}.
         \begin{itemize}
             \item \href{https://github.com/Mapachana/TFG}{https://github.com/Mapachana/TFG}
         \end{itemize}
         \pause
-        \item Ajuste de datos $\Rightarrow$ Scipy.
+        \item Ajuste de datos $\Rightarrow$ Scipy \cite{scipy_curvefit}.
         \begin{itemize}
             \item Ajuste por mínimos cuadrados.
             \item Expresión de los errores como 1/MSE.
@@ -474,7 +403,7 @@
 
     \pause
 
-    \href{run:/home/mapachana/2022-06-23 19-38-25.mkv}{Click for video}
+    \href{run:/home/mapachana/2022-06-23 19-38-25.mkv}{Demostración de uso de la página.}
 
 \end{frame}
 
@@ -482,14 +411,32 @@
 \subsection{Datos reales}
 
 
-\begin{frame}{El Covid-19 en España}
-
-\end{frame}
-
-
 \begin{frame}{El VIH en Baleares}
 
+    \begin{figure}
+        \begin{center}
+        \caption{Ajuste con el modelo SI a los datos del VIH en Baleares \cite{datos_vih}.}
+        \label{ajuste_vih}
+        \includegraphics[scale=0.35]{ajuste_vih}
+        \end{center}
+        \end{figure}
 \end{frame}
+
+
+\begin{frame}{El Covid-19 en España}
+    \begin{figure}
+        \begin{center}
+        \caption{Ajuste con el modelo SIR a los datos del Covid-19 en España desde el 5 de Marzo hasta el 21 de Agosto de 2020 \cite{datos_covid}.}
+        \label{ajuste_covid}
+        \includegraphics[scale=0.35]{ajuste_covid}
+        \end{center}
+        \end{figure}
+
+
+\end{frame}
+
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -499,6 +446,13 @@
 
 
 \begin{frame}{Conclusiones}
+
+    \begin{itemize}
+        \item Estos modelos presentan muchas limitaciones, ya que se usan suposiciones que rara vez ocurren en casos reales.
+        \item Los datos reales presentan ruido e incompletitud.
+        \item Se pueden mejorar los modelos añadiendo más estados.
+        \item Los modelos presentados son una herramienta muy potente y útil pese a todas las limitaciones encontradas.
+    \end{itemize}
 
 \end{frame}
 
@@ -511,8 +465,21 @@
 \end{frame}
 
 
-\begin{frame}[c]{}
-\begin{center}
-\large{\textbf{Gracias por su atención.}}
-\end{center}
+{
+% Change image, or delete this line to remove background image
+\usebackgroundtemplate{ \parbox[b][\paperheight][b]{\paperwidth}{\centering\includegraphics[width=\paperwidth]{Background/bg_alhambra.png}}} 
+ %   abudhabi      cherry      forest      river
+ %   alishan       chobe       leuven      sanfancisco
+ %   blueprint     columns     library     uyuni
+ %   bokeh         flowers     newyork     winter
+
+%\setbeamercolor{background canvas}{bg=lgray}  % make background light gray
+\title[Gracias por su atención]{Gracias por su atención.}
+\subtitle{}
+\author{}
+\institute{}
+\date{}
+\begin{frame}[plain,noframenumbering]
+    \titlepage
 \end{frame}
+}	
