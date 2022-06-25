@@ -46,15 +46,6 @@
 \section{Conceptos fundamentales}
 
 
-%\begin{frame}{Conceptos fundamentales (I)}
-
-%    \begin{block}{Epidemia}
-%        Las epidemias son brotes espontáneos de una enfermedad o situaciones endémicas, en las que la enfermedad está siempre presente.
-%    \end{block}  
-
-%\end{frame}
-
-
 \begin{frame}{Conceptos fundamentales (I)}
 
     \begin{block}{Epidemia}
@@ -117,27 +108,13 @@
         \end{aligned}
         \end{equation}
 
-        Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.
-        
+        Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.      
 
     \end{block}  
-
-    %\begin{itemize}
-    %    \item $S_n$: número de individuos susceptibles en el instante $t_n$.
-    %    \item $I_n$: número de individuos infectados en ese instante.
-    %    \item $\Delta t$: tiempo transcurrido entre dos instantes $t_{n+1}-t_n$. 
-    %    \item $\alpha$ es la tasa de contacto; es decir, el número medio de individuos con los que un infectado tiene suficiente contacto para contagiarlo en un intervalo de tiempo.
-    %\end{itemize}
 
 \end{frame}
 
 \begin{frame}{Modelo SI (II)}
- 
-    %\begin{proposition}
-    %    Las soluciones de las ecuaciones \eqref{eqn: SI} son positivas si y solo si $\alpha\Delta t \leq 1$.
-    %\end{proposition}
-    
-    %\pause
 
     \begin{lema}
         $S_n$ es monótonamente decreciente e $I_n$ es monótonamente creciente.
@@ -149,9 +126,8 @@
     \\~\\
     El sistema debe converger a $(S^*,I^*)=(0,N)$.
 
-
-
 \end{frame}
+
 
 \begin{frame}{Modelo SI (III)}
     \begin{figure}
@@ -161,17 +137,6 @@
         \end{center}
     \end{figure}
 \end{frame}
-
-
-%\begin{frame}{Modelo SI (IV)}
-%    \begin{figure}
-%        \begin{center}
-%        \caption{Gráfica del modelo SI, representando el número de infectados según el número de individuos susceptibles, en una población total de $100$ individuos, con valores iniciales $S_0=99, I_0 = 1, \alpha = 0.1, T_0 = 0, T = 100$.}
-%        \label{fig: SI_IsobreS}
-%        \includegraphics[scale=0.5]{SI_IsobreS}
-%        \end{center}
-%        \end{figure}
-%\end{frame}
 
 
 \subsection{Modelo SIR}
@@ -195,16 +160,6 @@
 
 
 \begin{frame}{Modelo SIR (II)}
-    %\begin{proposition}
-    %    Las soluciones a este sistema discreto son positivas para cualquier valor de las condiciones iniciales si, y solo si:
-    %    $$\max{\big\{\gamma\Delta t, \alpha\Delta t\big\} } \leq 1,$$
-        
-    %    o equivalentemente  
-    %    $\min{\bigg\{ \frac{1}{\gamma}, \frac{1}{\alpha} \bigg\} } \geq \Delta t.$
-        
-    %    \end{proposition}
-
-    %    \pause 
 
         \begin{lema}
             $S_n$ es estrictamente decreciente y $R_n$ es estrictamentre creciente.
@@ -217,8 +172,8 @@
             $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
         \end{definition}
 
-
 \end{frame}
+
 
 \begin{frame}{Modelo SIR (III)}
     \begin{figure}
@@ -228,35 +183,6 @@
         \end{center}
     \end{figure}
 \end{frame}
-
-%\begin{frame}{Modelo SIR (IV)}
-
-%    \begin{columns}
-%        \column{0.5\textwidth}
-%        \begin{minipage}[c][0.4\textheight][c]{\linewidth}
-%          \centering
-%          \includegraphics[width=1.2\linewidth]{SIR_IsobreS}
-%        \end{minipage}
-%        \begin{minipage}[c][0.4\textheight][c]{\linewidth}
-%            \begin{enumerate}
-%                \item Individuos infectados en función de los susceptibles.
-%                \item Individuos recuperados en función de los susceptibles.
-%                \item Individuos recuperados en función de los infectados.
-%            \end{enumerate}
-          
-%        \end{minipage}
-%        \column{0.5\textwidth}
-%        \begin{minipage}[c][0.4\textheight][c]{\linewidth}
-%            \centering
-%            \includegraphics[width=1.2\linewidth]{SIR_RsobreS}
-%        \end{minipage}
-%        \begin{minipage}[c][0.4\textheight][c]{\linewidth}
-%          \centering
-%          \includegraphics[width=1.2\linewidth]{SIR_RsobreI}
-%        \end{minipage}
-%        \end{columns}
-
-%\end{frame}
 
 
 \subsection{Modelo SIS}
@@ -278,13 +204,6 @@
 
 
 \begin{frame}{Modelo SIS (II)}
-
-    %\begin{proposition}
-    %    Las soluciones de \eqref{eqn: modelo_SIS} siempre son positivas si, y solo si:
-        
-    %    $$\gamma \Delta t \leq 1 $$ y $$\alpha\Delta t< \left( 1+\sqrt{\gamma \Delta t} \right)^2$$
-        
-    %\end{proposition}
 
     \begin{lema}
         Los puntos de equilibrio de \eqref{eqn: modelo_SIS} son o bien $(S^*,I^*)=(N,0)$, o bien $(S^*,I^*)=(\frac{N\gamma}{\alpha}, N-\frac{N\gamma}{\alpha})$.
@@ -316,7 +235,6 @@
 
 
 \section{Modelos continuos en epidemiología}
-
 
 
 \begin{frame}{Conversión de discreto a continuo}
@@ -436,9 +354,6 @@
 \end{frame}
 
 
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -459,6 +374,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \begin{frame}{Referencias}
     \bibliography{../redaccion_tfg/bib/library.bib}
     \bibliographystyle{plain}
@@ -466,14 +382,9 @@
 
 
 {
-% Change image, or delete this line to remove background image
-\usebackgroundtemplate{ \parbox[b][\paperheight][b]{\paperwidth}{\centering\includegraphics[width=\paperwidth]{Background/bg_alhambra.png}}} 
- %   abudhabi      cherry      forest      river
- %   alishan       chobe       leuven      sanfancisco
- %   blueprint     columns     library     uyuni
- %   bokeh         flowers     newyork     winter
 
-%\setbeamercolor{background canvas}{bg=lgray}  % make background light gray
+\usebackgroundtemplate{ \parbox[b][\paperheight][b]{\paperwidth}{\centering\includegraphics[width=\paperwidth]{Background/bg_alhambra.png}}} 
+
 \title[Gracias por su atención]{Gracias por su atención.}
 \subtitle{}
 \author{}
@@ -482,4 +393,5 @@
 \begin{frame}[plain,noframenumbering]
     \titlepage
 \end{frame}
+
 }	
