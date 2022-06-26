@@ -67,20 +67,19 @@
 \begin{frame}{Conceptos fundamentales (II)}
 
     \begin{block}{Individuos susceptibles}
-        Los individuos \textbf{susceptibles}, que denotamos $S_n$, son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho en el momento $n$.
+        Los individuos \textbf{susceptibles} son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho.
     \end{block}  
 
     \pause
 
     \begin{block}{Individuos infectados}
-        Los individuos \textbf{infectados}, a los que denotamos $I_n$, son las personas infectadas en el instante $n$ por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
+        Los individuos \textbf{infectados} son las personas infectadas por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
     \end{block}  
 
     \pause
 
     \begin{block}{Individuos recuperados}
-        Los individuos \textbf{recuperados}, que denotamos $R_n$, son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
-        Los individuos recuperados hacen referencia a los individuos inmunizados, aislados, recuperados o fallecidos.
+        Los individuos \textbf{recuperados} son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
     \end{block}  
 
 
@@ -111,6 +110,19 @@
         Con condiciones iniciales $S_0>0$, $I_0>0$ y $S_0+I_0=N$.      
 
     \end{block}  
+
+    \begin{center}
+    \begin{tikzpicture}
+        \begin{scope}[every node/.style={circle,thick,draw}]
+            \node (S) at (0,0) {S};
+            \node (I) at (3,0) {I};
+        \end{scope}
+        
+        \begin{scope}[>={Stealth[black]}, every edge/.style={draw=black,very thick}]
+            \path [->] (S) edge node {} (I);
+        \end{scope}
+    \end{tikzpicture}
+    \end{center}
 
 \end{frame}
 
@@ -156,6 +168,22 @@
         
         Con condiciones iniciales $S_0>0$, $I_0>0$, $R_0\geq 0$, satisfaciendo $S_0+I_0+R_0=N$.
     \end{block}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{scope}[every node/.style={circle,thick,draw}]
+                \node (S) at (0,0) {S};
+                \node (I) at (3,0) {I};
+                \node (R) at (6,0) {R};
+            \end{scope}
+            
+            \begin{scope}[>={Stealth[black]}, every edge/.style={draw=black,very thick}]
+                \path [->] (S) edge node {} (I);
+                \path [->] (I) edge node {} (R);
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+
 \end{frame}
 
 
@@ -167,10 +195,10 @@
 
         \pause
 
-        \begin{definition}
+        \begin{definicion}
             Definimos el número básico reproductivo como la constante 
             $$\mathcal{R}_{SIR}=\frac{S_0 \alpha}{N\gamma }.$$
-        \end{definition}
+        \end{definicion}
 
 \end{frame}
 
@@ -200,6 +228,21 @@
             
             Con condiciones iniciales $S_0>0$, $I_0>0$ cumpliendo $S_0+I_0=N$.
     \end{block}
+
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{scope}[every node/.style={circle,thick,draw}]
+                \node (S) at (0,0) {S};
+                \node (I) at (3,0) {I};
+            \end{scope}
+            
+            \begin{scope}[>={Stealth[black]}, every edge/.style={draw=black,very thick}]
+                \path [->] (S) edge node {} (I);
+                \path [->] (I) edge[bend right=60] node {} (S); 
+            \end{scope}
+        \end{tikzpicture}
+        \end{center}
+
 \end{frame}
 
 
@@ -211,10 +254,10 @@
 
     \pause
 
-    \begin{definition}
+    \begin{definicion}
         El número básico reproductivo se define como 
         $$\mathcal{R}_{SIS}=\frac{\alpha}{\gamma}.$$
-    \end{definition}
+    \end{definicion}
 \end{frame}
 
 
