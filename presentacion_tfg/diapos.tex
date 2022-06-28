@@ -31,9 +31,9 @@
         \begin{itemize}
             \item Descripción y estudio de modelos continuos en epidemiología.
             \pause
-            \item Ajuste de datos.
+            \item Ajuste de datos a un modelo.
             \pause
-            \item Aplicación a datos reales.
+            \item Estimación de parámetros en datos reales.
         \end{itemize}
     \end{itemize}
 
@@ -66,19 +66,19 @@
 
 \begin{frame}{Conceptos fundamentales (II)}
 
-    \begin{block}{Individuos susceptibles}
+    \begin{block}{Individuos susceptibles (S)}
         Los individuos \textbf{susceptibles} son aquellos que pueden infectarse con la enfermedad pero aún no lo han hecho.
     \end{block}  
 
     \pause
 
-    \begin{block}{Individuos infectados}
+    \begin{block}{Individuos infectados (I)}
         Los individuos \textbf{infectados} son las personas infectadas por la enfermedad y pueden contagiar la enfermedad a los individuos susceptibles.
     \end{block}  
 
     \pause
 
-    \begin{block}{Individuos recuperados}
+    \begin{block}{Individuos recuperados (R)}
         Los individuos \textbf{recuperados} son los individuos que han estado infectados y ya no contagian la enfermedad ni pueden volver a infectarse.
     \end{block}  
 
@@ -97,7 +97,11 @@
 
 \begin{frame}{Modelo SI (I)}
 
-    \begin{block}{Modelo SI  \cite{allenDiscretetimeSISIR1994}}
+    En los modelos discretos consideramos el tiempo discreto, esto es, toma valores discretos como 0,1,2,3...
+
+    \pause
+
+    \begin{block}{Modelo SI  \cite{allenDiscretetimeSISIR1994}\cite{brauerMathematicalModelsPopulation2012}\cite{salinelliDiscreteDynamicalModels2014}}
 
         \begin{equation}
         \label{eqn: SI}
@@ -136,7 +140,7 @@
 
     Los únicos puntos de equilibrio posibles son: $(S^*,I^*)=(0,N)$ y $(S^*,I^*)=(N,0)$.
     \\~\\
-    El sistema debe converger a $(S^*,I^*)=(0,N)$.
+    El sistema converge a $(S^*,I^*)=(0,N)$.
 
 \end{frame}
 
@@ -156,7 +160,7 @@
 
 \begin{frame}{Modelo SIR (I)}
 
-    \begin{block}{Modelo SIR \cite{allenDiscretetimeSISIR1994}}
+    \begin{block}{Modelo SIR \cite{allenDiscretetimeSISIR1994}\cite{brauerMathematicalModelsPopulation2012}\cite{salinelliDiscreteDynamicalModels2014}}
         \begin{equation}
         \label{eqn: SIR_modelo}
         \begin{aligned}
@@ -217,7 +221,7 @@
 
 
 \begin{frame}{Modelo SIS (I)}
-    \begin{block}{Modelo SIS \cite{allenDiscretetimeSISIR1994}}
+    \begin{block}{Modelo SIS \cite{allenDiscretetimeSISIR1994}\cite{brauerMathematicalModelsPopulation2012}\cite{salinelliDiscreteDynamicalModels2014}}
         \begin{equation}
             \label{eqn: modelo_SIS}
             \begin{aligned}
@@ -280,9 +284,9 @@
 \section{Modelos continuos en epidemiología}
 
 
-\begin{frame}{Conversión de discreto a continuo}
+\begin{frame}{Deducción del modelo continuo a partir de su análogo discreto}
 
-    Para obtener las versiones análogas continuas de los modelos discretos estudiados consideramos:    
+    Se pueden obtener las versiones análogas continuas de los modelos discretos estudiados considerando:    
     $$\frac{S_{n+1} - S_n}{\Delta t} \approx S'(t).$$
     
     \pause
@@ -334,13 +338,101 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Desarrollo de la página web}
+\section{Desarrollo del software}
 
 
-\subsection{La página web}
+\subsection{Diseño}
 
 
-\begin{frame}{Herramientas}
+\begin{frame}{Diseño de la página web (I)}
+
+    \begin{itemize}
+        \item Extracción de requisitos funcionales, no funcionales y de información.
+        \item Metodología de desarrollo del software: Desarrollo en espiral.
+
+        \begin{figure}
+            \begin{center}
+            \caption{Modelo en espiral.}
+            \label{modelo_espiral}
+            \includegraphics[scale=0.5]{modelo_espiral}
+            \end{center}
+            \end{figure}
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}{Diseño de la página web (II)}
+
+    \begin{itemize}
+        \item Gestión de recursos: recursos humanos, hardware y software. Estimación del coste.
+        \item Planificación temporal de las etapas del proyecto.
+        \item Diagrama conceptual.
+    \end{itemize}
+
+   \begin{columns}
+        \begin{column}{0.5\textwidth}  
+            \begin{figure}[!h]
+                \begin{center}
+                \caption{Planificación temporal.}
+                \label{fig: planificacion}
+                \includegraphics[scale=0.15]{planificacion}
+                \end{center}
+                \end{figure}
+        \end{column}
+    
+        \begin{column}{0.5\textwidth}  
+            \begin{figure}[!h]
+                \begin{center}
+                \caption{Modelo conceptual.}
+                \label{diag: modelo_concep}
+                \includegraphics[scale=0.23]{modelo_conceptual-vista-paquetes.drawio}
+                \end{center}
+                \end{figure}
+        \end{column}
+\end{columns} 
+
+\end{frame}
+
+
+\begin{frame}{Diseño de la página web (III)}
+
+    \begin{itemize}
+        \item Obtención de los casos de uso.
+        \item Elaboración de diagramas de actividad.
+        \item Elaboración de pruebas.
+        \item Diseño de la interfaz.
+    \end{itemize}
+
+    \begin{columns}
+        \begin{column}{0.5\textwidth} 
+            \begin{figure}[!h]
+                \begin{center}
+                \caption{Diagrama de casos de uso}
+                \label{diag: casos_uso}
+                \includegraphics[scale=0.2]{casos_de_uso.drawio}
+                \end{center}
+                \end{figure}
+        \end{column}
+    
+        \begin{column}{0.5\textwidth}  
+            \begin{figure}[!h]
+                \begin{center}
+                \caption{Plantilla de un caso de uso.}
+                \label{diag: plantilla_cu}
+                \includegraphics[scale=0.2]{plantilla_cu}
+                \end{center}
+                \end{figure}
+        \end{column}
+    \end{columns}
+
+\end{frame}
+
+
+
+\subsection{Demostración de uso}
+
+
+\begin{frame}{Herramientas y demostración de uso}
 
     \begin{itemize}
         \item Gráficas interactivas $\Rightarrow$ Dash \cite{dash}.
@@ -357,6 +449,7 @@
         \item Ajuste de datos $\Rightarrow$ Scipy \cite{scipy_curvefit}.
         \begin{itemize}
             \item Ajuste por mínimos cuadrados.
+            \item Estimación de parámetros.
             \item Expresión de los errores como 1/(1+MSE).
             \item Selección del modelo con mínimo error para unos datos dados.
         \end{itemize}
@@ -369,7 +462,7 @@
 \end{frame}
 
 
-\subsection{Datos reales}
+\subsection{Estimación de parámetros en datos reales}
 
 
 \begin{frame}{El VIH en Baleares}
